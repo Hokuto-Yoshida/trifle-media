@@ -520,16 +520,6 @@ export default async function PostsPage() {
                 <h1 className="page-title">
                   記事一覧
                 </h1>
-                
-                {/* 検索バー */}
-                <div className="search-container">
-                  <Search className="search-icon" />
-                  <input
-                    type="text"
-                    placeholder="記事を検索..."
-                    className="search-input"
-                  />
-                </div>
               </div>
             </div>
           </section>

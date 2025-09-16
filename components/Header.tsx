@@ -573,51 +573,7 @@ export default function Header() {
           </div>
         </div>
       )}
-
-      {/* Search Modal */}
-      {isSearchOpen && (
-        <div className="search-modal-overlay">
-          <div className="search-modal-backdrop" onClick={() => setIsSearchOpen(false)} />
-          <div className="search-modal-container">
-            <div className="search-modal">
-              <form onSubmit={handleSearch} className="search-form">
-                <div className="search-input-container">
-                  <Search className="search-input-icon" />
-                  <input
-                    type="text"
-                    placeholder="記事を検索..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="search-input"
-                    autoFocus
-                  />
-                </div>
-              </form>
-              <div className="search-actions">
-                <p className="search-hint">
-                  Enterで検索、Escでキャンセル
-                </p>
-                <div className="search-buttons">
-                  <button
-                    type="button"
-                    onClick={() => setIsSearchOpen(false)}
-                    className="search-button-secondary"
-                  >
-                    キャンセル
-                  </button>
-                  <button
-                    onClick={handleSearch}
-                    className="search-button-primary"
-                  >
-                    検索
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
-  
+
 }
