@@ -1,11 +1,19 @@
 'use client';
 
 import Script from 'next/script';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export function Analytics() {
   const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
+  const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
   
-  if (!GA_TRACKING_ID) {
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  
+  if (!GA_TRACKING_ID || !mounted) {
     return null;
   }
 
@@ -24,7 +32,7 @@ export function Analytics() {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${GA_TRACKING_ID}', {
-              page_path: window.location.pathname,
+              page_path: '${pathname}',
             });
           `,
         }}

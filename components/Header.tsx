@@ -388,12 +388,23 @@ export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    
+    // ウィンドウサイズをチェック
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   useEffect(() => {
@@ -443,7 +454,9 @@ export default function Header() {
                 <Plane style={{ width: '20px', height: '20px', color: 'white' }} />
               </div>
               <span className="logo-text-primary">トリフレ</span>
-              <span className="logo-text-secondary" style={{ display: window.innerWidth >= 640 ? 'inline' : 'none' }}>メディア</span>
+              {mounted && !isMobile && (
+                <span className="logo-text-secondary">メディア</span>
+              )}
             </Link>
 
             {/* Desktop Navigation */}
