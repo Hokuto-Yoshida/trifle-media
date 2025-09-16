@@ -1,0 +1,160 @@
+{
+  "name": "トリフレメディア - Z世代のための一人旅特化メディア",
+  "short_name": "トリフレメディア",
+  "description": "Z世代のための一人旅特化メディア「トリフレ」。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3B82F6",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "ja",
+  "categories": ["travel", "lifestyle", "entertainment"],
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "記事一覧",
+      "short_name": "記事",
+      "description": "最新の一人旅記事をチェック",
+      "url": "/posts",
+      "icons": [
+        {
+          "src": "/icons/shortcut-posts.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "旅行診断",
+      "short_name": "診断",
+      "description": "あなたにぴったりの旅先を診断",
+      "url": "/shindan",
+      "icons": [
+        {
+          "src": "/icons/shortcut-shindan.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "カテゴリ",
+      "short_name": "カテゴリ",
+      "description": "カテゴリから記事を探す",
+      "url": "/category",
+      "icons": [
+        {
+          "src": "/icons/shortcut-category.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "アプリダウンロード",
+      "short_name": "アプリ",
+      "description": "トリフレアプリをダウンロード",
+      "url": "/app",
+      "icons": [
+        {
+          "src": "/icons/shortcut-app.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "トップページ - デスクトップ表示"
+    },
+    {
+      "src": "/screenshots/mobile-home.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "トップページ - モバイル表示"
+    },
+    {
+      "src": "/screenshots/desktop-posts.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "記事一覧ページ"
+    },
+    {
+      "src": "/screenshots/mobile-article.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "記事詳細ページ"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=jp.trifle.app",
+      "id": "jp.trifle.app"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/jp/app/trifle/id123456789",
+      "id": "123456789"
+    }
+  ],
+  "prefer_related_applications": false
+}
