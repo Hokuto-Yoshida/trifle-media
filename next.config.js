@@ -1,25 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
   experimental: {
     mdxRs: true,
   },
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   images: {
+    unoptimized: true, // 必須：静的エクスポート用
     domains: ['images.unsplash.com', 'source.unsplash.com'],
     formats: ['image/webp', 'image/avif'],
   },
-  async rewrites() {
-    return [
-      {
-        source: '/feed.xml',
-        destination: '/api/feed',
-      },
-      {
-        source: '/sitemap.xml',
-        destination: '/api/sitemap',
-      },
-    ];
-  },
+  // rewrites削除（APIルートが使えないため）
   async headers() {
     return [
       {
