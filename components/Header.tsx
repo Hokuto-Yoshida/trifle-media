@@ -474,14 +474,6 @@ export default function Header() {
 
             {/* Desktop Actions */}
             <div className="desktop-actions">
-              {/* Search Button */}
-              <button
-                onClick={() => setIsSearchOpen(true)}
-                className="icon-button"
-              >
-                <Search style={{ width: '20px', height: '20px' }} />
-              </button>
-
               {/* App CTA */}
               <a 
                 href="https://tripfriend-website.netlify.app" 
