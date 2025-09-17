@@ -1,684 +1,376 @@
 import { Metadata } from 'next';
-import { Search, Filter, Calendar, TrendingUp } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Header, Footer, PostCard } from '@/components';
 import { getAllPosts } from '@/lib/posts';
-import { CATEGORIES } from '@/lib/categories';
 import type { PostMetadata } from '@/types/post';
 
 export const metadata: Metadata = {
   title: '記事一覧 | トリフレメディア',
-  description: '一人旅に関する最新記事をすべてご覧いただけます。カテゴリや人気順でソートして、あなたにぴったりの記事を見つけましょう。',
+  description: '一人旅に関する最新記事をすべてご覧いただけます。',
 };
 
 const postsPageStyles = `
-  .page-container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
+  /* Reset and base styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  
-  .page-header {
-    background: linear-gradient(90deg, #ecfdf5 0%, #d1fae5 100%);
-    padding: 32px 0;
-  }
-  
-  @media (min-width: 768px) {
-    .page-header {
-      padding: 64px 0;
-    }
-  }
-  
-  .container {
-    max-width: 1152px;
-    margin: 0 auto;
-    padding: 0 16px;
-  }
-  
-  .header-content {
-    text-align: center;
-    max-width: 100%;
-  }
-  
-  .page-title {
-    font-size: clamp(1.5rem, 5vw, 2.25rem);
-    font-weight: bold;
-    color: #1f2937;
-    margin-bottom: 8px;
-    line-height: 1.2;
-    word-break: keep-all;
-    overflow-wrap: break-word;
-  }
-  
-  @media (min-width: 768px) {
-    .page-title {
-      margin-bottom: 16px;
-    }
-  }
-  
-  .page-description {
-    font-size: clamp(0.875rem, 3vw, 1.25rem);
-    color: #6b7280;
-    margin-bottom: 20px;
-    line-height: 1.4;
-    word-break: keep-all;
-    overflow-wrap: break-word;
-  }
-  
-  @media (min-width: 768px) {
-    .page-description {
-      margin-bottom: 32px;
-      line-height: 1.6;
-    }
-  }
-  
-  .search-container {
-    max-width: 100%;
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-  }
-  
-  @media (min-width: 640px) {
-    .search-container {
-      max-width: 340px;
-    }
-  }
-  
-  .search-icon {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #9ca3af;
-    width: 20px;
-    height: 20px;
-  }
-  
-  .search-input {
-    width: 100%;
-    padding: 12px 16px 12px 48px;
-    border-radius: 12px;
-    border: 1px solid #d1d5db;
-    background-color: white;
-    outline: none;
-    transition: all 0.2s;
-    font-size: 16px;
-  }
-  
-  .search-input:focus {
-    border-color: #10b981;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
-  }
-  
-  .main-content {
-    flex: 1;
-  }
-  
-  .content-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 32px 0;
-  }
-  
-  @media (min-width: 768px) {
-    .content-grid {
-      gap: 32px;
-      padding: 48px 0;
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .content-grid {
-      grid-template-columns: 320px 1fr;
-    }
-  }
-  
-  .sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    order: 2;
-  }
-  
-  @media (min-width: 768px) {
-    .sidebar {
-      gap: 24px;
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .sidebar {
-      order: 1;
-      gap: 32px;
-    }
-  }
-  
-  .sidebar-card {
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    line-height: 1.6;
+    color: #333;
     background: white;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-    padding: 20px;
   }
-  
-  @media (min-width: 768px) {
-    .sidebar-card {
-      padding: 24px;
-    }
+
+  /* Main content */
+  .main-content {
+    background: white;
   }
-  
-  .sidebar-title {
-    font-weight: bold;
-    color: #1f2937;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .page-header {
+    padding: 40px 0 20px 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #333;
     margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1rem;
   }
-  
-  @media (min-width: 768px) {
-    .sidebar-title {
-      font-size: 1.125rem;
-    }
+
+  .page-description {
+    color: #666;
+    margin-bottom: 0;
   }
-  
-  .filter-section {
-    margin-bottom: 20px;
+
+  /* Posts section */
+  .posts-section {
+    padding: 40px 0;
   }
-  
-  @media (min-width: 768px) {
-    .filter-section {
-      margin-bottom: 24px;
-    }
-  }
-  
-  .filter-label {
-    display: block;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #374151;
-    margin-bottom: 8px;
-  }
-  
-  .filter-select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    background-color: white;
-    outline: none;
-    transition: border-color 0.2s;
-    font-size: 16px;
-  }
-  
-  @media (min-width: 768px) {
-    .filter-select {
-      padding: 8px;
-      font-size: 14px;
-    }
-  }
-  
-  .filter-select:focus {
-    border-color: #10b981;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
-  }
-  
-  .checkbox-group {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  @media (min-width: 768px) {
-    .checkbox-group {
-      gap: 8px;
-    }
-  }
-  
-  .checkbox-item {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 4px 0;
-  }
-  
-  .checkbox-input {
-    margin-right: 12px;
-    accent-color: #10b981;
-    transform: scale(1.2);
-  }
-  
-  @media (min-width: 768px) {
-    .checkbox-input {
-      margin-right: 8px;
-      transform: scale(1);
-    }
-  }
-  
-  .checkbox-label {
-    font-size: 0.875rem;
-    color: #6b7280;
-    user-select: none;
-  }
-  
-  .tag-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  
-  .tag {
-    padding: 8px 16px;
-    background-color: #f3f4f6;
-    color: #374151;
-    font-size: 0.75rem;
-    border-radius: 9999px;
-    cursor: pointer;
-    transition: all 0.2s;
-    touch-action: manipulation;
-  }
-  
-  @media (min-width: 768px) {
-    .tag {
-      padding: 4px 12px;
-    }
-  }
-  
-  .tag:hover {
-    background-color: #ecfdf5;
-    color: #10b981;
-  }
-  
-  .tag:active {
-    transform: scale(0.95);
-  }
-  
-  .main-column {
-    display: flex;
-    flex-direction: column;
-    order: 1;
-  }
-  
-  @media (min-width: 1024px) {
-    .main-column {
-      order: 2;
-    }
-  }
-  
-  .section {
-    margin-bottom: 32px;
-  }
-  
-  @media (min-width: 768px) {
-    .section {
-      margin-bottom: 48px;
-    }
-  }
-  
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-  
-  @media (min-width: 768px) {
-    .section-header {
-      margin-bottom: 24px;
-    }
-  }
-  
-  .section-title {
-    font-size: clamp(1.25rem, 3vw, 1.5rem);
-    font-weight: bold;
-    color: #1f2937;
-  }
-  
+
   .posts-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
+    margin-bottom: 40px;
   }
-  
-  @media (min-width: 640px) {
-    .posts-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
+
+  /* Article cards */
+  .article-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
   }
-  
-  @media (min-width: 1280px) {
-    .posts-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+
+  .article-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
-  
-  .empty-state {
-    text-align: center;
-    padding: 32px 0;
-    color: #9ca3af;
+
+  .article-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background: #f3f4f6;
   }
-  
-  @media (min-width: 768px) {
-    .empty-state {
-      padding: 48px 0;
-    }
+
+  .article-content {
+    padding: 16px;
   }
-  
-  .pagination {
-    margin-top: 32px;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 32px;
+
+  .article-category {
+    display: inline-block;
+    background: #00d084;
+    color: white;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-bottom: 8px;
   }
-  
-  @media (min-width: 768px) {
-    .pagination {
-      margin-top: 48px;
-    }
+
+  .article-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    color: #333;
   }
-  
-  .pagination-nav {
+
+  .article-excerpt {
+    color: #666;
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  .article-meta {
     display: flex;
     align-items: center;
-    gap: 4px;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #999;
+    margin-bottom: 12px;
+  }
+
+  /* Read more button */
+  .read-more-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: #00d084;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .read-more-button:hover {
+    background: #059669;
+    transform: translateY(-1px);
+  }
+
+  /* Pagination - like SingaLife */
+  .pagination {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    gap: 8px;
+    margin-bottom: 40px;
   }
-  
-  @media (min-width: 768px) {
-    .pagination-nav {
-      gap: 8px;
-      flex-wrap: nowrap;
-    }
-  }
-  
+
   .pagination-button {
     padding: 12px 16px;
     border: 1px solid #d1d5db;
-    border-radius: 8px;
-    color: #6b7280;
     background: white;
-    cursor: pointer;
-    transition: all 0.2s;
+    color: #666;
     text-decoration: none;
-    font-size: 0.875rem;
-    min-width: 44px;
-    text-align: center;
-    touch-action: manipulation;
+    font-size: 14px;
+    transition: all 0.2s;
+    cursor: pointer;
   }
-  
-  @media (min-width: 768px) {
-    .pagination-button {
-      padding: 8px 16px;
-      min-width: auto;
-    }
-  }
-  
+
   .pagination-button:hover {
     background-color: #f9fafb;
   }
-  
-  .pagination-button:active {
-    transform: scale(0.95);
-  }
-  
-  .pagination-button-active {
-    background-color: #10b981;
+
+  .pagination-button.active {
+    background: #00d084;
     color: white;
-    border-color: #10b981;
+    border-color: #00d084;
   }
-  
-  .pagination-button-active:hover {
-    background-color: #059669;
+
+  .pagination-next {
+    padding: 12px 24px;
+    border: 1px solid #00d084;
+    background: white;
+    color: #00d084;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-  
-  /* モバイル専用のスタイル */
-  @media (max-width: 767px) {
-    .mobile-hidden {
-      display: none;
-    }
-    
-    .mobile-sticky-search {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: white;
-      padding: 16px;
-      border-bottom: 1px solid #e5e7eb;
-      margin: 0 -16px 16px -16px;
-    }
-    
-    .sidebar-card {
-      margin: 0 -8px;
-    }
-    
-    .filter-section:last-child {
-      margin-bottom: 0;
-    }
+
+  .pagination-next:hover {
+    background: #00d084;
+    color: white;
   }
-  
-  /* タッチデバイス用の改善 */
-  @media (hover: none) and (pointer: coarse) {
-    .checkbox-item:hover {
-      background-color: #f9fafb;
+
+  /* Category section - like SingaLife */
+  .category-section {
+    padding: 40px 0;
+    border-top: 1px solid #e5e7eb;
+    background: #f9fafb;
+  }
+
+  .category-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 24px;
+  }
+
+  .category-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .category-tag {
+    padding: 8px 16px;
+    background: #00d084;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .category-tag:hover {
+    background: #059669;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 60px 0;
+    color: #666;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .container {
+      padding: 0 16px;
     }
     
-    .tag:hover {
-      background-color: #f3f4f6;
-      color: #374151;
+    .posts-grid {
+      grid-template-columns: 1fr;
     }
     
-    .pagination-button:hover {
-      background-color: white;
+    .pagination {
+      flex-wrap: wrap;
     }
     
-    .pagination-button-active:hover {
-      background-color: #10b981;
+    .category-grid {
+      justify-content: center;
     }
   }
 `;
 
+interface ExtendedPostMetadata extends PostMetadata {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  category: string;
+  subcategory?: string;
+  tags: string[];
+  thumb: string;
+  readingTime: number;
+  author: any;
+  featured: boolean;
+  draft: boolean;
+  filePath?: string;
+}
+
 export default async function PostsPage() {
-  let allPosts: PostMetadata[] = [];
+  let allPosts: ExtendedPostMetadata[] = [];
   try {
-    allPosts = await getAllPosts();
+    allPosts = await getAllPosts() as ExtendedPostMetadata[];
   } catch (error) {
     console.error('Error loading posts:', error);
     allPosts = [];
   }
 
-  const publishedPosts: PostMetadata[] = allPosts.filter((post: PostMetadata) => !post.draft);
-  const sortedPosts: PostMetadata[] = publishedPosts.sort((a: PostMetadata, b: PostMetadata) => 
+  const publishedPosts: ExtendedPostMetadata[] = allPosts.filter((post: ExtendedPostMetadata) => !post.draft);
+  const sortedPosts: ExtendedPostMetadata[] = publishedPosts.sort((a: ExtendedPostMetadata, b: ExtendedPostMetadata) => 
     new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
-  const featuredPosts: PostMetadata[] = publishedPosts.filter((post: PostMetadata) => post.featured);
-  const regularPosts: PostMetadata[] = publishedPosts.filter((post: PostMetadata) => !post.featured);
-
-  const categoryStats: Record<string, number> = publishedPosts.reduce((acc: Record<string, number>, post: PostMetadata) => {
-    const category: string = post.category;
-    acc[category] = (acc[category] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
+  const categories = [
+    { name: '国内旅行', slug: 'domestic' },
+    { name: '海外旅行', slug: 'international' },
+    { name: 'グルメ', slug: 'gourmet' },
+    { name: '宿泊', slug: 'accommodation' },
+    { name: '安全・準備', slug: 'safety' },
+    { name: '旅のコツ', slug: 'tips' }
+  ];
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: postsPageStyles }} />
       
-      <div className="page-container">
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        {/* Header コンポーネントを使用 */}
         <Header />
-        
-        <main className="main-content">
-          {/* ページヘッダー */}
+
+        <main className="main-content" style={{ flex: 1 }}>
+          {/* Page Header */}
           <section className="page-header">
             <div className="container">
-              <div className="header-content">
-                <h1 className="page-title">
-                  記事一覧
-                </h1>
-              </div>
+              <h1 className="page-title">記事一覧</h1>
+              <p className="page-description">一人旅に関する最新記事をすべてご覧いただけます。</p>
             </div>
           </section>
 
-          <div className="container">
-            <div className="content-grid">
-              
-              {/* サイドバー */}
-              <aside className="sidebar">
-                
-                {/* フィルター */}
-                <div className="sidebar-card">
-                  <h3 className="sidebar-title">
-                    <Filter style={{ width: '20px', height: '20px' }} />
-                    フィルター
-                  </h3>
-                  
-                  {/* ソート */}
-                  <div className="filter-section">
-                    <label className="filter-label">
-                      並び順
-                    </label>
-                    <select className="filter-select">
-                      <option value="latest">最新順</option>
-                      <option value="popular">人気順</option>
-                      <option value="category">カテゴリ別</option>
-                    </select>
-                  </div>
-                  
-                  {/* カテゴリフィルター */}
-                  <div>
-                    <label className="filter-label">
-                      カテゴリ
-                    </label>
-                    <div className="checkbox-group">
-                      <label className="checkbox-item">
-                        <input type="checkbox" className="checkbox-input" defaultChecked />
-                        <span className="checkbox-label">すべて</span>
-                      </label>
-                      {CATEGORIES.map((category) => (
-                        <label key={category.slug} className="checkbox-item">
-                          <input type="checkbox" className="checkbox-input" />
-                          <span className="checkbox-label">
-                            {category.name} ({categoryStats[category.name] || 0})
-                          </span>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* 人気タグ */}
-                <div className="sidebar-card">
-                  <h3 className="sidebar-title">
-                    <TrendingUp style={{ width: '20px', height: '20px' }} />
-                    人気タグ
-                  </h3>
-                  <div className="tag-grid">
-                    {['一人旅', '初心者', '国内', '海外', '安全', '予算', 'プラン', '体験談'].map((tag: string) => (
-                      <span key={tag} className="tag">
-                        #{tag}
-                      </span>
+          {/* Posts Section */}
+          <section className="posts-section">
+            <div className="container">
+              {sortedPosts.length > 0 ? (
+                <>
+                  <div className="posts-grid">
+                    {sortedPosts.map((post: ExtendedPostMetadata) => (
+                      <article key={post.slug} className="article-card">
+                        <img 
+                          src={post.thumb || '/placeholder-image.jpg'} 
+                          alt={post.title}
+                          className="article-image"
+                        />
+                        <div className="article-content">
+                          <span className="article-category">{post.category}</span>
+                          <h3 className="article-title">{post.title}</h3>
+                          <p className="article-excerpt">{post.description}</p>
+                          <div className="article-meta">
+                            <span>{new Date(post.date).toLocaleDateString('ja-JP')}</span>
+                            <span>{post.readingTime}分</span>
+                          </div>
+                          <a href={`/posts/${post.slug}`} className="read-more-button">
+                            この記事を見る
+                            <ArrowRight size={14} />
+                          </a>
+                        </div>
+                      </article>
                     ))}
                   </div>
-                </div>
-              </aside>
 
-              {/* メインコンテンツ */}
-              <div className="main-column">
-                
-                {/* 注目記事 */}
-                {featuredPosts.length > 0 && (
-                  <section className="section">
-                    <div className="section-header">
-                      <span style={{ fontSize: '1.5rem' }}>⭐</span>
-                      <h2 className="section-title">
-                        注目記事
-                      </h2>
-                    </div>
-                    
-                    <div className="posts-grid">
-                      {featuredPosts.slice(0, 4).map((post: PostMetadata) => (
-                        <PostCard
-                          key={post.slug}
-                          slug={post.slug}
-                          title={post.title}
-                          description={post.description}
-                          date={post.date}
-                          category={post.category}
-                          tags={post.tags}
-                          thumb={post.thumb}
-                          readingTime={post.readingTime}
-                          author={post.author}
-                        />
-                      ))}
-                    </div>
-                  </section>
-                )}
-
-                {/* 最新記事 */}
-                <section className="section">
-                  <div className="section-header">
-                    <Calendar style={{ width: '24px', height: '24px', color: '#10b981' }} />
-                    <h2 className="section-title">
-                      最新記事
-                    </h2>
-                  </div>
-                  
-                  {sortedPosts.length > 0 ? (
-                    <div className="posts-grid">
-                      {sortedPosts.map((post: PostMetadata) => (
-                        <PostCard
-                          key={post.slug}
-                          slug={post.slug}
-                          title={post.title}
-                          description={post.description}
-                          date={post.date}
-                          category={post.category}
-                          tags={post.tags}
-                          thumb={post.thumb}
-                          readingTime={post.readingTime}
-                          author={post.author}
-                        />
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="empty-state">
-                      <p>
-                        記事を準備中です。しばらくお待ちください。
-                      </p>
-                    </div>
-                  )}
-                </section>
-                
-                {/* ページネーション */}
-                {sortedPosts.length > 12 && (
+                  {/* Pagination */}
                   <div className="pagination">
-                    <nav className="pagination-nav">
-                      <button className="pagination-button">
-                        前へ
-                      </button>
-                      <button className="pagination-button pagination-button-active">
-                        1
-                      </button>
-                      <button className="pagination-button">
-                        2
-                      </button>
-                      <button className="pagination-button">
-                        3
-                      </button>
-                      <button className="pagination-button">
-                        次へ
-                      </button>
-                    </nav>
+                    <a href="#" className="pagination-button active">1</a>
+                    <a href="#" className="pagination-button">2</a>
+                    <a href="#" className="pagination-button">3</a>
+                    <a href="#" className="pagination-button">4</a>
+                    <a href="#" className="pagination-button">5</a>
+                    <a href="#" className="pagination-next">
+                      次のページへ
+                      <ArrowRight size={16} />
+                    </a>
                   </div>
-                )}
+                </>
+              ) : (
+                <div className="empty-state">
+                  <p>記事を準備中です。しばらくお待ちください。</p>
+                </div>
+              )}
+            </div>
+          </section>
+
+          {/* Categories Section */}
+          <section className="category-section">
+            <div className="container">
+              <h2 className="category-title">カテゴリー</h2>
+              <div className="category-grid">
+                {categories.map((category) => (
+                  <a key={category.slug} href={`/categories/${category.slug}`} className="category-tag">
+                    {category.name}
+                  </a>
+                ))}
               </div>
             </div>
-          </div>
+          </section>
         </main>
         
         <Footer />

@@ -17,6 +17,58 @@ interface ExtendedPostMetadata extends PostMetadata {
   filePath?: string;
 }
 
+// 簡単なMarkdown→HTML変換関数
+function convertMarkdownToHtml(markdown: string): string {
+  return markdown
+    // ヘッダー変換
+    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+    
+    // 画像変換
+    .replace(/!\[([^\]]*)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1" />')
+    
+    // リンク変換
+    .replace(/\[([^\]]+)\]\(([^\)]+)\)/g, '<a href="$2">$1</a>')
+    
+    // 太字変換
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    
+    // イタリック変換
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    
+    // リスト変換
+    .replace(/^\- (.*)$/gim, '<li>$1</li>')
+    
+    // 引用変換
+    .replace(/^> (.*)$/gim, '<blockquote>$1</blockquote>')
+    
+    // 水平線変換
+    .replace(/^---$/gim, '<hr>')
+    
+    // 段落変換（二重改行を段落に）
+    .split('\n\n')
+    .map(paragraph => paragraph.trim())
+    .filter(paragraph => paragraph.length > 0)
+    .map(paragraph => {
+      // ヘッダーや特殊要素の場合はそのまま
+      if (paragraph.startsWith('<h') || paragraph.startsWith('<img') || 
+          paragraph.startsWith('<hr') || paragraph.startsWith('<blockquote') ||
+          paragraph.startsWith('<li>')) {
+        return paragraph;
+      }
+      // 通常の段落はpタグで囲む
+      return `<p>${paragraph}</p>`;
+    })
+    .join('\n')
+    
+    // リストをulで囲む
+    .replace(/(<li>.*?<\/li>\s*)+/g, (match) => `<ul>${match}</ul>`)
+    
+    // 不要なタグの修正
+    .replace(/<p><\/p>/g, '');
+}
+
 // 再帰的にMDXファイルを探す関数
 function getAllMdxFiles(dir: string, baseDir: string = dir, fileList: { path: string; relativePath: string }[] = []): { path: string; relativePath: string }[] {
   if (!fs.existsSync(dir)) {
@@ -151,11 +203,14 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 
     const { data, content } = targetFile;
 
+    // MarkdownをHTMLに変換
+    const htmlContent = convertMarkdownToHtml(content);
+
     return {
       slug,
       title: data.title || '',
       description: data.description || '',
-      content,
+      content: htmlContent, // 変換されたHTMLを返す
       date: data.date || new Date().toISOString(),
       category: data.category || '未分類',
       tags: data.tags || [],
@@ -173,7 +228,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   }
 }
 
-// カテゴリとサブカテゴリでの絞り込み
+// その他の関数は変更なし
 export async function getPostsByCategory(category: string, subcategory?: string): Promise<ExtendedPostMetadata[]> {
   const allPosts = await getAllPosts();
   return allPosts.filter(post => {

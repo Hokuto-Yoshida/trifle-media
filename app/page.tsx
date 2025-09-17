@@ -17,7 +17,7 @@ interface ExtendedPostMetadata {
   readingTime: number;
   author: any;
   featured: boolean;
-  draft?: boolean;
+  draft: boolean; // undefined を削除
   filePath?: string;
 }
 
@@ -116,7 +116,14 @@ const styles = `
   .article-category { display: inline-block; background: #00d084; color: white; padding: 3px 8px; font-size: 11px; font-weight: 500; margin-bottom: 8px; }
   .article-title { font-size: 1rem; font-weight: 600; margin-bottom: 8px; line-height: 1.4; color: #333; }
   .article-excerpt { color: #666; font-size: 13px; line-height: 1.4; margin-bottom: 8px; }
-  .article-meta { display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #999; }
+  .article-meta { display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #999; margin-bottom: 12px; }
+
+  /* Read more button */
+  .read-more-button {
+    display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: #00d084; color: white;
+    text-decoration: none; font-size: 12px; font-weight: 500; border-radius: 4px; transition: all 0.2s ease;
+  }
+  .read-more-button:hover { background: #059669; transform: translateY(-1px); }
 
   /* Responsive */
   @media (max-width: 968px) {
@@ -168,11 +175,6 @@ export default async function HomePage() {
               <a href="#" className="app-store-button">App Store</a>
               <a href="#" className="app-store-button">Google Play</a>
             </div>
-
-            <a href="#content" className="scroll-indicator">
-              <span>記事を見る</span>
-              <ArrowRight size={20} />
-            </a>
           </div>
         </div>
 
@@ -193,13 +195,12 @@ export default async function HomePage() {
                 </div>
 
                 <div className="category-tabs">
-                  <a href="/posts" className="category-tab active">新着</a>
-                  <a href="/posts?category=domestic" className="category-tab">国内旅行</a>
-                  <a href="/posts?category=international" className="category-tab">海外旅行</a>
-                  <a href="/posts?category=gourmet" className="category-tab">グルメ</a>
-                  <a href="/posts?category=accommodation" className="category-tab">宿泊</a>
-                  <a href="/posts?category=safety" className="category-tab">安全・準備</a>
-                  <a href="/posts?category=tips" className="category-tab">旅のコツ</a>
+                  <a href="/categories/domestic" className="category-tab">国内旅行</a>
+                  <a href="/categories/international" className="category-tab">海外旅行</a>
+                  <a href="/categories/gourmet" className="category-tab">グルメ</a>
+                  <a href="/categories/accommodation" className="category-tab">宿泊</a>
+                  <a href="/categories/safety" className="category-tab">安全・準備</a>
+                  <a href="/categories/tips" className="category-tab">旅のコツ</a>
                 </div>
 
                 {latestPosts.length > 0 ? (
@@ -220,6 +221,10 @@ export default async function HomePage() {
                               <span>{new Date(post.date).toLocaleDateString('ja-JP')}</span>
                               <span>{post.readingTime}分で読める</span>
                             </div>
+                            <a href={`/posts/${post.slug}`} className="read-more-button">
+                              この記事を見る
+                              <ArrowRight size={14} />
+                            </a>
                           </div>
                         </article>
                       ))}
@@ -242,6 +247,10 @@ export default async function HomePage() {
                                 <span>{new Date(post.date).toLocaleDateString('ja-JP')}</span>
                                 <span>{post.readingTime}分</span>
                               </div>
+                              <a href={`/posts/${post.slug}`} className="read-more-button">
+                                この記事を見る
+                                <ArrowRight size={14} />
+                              </a>
                             </div>
                           </article>
                         ))}
@@ -282,6 +291,10 @@ export default async function HomePage() {
                           <span>{new Date(popularPosts[0].date).toLocaleDateString('ja-JP')}</span>
                           <span>{popularPosts[0].readingTime}分</span>
                         </div>
+                        <a href={`/posts/${popularPosts[0].slug}`} className="read-more-button">
+                          この記事を見る
+                          <ArrowRight size={14} />
+                        </a>
                       </div>
                     </article>
 
@@ -299,10 +312,14 @@ export default async function HomePage() {
                               <h4 style={{ fontSize: '0.9rem', fontWeight: 600, margin: '4px 0', lineHeight: 1.3 }}>
                                 {post.title}
                               </h4>
-                              <div className="article-meta">
+                              <div className="article-meta" style={{ marginBottom: '8px' }}>
                                 <span>{new Date(post.date).toLocaleDateString('ja-JP')}</span>
                                 <span>{post.readingTime}分</span>
                               </div>
+                              <a href={`/posts/${post.slug}`} className="read-more-button" style={{ fontSize: '11px', padding: '6px 12px' }}>
+                                記事を見る
+                                <ArrowRight size={12} />
+                              </a>
                             </div>
                           </article>
                         ))}

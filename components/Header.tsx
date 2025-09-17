@@ -40,8 +40,6 @@ const styles = `
 
 const TOP_LINKS: LinkItem[] = [
   { name: '記事', href: '/posts' },
-  { name: '会社概要', href: '/about' },
-  { name: '広告掲載について', href: '/advertise' },
   { name: 'アプリダウンロード', href: '/download' },
   { name: 'お問い合わせ', href: '/contact' },
 ];
