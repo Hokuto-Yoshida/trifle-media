@@ -32,7 +32,9 @@ export async function generateStaticParams() {
   return [
     { slug: 'solo-travel-guide-2025' },
     { slug: 'overseas-solo-travel-english-guide-2025' },
-    { slug: 'kyushu-solo-travel-model-plans-2025' }, // ← これを追加
+    { slug: 'kyushu-solo-travel-model-plans-2025' },
+    { slug: 'solo-travel-accommodation-guide-2025' },
+    { slug: 'solo-travel-dining-complete-guide-2025' },
   ]
 }
 

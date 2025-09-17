@@ -40,7 +40,7 @@ const styles = `
 
 const TOP_LINKS: LinkItem[] = [
   { name: '記事', href: '/posts' },
-  { name: 'アプリダウンロード', href: '/download' },
+  { name: 'アプリダウンロード', href: 'https://tripfriend-website.netlify.app' },
   { name: 'お問い合わせ', href: '/contact' },
 ];
 
