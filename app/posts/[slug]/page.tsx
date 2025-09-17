@@ -35,6 +35,12 @@ export async function generateStaticParams() {
     { slug: 'kyushu-solo-travel-model-plans-2025' },
     { slug: 'solo-travel-accommodation-guide-2025' },
     { slug: 'solo-travel-dining-complete-guide-2025' },
+    { slug: 'smartphone-solo-travel-guide-2025' },
+    { slug: 'solo-travel-packing-checklist-2025' },
+    { slug: 'parent-consent-solo-travel-guide-2025' },
+    { slug: 'overnight-bus-solo-travel-guide-2025' },
+    { slug: 'kyoto-solo-travel-guide-2025' },
+    { slug: 'smartphone-travel-photography-guide-2025' },
   ]
 }
 
