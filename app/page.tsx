@@ -1,9 +1,10 @@
-import { Metadata } from 'next';
-import { ArrowRight } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Heart, Users, Shield } from 'lucide-react';
 import { Header, Footer } from '@/components';
 import { getAllPosts } from '@/lib/posts';
+import HeroSliderClient from './HeroSliderClient';
 
-// 拡張されたPostMetadata型を定義
+// PostMetadata型定義
 interface ExtendedPostMetadata {
   slug: string;
   title: string;
@@ -19,15 +20,6 @@ interface ExtendedPostMetadata {
   draft: boolean;
   filePath?: string;
 }
-
-export const metadata: Metadata = {
-  title: 'トリフレメディア - 若者のための一人旅特化メディア',
-  description: '若者のための一人旅特化メディア「トリフレ」。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。',
-  openGraph: {
-    title: 'トリフレメディア - 若者のための一人旅特化メディア',
-    description: '若者のための一人旅特化メディア「トリフレ」。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。',
-  },
-};
 
 const styles = `
   /* Reset and base styles */
@@ -53,6 +45,7 @@ const styles = `
     height: calc(100vh - 120px);
     background: linear-gradient(135deg, #00d084 0%, #4ECDC4 100%);
     z-index: -1;
+    overflow: hidden;
   }
 
   .hero-background::before {
@@ -72,10 +65,144 @@ const styles = `
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 20px;
+    padding: 20px 20px 100px 20px;
     color: white;
   }
 
+  /* Hero Slider Container */
+  .hero-slider {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-in-out;
+  }
+
+  .hero-slide.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Feature slides layout */
+  .feature-slide {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  .feature-slide-mobile {
+    display: none;
+  }
+
+  .feature-content {
+    text-align: left;
+  }
+
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    flex-shrink: 0;
+  }
+
+  .feature-title {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .feature-description {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    line-height: 1.6;
+    opacity: 0.9;
+    margin-bottom: 24px;
+  }
+
+  .feature-screenshot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .screenshot-container {
+    width: 210px;
+    height: 420px;
+    background: linear-gradient(to bottom right, #374151, #1f2937);
+    border-radius: 30px;
+    padding: 12px;
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255,255,255,0.1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+
+  .screenshot-image {
+    width: 105%;
+    height: 105%;
+    border-radius: 16px;
+    object-fit: contain;
+    object-position: center;
+    background: #f3f4f6;
+    transform: translate(-2.5%, -2.5%);
+  }
+
+  .screenshot-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #f3f4f6;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  }
+
+  .screenshot-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #00d084;
+  }
+
+  .screenshot-description {
+    font-size: 12px;
+    text-align: center;
+    opacity: 0.8;
+    padding: 0 20px;
+    color: #d1d5db;
+  }
+
+  /* Main title slide */
   .hero-main-title {
     font-size: clamp(2.5rem, 6vw, 4.5rem);
     font-weight: 700;
@@ -99,6 +226,32 @@ const styles = `
     opacity: 0.9;
   }
 
+  /* Slide indicators */
+  .slide-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+  }
+
+  .slide-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .slide-indicator.active {
+    background: white;
+    transform: scale(1.2);
+  }
+
+  /* App store buttons */
   .hero-app-buttons {
     display: flex;
     gap: 16px;
@@ -183,7 +336,7 @@ const styles = `
     border-bottom: 1px solid #e5e7eb;
   }
 
-  /* Section headers - exactly like SingaLife */
+  /* Section headers */
   .section-header {
     display: flex;
     align-items: center;
@@ -214,7 +367,7 @@ const styles = `
     text-decoration: underline;
   }
 
-  /* Category tabs - like SingaLife */
+  /* Category tabs */
   .category-tabs {
     display: flex;
     gap: 0;
@@ -256,7 +409,7 @@ const styles = `
     margin-bottom: 24px;
   }
 
-  /* Article cards - simplified like SingaLife */
+  /* Article cards */
   .article-card {
     background: white;
     border: 1px solid #e5e7eb;
@@ -315,7 +468,6 @@ const styles = `
     margin-bottom: 12px;
   }
 
-  /* Read more button */
   .read-more-button {
     display: inline-flex;
     align-items: center;
@@ -346,6 +498,41 @@ const styles = `
     .large-article-grid {
       grid-template-columns: 1fr;
     }
+    
+    .feature-slide {
+      display: none;
+    }
+    
+    .feature-slide-mobile {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+      max-width: 700px;
+      width: 100%;
+    }
+    
+    .feature-content {
+      text-align: left;
+    }
+    
+    .feature-content-mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .screenshot-container {
+      width: 162px;
+      height: 320px;
+      background: linear-gradient(to bottom right, #374151, #1f2937);
+      padding: 10px;
+    }
+    
+    .hero-content {
+      padding: 20px 20px 80px 20px;
+    }
   }
 
   @media (max-width: 640px) {
@@ -360,11 +547,254 @@ const styles = `
     .article-grid {
       grid-template-columns: 1fr;
     }
+    
+    .feature-slide-mobile {
+      gap: 20px;
+      max-width: 500px;
+    }
+    
+    .screenshot-container {
+      width: 140px;
+      height: 280px;
+      background: linear-gradient(to bottom right, #374151, #1f2937);
+      padding: 8px;
+    }
+    
+    .feature-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 12px;
+    }
+    
+    .feature-title {
+      font-size: clamp(1.1rem, 5vw, 1.6rem);
+      margin-bottom: 12px;
+    }
+    
+    .feature-description {
+      font-size: clamp(0.8rem, 3vw, 0.95rem);
+      margin-bottom: 16px;
+    }
+    
+    .hero-content {
+      padding: 20px 16px 80px 16px;
+    }
+    
+    .slide-indicators {
+      bottom: 15px;
+      gap: 8px;
+    }
+    
+    .slide-indicator {
+      width: 8px;
+      height: 8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .feature-slide-mobile {
+      gap: 16px;
+      max-width: 420px;
+    }
+    
+    .screenshot-container {
+      width: 124px;
+      height: 250px;
+      background: linear-gradient(to bottom right, #374151, #1f2937);
+      padding: 6px;
+    }
+    
+    .hero-content {
+      padding: 20px 12px 70px 12px;
+    }
+    
+    .slide-indicators {
+      bottom: 10px;
+    }
+    
+    .feature-title {
+      font-size: clamp(1rem, 5vw, 1.4rem);
+    }
+    
+    .feature-description {
+      font-size: clamp(0.75rem, 3vw, 0.9rem);
+    }
+  }
+
+  @media (max-width: 360px) {
+    .screenshot-container {
+      width: 107px;
+      height: 220px;
+      padding: 4px;
+    }
+    
+    .hero-content {
+      padding: 20px 8px 60px 8px;
+    }
+    
+    .slide-indicators {
+      bottom: 8px;
+      gap: 6px;
+    }
+    
+    .slide-indicator {
+      width: 6px;
+      height: 6px;
+    }
   }
 `;
 
+// HeroSliderコンポーネント
+const HeroSlider = () => {
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+  
+  const slides = [
+    {
+      id: 'main',
+      content: (
+        <>
+          <h1 className="hero-main-title">一人旅に、もう一人の仲間を。</h1>
+          <p className="hero-subtitle">感情を分かち合い、コストも分け合える。</p>
+          <p className="hero-app-subtitle">一人旅専用マッチングアプリ</p>
+        </>
+      )
+    },
+    {
+      id: 'swipe',
+      content: (
+        <div className="feature-slide">
+          <div className="feature-content">
+            <div className="feature-icon">
+              <Heart size={28} color="white" />
+            </div>
+            <h2 className="feature-title">直感的なスワイプで<br />理想の旅仲間を発見</h2>
+            <p className="feature-description">
+              スワイプするだけで、同じ目的地や興味を持つ旅仲間を見つけられます。運命の出会いが、旅をさらに楽しく！
+            </p>
+          </div>
+          <div className="feature-screenshot">
+            <div className="screenshot-container">
+              <div className="screenshot-placeholder">
+                <div className="screenshot-title">仲間探しのスワイプ画面</div>
+                <div className="screenshot-description">
+                  同じ目的地を旅する仲間をスワイプで探索。プロフィール情報で安心してマッチング。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'plan',
+      content: (
+        <div className="feature-slide">
+          <div className="feature-content">
+            <div className="feature-icon">
+              <Users size={28} color="white" />
+            </div>
+            <h2 className="feature-title">詳細な旅行プランを<br />簡単に作成・共有</h2>
+            <p className="feature-description">
+              「一緒に行く理由」「割り勘情報」「時間帯」まで細かく設定可能。お互いのニーズに合った仲間と、最高の瞬間を共有しましょう。
+            </p>
+          </div>
+          <div className="feature-screenshot">
+            <div className="screenshot-container">
+              <div className="screenshot-placeholder">
+                <div className="screenshot-title">旅行作成画面</div>
+                <div className="screenshot-description">
+                  目的地、時間、予算、募集理由まで詳細に設定して理想の旅仲間を募集。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'chat',
+      content: (
+        <div className="feature-slide">
+          <div className="feature-content">
+            <div className="feature-icon">
+              <Shield size={28} color="white" />
+            </div>
+            <h2 className="feature-title">安心・安全な<br />メッセージ機能</h2>
+            <p className="feature-description">
+              「仲間募集中」「定員達成」など、募集状況が明確に表示。本人確認機能と通報システムで、安心して使える体験を提供します。
+            </p>
+          </div>
+          <div className="feature-screenshot">
+            <div className="screenshot-container">
+              <div className="screenshot-placeholder">
+                <div className="screenshot-title">チャット画面</div>
+                <div className="screenshot-description">
+                  安全な環境でメッセージ交換。本人確認済みマークで安心してコミュニケーション。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'download',
+      content: (
+        <>
+          <h2 className="hero-main-title">今すぐダウンロード</h2>
+          <p className="hero-subtitle">一人旅をもっと楽しく、もっと安全に。</p>
+          <div className="hero-app-buttons">
+            <a href="#" className="app-store-button">
+              App Store
+            </a>
+            <a href="#" className="app-store-button">
+              Google Play
+            </a>
+          </div>
+        </>
+      )
+    }
+  ];
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000); // 4秒ごとに切り替え
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="hero-slider">
+      {slides.map((slide, index) => (
+        <div 
+          key={slide.id}
+          className={`hero-slide ${index === currentSlide ? 'active' : ''}`}
+        >
+          {slide.content}
+        </div>
+      ))}
+      
+      <div className="slide-indicators">
+        {slides.map((_, index) => (
+          <div
+            key={index}
+            className={`slide-indicator ${index === currentSlide ? 'active' : ''}`}
+            onClick={() => setCurrentSlide(index)}
+          />
+        ))}
+      </div>
+      
+      <a href="#content" className="scroll-indicator">
+        記事を読む
+        <ArrowRight size={16} />
+      </a>
+    </div>
+  );
+};
+
 export default async function HomePage() {
-  // 投稿データの取得
+  // サーバーサイドでデータを取得
   let allPosts: ExtendedPostMetadata[] = [];
   try {
     allPosts = await getAllPosts() as ExtendedPostMetadata[];
@@ -373,13 +803,11 @@ export default async function HomePage() {
     allPosts = [];
   }
 
-  const publishedPosts: ExtendedPostMetadata[] = allPosts.filter((post: ExtendedPostMetadata) => !post.draft);
-  const sortedPosts: ExtendedPostMetadata[] = publishedPosts.sort((a: ExtendedPostMetadata, b: ExtendedPostMetadata) => 
+  const publishedPosts = allPosts.filter(post => !post.draft);
+  const sortedPosts = publishedPosts.sort((a, b) => 
     new Date(b.date).getTime() - new Date(a.date).getTime()
   );
-
-  // 新着記事（最新6件）
-  const latestPosts: ExtendedPostMetadata[] = sortedPosts.slice(0, 6);
+  const latestPosts = sortedPosts.slice(0, 6);
 
   // カテゴリ定義
   const categories = [
@@ -391,6 +819,10 @@ export default async function HomePage() {
     { name: '旅のコツ', slug: 'tips' }
   ];
 
+  if (!allPosts) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: styles }} />
@@ -399,28 +831,16 @@ export default async function HomePage() {
         {/* Fixed Background Hero */}
         <div className="hero-background">
           <div className="hero-content">
-            <h1 className="hero-main-title">一人旅に、もう一人の仲間を。</h1>
-            <p className="hero-subtitle">感情を分かち合い、コストも分け合える。</p>
-            <p className="hero-app-subtitle">一人旅専用マッチングアプリ</p>
-            
-            <div className="hero-app-buttons">
-              <a href="#" className="app-store-button">
-                App Store
-              </a>
-              <a href="#" className="app-store-button">
-                Google Play
-              </a>
-            </div>
+            <HeroSliderClient />
           </div>
         </div>
 
         {/* Scrollable Content */}
         <div className="content-wrapper" id="content">
-          {/* Header */}
           <Header />
 
           <main className="main-content" style={{ flex: 1 }}>
-            {/* ①最新記事セクション */}
+            {/* 最新記事セクション */}
             <section className="section section-border">
               <div className="container">
                 <div className="section-header">
@@ -444,7 +864,7 @@ export default async function HomePage() {
                 {latestPosts.length > 0 ? (
                   <>
                     <div className="large-article-grid">
-                      {latestPosts.slice(0, 2).map((post: ExtendedPostMetadata) => (
+                      {latestPosts.slice(0, 2).map((post) => (
                         <article key={post.slug} className="article-card">
                           <img 
                             src={post.thumb || '/placeholder-image.jpg'} 
@@ -470,7 +890,7 @@ export default async function HomePage() {
 
                     {latestPosts.length > 2 && (
                       <div className="article-grid">
-                        {latestPosts.slice(2, 8).map((post: ExtendedPostMetadata) => (
+                        {latestPosts.slice(2, 8).map((post) => (
                           <article key={post.slug} className="article-card">
                             <img 
                               src={post.thumb || '/placeholder-image.jpg'} 
@@ -503,7 +923,7 @@ export default async function HomePage() {
               </div>
             </section>
 
-            {/* ②〜⑦各カテゴリセクション */}
+            {/* カテゴリセクション */}
             {categories.map((category) => {
               const categoryPosts = publishedPosts.filter(post => 
                 post.category === category.name || 
@@ -530,7 +950,7 @@ export default async function HomePage() {
                     </div>
 
                     <div className="large-article-grid">
-                      {categoryPosts.slice(0, 2).map((post: ExtendedPostMetadata) => (
+                      {categoryPosts.slice(0, 2).map((post) => (
                         <article key={post.slug} className="article-card">
                           <img 
                             src={post.thumb || '/placeholder-image.jpg'} 
