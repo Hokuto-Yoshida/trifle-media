@@ -41,7 +41,8 @@ export async function generateStaticParams() {
     { slug: 'overnight-bus-solo-travel-guide-2025' },
     { slug: 'kyoto-solo-travel-guide-2025' },
     { slug: 'smartphone-travel-photography-guide-2025' },
-    { slug: 'taipei-solo-48hours-guide-2025' },
+    { slug: 'night-bus-flight-sleep-comfort-guide-2025' },
+    { slug: 'female-solo-travel-accommodation-guide-2025' },
   ]
 }
 

@@ -13,14 +13,14 @@ const styles = `
   .header-logo{display:flex;align-items:center;gap:12px}
   .logo-text{font-size:2rem;font-weight:700;color:#00d084;text-decoration:none}
   .header-top-nav{display:flex;list-style:none;gap:40px;margin:0;padding:0}
-  .header-top-nav a{color:#333;text-decoration:none;font-size:14px;font-weight:400;transition:color .2s}
+  .header-top-nav a{color:#333;text-decoration:none;font-size:14px;font-weight:600;transition:color .2s}
   .header-top-nav a:hover{color:#00d084}
 
   .nav-header{background:#00d084;color:#fff}
   .nav-container{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;padding:0 20px;position:relative;min-height:50px}
   .nav-menu{display:flex;list-style:none;margin:0;padding:0}
   .nav-item{position:relative}
-  .nav-link{display:block;padding:15px 32px;color:#fff;text-decoration:none;font-weight:400;font-size:14px;transition:background-color .2s;white-space:nowrap}
+  .nav-link{display:block;padding:15px 32px;color:#fff;text-decoration:none;font-weight:500;font-size:14px;transition:background-color .2s;white-space:nowrap}
   .nav-link:hover{background:rgba(255,255,255,.1)}
 
   .mobile-menu-button{display:none;background:none;border:none;color:#fff;cursor:pointer;padding:8px;position:absolute;left:20px}
@@ -28,7 +28,7 @@ const styles = `
   .mobile-menu.active{display:block}
   .mobile-menu-list{list-style:none;margin:0;padding:0}
   .mobile-menu-item{border-bottom:1px solid rgba(255,255,255,.1)}
-  .mobile-menu-link{display:block;padding:16px 20px;color:#fff;text-decoration:none;font-weight:400}
+  .mobile-menu-link{display:block;padding:16px 20px;color:#fff;text-decoration:none;font-weight:500}
   .mobile-menu-link:hover{background:rgba(255,255,255,.1)}
 
   @media (max-width: 968px){

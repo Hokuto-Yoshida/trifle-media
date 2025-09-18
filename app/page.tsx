@@ -50,7 +50,7 @@ const styles = `
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 120px);
     background: linear-gradient(135deg, #00d084 0%, #4ECDC4 100%);
     z-index: -1;
   }
@@ -66,7 +66,7 @@ const styles = `
 
   .hero-content {
     position: relative;
-    height: 100vh;
+    height: calc(100vh - 120px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -158,7 +158,7 @@ const styles = `
   .content-wrapper {
     position: relative;
     z-index: 1;
-    margin-top: 100vh;
+    margin-top: calc(100vh - 200px);
     background: white;
     border-radius: 24px 24px 0 0;
     box-shadow: 0 -8px 32px rgba(0,0,0,0.1);
