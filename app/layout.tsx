@@ -18,11 +18,11 @@ const notoSansJP = Noto_Sans_JP({
 
 export const metadata: Metadata = {
   title: {
-    default: 'トリフレメディア - Z世代のための一人旅特化メディア',
+    default: 'トリフレメディア - 若者のための一人旅特化メディア',
     template: '%s | トリフレメディア',
   },
-  description: 'Z世代のための一人旅特化メディア「トリフレ」。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。',
-  keywords: ['一人旅', 'Z世代', '旅行', '国内旅行', '海外旅行', 'トリフレ', '若者', '初心者'],
+  description: '若者のための一人旅特化メディア「トリフレ」。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。',
+  keywords: ['一人旅', '若者', '旅行', '国内旅行', '海外旅行', 'トリフレ', '若者', '初心者'],
   authors: [{ name: 'トリフレメディア編集部' }],
   creator: 'トリフレメディア',
   publisher: 'トリフレメディア',
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
     locale: 'ja_JP',
     url: 'https://media.trifle.jp',
     siteName: 'トリフレメディア',
-    title: 'トリフレメディア - Z世代のための一人旅特化メディア',
-    description: 'Z世代のための一人旅特化メディア「トリフレ」。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。',
+    title: 'トリフレメディア - 若者のための一人旅特化メディア',
+    description: '若者のための一人旅特化メディア「トリフレ」。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。',
     images: [
       {
         url: '/images/og-image.jpg',
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@trifle_media',
     creator: '@trifle_media',
-    title: 'トリフレメディア - Z世代のための一人旅特化メディア',
-    description: 'Z世代のための一人旅特化メディア「トリフレ」。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。',
+    title: 'トリフレメディア - 若者のための一人旅特化メディア',
+    description: '若者のための一人旅特化メディア「トリフレ」。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。',
     images: ['/images/og-image.jpg'],
   },
   robots: {

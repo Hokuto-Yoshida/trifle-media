@@ -363,7 +363,7 @@ export default function Footer() {
   const socialLinks = [
     {
       name: 'Instagram',
-      href: 'https://instagram.com/trifle_media',
+      href: 'https://www.instagram.com/trifre_official/',
       icon: Instagram,
     },
   ];
@@ -404,7 +404,7 @@ export default function Footer() {
                 </Link>
                 
                 <p className="brand-description">
-                  Z世代のための一人旅特化メディア。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。
+                  若者のための一人旅特化メディア。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。
                 </p>
                 
                 {/* SNSリンク */}

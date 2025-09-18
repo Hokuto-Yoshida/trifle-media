@@ -46,7 +46,7 @@ export default function CTAApp() {
               </h2>
               
               <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                Z世代のための一人旅プラットフォーム。AIが提案する最適なルート、同じ趣味の仲間との出会い、安全な旅行をサポートします。
+                若者のための一人旅プラットフォーム。AIが提案する最適なルート、同じ趣味の仲間との出会い、安全な旅行をサポートします。
               </p>
             </div>
 

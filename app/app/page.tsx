@@ -6,10 +6,10 @@ import { Header, Footer } from '@/components';
 
 export const metadata: Metadata = {
   title: 'トリフレアプリ - 一人旅をもっと楽しく | トリフレメディア',
-  description: 'Z世代のための一人旅アプリ「トリフレ」。AIが提案する最適なルート、同じ趣味の仲間との出会い、安全な旅行をサポートします。',
+  description: '若者のための一人旅アプリ「トリフレ」。AIが提案する最適なルート、同じ趣味の仲間との出会い、安全な旅行をサポートします。',
   openGraph: {
     title: 'トリフレアプリ - 一人旅をもっと楽しく',
-    description: 'Z世代のための一人旅アプリ「トリフレ」。AIが提案する最適なルート、同じ趣味の仲間との出会い、安全な旅行をサポートします。',
+    description: '若者のための一人旅アプリ「トリフレ」。AIが提案する最適なルート、同じ趣味の仲間との出会い、安全な旅行をサポートします。',
     images: [{ url: '/images/app-og.jpg' }],
   },
 };
@@ -80,7 +80,7 @@ export default function AppPage() {
                   </h1>
                   
                   <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                    Z世代のための一人旅プラットフォーム。AIが提案する最適なルート、同じ趣味の仲間との出会い、安全な旅行をサポートします。
+                    若者のための一人旅プラットフォーム。AIが提案する最適なルート、同じ趣味の仲間との出会い、安全な旅行をサポートします。
                   </p>
                 </div>
 
