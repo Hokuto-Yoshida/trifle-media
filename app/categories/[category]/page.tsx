@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { ArrowRight, Home } from 'lucide-react';
 import { Header, Footer, PostCard } from '@/components';
+import AdBanner from '@/components/AdBanner';
 import { getAllPosts } from '@/lib/posts';
 import type { PostMetadata } from '@/types/post';
 
@@ -237,10 +238,29 @@ const categoryPageStyles = `
     background: white;
   }
 
-  .container {
+  .content-layout {
+    display: flex;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    gap: 0;
+  }
+
+  .main-content-area {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .content-layout {
+      flex-direction: column;
+    }
   }
 
   /* Breadcrumbs */
@@ -605,10 +625,11 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         {/* Header */}
         <Header />
 
-        <main className="main-content" style={{ flex: 1 }}>
-          {/* Breadcrumbs */}
-          <section className="breadcrumbs">
-            <div className="container">
+        <div className="content-layout">
+          <main className="main-content-area" style={{ flex: 1 }}>
+            {/* Breadcrumbs */}
+            <section className="breadcrumbs">
+              <div className="container">
               <nav>
                 <ol className="breadcrumb-list">
                   <li className="breadcrumb-item">
@@ -712,7 +733,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           </section>
         </main>
         
-        <Footer />
+        <AdBanner />
+      </div>
+        
+      <Footer />
       </div>
 
       {/* Mobile menu JavaScript */}

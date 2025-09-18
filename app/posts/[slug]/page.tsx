@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Calendar, Clock, User, Tag } from 'lucide-react';
 import { Header, Footer } from '@/components';
+import AdBanner from '@/components/AdBanner';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
 import Link from 'next/link';
 
@@ -100,10 +101,34 @@ const postPageStyles = `
     background: white;
   }
 
-  .container {
-    max-width: 800px;
+  .content-layout {
+    display: flex;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    gap: 0;
+  }
+
+  .main-content-area {
+    flex: 1;
+    min-width: 0;
+    max-width: 800px;
+  }
+
+  .container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .content-layout {
+      flex-direction: column;
+    }
+    
+    .main-content-area {
+      max-width: none;
+    }
   }
 
   /* Back navigation */
@@ -400,10 +425,11 @@ export default async function PostPage({ params }: PostPageProps) {
       <div className="post-page">
         <Header />
         
-        <main className="main-content">
-          {/* Back Navigation */}
-          <section className="back-nav">
-            <div className="container">
+        <div className="content-layout">
+          <main className="main-content-area">
+            {/* Back Navigation */}
+            <section className="back-nav">
+              <div className="container">
               <Link href="/posts" className="back-link">
                 <ArrowLeft size={16} />
                 記事一覧に戻る
@@ -495,7 +521,10 @@ export default async function PostPage({ params }: PostPageProps) {
           )}
         </main>
         
-        <Footer />
+        <AdBanner />
+      </div>
+        
+      <Footer />
       </div>
     </>
   );

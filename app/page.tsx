@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Heart, Users, Shield } from 'lucide-react';
 import { Header, Footer } from '@/components';
+import AdBanner from '@/components/AdBanner';
 import { getAllPosts } from '@/lib/posts';
 import HeroSliderClient from './HeroSliderClient';
 
@@ -322,10 +323,29 @@ const styles = `
     background: white;
   }
 
-  .container {
+  .content-layout {
+    display: flex;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    gap: 0;
+  }
+
+  .main-content-area {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .content-layout {
+      flex-direction: column;
+    }
   }
 
   .section {
@@ -839,10 +859,11 @@ export default async function HomePage() {
         <div className="content-wrapper" id="content">
           <Header />
 
-          <main className="main-content" style={{ flex: 1 }}>
-            {/* 最新記事セクション */}
-            <section className="section section-border">
-              <div className="container">
+          <div className="content-layout">
+            <main className="main-content-area" style={{ flex: 1 }}>
+              {/* 最新記事セクション */}
+              <section className="section section-border">
+                <div className="container">
                 <div className="section-header">
                   <h2 className="section-title">最新記事</h2>
                   <a href="/posts" className="section-link">
@@ -979,7 +1000,10 @@ export default async function HomePage() {
             })}
           </main>
           
-          <Footer />
+          <AdBanner />
+        </div>
+          
+        <Footer />
         </div>
       </div>
     </>

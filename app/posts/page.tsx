@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { ArrowRight } from 'lucide-react';
 import { Header, Footer, PostCard } from '@/components';
+import AdBanner from '@/components/AdBanner';
 import { getAllPosts } from '@/lib/posts';
 import type { PostMetadata } from '@/types/post';
 
@@ -29,10 +30,29 @@ const postsPageStyles = `
     background: white;
   }
 
-  .container {
+  .content-layout {
+    display: flex;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    gap: 0;
+  }
+
+  .main-content-area {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .content-layout {
+      flex-direction: column;
+    }
   }
 
   .page-header {
@@ -298,10 +318,11 @@ export default async function PostsPage() {
         {/* Header コンポーネントを使用 */}
         <Header />
 
-        <main className="main-content" style={{ flex: 1 }}>
-          {/* Page Header */}
-          <section className="page-header">
-            <div className="container">
+        <div className="content-layout">
+          <main className="main-content-area" style={{ flex: 1 }}>
+            {/* Page Header */}
+            <section className="page-header">
+              <div className="container">
               <h1 className="page-title">記事一覧</h1>
               <p className="page-description">一人旅に関する最新記事をすべてご覧いただけます。</p>
             </div>
@@ -373,7 +394,10 @@ export default async function PostsPage() {
           </section>
         </main>
         
-        <Footer />
+        <AdBanner />
+      </div>
+        
+      <Footer />
       </div>
     </>
   );
