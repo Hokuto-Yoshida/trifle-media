@@ -230,12 +230,18 @@ const styles = `
   /* Slide indicators */
   .slide-indicators {
     position: absolute;
-    bottom: 20px;
+    bottom: 60px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 12px;
     z-index: 10;
+  }
+
+  @media (max-width: 640px) {
+    .slide-indicators {
+      bottom: 80px;
+    }
   }
 
   .slide-indicator {
