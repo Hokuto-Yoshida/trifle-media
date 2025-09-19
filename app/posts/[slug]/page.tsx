@@ -44,6 +44,14 @@ export async function generateStaticParams() {
     { slug: 'smartphone-travel-photography-guide-2025' },
     { slug: 'night-bus-flight-sleep-comfort-guide-2025' },
     { slug: 'female-solo-travel-accommodation-guide-2025' },
+    { slug: 'airport-hotel-arrival-guide-2025' },
+    { slug: 'lcc-carry-on-travel-gear-2025' },
+    { slug: 'solo-travel-hidden-spots-2025' },
+    { slug: 'kansai-solo-travel-2-3-days-2025' },
+    { slug: 'woman-solo-travel-guide-2025' },
+    { slug: 'winter-solo-onsen-travel-2025' },
+    { slug: 'autumn-solo-travel-spots-2025' },
+    { slug: 'solo-gourmet-travel-guide-2025' },
   ]
 }
 

@@ -11,7 +11,8 @@ const styles = `
   .header-top{background:#fff;border-bottom:1px solid #e5e7eb}
   .header-top-container{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 20px}
   .header-logo{display:flex;align-items:center;gap:12px}
-  .logo-text{font-size:2rem;font-weight:700;color:#00d084;text-decoration:none}
+  .logo-image{height:60px;width:auto;transition:opacity .2s}
+  .logo-image:hover{opacity:.8}
   .header-top-nav{display:flex;list-style:none;gap:40px;margin:0;padding:0}
   .header-top-nav a{color:#333;text-decoration:none;font-size:14px;font-weight:600;transition:color .2s}
   .header-top-nav a:hover{color:#00d084}
@@ -64,7 +65,13 @@ export default function SiteHeader() {
         <header className="header-top">
           <div className="header-top-container">
             <div className="header-logo">
-              <Link href="/" className="logo-text">トリフレ</Link>
+              <Link href="/">
+                <img 
+                  src="/logo.png" 
+                  alt="トリフレメディア" 
+                  className="logo-image"
+                />
+              </Link>
             </div>
             <nav aria-label="トップナビ">
               <ul className="header-top-nav">
