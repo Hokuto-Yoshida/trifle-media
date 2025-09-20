@@ -60,7 +60,9 @@ export async function generateStaticParams() {
     { slug: 'kanazawa-solo-travel-guide-2025' },
     { slug: 'hiroshima-solo-travel-guide-2025' },
     { slug: 'oosaka-solo-travel-guide-2025' },
-    { slug: 'osaka-expo-guide-2025' },
+    { slug: 'kobe-solo-travel-guide-2025' },
+    { slug: 'tokyo-solo-travel-2025' },
+    { slug: 'pari-solo-onsen-travel-2025' },
   ]
 }
 
@@ -336,7 +338,7 @@ const postPageStyles = `
   .related-articles {
     padding: 40px 0;
     border-top: 1px solid #e5e7eb;
-    background: #f9fafb;
+    background: white;
   }
 
   .related-title {

@@ -38,7 +38,7 @@ export default function AdBanner() {
             </form>
           </div>
 
-          {/* トラベリスト広告（飛行機予約） */}
+          {/* トラベリスト広告（航空券予約） */}
           <div className="ad-section">
             <h4 className="ad-section-title">航空券予約</h4>
             <div className="ad-item">
@@ -59,6 +59,35 @@ export default function AdBanner() {
               </a>
               <img 
                 src="https://www13.a8.net/0.gif?a8mat=45E3PX+91O4OI+4XZI+609HT" 
+                alt=""
+                width="1" 
+                height="1"
+                style={{display: 'none'}}
+              />
+            </div>
+          </div>
+
+          {/* eSIM広告 */}
+          <div className="ad-section">
+            <h4 className="ad-section-title">海外旅行eSIM</h4>
+            <div className="ad-item">
+              <a 
+                href="https://px.a8.net/svt/ejp?a8mat=45E262+91O4OI+5NG6+5YZ75" 
+                rel="nofollow"
+                className="ad-link"
+                target="_blank"
+              >
+                <img 
+                  src="https://www27.a8.net/svt/bgt?aid=250918778547&wid=001&eno=01&mid=s00000026367001003000&mc=1"
+                  alt="海外旅行用eSIM - 簡単設定で海外でもネット接続" 
+                  title="海外旅行先でも快適なネット環境を"
+                  className="ad-banner-image"
+                  width="300" 
+                  height="250"
+                />
+              </a>
+              <img 
+                src="https://www15.a8.net/0.gif?a8mat=45E262+91O4OI+5NG6+5YZ75" 
                 alt=""
                 width="1" 
                 height="1"
@@ -214,7 +243,7 @@ const adStyles = `
     transform: translateY(-2px);
   }
 
-  /* トラベリストバナー広告 */
+  /* A8.netバナー広告（トラベリスト・eSIM） */
   .ad-banner-image {
     width: 100%;
     max-width: 300px;
@@ -228,7 +257,7 @@ const adStyles = `
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
 
-  /* スーツケース広告 */
+  /* 楽天スーツケース広告 */
   .ad-content {
     text-align: center;
   }
