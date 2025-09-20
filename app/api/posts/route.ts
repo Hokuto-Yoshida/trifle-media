@@ -1,13 +1,16 @@
-// app/api/posts/route.ts
-import { getAllPosts } from '@/lib/posts';
 import { NextResponse } from 'next/server';
+import { getAllPosts } from '@/lib/posts';
 
 export async function GET() {
   try {
     const allPosts = await getAllPosts();
     
-    // 公開記事のみフィルタリング
-    const publishedPosts = allPosts.filter(post => !post.draft);
+    // 公開記事のみフィルタリングして日付順（新しい順）でソート
+    const publishedPosts = allPosts
+      .filter(post => !post.draft)
+      .sort((a: any, b: any) => 
+        new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
     
     // 検索に必要な情報のみ返す（パフォーマンス向上）
     const searchableData = publishedPosts.map(post => ({

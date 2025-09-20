@@ -52,6 +52,15 @@ export async function generateStaticParams() {
     { slug: 'winter-solo-onsen-travel-2025' },
     { slug: 'autumn-solo-travel-spots-2025' },
     { slug: 'solo-gourmet-travel-guide-2025' },
+    { slug: 'kyoto-solo-kimono-matcha-guide-2025' },
+    { slug: 'hokkaido-solo-travel-guide-2025' },
+    { slug: 'taipei-solo-48hours-guide-2025' },
+    { slug: 'okinawa-solo-travel-guide-2025' },
+    { slug: 'fukuoka-solo-travel-guide-2025' },
+    { slug: 'kanazawa-solo-travel-guide-2025' },
+    { slug: 'hiroshima-solo-travel-guide-2025' },
+    { slug: 'oosaka-solo-travel-guide-2025' },
+    { slug: 'osaka-expo-guide-2025' },
   ]
 }
 

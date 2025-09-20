@@ -1,14 +1,9 @@
-import { Metadata } from 'next';
-import { ArrowRight } from 'lucide-react';
-import { Header, Footer, PostCard } from '@/components';
-import AdBanner from '@/components/AdBanner';
-import { getAllPosts } from '@/lib/posts';
-import type { PostMetadata } from '@/types/post';
+'use client';
 
-export const metadata: Metadata = {
-  title: '記事一覧 | トリフレメディア',
-  description: '一人旅に関する最新記事をすべてご覧いただけます。',
-};
+import { useState, useEffect } from 'react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Header, Footer } from '@/components';
+import AdBanner from '@/components/AdBanner';
 
 const postsPageStyles = `
   /* Reset and base styles */
@@ -163,7 +158,7 @@ const postsPageStyles = `
     transform: translateY(-1px);
   }
 
-  /* Pagination - like SingaLife */
+  /* Pagination */
   .pagination {
     display: flex;
     align-items: center;
@@ -181,10 +176,17 @@ const postsPageStyles = `
     font-size: 14px;
     transition: all 0.2s;
     cursor: pointer;
+    min-width: 44px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .pagination-button:hover {
     background-color: #f9fafb;
+    border-color: #00d084;
+    color: #00d084;
   }
 
   .pagination-button.active {
@@ -193,25 +195,41 @@ const postsPageStyles = `
     border-color: #00d084;
   }
 
-  .pagination-next {
-    padding: 12px 24px;
-    border: 1px solid #00d084;
-    background: white;
-    color: #00d084;
-    text-decoration: none;
+  .pagination-button:disabled {
+    background: #f3f4f6;
+    color: #9ca3af;
+    cursor: not-allowed;
+    border-color: #e5e7eb;
+  }
+
+  .pagination-button:disabled:hover {
+    background: #f3f4f6;
+    color: #9ca3af;
+    border-color: #e5e7eb;
+  }
+
+  .pagination-ellipsis {
+    padding: 12px 8px;
+    color: #9ca3af;
     font-size: 14px;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
 
-  .pagination-next:hover {
-    background: #00d084;
-    color: white;
+  /* Results info */
+  .results-info {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 14px;
   }
 
-  /* Category section - like SingaLife */
+  /* Loading state */
+  .loading-state {
+    text-align: center;
+    padding: 60px 0;
+    color: #666;
+  }
+
+  /* Category section */
   .category-section {
     padding: 40px 0;
     border-top: 1px solid #e5e7eb;
@@ -263,6 +281,13 @@ const postsPageStyles = `
     
     .pagination {
       flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .pagination-button {
+      padding: 8px 12px;
+      font-size: 12px;
+      min-width: 36px;
     }
     
     .category-grid {
@@ -271,7 +296,7 @@ const postsPageStyles = `
   }
 `;
 
-interface ExtendedPostMetadata extends PostMetadata {
+interface PostMetadata {
   slug: string;
   title: string;
   description: string;
@@ -287,19 +312,140 @@ interface ExtendedPostMetadata extends PostMetadata {
   filePath?: string;
 }
 
-export default async function PostsPage() {
-  let allPosts: ExtendedPostMetadata[] = [];
-  try {
-    allPosts = await getAllPosts() as ExtendedPostMetadata[];
-  } catch (error) {
-    console.error('Error loading posts:', error);
-    allPosts = [];
-  }
+// ページネーションコンポーネント
+function Pagination({ currentPage, totalPages, onPageChange }: { 
+  currentPage: number; 
+  totalPages: number; 
+  onPageChange: (page: number) => void;
+}) {
+  const getPageNumbers = () => {
+    const pages = [];
+    const showEllipsis = totalPages > 7;
+    
+    if (!showEllipsis) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      if (currentPage <= 4) {
+        pages.push(1, 2, 3, 4, 5, '...', totalPages);
+      } else if (currentPage >= totalPages - 3) {
+        pages.push(1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+      } else {
+        pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
+      }
+    }
+    
+    return pages;
+  };
 
-  const publishedPosts: ExtendedPostMetadata[] = allPosts.filter((post: ExtendedPostMetadata) => !post.draft);
-  const sortedPosts: ExtendedPostMetadata[] = publishedPosts.sort((a: ExtendedPostMetadata, b: ExtendedPostMetadata) => 
-    new Date(b.date).getTime() - new Date(a.date).getTime()
+  const pageNumbers = getPageNumbers();
+
+  return (
+    <div className="pagination">
+      {/* 前のページボタン */}
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage <= 1}
+        className="pagination-button"
+      >
+        <ChevronLeft size={16} />
+      </button>
+
+      {/* ページ番号 */}
+      {pageNumbers.map((page, index) => {
+        if (page === '...') {
+          return <span key={`ellipsis-${index}`} className="pagination-ellipsis">...</span>;
+        }
+        
+        const pageNum = page as number;
+        const isActive = pageNum === currentPage;
+        
+        return (
+          <button
+            key={pageNum}
+            onClick={() => onPageChange(pageNum)}
+            className={`pagination-button ${isActive ? 'active' : ''}`}
+          >
+            {pageNum}
+          </button>
+        );
+      })}
+
+      {/* 次のページボタン */}
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage >= totalPages}
+        className="pagination-button"
+      >
+        <ChevronRight size={16} />
+      </button>
+    </div>
   );
+}
+
+export default function PostsPage() {
+  const [posts, setPosts] = useState<PostMetadata[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 14;
+
+  // URLからページ番号を取得してセット
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageParam = urlParams.get('page');
+    if (pageParam) {
+      const page = parseInt(pageParam, 10);
+      if (page > 0) {
+        setCurrentPage(page);
+      }
+    }
+  }, []);
+
+  // 記事データを取得
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch('/api/posts');
+        if (!response.ok) {
+          throw new Error('Failed to fetch posts');
+        }
+        const postsData = await response.json();
+        setPosts(postsData);
+      } catch (error) {
+        console.error('Error loading posts:', error);
+        setPosts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  // ページ変更時の処理
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    
+    // URLを更新（ブラウザの履歴に追加）
+    const url = new URL(window.location.href);
+    if (page === 1) {
+      url.searchParams.delete('page');
+    } else {
+      url.searchParams.set('page', page.toString());
+    }
+    window.history.pushState({}, '', url.toString());
+    
+    // ページトップにスクロール
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // ページネーション計算
+  const totalPosts = posts.length;
+  const totalPages = Math.ceil(totalPosts / postsPerPage);
+  const startIndex = (currentPage - 1) * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+  const currentPosts = posts.slice(startIndex, endIndex);
 
   const categories = [
     { name: '国内旅行', slug: 'domestic' },
@@ -315,7 +461,6 @@ export default async function PostsPage() {
       <style dangerouslySetInnerHTML={{ __html: postsPageStyles }} />
       
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-        {/* Header コンポーネントを使用 */}
         <Header />
 
         <div className="content-layout">
@@ -323,81 +468,87 @@ export default async function PostsPage() {
             {/* Page Header */}
             <section className="page-header">
               <div className="container">
-              <h1 className="page-title">記事一覧</h1>
-              <p className="page-description">一人旅に関する最新記事をすべてご覧いただけます。</p>
-            </div>
-          </section>
-
-          {/* Posts Section */}
-          <section className="posts-section">
-            <div className="container">
-              {sortedPosts.length > 0 ? (
-                <>
-                  <div className="posts-grid">
-                    {sortedPosts.map((post: ExtendedPostMetadata) => (
-                      <article key={post.slug} className="article-card">
-                        <img 
-                          src={post.thumb || '/placeholder-image.jpg'} 
-                          alt={post.title}
-                          className="article-image"
-                        />
-                        <div className="article-content">
-                          <span className="article-category">{post.category}</span>
-                          <h3 className="article-title">{post.title}</h3>
-                          <p className="article-excerpt">{post.description}</p>
-                          <div className="article-meta">
-                            <span>{new Date(post.date).toLocaleDateString('ja-JP')}</span>
-                            <span>{post.readingTime}分</span>
-                          </div>
-                          <a href={`/posts/${post.slug}`} className="read-more-button">
-                            この記事を見る
-                            <ArrowRight size={14} />
-                          </a>
-                        </div>
-                      </article>
-                    ))}
-                  </div>
-
-                  {/* Pagination */}
-                  <div className="pagination">
-                    <a href="#" className="pagination-button active">1</a>
-                    <a href="#" className="pagination-button">2</a>
-                    <a href="#" className="pagination-button">3</a>
-                    <a href="#" className="pagination-button">4</a>
-                    <a href="#" className="pagination-button">5</a>
-                    <a href="#" className="pagination-next">
-                      次のページへ
-                      <ArrowRight size={16} />
-                    </a>
-                  </div>
-                </>
-              ) : (
-                <div className="empty-state">
-                  <p>記事を準備中です。しばらくお待ちください。</p>
-                </div>
-              )}
-            </div>
-          </section>
-
-          {/* Categories Section */}
-          <section className="category-section">
-            <div className="container">
-              <h2 className="category-title">カテゴリー</h2>
-              <div className="category-grid">
-                {categories.map((category) => (
-                  <a key={category.slug} href={`/categories/${category.slug}`} className="category-tag">
-                    {category.name}
-                  </a>
-                ))}
+                <h1 className="page-title">記事一覧</h1>
+                <p className="page-description">一人旅に関する最新記事をすべてご覧いただけます。</p>
               </div>
-            </div>
-          </section>
-        </main>
+            </section>
+
+            {/* Posts Section */}
+            <section className="posts-section">
+              <div className="container">
+                {loading ? (
+                  <div className="loading-state">
+                    <p>記事を読み込み中...</p>
+                  </div>
+                ) : totalPosts > 0 ? (
+                  <>
+                    {/* 結果情報 */}
+                    <div className="results-info">
+                      全{totalPosts}件中 {startIndex + 1}〜{Math.min(endIndex, totalPosts)}件を表示（{currentPage}/{totalPages}ページ）
+                    </div>
+
+                    {/* 記事グリッド */}
+                    <div className="posts-grid">
+                      {currentPosts.map((post: PostMetadata) => (
+                        <article key={post.slug} className="article-card">
+                          <img 
+                            src={post.thumb || '/placeholder-image.jpg'} 
+                            alt={post.title}
+                            className="article-image"
+                          />
+                          <div className="article-content">
+                            <span className="article-category">{post.category}</span>
+                            <h3 className="article-title">{post.title}</h3>
+                            <p className="article-excerpt">{post.description}</p>
+                            <div className="article-meta">
+                              <span>{new Date(post.date).toLocaleDateString('ja-JP')}</span>
+                              <span>{post.readingTime}分</span>
+                            </div>
+                            <a href={`/posts/${post.slug}`} className="read-more-button">
+                              この記事を見る
+                              <ArrowRight size={14} />
+                            </a>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+
+                    {/* ページネーション */}
+                    {totalPages > 1 && (
+                      <Pagination 
+                        currentPage={currentPage} 
+                        totalPages={totalPages} 
+                        onPageChange={handlePageChange}
+                      />
+                    )}
+                  </>
+                ) : (
+                  <div className="empty-state">
+                    <p>記事を準備中です。しばらくお待ちください。</p>
+                  </div>
+                )}
+              </div>
+            </section>
+
+            {/* Categories Section */}
+            <section className="category-section">
+              <div className="container">
+                <h2 className="category-title">カテゴリー</h2>
+                <div className="category-grid">
+                  {categories.map((category) => (
+                    <a key={category.slug} href={`/categories/${category.slug}`} className="category-tag">
+                      {category.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </main>
+          
+          <AdBanner />
+        </div>
         
-        <AdBanner />
-      </div>
-        
-      <Footer />
+        <Footer />
       </div>
     </>
   );
