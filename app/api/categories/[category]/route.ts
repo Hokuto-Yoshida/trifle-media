@@ -10,6 +10,13 @@ const categoryMapping: Record<string, string> = {
   'tips': '旅のコツ',
 };
 
+// 静的生成のためのパラメータを生成
+export async function generateStaticParams() {
+  return Object.keys(categoryMapping).map((category) => ({
+    category,
+  }));
+}
+
 export async function GET(
   request: Request,
   { params }: { params: { category: string } }
