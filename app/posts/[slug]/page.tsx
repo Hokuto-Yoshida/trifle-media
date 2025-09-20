@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Calendar, Clock, User, Tag } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, User, Tag, MapPin, Users } from 'lucide-react';
 import { Header, Footer } from '@/components';
 import AdBanner from '@/components/AdBanner';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
@@ -63,6 +63,8 @@ export async function generateStaticParams() {
     { slug: 'kobe-solo-travel-guide-2025' },
     { slug: 'tokyo-solo-travel-2025' },
     { slug: 'pari-solo-onsen-travel-2025' },
+    { slug: 'london-solo-onsen-travel-2025' },
+    { slug: 'barcerona-solo-onsen-travel-2025' },
   ]
 }
 
@@ -118,6 +120,30 @@ const postPageStyles = `
   .main-content {
     flex: 1;
     background: white;
+  }
+
+  /* Webkit系ブラウザ（Chrome, Safari）用 */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #00d084;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00a86b;
+  }
+
+  /* Firefox用 */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #00d084 #f1f1f1;
   }
 
   .content-layout {
@@ -334,6 +360,78 @@ const postPageStyles = `
     margin: 3rem 0;
   }
 
+  /* Author section */
+  .author-section {
+    padding: 40px 0;
+    border-top: 1px solid #e5e7eb;
+    background: #ffffff;
+  }
+
+  .author-box {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .author-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .author-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00d084, #4ECDC4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .author-info h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 4px;
+  }
+
+  .author-info .author-role {
+    font-size: 14px;
+    color: #6b7280;
+  }
+
+  .author-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #374151;
+    margin-bottom: 16px;
+  }
+
+  .author-stats {
+    display: flex;
+    gap: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #6b7280;
+  }
+
+  .stat-number {
+    font-weight: 600;
+    color: #00d084;
+  }
+
   /* Related articles */
   .related-articles {
     padding: 40px 0;
@@ -405,6 +503,16 @@ const postPageStyles = `
     
     .article-content h2 {
       font-size: 1.25rem;
+    }
+
+    .author-header {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .author-stats {
+      flex-direction: column;
+      gap: 12px;
     }
   }
 `;
@@ -517,6 +625,32 @@ export default async function PostPage({ params }: PostPageProps) {
               {post.content && (
                 <div dangerouslySetInnerHTML={{ __html: post.content }} />
               )}
+            </div>
+          </section>
+
+          {/* Author Section */}
+          <section className="author-section">
+            <div className="container">
+              <div className="author-box">
+                <div className="author-header">
+                  <div className="author-avatar">
+                    <User size={28} color="white" />
+                  </div>
+                  <div className="author-info">
+                    <h3>トリフレ編集部</h3>
+                    <div className="author-role">一人旅専門メディア</div>
+                  </div>
+                </div>
+                <div className="author-description">
+                  編集部メンバーの豊富な旅行経験をもとに、安全で楽しい一人旅のための情報をお届けしています。実際の旅行体験に基づいた実用的なアドバイスで、あなたの一人旅をサポートします。
+                </div>
+                <div className="author-stats">
+                  <div className="stat-item">
+                    <MapPin size={14} />
+                    <span>編集部総計<span className="stat-number">60カ国</span>の旅行経験</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 

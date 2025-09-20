@@ -435,6 +435,30 @@ const styles = `
     margin-bottom: 24px;
   }
 
+  /* Webkit系ブラウザ（Chrome, Safari）用 */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #00d084;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00a86b;
+  }
+
+  /* Firefox用 */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #00d084 #f1f1f1;
+  }
+
   /* Article cards */
   .article-card {
     background: white;
