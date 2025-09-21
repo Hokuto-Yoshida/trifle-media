@@ -378,7 +378,8 @@ export default function Footer() {
     { name: 'お問い合わせ', href: '/contact' },
     { name: 'プライバシーポリシー', href: '/privacy' },
     { name: '利用規約', href: '/terms' },
-    { name: 'サイトマップ', href: '/sitemap' }
+    { name: 'サイトマップ', href: '/sitemap' },
+    { name: '免責事項', href: '/disclaimer' },
   ];
 
   const featuredCategories = CATEGORIES.filter((cat: Category) => cat.featured).slice(0, 4);
