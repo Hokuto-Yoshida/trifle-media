@@ -5,6 +5,7 @@ import { Header, Footer } from '@/components';
 import AdBanner from '@/components/AdBanner';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
 import Link from 'next/link';
+import TableOfContents from '@/components/TableOfContents';
 
 interface PostPageProps {
   params: {
@@ -65,6 +66,9 @@ export async function generateStaticParams() {
     { slug: 'pari-solo-onsen-travel-2025' },
     { slug: 'london-solo-onsen-travel-2025' },
     { slug: 'barcerona-solo-onsen-travel-2025' },
+    { slug: 'sydney-solo-onsen-travel-2025' },
+    { slug: 'korea-solo-onsen-travel-2025' },
+    { slug: 'roma-solo-onsen-travel-2025' },
   ]
 }
 
@@ -618,6 +622,8 @@ export default async function PostPage({ params }: PostPageProps) {
               </div>
             </section>
           )}
+
+          <TableOfContents />
 
           {/* Article Content */}
           <section className="article-content">

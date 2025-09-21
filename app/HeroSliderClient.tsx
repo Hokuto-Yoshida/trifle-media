@@ -227,14 +227,6 @@ const HeroSliderClient = () => {
         <>
           <h2 className="hero-main-title">今すぐダウンロード</h2>
           <p className="hero-subtitle">一人旅をもっと楽しく、もっと安全に。</p>
-          <div className="hero-app-buttons">
-            <a href="#" className="app-store-button">
-              App Store
-            </a>
-            <a href="#" className="app-store-button">
-              Google Play
-            </a>
-          </div>
         </>
       )
     }
