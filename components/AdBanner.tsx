@@ -96,6 +96,26 @@ export default function AdBanner() {
             </div>
           </div>
 
+          {/* 楽天トラベル広告 */}
+          <div className="ad-section">
+            <h4 className="ad-section-title">ホテル・宿泊予約</h4>
+            <div className="ad-item">
+              <a 
+                href="https://hb.afl.rakuten.co.jp/hsc/4c9fef55.71199632.4c798cf5.ac347f21/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiIxMzMiLCJiYW4iOjIxODg2NTcsImFtcCI6ZmFsc2V9" 
+                target="_blank" 
+                rel="nofollow sponsored noopener" 
+                className="ad-link"
+              >
+                <img 
+                  src="https://hbb.afl.rakuten.co.jp/hsb/4c9fef55.71199632.4c798cf5.ac347f21/?me_id=2100001&me_adv_id=2188657&t=pict" 
+                  alt="楽天トラベル - ホテル・旅館予約サイト" 
+                  title="お得なホテル・旅館をお探しなら楽天トラベル"
+                  className="ad-banner-image"
+                />
+              </a>
+            </div>
+          </div>
+
           {/* スーツケース広告 */}
           <div className="ad-section">
             <h4 className="ad-section-title">おすすめ旅行グッズ</h4>

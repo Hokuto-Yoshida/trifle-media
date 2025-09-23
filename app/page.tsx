@@ -968,16 +968,19 @@ export default async function HomePage() {
 
             {/* カテゴリセクション */}
             {categories.map((category) => {
-              const categoryPosts = publishedPosts.filter(post => 
-                post.category === category.name || 
-                post.tags.some(tag => tag.includes(category.name)) ||
-                (category.slug === 'domestic' && (post.category.includes('国内') || post.tags.some(tag => tag.includes('国内')))) ||
-                (category.slug === 'international' && (post.category.includes('海外') || post.tags.some(tag => tag.includes('海外')))) ||
-                (category.slug === 'gourmet' && (post.category.includes('グルメ') || post.tags.some(tag => tag.includes('グルメ')))) ||
-                (category.slug === 'accommodation' && (post.category.includes('宿泊') || post.tags.some(tag => tag.includes('宿泊')))) ||
-                (category.slug === 'safety' && (post.category.includes('安全') || post.category.includes('準備') || post.tags.some(tag => tag.includes('安全') || tag.includes('準備')))) ||
-                (category.slug === 'tips' && (post.category.includes('コツ') || post.tags.some(tag => tag.includes('コツ'))))
-              );
+              // カテゴリマッピング: URLスラッグ → 記事のカテゴリ名
+              const categoryMapping: Record<string, string> = {
+                'domestic': '国内旅行',
+                'international': '海外旅行', 
+                'gourmet': 'グルメ',
+                'accommodation': '宿泊',
+                'safety': '安全・準備',
+                'tips': '旅のコツ',
+              };
+
+              // カテゴリでフィルタリング（完全一致）
+              const categoryName = categoryMapping[category.slug];
+              const categoryPosts = publishedPosts.filter(post => post.category === categoryName);
               
               if (categoryPosts.length === 0) return null;
               
