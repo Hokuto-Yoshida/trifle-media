@@ -75,7 +75,12 @@ export async function generateStaticParams() {
     { slug: 'america-travel-cities-guide-2025' },
     { slug: 'germany-solo-travel-complete-guide-2025' },
     { slug: 'vietnam-solo-travel-2025' },
-    { slug: 'roma-solo-travel-2025' },
+    { slug: 'korea-solo-gourmet-2025' },
+    { slug: 'taiwan-solo-gourmet-2025' },
+    { slug: 'thailand-solo-gourmet-2025' },
+    { slug: 'singapore-solo-gourmet-2025' },
+    { slug: 'itaria-solo-gourmet-2025' },
+    { slug: 'france-solo-gourmet-2025' },
   ]
 }
 
