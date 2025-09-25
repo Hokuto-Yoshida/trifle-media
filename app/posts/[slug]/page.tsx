@@ -81,6 +81,14 @@ export async function generateStaticParams() {
     { slug: 'singapore-solo-gourmet-2025' },
     { slug: 'itaria-solo-gourmet-2025' },
     { slug: 'france-solo-gourmet-2025' },
+    { slug: 'solo-travel-packing-guide-2025' },
+    { slug: 'accommodation-comparison-guide-2025' },
+    { slug: 'guesthouse-beginner-guide-2025' },
+    { slug: 'korea-female-solo-travel-2025' },
+    { slug: 'solo-travel-recommended-countries-2025' },
+    { slug: 'solo-travel-merits-demerits-2025' },
+    { slug: 'solo-travel-photography-complete-guide-2025' },
+    { slug: 'solo-travel-loneliness-guide-2025' },
   ]
 }
 
