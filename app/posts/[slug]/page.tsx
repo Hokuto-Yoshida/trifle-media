@@ -89,6 +89,8 @@ export async function generateStaticParams() {
     { slug: 'solo-travel-merits-demerits-2025' },
     { slug: 'solo-travel-photography-complete-guide-2025' },
     { slug: 'solo-travel-loneliness-guide-2025' },
+    { slug: 'solo-daytrip-recommendations-2025' },
+    { slug: 'nature-solo-travel-domestic-2025' },
   ]
 }
 
