@@ -635,7 +635,7 @@ const styles = `
     }
     
     .slide-indicators {
-      bottom: 15px;
+      bottom: 30px;
       gap: 8px;
     }
     
@@ -663,7 +663,7 @@ const styles = `
     }
     
     .slide-indicators {
-      bottom: 10px;
+      bottom: 30px;
     }
     
     .feature-title {
@@ -687,7 +687,7 @@ const styles = `
     }
     
     .slide-indicators {
-      bottom: 15px;
+      bottom: 30px;
       gap: 6px;
     }
     
