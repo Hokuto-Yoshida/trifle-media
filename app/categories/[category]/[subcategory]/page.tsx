@@ -1,3 +1,5 @@
+// app/categories/[category]/[subcategory]/page.tsx
+
 import { ArrowRight, Home } from 'lucide-react';
 import { Header, Footer } from '@/components';
 import AdBanner from '@/components/AdBanner';
@@ -5,9 +7,10 @@ import CategoryPagination from '@/components/CategoryPagination';
 import { getAllPosts } from '@/lib/posts';
 import type { PostMetadata } from '@/types/post';
 
-interface CategoryPageProps {
+interface SubcategoryPageProps {
   params: {
     category: string;
+    subcategory: string;
   };
 }
 
@@ -87,12 +90,20 @@ const categories = {
 
 // 静的生成用の関数
 export async function generateStaticParams() {
-  return Object.keys(categories).map((category) => ({
-    category: category,
-  }));
+  const params: { category: string; subcategory: string }[] = [];
+  
+  for (const [categorySlug, categoryData] of Object.entries(categories)) {
+    if (categoryData.subcategories) {
+      for (const subcategorySlug of Object.keys(categoryData.subcategories)) {
+        params.push({ category: categorySlug, subcategory: subcategorySlug });
+      }
+    }
+  }
+  
+  return params;
 }
 
-const categoryPageStyles = `
+const subcategoryPageStyles = `
   /* Reset and base styles */
   * {
     margin: 0;
@@ -268,85 +279,6 @@ const categoryPageStyles = `
     margin-bottom: 40px;
   }
 
-  /* Article cards */
-  .article-card {
-    background: white;
-    border: 1px solid #e5e7eb;
-    overflow: hidden;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .article-card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-
-  .article-image {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    background: #f3f4f6;
-  }
-
-  .article-content {
-    padding: 16px;
-  }
-
-  .article-category {
-    display: inline-block;
-    background: #00d084;
-    color: white;
-    padding: 3px 8px;
-    font-size: 11px;
-    font-weight: 500;
-    margin-bottom: 8px;
-  }
-
-  .article-title {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    line-height: 1.4;
-    color: #333;
-  }
-
-  .article-excerpt {
-    color: #666;
-    font-size: 13px;
-    line-height: 1.4;
-    margin-bottom: 8px;
-  }
-
-  .article-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 11px;
-    color: #999;
-    margin-bottom: 12px;
-  }
-
-  /* Read more button */
-  .read-more-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    background: #00d084;
-    color: white;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 500;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-  }
-
-  .read-more-button:hover {
-    background: #059669;
-    transform: translateY(-1px);
-  }
-
   /* Related categories */
   .related-categories {
     padding: 40px 0;
@@ -416,14 +348,14 @@ const categoryPageStyles = `
   }
 `;
 
-export default async function CategoryPage({ params }: CategoryPageProps) {
-  const categorySlug = params.category;
+export default async function SubcategoryPage({ params }: SubcategoryPageProps) {
+  const { category: categorySlug, subcategory: subcategorySlug } = params;
   const categoryInfo = categories[categorySlug as keyof typeof categories];
 
-  if (!categoryInfo) {
+  if (!categoryInfo || !categoryInfo.subcategories) {
     return (
       <>
-        <style dangerouslySetInnerHTML={{ __html: categoryPageStyles }} />
+        <style dangerouslySetInnerHTML={{ __html: subcategoryPageStyles }} />
         <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
           <Header />
           <main className="main-content" style={{ flex: 1 }}>
@@ -433,6 +365,31 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 <p>指定されたカテゴリは存在しません。</p>
                 <a href="/posts" style={{ color: '#00d084', textDecoration: 'underline' }}>
                   記事一覧に戻る
+                </a>
+              </div>
+            </div>
+          </main>
+          <Footer />
+        </div>
+      </>
+    );
+  }
+
+  const subcategoryName = categoryInfo.subcategories[subcategorySlug as keyof typeof categoryInfo.subcategories];
+  
+  if (!subcategoryName) {
+    return (
+      <>
+        <style dangerouslySetInnerHTML={{ __html: subcategoryPageStyles }} />
+        <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+          <Header />
+          <main className="main-content" style={{ flex: 1 }}>
+            <div className="container">
+              <div className="empty-state">
+                <h1>サブカテゴリが見つかりません</h1>
+                <p>指定されたサブカテゴリは存在しません。</p>
+                <a href={`/categories/${categorySlug}`} style={{ color: '#00d084', textDecoration: 'underline' }}>
+                  {categoryInfo.name}に戻る
                 </a>
               </div>
             </div>
@@ -462,21 +419,35 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     'tips': '旅のコツ',
   };
 
-  // カテゴリでフィルタリングして日付順（新しい順）でソート
+  // サブカテゴリマッピング: URLスラッグ → 記事のサブカテゴリ名
+  const subcategoryMapping: Record<string, string> = {};
+  Object.values(categories).forEach(cat => {
+    if (cat.subcategories) {
+      Object.assign(subcategoryMapping, cat.subcategories);
+    }
+  });
+
+  // カテゴリとサブカテゴリでフィルタリングして日付順（新しい順）でソート
   const categoryName = categoryMapping[categorySlug];
-  const categoryPosts: ExtendedPostMetadata[] = publishedPosts
-    .filter((post: ExtendedPostMetadata) => post.category === categoryName)
+  const subcategoryPosts: ExtendedPostMetadata[] = publishedPosts
+    .filter((post: ExtendedPostMetadata) => 
+      post.category === categoryName && 
+      (Array.isArray(post.subcategory) 
+        ? post.subcategory.includes(subcategoryName)
+        : post.subcategory === subcategoryName)
+    )
     .sort((a: ExtendedPostMetadata, b: ExtendedPostMetadata) => 
       new Date(b.date).getTime() - new Date(a.date).getTime()
     );
 
-  const otherCategories = Object.entries(categories)
-    .filter(([slug]) => slug !== categorySlug)
-    .map(([slug, info]) => ({ slug, name: info.name }));
+  // 同じカテゴリの他のサブカテゴリ
+  const otherSubcategories = Object.entries(categoryInfo.subcategories)
+    .filter(([slug]) => slug !== subcategorySlug)
+    .map(([slug, name]) => ({ slug, name }));
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: categoryPageStyles }} />
+      <style dangerouslySetInnerHTML={{ __html: subcategoryPageStyles }} />
       
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <Header />
@@ -504,7 +475,15 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                       <ArrowRight size={14} />
                     </li>
                     <li className="breadcrumb-item">
-                      <span className="breadcrumb-current">{categoryInfo.name}</span>
+                      <a href={`/categories/${categorySlug}`} className="breadcrumb-link">
+                        {categoryInfo.name}
+                      </a>
+                    </li>
+                    <li className="breadcrumb-separator">
+                      <ArrowRight size={14} />
+                    </li>
+                    <li className="breadcrumb-item">
+                      <span className="breadcrumb-current">{subcategoryName}</span>
                     </li>
                   </ol>
                 </nav>
@@ -514,66 +493,70 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             {/* Page Header */}
             <section className="page-header">
               <div className="container">
-                <h1 className="page-title">{categoryInfo.name}</h1>
-                <p className="page-description">{categoryInfo.description}</p>
-                <p className="post-count">{categoryPosts.length}件の記事があります</p>
+                <h1 className="page-title">{subcategoryName}</h1>
+                <p className="page-description">{categoryInfo.name}の{subcategoryName}に関する記事</p>
+                <p className="post-count">{subcategoryPosts.length}件の記事があります</p>
 
                 {/* Subcategory tabs */}
-                {categoryInfo.subcategories && (
-                  <div className="subcategory-tabs">
+                <div className="subcategory-tabs">
+                  <a 
+                    href={`/categories/${categorySlug}`} 
+                    className="subcategory-tab"
+                  >
+                    すべて
+                  </a>
+                  {Object.entries(categoryInfo.subcategories).map(([subSlug, subName]) => (
                     <a 
-                      href={`/categories/${categorySlug}`} 
-                      className="subcategory-tab active"
+                      key={subSlug}
+                      href={`/categories/${categorySlug}/${subSlug}`} 
+                      className={`subcategory-tab ${subSlug === subcategorySlug ? 'active' : ''}`}
                     >
-                      すべて
+                      {subName}
                     </a>
-                    {Object.entries(categoryInfo.subcategories).map(([subSlug, subName]) => (
-                      <a 
-                        key={subSlug}
-                        href={`/categories/${categorySlug}/${subSlug}`} 
-                        className="subcategory-tab"
-                      >
-                        {subName}
-                      </a>
-                    ))}
-                  </div>
-                )}
+                  ))}
+                </div>
               </div>
             </section>
 
             {/* Posts Section with Pagination */}
             <section className="posts-section">
               <div className="container">
-                {categoryPosts.length > 0 ? (
+                {subcategoryPosts.length > 0 ? (
                   <CategoryPagination 
-                    posts={categoryPosts}
-                    categorySlug={categorySlug}
+                    posts={subcategoryPosts}
+                    categorySlug={`${categorySlug}/${subcategorySlug}`}
                     postsPerPage={14}
                   />
                 ) : (
                   <div className="empty-state">
-                    <p>このカテゴリの記事はまだありません。</p>
-                    <a href="/posts" style={{ color: '#00d084', textDecoration: 'underline' }}>
-                      他の記事を見る
+                    <p>このサブカテゴリの記事はまだありません。</p>
+                    <a href={`/categories/${categorySlug}`} style={{ color: '#00d084', textDecoration: 'underline' }}>
+                      {categoryInfo.name}の他の記事を見る
                     </a>
                   </div>
                 )}
               </div>
             </section>
 
-            {/* Related Categories Section */}
-            <section className="related-categories">
-              <div className="container">
-                <h2 className="related-title">他のカテゴリ</h2>
-                <div className="category-grid">
-                  {otherCategories.map((category) => (
-                    <a key={category.slug} href={`/categories/${category.slug}`} className="category-tag">
-                      {category.name}
-                    </a>
-                  ))}
+            {/* Related Subcategories Section */}
+            {otherSubcategories.length > 0 && (
+              <section className="related-categories">
+                <div className="container">
+                  <h2 className="related-title">{categoryInfo.name}の他のサブカテゴリ</h2>
+                  <div className="category-grid">
+                    {otherSubcategories.map((sub) => (
+                      <a 
+                        key={sub.slug} 
+                        href={`/categories/${categorySlug}/${sub.slug}`} 
+                        className="category-tag"
+                      >
+                        {sub.name}
+                      </a>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </section>
+              </section>
+            )}
           </main>
           
           <AdBanner />
@@ -583,4 +566,25 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       </div>
     </>
   );
+}
+
+// メタデータの生成
+export async function generateMetadata({ params }: SubcategoryPageProps) {
+  const { category: categorySlug, subcategory: subcategorySlug } = params;
+  const categoryInfo = categories[categorySlug as keyof typeof categories];
+  
+  if (!categoryInfo || !categoryInfo.subcategories) {
+    return {};
+  }
+  
+  const subcategoryName = categoryInfo.subcategories[subcategorySlug as keyof typeof categoryInfo.subcategories];
+  
+  if (!subcategoryName) {
+    return {};
+  }
+  
+  return {
+    title: `${subcategoryName} | ${categoryInfo.name} | トリフレメディア`,
+    description: `${categoryInfo.name}の${subcategoryName}に関する記事一覧。一人旅の計画に役立つ情報をお届けします。`,
+  };
 }

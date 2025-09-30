@@ -476,7 +476,6 @@ export default function PostsPage() {
     { name: '海外旅行', slug: 'international' },
     { name: 'グルメ', slug: 'gourmet' },
     { name: '宿泊', slug: 'accommodation' },
-    { name: '安全・準備', slug: 'safety' },
     { name: '旅のコツ', slug: 'tips' }
   ];
 

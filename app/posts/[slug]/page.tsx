@@ -101,9 +101,10 @@ export async function generateStaticParams() {
     { slug: 'venice-solo-travel-complete-guide-2025' },
     { slug: 'finland-solo-travel-guide-2025' },
     { slug: 'portugal-solo-travel-guide-2025' },
-    { slug: 'solo-travel-trouble-guide-2025' },
-    { slug: 'solo-travel-trouble-guide-2025' },
-    { slug: 'solo-travel-trouble-guide-2025' },
+    { slug: 'morocco-solo-travel-2025' },
+    { slug: 'greece-solo-travel-2025' },
+    { slug: 'peru-solo-travel-guide-2025' },
+    { slug: 'croatia-solo-travel-guide-2025' },
   ]
 }
 

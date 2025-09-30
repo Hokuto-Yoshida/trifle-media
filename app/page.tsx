@@ -240,7 +240,7 @@ const styles = `
 
   @media (max-width: 640px) {
     .slide-indicators {
-      bottom: 80px;
+      bottom: 100px;
     }
   }
 
@@ -399,6 +399,8 @@ const styles = `
     gap: 0;
     margin-bottom: 24px;
     border-bottom: 1px solid #e5e7eb;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .category-tab {
@@ -411,6 +413,8 @@ const styles = `
     border: 1px solid #e5e7eb;
     border-bottom: none;
     margin-right: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .category-tab:hover,
@@ -591,7 +595,7 @@ const styles = `
     }
     
     .category-tabs {
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
     
     .article-grid {
@@ -801,7 +805,7 @@ const HeroSlider = () => {
   React.useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4000); // 4秒ごとに切り替え
+    }, 4000);
 
     return () => clearInterval(timer);
   }, []);
@@ -851,13 +855,12 @@ export default async function HomePage() {
   );
   const latestPosts = sortedPosts.slice(0, 6);
 
-  // カテゴリ定義
+  // カテゴリ定義（旅のコツに統合、安全・準備を削除）
   const categories = [
     { name: '国内旅行', slug: 'domestic' },
     { name: '海外旅行', slug: 'international' },
     { name: 'グルメ', slug: 'gourmet' },
     { name: '宿泊', slug: 'accommodation' },
-    { name: '安全・準備', slug: 'safety' },
     { name: '旅のコツ', slug: 'tips' }
   ];
 
@@ -900,7 +903,6 @@ export default async function HomePage() {
                   <a href="/categories/international" className="category-tab">海外旅行</a>
                   <a href="/categories/gourmet" className="category-tab">グルメ</a>
                   <a href="/categories/accommodation" className="category-tab">宿泊</a>
-                  <a href="/categories/safety" className="category-tab">安全・準備</a>
                   <a href="/categories/tips" className="category-tab">旅のコツ</a>
                 </div>
 
@@ -974,7 +976,6 @@ export default async function HomePage() {
                 'international': '海外旅行', 
                 'gourmet': 'グルメ',
                 'accommodation': '宿泊',
-                'safety': '安全・準備',
                 'tips': '旅のコツ',
               };
 
