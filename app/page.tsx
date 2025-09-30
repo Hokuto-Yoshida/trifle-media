@@ -240,7 +240,7 @@ const styles = `
 
   @media (max-width: 640px) {
     .slide-indicators {
-      bottom: 100px;
+      bottom: 80px;
     }
   }
 
@@ -687,7 +687,7 @@ const styles = `
     }
     
     .slide-indicators {
-      bottom: 8px;
+      bottom: 15px;
       gap: 6px;
     }
     
