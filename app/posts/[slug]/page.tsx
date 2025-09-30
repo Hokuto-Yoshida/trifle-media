@@ -97,6 +97,13 @@ export async function generateStaticParams() {
     { slug: 'solo-travel-safety-precautions-2025' },
     { slug: 'solo-travel-fun-guide-2025' },
     { slug: 'solo-travel-trouble-guide-2025' },
+    { slug: 'hawaii-solo-travel-guide-2025' },
+    { slug: 'venice-solo-travel-complete-guide-2025' },
+    { slug: 'finland-solo-travel-guide-2025' },
+    { slug: 'portugal-solo-travel-guide-2025' },
+    { slug: 'solo-travel-trouble-guide-2025' },
+    { slug: 'solo-travel-trouble-guide-2025' },
+    { slug: 'solo-travel-trouble-guide-2025' },
   ]
 }
 
