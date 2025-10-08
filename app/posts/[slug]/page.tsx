@@ -128,7 +128,25 @@ export async function generateStaticParams() {
     { slug: 'hungary-solo-travel-guide-2025' },
     { slug: 'austria-solo-travel-guide-2025' },
     { slug: 'poland-solo-travel-guide-2025' },
-
+    { slug: 'sweden-solo-travel-guide-2025' },
+    { slug: 'korea-male-solo-travel-2025' },
+    { slug: 'korea-beauty-solo-travel-2025' },
+    { slug: 'poland-solo-travel-guide-2025' },
+    { slug: 'poland-solo-travel-guide-2025' },
+    { slug: 'poland-solo-travel-guide-2025' },
+    { slug: 'poland-solo-travel-guide-2025' },
+    { slug: 'poland-solo-travel-guide-2025' },
+    { slug: 'poland-solo-travel-guide-2025' },
+    { slug: 'poland-solo-travel-guide-2025' },
+    { slug: 'poland-solo-travel-guide-2025' },
+    { slug: 'poland-solo-travel-guide-2025' },
+    { slug: 'poland-solo-travel-guide-2025' },  
+    { slug: 'poland-solo-travel-guide-2025' },
+    { slug: 'poland-solo-travel-guide-2025' },
+    { slug: 'poland-solo-travel-guide-2025' },
+    { slug: 'poland-solo-travel-guide-2025' },
+    { slug: 'poland-solo-travel-guide-2025' },
+    { slug: 'poland-solo-travel-guide-2025' },
   ]
 }
 
