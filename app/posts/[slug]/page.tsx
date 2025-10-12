@@ -190,17 +190,20 @@ const postPageStyles = `
     line-height: 1.6;
     color: #333;
     background: white;
+    overflow-x: hidden;
   }
 
   .post-page {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
   }
 
   .main-content {
     flex: 1;
     background: white;
+    overflow-x: hidden;
   }
 
   /* Webkit系ブラウザ（Chrome, Safari）用 */
@@ -225,6 +228,7 @@ const postPageStyles = `
   html {
     scrollbar-width: thin;
     scrollbar-color: #00d084 #f1f1f1;
+    overflow-x: hidden;
   }
 
   .content-layout {
@@ -233,27 +237,37 @@ const postPageStyles = `
     margin: 0 auto;
     padding: 0 20px;
     gap: 0;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .main-content-area {
     flex: 1;
     min-width: 0;
-    max-width: 800px;
+    max-width: 100%;
+    width: 100%;
+    overflow-x: hidden;
   }
 
   .container {
-    max-width: none;
+    max-width: 100%;
     margin: 0;
     padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   @media (max-width: 1024px) {
     .content-layout {
       flex-direction: column;
+      padding: 0 20px;
+      max-width: 100%;
     }
     
     .main-content-area {
-      max-width: none;
+      max-width: 100%;
+      width: 100%;
     }
   }
 
@@ -261,6 +275,7 @@ const postPageStyles = `
   .back-nav {
     padding: 20px 0;
     border-bottom: 1px solid #e5e7eb;
+    width: 100%;
   }
 
   .back-link {
@@ -281,6 +296,7 @@ const postPageStyles = `
   .article-header {
     padding: 40px 0;
     border-bottom: 1px solid #e5e7eb;
+    width: 100%;
   }
 
   .article-category {
@@ -300,6 +316,8 @@ const postPageStyles = `
     color: #1f2937;
     margin-bottom: 16px;
     line-height: 1.2;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .article-description {
@@ -307,6 +325,8 @@ const postPageStyles = `
     color: #6b7280;
     margin-bottom: 24px;
     line-height: 1.6;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .article-meta {
@@ -346,10 +366,12 @@ const postPageStyles = `
   /* Article image */
   .article-image-section {
     padding: 40px 0;
+    width: 100%;
   }
 
   .article-image {
     width: 100%;
+    max-width: 100%;
     height: 400px;
     object-fit: cover;
     border-radius: 8px;
@@ -358,7 +380,15 @@ const postPageStyles = `
   /* Article content */
   .article-content {
     padding: 40px 0;
-    max-width: none;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .article-content * {
+    max-width: 100%;
   }
 
   .article-content h1,
@@ -372,6 +402,8 @@ const postPageStyles = `
     font-weight: 600;
     line-height: 1.3;
     color: #1f2937;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .article-content h1 {
@@ -393,24 +425,29 @@ const postPageStyles = `
   .article-content p {
     margin-bottom: 1.5rem;
     line-height: 1.8;
+    word-break: break-word;
   }
 
   .article-content img {
     max-width: 100%;
+    width: 100%;
     height: auto;
     margin: 2rem 0;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: block;
   }
 
   .article-content ul,
   .article-content ol {
     margin-bottom: 1.5rem;
     padding-left: 2rem;
+    max-width: 100%;
   }
 
   .article-content li {
     margin-bottom: 0.5rem;
+    word-break: break-word;
   }
 
   .article-content blockquote {
@@ -419,6 +456,7 @@ const postPageStyles = `
     margin: 2rem 0;
     font-style: italic;
     color: #6b7280;
+    max-width: 100%;
   }
 
   .article-content strong {
@@ -429,6 +467,7 @@ const postPageStyles = `
   .article-content a {
     color: #00d084;
     text-decoration: underline;
+    word-break: break-all;
   }
 
   .article-content a:hover {
@@ -441,11 +480,35 @@ const postPageStyles = `
     margin: 3rem 0;
   }
 
+  .article-content table {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+    border-collapse: collapse;
+    margin: 2rem 0;
+  }
+
+  .article-content pre {
+    overflow-x: auto;
+    max-width: 100%;
+    padding: 1rem;
+    background: #f3f4f6;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+  }
+
+  .article-content code {
+    word-break: break-all;
+    overflow-wrap: break-word;
+  }
+
   /* Author section */
   .author-section {
     padding: 40px 0;
     border-top: 1px solid #e5e7eb;
     background: #ffffff;
+    width: 100%;
   }
 
   .author-box {
@@ -454,6 +517,7 @@ const postPageStyles = `
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    max-width: 100%;
   }
 
   .author-header {
@@ -518,6 +582,7 @@ const postPageStyles = `
     padding: 40px 0;
     border-top: 1px solid #e5e7eb;
     background: white;
+    width: 100%;
   }
 
   .related-title {
@@ -552,6 +617,7 @@ const postPageStyles = `
     font-weight: 600;
     margin-bottom: 8px;
     line-height: 1.4;
+    word-break: break-word;
   }
 
   .related-card-meta {
@@ -561,12 +627,20 @@ const postPageStyles = `
 
   /* Responsive */
   @media (max-width: 640px) {
-    .container {
+    .content-layout {
       padding: 0 16px;
+    }
+
+    .container {
+      padding: 0;
     }
     
     .article-title {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
+    }
+    
+    .article-description {
+      font-size: 1rem;
     }
     
     .article-meta {
@@ -578,12 +652,26 @@ const postPageStyles = `
       height: 250px;
     }
     
+    .article-content {
+      padding: 40px 0;
+      font-size: 16px;
+    }
+    
     .article-content h1 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
     }
     
     .article-content h2 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
+    }
+
+    .article-content h3 {
+      font-size: 1.1rem;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 1.5rem;
     }
 
     .author-header {
@@ -594,6 +682,29 @@ const postPageStyles = `
     .author-stats {
       flex-direction: column;
       gap: 12px;
+    }
+
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .article-tags {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .content-layout {
+      padding: 0 12px;
+    }
+
+    .article-content {
+      font-size: 15px;
+    }
+
+    .article-title {
+      font-size: 1.3rem;
     }
   }
 `;
