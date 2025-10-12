@@ -1,15 +1,26 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
 
 export default function AdBanner() {
   const [searchQuery, setSearchQuery] = useState('');
 
+  // AdSenseスクリプトの読み込み
+  useEffect(() => {
+    // すでに読み込まれているかチェック
+    if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7569727810444713';
+      script.async = true;
+      script.crossOrigin = 'anonymous';
+      document.head.appendChild(script);
+    }
+  }, []);
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      // URLを変更してクライアントサイド検索を実行
       window.location.href = `/search#q=${encodeURIComponent(searchQuery.trim())}`;
     }
   };

@@ -142,7 +142,7 @@ export async function generateStaticParams() {
     { slug: 'korea-solo-travel-packing-guide-2025' },  
     { slug: 'taiwan-solo-travel-packing-guide-2025' },
     { slug: 'taiwan-solo-budget-guide-2025' },
-    { slug: 'poland-solo-travel-guide-2025' },
+    { slug: 'bolivia-solo-travel-2025' },
     { slug: 'poland-solo-travel-guide-2025' },
     { slug: 'poland-solo-travel-guide-2025' },
     { slug: 'poland-solo-travel-guide-2025' },
