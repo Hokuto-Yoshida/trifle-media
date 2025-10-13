@@ -143,9 +143,9 @@ export async function generateStaticParams() {
     { slug: 'taiwan-solo-travel-packing-guide-2025' },
     { slug: 'taiwan-solo-budget-guide-2025' },
     { slug: 'bolivia-solo-travel-2025' },
-    { slug: 'poland-solo-travel-guide-2025' },
-    { slug: 'poland-solo-travel-guide-2025' },
-    { slug: 'poland-solo-travel-guide-2025' },
+    { slug: 'cambodia-solo-travel-guide-2025' },
+    { slug: 'argentina-solo-travel-guide-2025' },
+    { slug: 'iceland-solo-travel-2025' },
   ]
 }
 
