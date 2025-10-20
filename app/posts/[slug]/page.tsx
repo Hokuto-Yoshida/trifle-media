@@ -163,9 +163,9 @@ export async function generateStaticParams() {
     { slug: 'minimal-packing-tips-2025' },
     { slug: 'solo-travel-essential-apps-2025' },
     { slug: 'solo-travel-bag-selection-guide-2025' },
-    { slug: 'iceland-solo-travel-2025' },
-    { slug: 'iceland-solo-travel-2025' },
-    { slug: 'iceland-solo-travel-2025' },
+    { slug: 'female-solo-travel-safety-packing-2025' },
+    { slug: 'winter-onsen-solo-packing-2025' },
+    { slug: 'lcc-solo-travel-7kg-packing-guide-2025' },
   ]
 }
 
