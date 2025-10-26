@@ -453,25 +453,6 @@ export default function Footer() {
                 </ul>
               </div>
 
-              {/* カテゴリ */}
-              <div>
-                <h3 className="footer-section-title">
-                  人気カテゴリ
-                </h3>
-                <ul className="footer-links">
-                  {featuredCategories.map((category: Category) => (
-                    <li key={category.slug}>
-                      <Link
-                        href={`/category/${category.slug}`}
-                        className="footer-link"
-                      >
-                        {category.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
               {/* サポート・法的情報 */}
               <div>
                 <h3 className="footer-section-title">
