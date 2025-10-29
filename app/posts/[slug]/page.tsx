@@ -191,9 +191,9 @@ export async function generateStaticParams() {
     { slug: 'granada-solo-travel-complete-guide-2025' },
     { slug: 'phuquoc-year-end-solo-travel-2025' },
     { slug: 'jakarta-solo-travel-guide-2025' },
-    { slug: 'winter-onsen-solo-packing-2025' },
-    { slug: 'winter-onsen-solo-packing-2025' },
-    { slug: 'winter-onsen-solo-packing-2025' },
+    { slug: 'asian-night-market-solo-guide-2025' },
+    { slug: 'asia-solo-local-food-guide-2025' },
+    { slug: 'asian-local-food-guide-2025' },
   ]
 }
 
