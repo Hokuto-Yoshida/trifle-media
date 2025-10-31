@@ -25,7 +25,7 @@ const HeroSliderClient = () => {
           <div className="feature-slide">
             <div className="feature-content">
               <div className="feature-icon">
-                <Heart size={24} color="white" />
+                <Heart size={28} color="white" />
               </div>
               <h2 className="feature-title">直感的なスワイプで<br />理想の旅仲間を発見</h2>
               <p className="feature-description">
@@ -35,22 +35,10 @@ const HeroSliderClient = () => {
             <div className="feature-screenshot">
               <div className="screenshot-container">
                 <img 
-                  src="/images/screenshots/swipe-screen.png" 
+                  src="/images/app-screenshots/swipe-screen.png" 
                   alt="仲間探しのスワイプ画面"
                   className="screenshot-image"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    const placeholder = target.nextElementSibling as HTMLElement;
-                    if (placeholder) placeholder.style.display = 'flex';
-                  }}
                 />
-                <div className="screenshot-placeholder" style={{ display: 'none' }}>
-                  <div className="screenshot-title">仲間探しのスワイプ画面</div>
-                  <div className="screenshot-description">
-                    同じ目的地を旅する仲間をスワイプで探索。プロフィール情報で安心してマッチング。
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -66,19 +54,10 @@ const HeroSliderClient = () => {
             <div className="feature-screenshot">
               <div className="screenshot-container">
                 <img 
-                  src="/images/screenshots/swipe-screen.png" 
+                  src="/images/app-screenshots/swipe-screen.png" 
                   alt="仲間探しのスワイプ画面"
                   className="screenshot-image"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    const placeholder = target.nextElementSibling as HTMLElement;
-                    if (placeholder) placeholder.style.display = 'flex';
-                  }}
                 />
-                <div className="screenshot-placeholder" style={{ display: 'none' }}>
-                  <div className="screenshot-title">スワイプ画面</div>
-                </div>
               </div>
             </div>
           </div>
@@ -93,7 +72,7 @@ const HeroSliderClient = () => {
           <div className="feature-slide">
             <div className="feature-content">
               <div className="feature-icon">
-                <Users size={24} color="white" />
+                <Users size={28} color="white" />
               </div>
               <h2 className="feature-title">詳細な旅行プランを<br />簡単に作成・共有</h2>
               <p className="feature-description">
@@ -103,22 +82,10 @@ const HeroSliderClient = () => {
             <div className="feature-screenshot">
               <div className="screenshot-container">
                 <img 
-                  src="/images/screenshots/travel-planning-screen.png" 
+                  src="/images/app-screenshots/travel-list.png" 
                   alt="旅行作成画面"
                   className="screenshot-image"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    const placeholder = target.nextElementSibling as HTMLElement;
-                    if (placeholder) placeholder.style.display = 'flex';
-                  }}
                 />
-                <div className="screenshot-placeholder" style={{ display: 'none' }}>
-                  <div className="screenshot-title">旅行作成画面</div>
-                  <div className="screenshot-description">
-                    目的地、時間、予算、募集理由まで詳細に設定して理想の旅仲間を募集。
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -134,19 +101,10 @@ const HeroSliderClient = () => {
             <div className="feature-screenshot">
               <div className="screenshot-container">
                 <img 
-                  src="/images/screenshots/travel-planning-screen.png" 
+                  src="/images/app-screenshots/travel-list.png" 
                   alt="旅行作成画面"
                   className="screenshot-image"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    const placeholder = target.nextElementSibling as HTMLElement;
-                    if (placeholder) placeholder.style.display = 'flex';
-                  }}
                 />
-                <div className="screenshot-placeholder" style={{ display: 'none' }}>
-                  <div className="screenshot-title">旅行作成画面</div>
-                </div>
               </div>
             </div>
           </div>
@@ -161,7 +119,7 @@ const HeroSliderClient = () => {
           <div className="feature-slide">
             <div className="feature-content">
               <div className="feature-icon">
-                <Shield size={24} color="white" />
+                <Shield size={28} color="white" />
               </div>
               <h2 className="feature-title">安心・安全な<br />メッセージ機能</h2>
               <p className="feature-description">
@@ -171,22 +129,10 @@ const HeroSliderClient = () => {
             <div className="feature-screenshot">
               <div className="screenshot-container">
                 <img 
-                  src="/images/screenshots/chat-screen.png" 
+                  src="/images/app-screenshots/chat-screen.png" 
                   alt="チャット画面"
                   className="screenshot-image"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    const placeholder = target.nextElementSibling as HTMLElement;
-                    if (placeholder) placeholder.style.display = 'flex';
-                  }}
                 />
-                <div className="screenshot-placeholder" style={{ display: 'none' }}>
-                  <div className="screenshot-title">チャット画面</div>
-                  <div className="screenshot-description">
-                    安全な環境でメッセージ交換。本人確認済みマークで安心してコミュニケーション。
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -202,19 +148,10 @@ const HeroSliderClient = () => {
             <div className="feature-screenshot">
               <div className="screenshot-container">
                 <img 
-                  src="/images/screenshots/chat-screen.png" 
+                  src="/images/app-screenshots/chat-screen.png" 
                   alt="チャット画面"
                   className="screenshot-image"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    const placeholder = target.nextElementSibling as HTMLElement;
-                    if (placeholder) placeholder.style.display = 'flex';
-                  }}
                 />
-                <div className="screenshot-placeholder" style={{ display: 'none' }}>
-                  <div className="screenshot-title">チャット画面</div>
-                </div>
               </div>
             </div>
           </div>
@@ -235,7 +172,7 @@ const HeroSliderClient = () => {
   React.useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4000); // 4秒ごとに切り替え
+    }, 4000);
 
     return () => clearInterval(timer);
   }, []);

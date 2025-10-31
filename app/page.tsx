@@ -44,7 +44,7 @@ const styles = `
     left: 0;
     width: 100%;
     height: calc(100vh - 120px);
-    background: linear-gradient(135deg, #00d084 0%, #4ECDC4 100%);
+    background: #3BC78f;
     z-index: -1;
     overflow: hidden;
   }
@@ -152,55 +152,18 @@ const styles = `
     align-items: center;
   }
 
+  /* スクリーンショット画像 */
   .screenshot-container {
-    width: 210px;
-    height: 420px;
-    background: linear-gradient(to bottom right, #374151, #1f2937);
-    border-radius: 30px;
-    padding: 12px;
-    backdrop-filter: blur(20px);
-    border: 2px solid rgba(255,255,255,0.1);
+    width: 240px;
+    height: auto;
     position: relative;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
   }
 
   .screenshot-image {
-    width: 105%;
-    height: 105%;
-    border-radius: 16px;
-    object-fit: contain;
-    object-position: center;
-    background: #f3f4f6;
-    transform: translate(-2.5%, -2.5%);
-  }
-
-  .screenshot-placeholder {
     width: 100%;
-    height: 100%;
-    background: #f3f4f6;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  }
-
-  .screenshot-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: #00d084;
-  }
-
-  .screenshot-description {
-    font-size: 12px;
-    text-align: center;
-    opacity: 0.8;
-    padding: 0 20px;
-    color: #d1d5db;
+    height: auto;
+    display: block;
   }
 
   /* Main title slide */
@@ -238,12 +201,6 @@ const styles = `
     z-index: 10;
   }
 
-  @media (max-width: 640px) {
-    .slide-indicators {
-      bottom: 80px;
-    }
-  }
-
   .slide-indicator {
     width: 12px;
     height: 12px;
@@ -256,36 +213,6 @@ const styles = `
   .slide-indicator.active {
     background: white;
     transform: scale(1.2);
-  }
-
-  /* App store buttons */
-  .hero-app-buttons {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 60px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .app-store-button {
-    background: rgba(255,255,255,0.2);
-    color: white;
-    padding: 12px 24px;
-    border-radius: 50px;
-    font-weight: 500;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.3);
-    transition: all 0.3s ease;
-    font-size: 16px;
-  }
-
-  .app-store-button:hover {
-    background: rgba(255,255,255,0.3);
-    transform: translateY(-2px);
   }
 
   .scroll-indicator {
@@ -570,18 +497,8 @@ const styles = `
       text-align: left;
     }
     
-    .feature-content-mobile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    
     .screenshot-container {
-      width: 162px;
-      height: 320px;
-      background: linear-gradient(to bottom right, #374151, #1f2937);
-      padding: 10px;
+      width: 180px;
     }
     
     .hero-content {
@@ -608,10 +525,7 @@ const styles = `
     }
     
     .screenshot-container {
-      width: 140px;
-      height: 280px;
-      background: linear-gradient(to bottom right, #374151, #1f2937);
-      padding: 8px;
+      width: 150px;
     }
     
     .feature-icon {
@@ -635,7 +549,7 @@ const styles = `
     }
     
     .slide-indicators {
-      bottom: 30px;
+      bottom: 80px;
       gap: 8px;
     }
     
@@ -652,10 +566,7 @@ const styles = `
     }
     
     .screenshot-container {
-      width: 124px;
-      height: 250px;
-      background: linear-gradient(to bottom right, #374151, #1f2937);
-      padding: 6px;
+      width: 130px;
     }
     
     .hero-content {
@@ -663,7 +574,7 @@ const styles = `
     }
     
     .slide-indicators {
-      bottom: 30px;
+      bottom: 60px;
     }
     
     .feature-title {
@@ -677,9 +588,7 @@ const styles = `
 
   @media (max-width: 360px) {
     .screenshot-container {
-      width: 107px;
-      height: 220px;
-      padding: 4px;
+      width: 110px;
     }
     
     .hero-content {
@@ -687,7 +596,7 @@ const styles = `
     }
     
     .slide-indicators {
-      bottom: 30px;
+      bottom: 50px;
       gap: 6px;
     }
     
@@ -728,12 +637,11 @@ const HeroSlider = () => {
           </div>
           <div className="feature-screenshot">
             <div className="screenshot-container">
-              <div className="screenshot-placeholder">
-                <div className="screenshot-title">仲間探しのスワイプ画面</div>
-                <div className="screenshot-description">
-                  同じ目的地を旅する仲間をスワイプで探索。プロフィール情報で安心してマッチング。
-                </div>
-              </div>
+              <img 
+                src="/images/app-screenshots/swipe-screen.png" 
+                alt="スワイプ画面"
+                className="screenshot-image"
+              />
             </div>
           </div>
         </div>
@@ -754,12 +662,11 @@ const HeroSlider = () => {
           </div>
           <div className="feature-screenshot">
             <div className="screenshot-container">
-              <div className="screenshot-placeholder">
-                <div className="screenshot-title">旅行作成画面</div>
-                <div className="screenshot-description">
-                  目的地、時間、予算、募集理由まで詳細に設定して理想の旅仲間を募集。
-                </div>
-              </div>
+              <img 
+                src="/images/app-screenshots/travel-list.png" 
+                alt="旅の仲間画面"
+                className="screenshot-image"
+              />
             </div>
           </div>
         </div>
@@ -780,12 +687,11 @@ const HeroSlider = () => {
           </div>
           <div className="feature-screenshot">
             <div className="screenshot-container">
-              <div className="screenshot-placeholder">
-                <div className="screenshot-title">チャット画面</div>
-                <div className="screenshot-description">
-                  安全な環境でメッセージ交換。本人確認済みマークで安心してコミュニケーション。
-                </div>
-              </div>
+              <img 
+                src="/images/app-screenshots/chat-screen.png" 
+                alt="チャット画面"
+                className="screenshot-image"
+              />
             </div>
           </div>
         </div>
@@ -830,11 +736,6 @@ const HeroSlider = () => {
           />
         ))}
       </div>
-      
-      <a href="#content" className="scroll-indicator">
-        記事を読む
-        <ArrowRight size={16} />
-      </a>
     </div>
   );
 };
@@ -855,7 +756,7 @@ export default async function HomePage() {
   );
   const latestPosts = sortedPosts.slice(0, 6);
 
-  // カテゴリ定義（旅のコツに統合、安全・準備を削除）
+  // カテゴリ定義
   const categories = [
     { name: '国内旅行', slug: 'domestic' },
     { name: '海外旅行', slug: 'international' },
@@ -970,7 +871,6 @@ export default async function HomePage() {
 
             {/* カテゴリセクション */}
             {categories.map((category) => {
-              // カテゴリマッピング: URLスラッグ → 記事のカテゴリ名
               const categoryMapping: Record<string, string> = {
                 'domestic': '国内旅行',
                 'international': '海外旅行', 
@@ -979,7 +879,6 @@ export default async function HomePage() {
                 'tips': '旅のコツ',
               };
 
-              // カテゴリでフィルタリング（完全一致）
               const categoryName = categoryMapping[category.slug];
               const categoryPosts = publishedPosts.filter(post => post.category === categoryName);
               
