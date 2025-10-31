@@ -49,14 +49,6 @@ const styles = `
     overflow: hidden;
   }
 
-  .hero-background::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: 
-      radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
-  }
 
   .hero-content {
     position: relative;
@@ -128,7 +120,7 @@ const styles = `
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: none
     flex-shrink: 0;
   }
 
@@ -157,7 +149,7 @@ const styles = `
     width: 240px;
     height: auto;
     position: relative;
-    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+    filter: none
   }
 
   .screenshot-image {
@@ -225,7 +217,7 @@ const styles = `
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: none
     border: 1px solid rgba(255,255,255,0.3);
     transition: all 0.3s ease;
     animation: bounce 2s infinite;
