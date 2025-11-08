@@ -214,7 +214,7 @@ export async function generateStaticParams() {
     { slug: 'jordan-solo-travel-guide-2025' },
     { slug: 'canada-yellowknife-aurora-solo-travel-2025' },
     { slug: 'colombia-female-solo-travel-guide-2025' },
-    { slug: 'asian-local-food-guide-2025' },
+    { slug: 'america-south-winter-solo-travel-guide-2025' },
     { slug: 'asian-local-food-guide-2025' },
     { slug: 'asian-local-food-guide-2025' },
     { slug: 'asian-local-food-guide-2025' },
