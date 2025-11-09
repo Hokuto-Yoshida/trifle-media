@@ -217,8 +217,8 @@ export async function generateStaticParams() {
     { slug: 'america-south-winter-solo-travel-guide-2025' },
     { slug: 'new-york-christmas-solo-travel-2025' },
     { slug: 'america-west-coast-winter-female-solo-travel-2025' },
-    { slug: 'asian-local-food-guide-2025' },
-    { slug: 'asian-local-food-guide-2025' },
+    { slug: 'kyushu-winter-onsen-solo-travel-2025' },
+    { slug: 'kanto-winter-daytrip-female-solo-2025' },
     { slug: 'asian-local-food-guide-2025' },
   ]
 }
