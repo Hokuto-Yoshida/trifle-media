@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { ArrowRight, Heart, Users, Shield } from 'lucide-react';
+import { ArrowRight, Heart, Users, Shield, Download } from 'lucide-react';
 
 const HeroSliderClient = () => {
   const [currentSlide, setCurrentSlide] = React.useState(0);
@@ -29,7 +29,7 @@ const HeroSliderClient = () => {
               </div>
               <h2 className="feature-title">直感的なスワイプで<br />理想の旅仲間を発見</h2>
               <p className="feature-description">
-                スワイプするだけで、同じ目的地や興味を持つ旅仲間を見つけられます。運命の出会いが、旅をさらに楽しく！
+                スワイプするだけで、同じ目的地や興味を持つ旅仲間を見つけられます。運命の出会いが、旅をさらに楽しく!
               </p>
             </div>
             <div className="feature-screenshot">
@@ -164,6 +164,17 @@ const HeroSliderClient = () => {
         <>
           <h2 className="hero-main-title">今すぐダウンロード</h2>
           <p className="hero-subtitle">一人旅をもっと楽しく、もっと安全に。</p>
+          <a 
+            href="https://apps.apple.com/jp/app/torifure/id6753066712"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="app-store-button"
+          >
+            <div className="app-store-icon">
+              <Download size={32} strokeWidth={2.5} />
+            </div>
+            App Storeでダウンロード
+          </a>
         </>
       )
     }

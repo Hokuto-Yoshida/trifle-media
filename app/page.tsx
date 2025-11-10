@@ -45,7 +45,7 @@ const styles = `
     width: 100%;
     height: calc(100vh - 120px);
     background: #3BC78f;
-    z-index: -1;
+    z-index: 0; /* keep behind header/content wrapper but clickable */
     overflow: hidden;
   }
 
@@ -86,11 +86,14 @@ const styles = `
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s ease-in-out;
+    pointer-events: none; /* prevent hidden slides from intercepting clicks */
   }
 
   .hero-slide.active {
     opacity: 1;
     transform: translateY(0);
+    pointer-events: auto;
+    z-index: 1; /* ensure active slide is on top */
   }
 
   /* Feature slides layout */
@@ -205,6 +208,39 @@ const styles = `
   .slide-indicator.active {
     background: white;
     transform: scale(1.2);
+  }
+
+  /* App Store button */
+  .app-store-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+  }
+
+  .app-store-button:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-1px);
+  }
+
+  .app-store-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
   }
 
   .scroll-indicator {
@@ -695,6 +731,24 @@ const HeroSlider = () => {
         <>
           <h2 className="hero-main-title">今すぐダウンロード</h2>
           <p className="hero-subtitle">一人旅をもっと楽しく、もっと安全に。</p>
+          <a 
+            href="https://apps.apple.com/jp/app/torifure/id6753066712"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-block',
+              marginTop: '24px'
+            }}
+          >
+            <img 
+              src="/images/app-store-badge.svg"
+              alt="App Storeからダウンロード"
+              style={{
+                width: '200px',
+                height: 'auto'
+              }}
+            />
+          </a>
         </>
       )
     }
