@@ -241,7 +241,7 @@ export async function generateStaticParams() {
     { slug: 'central-eastern-europe-christmas-market-solo-2025' },
     { slug: 'weekend-solo-travel-18l-packing-2025' },
     { slug: 'year-end-solo-travel-hidden-spots-2025' },
-    { slug: 'solo-travel-dining-anxiety-solution-2025' },
+    { slug: 'patagonia-female-solo-travel-summer-guide-2025' },
     { slug: 'solo-travel-dining-anxiety-solution-2025' },
     { slug: 'solo-travel-dining-anxiety-solution-2025' },
     { slug: 'solo-travel-dining-anxiety-solution-2025' },
