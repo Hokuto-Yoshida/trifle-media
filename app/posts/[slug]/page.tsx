@@ -246,7 +246,7 @@ export async function generateStaticParams() {
     { slug: 'losangeles-winter-female-solo-travel-december-2025' },
     { slug: 'cuba-female-solo-travel-complete-guide-2025' },
     { slug: 'sanfrancisco-winter-solo-travel-guide-2025' },
-    { slug: 'solo-travel-dining-anxiety-solution-2025' },
+    { slug: 'galapagos-solo-travel-december-2025' },
     { slug: 'solo-travel-dining-anxiety-solution-2025' },
     { slug: 'solo-travel-dining-anxiety-solution-2025' },
     { slug: 'solo-travel-dining-anxiety-solution-2025' },
