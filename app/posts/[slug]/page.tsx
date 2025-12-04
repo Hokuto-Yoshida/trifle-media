@@ -251,7 +251,7 @@ export async function generateStaticParams() {
     { slug: 'grandcanyon-winter-solo-complete-guide-2025' },
     { slug: 'weekend-solo-travel-osaka-kobe-2025' },
     { slug: 'kanazawa-solo-2nights-3days-winter-2025' },
-    { slug: 'solo-travel-dining-anxiety-solution-2025' },
+    { slug: 'matsumoto-asama-onsen-solo-2nights-3days-winter-2025' },
     { slug: 'solo-travel-dining-anxiety-solution-2025' },
     { slug: 'solo-travel-dining-anxiety-solution-2025' },
     { slug: 'solo-travel-dining-anxiety-solution-2025' },
