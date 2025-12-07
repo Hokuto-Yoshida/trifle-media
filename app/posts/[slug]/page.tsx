@@ -252,8 +252,8 @@ export async function generateStaticParams() {
     { slug: 'weekend-solo-travel-osaka-kobe-2025' },
     { slug: 'kanazawa-solo-2nights-3days-winter-2025' },
     { slug: 'matsumoto-asama-onsen-solo-2nights-3days-winter-2025' },
-    { slug: 'solo-travel-dining-anxiety-solution-2025' },
-    { slug: 'solo-travel-dining-anxiety-solution-2025' },
+    { slug: 'takayama-winter-solo-travel-2nights-3days-2025' },
+    { slug: 'laos-luangprabang-solo-travel-3nights-4days-2025' },
     { slug: 'solo-travel-dining-anxiety-solution-2025' },
   ]
 }
