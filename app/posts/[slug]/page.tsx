@@ -254,7 +254,7 @@ export async function generateStaticParams() {
     { slug: 'matsumoto-asama-onsen-solo-2nights-3days-winter-2025' },
     { slug: 'takayama-winter-solo-travel-2nights-3days-2025' },
     { slug: 'laos-luangprabang-solo-travel-3nights-4days-2025' },
-    { slug: 'solo-travel-dining-anxiety-solution-2025' },
+    { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
   ]
 }
 
