@@ -258,7 +258,7 @@ export async function generateStaticParams() {
     { slug: 'chiangmai-solo-travel-3nights-4days-2025' },
     { slug: 'mumbai-solo-travel-3nights-4days-budget-guide-2025' },
     { slug: 'nepal-kathmandu-solo-travel-3nights-4days-2025' },
-    { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
+    { slug: 'uzbekistan-samarkand-solo-travel-4nights-6days-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
