@@ -261,7 +261,7 @@ export async function generateStaticParams() {
     { slug: 'uzbekistan-samarkand-solo-travel-4nights-6days-2025' },
     { slug: 'danang-solo-travel-4nights-5days-budget-100k-2025' },
     { slug: 'penang-solo-travel-3nights-4days-complete-guide-2025' },
-    { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
+    { slug: 'colombo-solo-travel-3nights-4days-complete-guide-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
