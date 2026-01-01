@@ -273,7 +273,7 @@ export async function generateStaticParams() {
     { slug: 'canada-travel-tips-2025' },
     { slug: 'north-america-solo-travel-safety-2025' },
     { slug: 'mexico-city-cancun-solo-travel-4nights-6days-2025' },
-    { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
+    { slug: 'peru-cusco-machu-picchu-solo-travel-4nights-6days-budget-300k-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
