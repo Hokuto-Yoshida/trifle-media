@@ -275,7 +275,7 @@ export async function generateStaticParams() {
     { slug: 'mexico-city-cancun-solo-travel-4nights-6days-2025' },
     { slug: 'peru-cusco-machu-picchu-solo-travel-4nights-6days-budget-300k-2025' },
     { slug: 'argentina-buenos-aires-solo-travel-4nights-6days-budget-200k-2025' },
-    { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
+    { slug: 'chile-santiago-valparaiso-solo-2nights-3days-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
