@@ -279,7 +279,7 @@ export async function generateStaticParams() {
     { slug: 'weekend-overseas-travel-destinations-2025' },
     { slug: 'rio-de-janeiro-solo-travel-3nights-5days-2025' },
     { slug: 'cuba-havana-trinidad-varadero-solo-5nights-7days-2025' },
-    { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
+    { slug: 'costa-rica-solo-travel-3nights-4days-guide-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
