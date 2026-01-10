@@ -282,7 +282,7 @@ export async function generateStaticParams() {
     { slug: 'costa-rica-solo-travel-3nights-4days-guide-2025' },
     { slug: 'seattle-solo-travel-3nights-4days-budget-200k-2025' },
     { slug: 'boston-solo-travel-2nights-3days-budget-250k-2025' },
-    { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
+    { slug: 'colombia-3cities-bogota-medellin-cartagena-solo-5nights-7days-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
