@@ -285,7 +285,7 @@ export async function generateStaticParams() {
     { slug: 'colombia-3cities-bogota-medellin-cartagena-solo-5nights-7days-2025' },
     { slug: 'alaska-fairbanks-aurora-solo-3nights-5days-budget-250k-2025' },
     { slug: 'Guatemala-antigua-solo-travel-3nights-4days-complete-guide-2025' },
-    { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
+    { slug: 'toronto-niagara-solo-3nights-4days-budget-200k-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },{ slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
