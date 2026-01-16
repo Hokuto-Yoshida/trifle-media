@@ -288,7 +288,7 @@ export async function generateStaticParams() {
     { slug: 'toronto-niagara-solo-3nights-4days-budget-200k-2025' },
     { slug: 'san-francisco-solo-travel-3nights-4days-budget-200k-2025' },
     { slug: 'las-vegas-grand-canyon-sedona-solo-3nights-5days-budget-280k-2025' },
-    { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
+    { slug: 'solo-travel-budget-guide-50k-100k-150k-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
