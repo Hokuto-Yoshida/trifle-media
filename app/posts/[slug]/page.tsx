@@ -292,7 +292,7 @@ export async function generateStaticParams() {
     { slug: 'lisbon-solo-travel-guide-2026' },
     { slug: 'turkey-izmir-ephesus-pamukkale-solo-5nights-7days-budget-150k-2026' },
     { slug: 'turkey-antalya-solo-travel-3nights-4days-budget-120k-2026' },
-    { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
+    { slug: 'turkey-bursa-solo-1night-2days-complete-guide-2026' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
