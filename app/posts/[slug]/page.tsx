@@ -296,7 +296,7 @@ export async function generateStaticParams() {
     { slug: 'bhutan-taktsang-monastery-trekking-complete-guide-2026' },
     { slug: 'bolivia-uyuni-lapaz-solo-4nights-6days-budget-250k-2026' },
     { slug: 'taipei-solo-travel-2nights-3days-budget-100k-2025' },
-    { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
+    { slug: 'kanazawa-solo-1night-2days-winter-2026' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
