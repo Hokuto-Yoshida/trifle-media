@@ -298,7 +298,7 @@ export async function generateStaticParams() {
     { slug: 'taipei-solo-travel-2nights-3days-budget-100k-2025' },
     { slug: 'kanazawa-solo-1night-2days-winter-2026' },
     { slug: 'hida-takayama-shirakawago-solo-2nights-3days-2026' },
-    { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
+    { slug: 'hiroshima-miyajima-solo-2nights-3days-2026' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
