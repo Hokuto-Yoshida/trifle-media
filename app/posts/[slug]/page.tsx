@@ -304,7 +304,7 @@ export async function generateStaticParams() {
     { slug: 'asahikawa-biei-furano-solo-travel-2nights-3days-budget-80k-2026' },
     { slug: 'georgia-tbilisi-solo-3nights-5days-budget-150k-2026' },
     { slug: 'malta-valletta-gozo-comino-solo-3nights-5days-budget-250k-2026' },
-    { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
+    { slug: 'latvia-riga-solo-travel-guide-2026' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
