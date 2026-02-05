@@ -307,7 +307,7 @@ export async function generateStaticParams() {
     { slug: 'latvia-riga-solo-travel-guide-2026' },
     { slug: 'palau-solo-travel-3nights-5days-budget-250k-2026' },
     { slug: 'milan-solo-travel-3nights-4days-budget-250k-2026' },
-    { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
+    { slug: 'italy-4cities-complete-guide-2026' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
