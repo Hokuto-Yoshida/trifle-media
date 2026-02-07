@@ -309,7 +309,7 @@ export async function generateStaticParams() {
     { slug: 'milan-solo-travel-3nights-4days-budget-250k-2026' },
     { slug: 'italy-4cities-complete-guide-2026' },
     { slug: 'bolivia-uyuni-solo-female-complete-guide-2026' },
-    { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
+    { slug: 'colombia-medellin-solo-female-complete-guide-2026' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
     { slug: 'manila-solo-travel-3nights-4days-budget-2025' },
