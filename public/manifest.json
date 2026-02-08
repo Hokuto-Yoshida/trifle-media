@@ -1,7 +1,7 @@
 {
-  "name": "トリフレメディア - 若者のための一人旅特化メディア",
-  "short_name": "トリフレメディア",
-  "description": "若者のための一人旅特化メディア「トリフレ」。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。",
+  "name": "トリフレメチE��ア - 若老E�Eための一人旁E��化メチE��ア",
+  "short_name": "トリフレメチE��ア",
+  "description": "若老E�Eための一人旁E��化メチE��ア「トリフレ」。�Eめての一人旁E��ら海外ビギナ�E向けまで、安忁E�E安�Eな旁E�E惁E��をお届けします、E,
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -63,8 +63,8 @@
   "shortcuts": [
     {
       "name": "記事一覧",
-      "short_name": "記事",
-      "description": "最新の一人旅記事をチェック",
+      "short_name": "記亁E,
+      "description": "最新の一人旁E��事をチェチE��",
       "url": "/posts",
       "icons": [
         {
@@ -75,22 +75,20 @@
       ]
     },
     {
-      "name": "旅行診断",
+      "name": "旁E��診断",
       "short_name": "診断",
-      "description": "あなたにぴったりの旅先を診断",
-      "url": "/shindan",
+      "description": "あなたにぴったりの旁E�Eを診断",
       "icons": [
         {
-          "src": "/icons/shortcut-shindan.png",
           "sizes": "96x96",
           "type": "image/png"
         }
       ]
     },
     {
-      "name": "カテゴリ",
-      "short_name": "カテゴリ",
-      "description": "カテゴリから記事を探す",
+      "name": "カチE��リ",
+      "short_name": "カチE��リ",
+      "description": "カチE��リから記事を探ぁE,
       "url": "/categories",
       "icons": [
         {
@@ -101,9 +99,9 @@
       ]
     },
     {
-      "name": "アプリダウンロード",
+      "name": "アプリダウンローチE,
       "short_name": "アプリ",
-      "description": "トリフレアプリをダウンロード",
+      "description": "トリフレアプリをダウンローチE,
       "url": "/app",
       "icons": [
         {
@@ -120,28 +118,28 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "トップページ - デスクトップ表示"
+      "label": "トップ�Eージ - チE��クトップ表示"
     },
     {
       "src": "/screenshots/mobile-home.png",
       "sizes": "390x844",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "トップページ - モバイル表示"
+      "label": "トップ�Eージ - モバイル表示"
     },
     {
       "src": "/screenshots/desktop-posts.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "記事一覧ページ"
+      "label": "記事一覧ペ�Eジ"
     },
     {
       "src": "/screenshots/mobile-article.png",
       "sizes": "390x844",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "記事詳細ページ"
+      "label": "記事詳細ペ�Eジ"
     }
   ],
   "related_applications": [
