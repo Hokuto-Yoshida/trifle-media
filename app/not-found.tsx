@@ -77,19 +77,11 @@ export default function NotFound() {
               </Link>
               
               <Link
-                href="/category"
+                href="/categories"
                 className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-left"
               >
                 <div className="font-medium text-gray-900 dark:text-gray-100">カテゴリ一覧</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">興味のあるカテゴリから探す</div>
-              </Link>
-              
-              <Link
-                href="/shindan"
-                className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-left"
-              >
-                <div className="font-medium text-gray-900 dark:text-gray-100">旅行診断</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">あなたにぴったりの旅先を診断</div>
               </Link>
               
               <Link

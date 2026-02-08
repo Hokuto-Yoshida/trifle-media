@@ -206,7 +206,7 @@ export default function CategoryGrid({ categories, className }: CategoryGridProp
           return (
             <Link
               key={category.slug}
-              href={`/category/${category.slug}`}
+              href={`/categories/${category.slug}`}
               className="category-card-link"
             >
               <div className="category-card">

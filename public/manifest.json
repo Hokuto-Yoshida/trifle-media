@@ -91,7 +91,7 @@
       "name": "カテゴリ",
       "short_name": "カテゴリ",
       "description": "カテゴリから記事を探す",
-      "url": "/category",
+      "url": "/categories",
       "icons": [
         {
           "src": "/icons/shortcut-category.png",
