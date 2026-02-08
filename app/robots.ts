@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://media.trifle.jp';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com';
   
   return {
     rules: [

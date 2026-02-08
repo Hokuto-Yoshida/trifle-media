@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/posts';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://tripfriend.netlify.app'; // 独自ドメイン取得後に変更
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com'; // 迢ｬ閾ｪ繝峨Γ繧､繝ｳ蜿門ｾ怜ｾ後↓螟画峩
 
-  // 静的ページ
+  // 髱咏噪繝壹・繧ｸ
   const staticPages = [
     {
       url: baseUrl,
@@ -44,7 +44,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // カテゴリページ
+  // 繧ｫ繝・ざ繝ｪ繝壹・繧ｸ
   const categoryPages = [
     'domestic',
     'international', 
@@ -59,12 +59,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  // 記事ページ
+  // 險倅ｺ九・繝ｼ繧ｸ
   let postPages: any[] = [];
   try {
     const posts = await getAllPosts();
     postPages = posts
-      .filter((post: any) => !post.draft) // 下書きを除外
+      .filter((post: any) => !post.draft) // 荳区嶌縺阪ｒ髯､螟・
       .map((post: any) => ({
         url: `${baseUrl}/posts/${post.slug}`,
         lastModified: new Date(post.date),

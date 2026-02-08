@@ -4,6 +4,8 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import { ThemeProvider, Analytics } from '@/components';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com';
+
 const inter = Inter({ 
   subsets: ['latin'],
   variable: '--font-inter',
@@ -17,6 +19,7 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'トリフレメディア - 若者のための一人旅特化メディア',
     template: '%s | トリフレメディア',
@@ -29,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ja_JP',
-    url: 'https://media.trifle.jp',
+    url: siteUrl,
     siteName: 'トリフレメディア',
     title: 'トリフレメディア - 若者のための一人旅特化メディア',
     description: '若者のための一人旅特化メディア「トリフレ」。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。',
@@ -65,11 +68,11 @@ export const metadata: Metadata = {
     google: process.env.GOOGLE_SITE_VERIFICATION,
   },
   alternates: {
-    canonical: 'https://media.trifle.jp',
+    canonical: siteUrl,
     types: {
       'application/rss+xml': [
         {
-          url: 'https://media.trifle.jp/feed.xml',
+          url: `${siteUrl}/feed.xml`,
           title: 'トリフレメディア RSS Feed',
         },
       ],
