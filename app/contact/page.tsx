@@ -457,20 +457,7 @@ export default function ContactPage() {
                       required
                       rows={6}
                       className="form-textarea"
-                      placeholder="お問い合わせ内容を詳しくご記入ください
-
-【記事リクエストの場合】
-- 希望する記事のテーマ・内容
-- 知りたい情報・疑問点
-
-【取材依頼の場合】
-- 取材対象・内容
-- 希望時期・スケジュール
-- 連絡先情報
-
-【広告掲載の場合】
-- 掲載希望内容・期間
-- 予算・条件等"
+                      placeholder="お問い合わせ内容を詳しくご記入ください"
                     />
                   </div>
 
