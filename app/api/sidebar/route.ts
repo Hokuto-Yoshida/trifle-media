@@ -31,13 +31,10 @@ export async function GET() {
   });
 
   const order = ['国内旅行', '海外旅行', 'グルメ', '宿泊', '旅のコツ'] as const;
-  const categories: SidebarCategory[] = order
-    .map((name) => {
-      const info = categoryMap.get(name);
-      if (!info) return null;
-      return { name, slug: info.slug, count: info.count };
-    })
-    .filter((v): v is SidebarCategory => v !== null);
+  const categories: SidebarCategory[] = order.flatMap((name) => {
+    const info = categoryMap.get(name);
+    return info ? [{ name, slug: info.slug, count: info.count }] : [];
+  });
 
   return NextResponse.json({ latestPosts, categories });
 }
