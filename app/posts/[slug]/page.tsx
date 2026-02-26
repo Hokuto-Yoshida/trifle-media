@@ -6,6 +6,7 @@ import AdBanner from '@/components/AdBanner';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
 import Link from 'next/link';
 import TableOfContents from '@/components/TableOfContents';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com';
 
 interface PostPageProps {
   params: {
@@ -60,6 +61,10 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
         title: post.title,
         description: post.description,
         images: post.thumb ? [post.thumb] : [],
+        url: `${siteUrl}/posts/${post.slug}`,
+      },
+      alternates: {
+        canonical: `/posts/${post.slug}`,
       },
     };
   } catch (error) {
