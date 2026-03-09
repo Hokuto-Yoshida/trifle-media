@@ -2,42 +2,58 @@ import { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/posts';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com'; // 迢ｬ閾ｪ繝峨Γ繧､繝ｳ蜿門ｾ怜ｾ後↓螟画峩
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
+  const withTrailingSlash = (pathname: string = '') => {
+    if (!pathname) return `${baseUrl}/`;
+    return `${baseUrl}${pathname}/`;
+  };
 
   // 髱咏噪繝壹・繧ｸ
   const staticPages = [
     {
-      url: baseUrl,
+      url: withTrailingSlash(),
       lastModified: new Date(),
       changeFrequency: 'daily' as const,
       priority: 1,
     },
     {
-      url: `${baseUrl}/posts`,
+      url: withTrailingSlash('/posts'),
       lastModified: new Date(),
       changeFrequency: 'daily' as const,
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/categories`,
+      url: withTrailingSlash('/categories'),
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/sitemap`,
+      url: withTrailingSlash('/sitemap'),
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/contact`,
+      url: withTrailingSlash('/contact'),
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/privacy`,
+      url: withTrailingSlash('/privacy'),
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.3,
+    },
+    {
+      url: withTrailingSlash('/terms'),
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.3,
+    },
+    {
+      url: withTrailingSlash('/disclaimer'),
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.3,
@@ -50,10 +66,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'international', 
     'gourmet',
     'accommodation',
-    'safety',
     'tips'
   ].map(category => ({
-    url: `${baseUrl}/categories/${category}`,
+    url: withTrailingSlash(`/categories/${category}`),
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.7,
@@ -66,7 +81,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     postPages = posts
       .filter((post: any) => !post.draft) // 荳区嶌縺阪ｒ髯､螟・
       .map((post: any) => ({
-        url: `${baseUrl}/posts/${post.slug}`,
+        url: withTrailingSlash(`/posts/${post.slug}`),
         lastModified: new Date(post.date),
         changeFrequency: 'weekly' as const,
         priority: 0.6,

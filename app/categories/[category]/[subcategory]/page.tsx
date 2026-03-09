@@ -1,11 +1,14 @@
 // app/categories/[category]/[subcategory]/page.tsx
 
 import { ArrowRight, Home } from 'lucide-react';
+import { Metadata } from 'next';
 import { Header, Footer } from '@/components';
 import AdBanner from '@/components/AdBanner';
 import CategoryPagination from '@/components/CategoryPagination';
 import { getAllPosts } from '@/lib/posts';
 import type { PostMetadata } from '@/types/post';
+
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
 
 interface SubcategoryPageProps {
   params: {
@@ -569,22 +572,40 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
 }
 
 // メタデータの生成
-export async function generateMetadata({ params }: SubcategoryPageProps) {
+export async function generateMetadata({ params }: SubcategoryPageProps): Promise<Metadata> {
   const { category: categorySlug, subcategory: subcategorySlug } = params;
   const categoryInfo = categories[categorySlug as keyof typeof categories];
   
   if (!categoryInfo || !categoryInfo.subcategories) {
-    return {};
+    return {
+      robots: {
+        index: false,
+        follow: true,
+      },
+    };
   }
   
   const subcategoryName = categoryInfo.subcategories[subcategorySlug as keyof typeof categoryInfo.subcategories];
   
   if (!subcategoryName) {
-    return {};
+    return {
+      robots: {
+        index: false,
+        follow: true,
+      },
+    };
   }
   
   return {
     title: `${subcategoryName} | ${categoryInfo.name} | トリフレメディア`,
     description: `${categoryInfo.name}の${subcategoryName}に関する記事一覧。一人旅の計画に役立つ情報をお届けします。`,
+    openGraph: {
+      title: `${subcategoryName} | ${categoryInfo.name} | トリフレメディア`,
+      description: `${categoryInfo.name}の${subcategoryName}に関する記事一覧。一人旅の計画に役立つ情報をお届けします。`,
+      url: `${siteUrl}/categories/${categorySlug}/${subcategorySlug}/`,
+    },
+    alternates: {
+      canonical: `/categories/${categorySlug}/${subcategorySlug}/`,
+    },
   };
 }

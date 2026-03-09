@@ -68,7 +68,6 @@ export const metadata: Metadata = {
     google: process.env.GOOGLE_SITE_VERIFICATION,
   },
   alternates: {
-    canonical: siteUrl,
     types: {
       'application/rss+xml': [
         {

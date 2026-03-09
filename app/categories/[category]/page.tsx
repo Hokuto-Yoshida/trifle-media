@@ -1,9 +1,12 @@
 import { ArrowRight, Home } from 'lucide-react';
+import { Metadata } from 'next';
 import { Header, Footer } from '@/components';
 import AdBanner from '@/components/AdBanner';
 import CategoryPagination from '@/components/CategoryPagination';
 import { getAllPosts } from '@/lib/posts';
 import type { PostMetadata } from '@/types/post';
+
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
 
 interface CategoryPageProps {
   params: {
@@ -90,6 +93,33 @@ export async function generateStaticParams() {
   return Object.keys(categories).map((category) => ({
     category: category,
   }));
+}
+
+export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+  const categoryInfo = categories[params.category as keyof typeof categories];
+  if (!categoryInfo) {
+    return {
+      title: 'カテゴリが見つかりません | トリフレメディア',
+      description: '指定されたカテゴリは存在しません。',
+      robots: {
+        index: false,
+        follow: true,
+      },
+    };
+  }
+
+  return {
+    title: `${categoryInfo.name} | トリフレメディア`,
+    description: categoryInfo.description,
+    openGraph: {
+      title: `${categoryInfo.name} | トリフレメディア`,
+      description: categoryInfo.description,
+      url: `${siteUrl}/categories/${params.category}/`,
+    },
+    alternates: {
+      canonical: `/categories/${params.category}/`,
+    },
+  };
 }
 
 const categoryPageStyles = `
