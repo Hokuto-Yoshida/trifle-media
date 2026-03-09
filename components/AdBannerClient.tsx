@@ -172,11 +172,11 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
               <div className="section-heading">★ 新着記事</div>
               <div className="post-list">
                 {latestPosts.map((post) => (
-                  <a key={post.slug} href={`/posts/${post.slug}`} className="post-list-item">
-                    <img src={post.thumb} alt={post.title} className="post-thumb" />
-                    <div className="post-list-text">
-                      <span className="post-chip secondary">NEW</span>
-                      <p className="post-title">{post.title}</p>
+                  <a key={post.slug} href={`/posts/${post.slug}`} className="sidebar-post-item">
+                    <img src={post.thumb} alt={post.title} className="sidebar-post-thumb" />
+                    <div className="sidebar-post-text">
+                      <span className="sidebar-post-chip secondary">NEW</span>
+                      <p className="sidebar-post-title">{post.title}</p>
                     </div>
                   </a>
                 ))}
@@ -368,27 +368,29 @@ const adStyles = `
 
   .post-list { display: flex; flex-direction: column; gap: 12px; }
 
-  .post-list-item {
+  .sidebar-post-item {
     display: grid;
     grid-template-columns: 72px 1fr;
     gap: 10px;
     text-decoration: none;
     color: inherit;
-    align-items: center;
+    align-items: start;
+    overflow: hidden;
   }
 
-  .post-thumb {
+  .sidebar-post-thumb {
     width: 72px;
     height: 72px;
     object-fit: cover;
     border-radius: 8px;
     background: #f3f4f6;
     border: 1px solid #e5e7eb;
+    flex-shrink: 0;
   }
 
-  .post-list-text { display: flex; flex-direction: column; gap: 6px; }
+  .sidebar-post-text { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 
-  .post-chip {
+  .sidebar-post-chip {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -400,13 +402,16 @@ const adStyles = `
     width: fit-content;
   }
 
-  .post-chip.secondary { background: #eef2ff; color: #4338ca; }
+  .sidebar-post-chip.secondary { background: #eef2ff; color: #4338ca; }
 
-  .post-title {
+  .sidebar-post-title {
     font-size: 13px;
     font-weight: 600;
     color: #1f2937;
     line-height: 1.4;
+    margin: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .category-list { display: flex; flex-direction: column; gap: 10px; }
@@ -437,8 +442,8 @@ const adStyles = `
   @media (max-width: 1024px) {
     .ad-banner { width: 100%; margin: 40px 0 20px 0; }
     .ad-container { margin: 0 20px; }
-    .post-list-item { grid-template-columns: 96px 1fr; }
-    .post-thumb { width: 96px; height: 96px; }
+    .sidebar-post-item { grid-template-columns: 96px 1fr; }
+    .sidebar-post-thumb { width: 96px; height: 96px; }
     .ad-content { display: flex; align-items: center; text-align: left; gap: 15px; }
     .ad-image { width: 80px; height: 80px; object-fit: cover; flex-shrink: 0; margin-bottom: 0; }
     .ad-text { flex: 1; padding: 0; }
@@ -447,6 +452,7 @@ const adStyles = `
   @media (max-width: 640px) {
     .ad-container { margin: 0 16px; }
     .search-section, .ad-section, .sidebar-section { padding: 16px; }
-    .post-list-item { grid-template-columns: 80px 1fr; }
+    .sidebar-post-item { grid-template-columns: 80px 1fr; }
+    .sidebar-post-thumb { width: 80px; height: 80px; }
   }
 `;

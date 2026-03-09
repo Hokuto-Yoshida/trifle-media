@@ -58,6 +58,7 @@ const styles = `
     .header-top-nav{display:none}
     .nav-menu{display:none}
     .mobile-menu-button{display:block}
+    .mobile-sub-link{font-size:16px;line-height:1.5}
   }
 `;
 
