@@ -374,7 +374,7 @@ const adStyles = `
     gap: 10px;
     text-decoration: none;
     color: inherit;
-    align-items: start;
+    align-items: center;
     overflow: hidden;
   }
 
@@ -388,7 +388,7 @@ const adStyles = `
     flex-shrink: 0;
   }
 
-  .sidebar-post-text { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .sidebar-post-text { display: flex; flex-direction: column; gap: 6px; min-width: 0; justify-content: center; }
 
   .sidebar-post-chip {
     display: inline-flex;
@@ -444,6 +444,8 @@ const adStyles = `
     .ad-container { margin: 0 20px; }
     .sidebar-post-item { grid-template-columns: 96px 1fr; }
     .sidebar-post-thumb { width: 96px; height: 96px; }
+    .sidebar-post-item { align-items: start; }
+    .sidebar-post-text { justify-content: flex-start; }
     .ad-content { display: flex; align-items: center; text-align: left; gap: 15px; }
     .ad-image { width: 80px; height: 80px; object-fit: cover; flex-shrink: 0; margin-bottom: 0; }
     .ad-text { flex: 1; padding: 0; }
