@@ -24,7 +24,7 @@ async function getSearchableData(): Promise<PostMetadata[]> {
   // この部分は実際の記事データ取得ロジックに合わせて調整
   try {
     // 例：APIエンドポイントから取得、またはbuildTimeでJSONファイルを生成
-    const response = await fetch('/api/posts');
+    const response = await fetch('/data/posts.json');
     if (response.ok) {
       return await response.json();
     }

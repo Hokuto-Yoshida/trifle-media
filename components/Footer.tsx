@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Plane, Twitter, Instagram, Youtube, Mail, ExternalLink } from 'lucide-react';
+import { Plane, ExternalLink } from 'lucide-react';
 import { CATEGORIES } from '@/lib/categories';
 import type { Category } from '@/types/category';
 
@@ -360,14 +360,6 @@ const footerStyles = `
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const socialLinks = [
-    {
-      name: 'Instagram',
-      href: 'https://www.instagram.com/trifre_official/',
-      icon: Instagram,
-    },
-  ];
-
   const quickLinks = [
     { name: 'ホーム', href: '/' },
     { name: '記事一覧', href: '/posts' },
@@ -375,6 +367,7 @@ export default function Footer() {
   ];
 
   const supportLinks = [
+    { name: '編集部について', href: '/author' },
     { name: 'お問い合わせ', href: '/contact' },
     { name: 'プライバシーポリシー', href: '/privacy' },
     { name: '利用規約', href: '/terms' },
@@ -409,21 +402,6 @@ export default function Footer() {
                   若者のための一人旅特化メディア。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。
                 </p>
                 
-                {/* SNSリンク */}
-                <div className="social-links">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.name}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="social-link"
-                      aria-label={social.name}
-                    >
-                      <social.icon style={{ width: '20px', height: '20px' }} />
-                    </a>
-                  ))}
-                </div>
               </div>
 
               {/* クイックリンク */}

@@ -10,7 +10,7 @@ export default function AdBanner() {
   useEffect(() => {
     const fetchSidebar = async () => {
       try {
-        const res = await fetch('/api/sidebar');
+        const res = await fetch('/data/sidebar.json');
         if (!res.ok) throw new Error('sidebar fetch failed');
         const data = await res.json();
         setLatestPosts(data.latestPosts || []);

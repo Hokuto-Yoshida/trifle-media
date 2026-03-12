@@ -123,7 +123,7 @@ const styles = `
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-    backdrop-filter: none
+    backdrop-filter: none;
     flex-shrink: 0;
   }
 
@@ -152,7 +152,7 @@ const styles = `
     width: 240px;
     height: auto;
     position: relative;
-    filter: none
+    filter: none;
   }
 
   .screenshot-image {
@@ -253,7 +253,7 @@ const styles = `
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    backdrop-filter: none
+    backdrop-filter: none;
     border: 1px solid rgba(255,255,255,0.3);
     transition: all 0.3s ease;
     animation: bounce 2s infinite;

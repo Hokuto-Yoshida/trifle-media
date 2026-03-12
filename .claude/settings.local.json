@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /c/Users/81801/OneDrive/trifle-media-clean/components -type f -name \"*.tsx\" | xargs wc -l | tail -1)",
+      "Bash(git -C /c/Users/81801/OneDrive/trifle-media-clean log --oneline | head -20)",
+      "Bash(head -5 \"C:/Users/81801/OneDrive/trifle-media-clean/content/posts/\"*.mdx 2>/dev/null | grep \"^category:\" | sort | uniq -c | sort -rn | head -20)",
+      "Bash(cd \"C:/Users/81801/OneDrive/trifle-media-clean\" && node scripts/generate-data.js 2>&1)",
+      "Bash(grep -c \"readingTime: 15author:\" \"C:/Users/81801/OneDrive/trifle-media-clean/content/posts/\"*.mdx 2>/dev/null | grep -v \":0\" | wc -l)",
+      "Bash(grep -l \"readingTime: [0-9]*author:\" \"C:/Users/81801/OneDrive/trifle-media-clean/content/posts/\"*.mdx 2>/dev/null | wc -l)",
+      "Bash(grep -c \"readingTime: [0-9]*author:\" \"C:/Users/81801/OneDrive/trifle-media-clean/content/posts/\"*.mdx 2>/dev/null | grep -v \":0\" | wc -l)",
+      "Bash(cd \"C:/Users/81801/OneDrive/trifle-media-clean\" && npx tsc --noEmit 2>&1 | head -40)",
+      "Bash(cd \"C:/Users/81801/OneDrive/trifle-media-clean\" && node -e \"const {Hotel, Utensils, Lightbulb} = require\\('lucide-react'\\); console.log\\('Hotel:', !!Hotel, 'Utensils:', !!Utensils, 'Lightbulb:', !!Lightbulb\\);\" 2>&1)",
+      "Bash(cd \"C:/Users/81801/OneDrive/trifle-media-clean\" && node -e \"const lr = require\\('lucide-react'\\); console.log\\('Hotel:', typeof lr.Hotel, 'Utensils:', typeof lr.Utensils, 'Lightbulb:', typeof lr.Lightbulb\\);\")",
+      "Bash(cd \"C:/Users/81801/OneDrive/trifle-media-clean\" && node -e \"const matter = require\\('gray-matter'\\); const fs = require\\('fs'\\); const path = require\\('path'\\); const dir = 'content/posts'; const files = fs.readdirSync\\(dir\\).filter\\(f=>f.endsWith\\('.mdx'\\)\\); console.log\\('total:', files.length\\);\")",
+      "Bash(cd \"C:/Users/81801/OneDrive/trifle-media-clean\" && npx tsc --noEmit 2>&1)"
+    ]
+  }
+}

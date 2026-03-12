@@ -144,6 +144,7 @@ export async function getAllPosts(): Promise<ExtendedPostMetadata[]> {
             title: data.title || '',
             description: data.description || '',
             date: data.date || new Date().toISOString(),
+            updatedDate: data.updatedDate || undefined,
             category: data.category || '未分類',
             subcategory: data.subcategory || undefined,
             tags: data.tags || [],
@@ -152,7 +153,7 @@ export async function getAllPosts(): Promise<ExtendedPostMetadata[]> {
             author: typeof data.author === 'string' ? { name: data.author } : (data.author || { name: 'トリフレ編集部' }),
             featured: data.featured || false,
             draft: data.draft || false,
-            filePath: relativePath, // デバッグ用
+            filePath: relativePath,
           } as ExtendedPostMetadata;
         } catch (error) {
           console.error(`Error processing file ${filePath}:`, error);
@@ -210,8 +211,9 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       slug,
       title: data.title || '',
       description: data.description || '',
-      content: htmlContent, // 変換されたHTMLを返す
+      content: htmlContent,
       date: data.date || new Date().toISOString(),
+      updatedDate: data.updatedDate || undefined,
       category: data.category || '未分類',
       tags: data.tags || [],
       thumb: data.thumb || data.ogImage || '/images/default-thumb.jpg',

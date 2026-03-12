@@ -1,11 +1,13 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Calendar, Clock, User, Tag, MapPin, Users } from 'lucide-react';
+import { Calendar, Clock, User, Tag, MapPin, RefreshCw } from 'lucide-react';
 import { Header, Footer } from '@/components';
 import AdBanner from '@/components/AdBanner';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
+import { getCategoryByName } from '@/lib/categories';
 import Link from 'next/link';
 import TableOfContents from '@/components/TableOfContents';
+import Breadcrumb from '@/components/Breadcrumb';
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
 
 interface PostPageProps {
@@ -19,6 +21,7 @@ interface ExtendedPostMetadata {
   title: string;
   description: string;
   date: string;
+  updatedDate?: string;
   category: string;
   subcategory?: string;
   tags: string[];
@@ -54,14 +57,26 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       };
     }
 
+    const ogImage = post.thumb || `${siteUrl}/images/og-image.jpg`;
     return {
       title: `${post.title} | トリフレメディア`,
       description: post.description,
       openGraph: {
         title: post.title,
         description: post.description,
-        images: post.thumb ? [post.thumb] : [],
+        type: 'article',
+        publishedTime: post.date,
+        modifiedTime: (post as any).updatedDate || post.date,
+        authors: [post.author?.name || 'トリフレ編集部'],
+        tags: post.tags,
+        images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
         url: `${siteUrl}/posts/${post.slug}/`,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: post.title,
+        description: post.description,
+        images: [ogImage],
       },
       alternates: {
         canonical: `/posts/${post.slug}/`,
@@ -609,7 +624,7 @@ const postPageStyles = `
 
 export default async function PostPage({ params }: PostPageProps) {
   let post: ExtendedPostMetadata;
-  
+
   try {
     post = await getPostBySlug(params.slug) as ExtendedPostMetadata;
     if (!post || post.draft) {
@@ -619,6 +634,33 @@ export default async function PostPage({ params }: PostPageProps) {
     console.error('Error loading post:', error);
     notFound();
   }
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description,
+    image: post.thumb || `${siteUrl}/images/og-image.jpg`,
+    datePublished: new Date(post.date).toISOString(),
+    dateModified: post.updatedDate ? new Date(post.updatedDate).toISOString() : new Date(post.date).toISOString(),
+    author: {
+      '@type': 'Organization',
+      name: post.author?.name || 'トリフレ編集部',
+      url: siteUrl,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'トリフレメディア',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/logo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/posts/${post.slug}/`,
+    },
+  };
 
   // 関連記事を取得（同じカテゴリの他の記事）
   let relatedPosts: ExtendedPostMetadata[] = [];
@@ -637,6 +679,10 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <style dangerouslySetInnerHTML={{ __html: postPageStyles }} />
       
       <div className="post-page">
@@ -644,15 +690,15 @@ export default async function PostPage({ params }: PostPageProps) {
         
         <div className="content-layout">
           <main className="main-content-area">
-            {/* Back Navigation */}
-            <section className="back-nav">
-              <div className="container">
-              <Link href="/posts" className="back-link">
-                <ArrowLeft size={16} />
-                記事一覧に戻る
-              </Link>
-            </div>
-          </section>
+            {/* パンくずリスト */}
+          <Breadcrumb
+            siteUrl={siteUrl}
+            items={[
+              { label: '記事一覧', href: '/posts/' },
+              { label: post.category, href: `/categories/${getCategorySlug(post.category)}/` },
+              { label: post.title },
+            ]}
+          />
 
           {/* Article Header */}
           <section className="article-header">
@@ -673,13 +719,25 @@ export default async function PostPage({ params }: PostPageProps) {
                     day: 'numeric'
                   })}</span>
                 </div>
+                {post.updatedDate && (
+                  <div className="meta-item">
+                    <RefreshCw size={16} />
+                    <span>更新: {new Date(post.updatedDate).toLocaleDateString('ja-JP', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}</span>
+                  </div>
+                )}
                 <div className="meta-item">
                   <Clock size={16} />
                   <span>約{post.readingTime}分で読めます</span>
                 </div>
                 <div className="meta-item">
                   <User size={16} />
-                  <span>{post.author?.name || 'トリフレ編集部'}</span>
+                  <Link href="/author/" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    {post.author?.name || 'トリフレ編集部'}
+                  </Link>
                 </div>
               </div>
 
@@ -725,9 +783,12 @@ export default async function PostPage({ params }: PostPageProps) {
             <div className="container">
               <div className="author-box">
                 <div className="author-header">
-                  <div className="author-avatar">
-                    <User size={28} color="white" />
-                  </div>
+                  <img
+                    src="/images/editor-avatar.png"
+                    alt="トリフレメディア編集部"
+                    className="author-avatar"
+                    style={{ objectFit: 'cover' }}
+                  />
                   <div className="author-info">
                     <h3>トリフレ編集部</h3>
                     <div className="author-role">一人旅専門メディア</div>
@@ -741,6 +802,12 @@ export default async function PostPage({ params }: PostPageProps) {
                     <MapPin size={14} />
                     <span>編集部総計<span className="stat-number">60カ国</span>の旅行経験</span>
                   </div>
+                  <Link
+                    href="/author/"
+                    style={{ marginLeft: 'auto', color: '#00d084', fontSize: '13px', textDecoration: 'none', fontWeight: 500 }}
+                  >
+                    プロフィールを見る →
+                  </Link>
                 </div>
               </div>
             </div>
@@ -775,16 +842,7 @@ export default async function PostPage({ params }: PostPageProps) {
   );
 }
 
-// カテゴリ名からスラッグを取得するヘルパー関数
+// カテゴリ名からスラッグを取得するヘルパー関数（lib/categories.ts を参照）
 function getCategorySlug(categoryName: string): string {
-  const categoryMapping: Record<string, string> = {
-    '国内旅行': 'domestic',
-    '海外旅行': 'international',
-    'グルメ': 'gourmet',
-    '宿泊': 'accommodation',
-    '安全・準備': 'safety',
-    '旅のコツ': 'tips',
-  };
-  
-  return categoryMapping[categoryName] || 'domestic';
+  return getCategoryByName(categoryName)?.slug || 'domestic';
 }

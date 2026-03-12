@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/posts';
+import { CATEGORIES } from '@/lib/categories';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
@@ -58,33 +59,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.3,
     },
+    {
+      url: withTrailingSlash('/author'),
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
   ];
 
-  // 繧ｫ繝・ざ繝ｪ繝壹・繧ｸ
-  const categoryPages = [
-    'domestic',
-    'international', 
-    'gourmet',
-    'accommodation',
-    'tips'
-  ].map(category => ({
-    url: withTrailingSlash(`/categories/${category}`),
+  // カテゴリページ（lib/categories.ts から動的生成）
+  const categoryPages = CATEGORIES.map(category => ({
+    url: withTrailingSlash(`/categories/${category.slug}`),
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
-    priority: 0.7,
+    priority: category.featured ? 0.8 : 0.7,
   }));
 
-  // 險倅ｺ九・繝ｼ繧ｸ
+  // 記事ページ（featured記事は優先度を上げる）
   let postPages: any[] = [];
   try {
     const posts = await getAllPosts();
     postPages = posts
-      .filter((post: any) => !post.draft) // 荳区嶌縺阪ｒ髯､螟・
+      .filter((post: any) => !post.draft)
       .map((post: any) => ({
         url: withTrailingSlash(`/posts/${post.slug}`),
-        lastModified: new Date(post.date),
+        lastModified: post.updatedDate ? new Date(post.updatedDate) : new Date(post.date),
         changeFrequency: 'weekly' as const,
-        priority: 0.6,
+        priority: post.featured ? 0.8 : 0.6,
       }));
   } catch (error) {
     console.error('Error loading posts for sitemap:', error);

@@ -4,6 +4,7 @@ export interface Post {
   description: string;
   content: string;
   date: string;
+  updatedDate?: string;
   category: string;
   tags: string[];
   thumb: string;
@@ -50,6 +51,7 @@ export interface PostMetadata {
   title: string;
   description: string;
   date: string;
+  updatedDate?: string;
   category: string;
   tags: string[];
   thumb: string;

@@ -1,3 +1,7 @@
+// このファイルは next.config.mjs に統合されました。
+// Next.js は .mjs を優先するため、このファイルは読み込まれません。
+// 設定変更は next.config.mjs を編集してください。
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
