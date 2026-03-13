@@ -12,7 +12,8 @@
       "Bash(cd \"C:/Users/81801/OneDrive/trifle-media-clean\" && node -e \"const {Hotel, Utensils, Lightbulb} = require\\('lucide-react'\\); console.log\\('Hotel:', !!Hotel, 'Utensils:', !!Utensils, 'Lightbulb:', !!Lightbulb\\);\" 2>&1)",
       "Bash(cd \"C:/Users/81801/OneDrive/trifle-media-clean\" && node -e \"const lr = require\\('lucide-react'\\); console.log\\('Hotel:', typeof lr.Hotel, 'Utensils:', typeof lr.Utensils, 'Lightbulb:', typeof lr.Lightbulb\\);\")",
       "Bash(cd \"C:/Users/81801/OneDrive/trifle-media-clean\" && node -e \"const matter = require\\('gray-matter'\\); const fs = require\\('fs'\\); const path = require\\('path'\\); const dir = 'content/posts'; const files = fs.readdirSync\\(dir\\).filter\\(f=>f.endsWith\\('.mdx'\\)\\); console.log\\('total:', files.length\\);\")",
-      "Bash(cd \"C:/Users/81801/OneDrive/trifle-media-clean\" && npx tsc --noEmit 2>&1)"
+      "Bash(cd \"C:/Users/81801/OneDrive/trifle-media-clean\" && npx tsc --noEmit 2>&1)",
+      "Bash(find /c/Users/81801/OneDrive/trifle-media-clean -type f \\\\\\( -name \"*.tsx\" -o -name \"*.ts\" -o -name \"*.jsx\" -o -name \"*.js\" \\\\\\) ! -path \"*/node_modules/*\" ! -path \"*/.next/*\" | xargs grep -l \"sidebar\\\\|Sidebar\\\\|side-bar\" 2>/dev/null | head -20)"
     ]
   }
 }

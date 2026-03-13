@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Search } from 'lucide-react';
 
 type SubCategory = { name: string; href: string };
 type CategoryItem = { 
@@ -54,11 +54,18 @@ const styles = `
   .chevron-icon{transition:transform .2s}
   .chevron-icon.rotated{transform:rotate(180deg)}
 
+  .mobile-search-bar{display:none;background:#f9fafb;border-bottom:1px solid #e5e7eb;padding:10px 20px}
+  .mobile-search-form{display:flex;border:1px solid #d1d5db;border-radius:6px;overflow:hidden;background:#fff}
+  .mobile-search-input{flex:1;padding:10px 12px;border:none;outline:none;font-size:15px;background:transparent;color:#333}
+  .mobile-search-btn{padding:10px 14px;background:#00d084;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background-color .2s}
+  .mobile-search-btn:hover{background:#059669}
+
   @media (max-width: 968px){
     .header-top-nav{display:none}
     .nav-menu{display:none}
     .mobile-menu-button{display:block}
     .mobile-sub-link{font-size:16px;line-height:1.5}
+    .mobile-search-bar{display:block}
   }
 `;
 
@@ -129,6 +136,14 @@ const CATEGORY_LINKS: CategoryItem[] = [
 export default function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
+  const [mobileSearch, setMobileSearch] = useState('');
+
+  const handleMobileSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (mobileSearch.trim()) {
+      window.location.href = `/search#q=${encodeURIComponent(mobileSearch.trim())}`;
+    }
+  };
 
   const toggleMobileCategory = (categoryName: string) => {
     setExpandedCategories(prev => {
@@ -169,6 +184,22 @@ export default function SiteHeader() {
             </nav>
           </div>
         </header>
+
+        {/* モバイル検索バー（スマホのみ表示） */}
+        <div className="mobile-search-bar">
+          <form onSubmit={handleMobileSearch} className="mobile-search-form">
+            <input
+              type="text"
+              placeholder="キーワードで検索"
+              value={mobileSearch}
+              onChange={(e) => setMobileSearch(e.target.value)}
+              className="mobile-search-input"
+            />
+            <button type="submit" className="mobile-search-btn">
+              <Search size={18} />
+            </button>
+          </form>
+        </div>
 
         {/* 下段（緑） */}
         <nav className="nav-header" aria-label="カテゴリナビ">
