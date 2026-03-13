@@ -396,8 +396,7 @@ const postPageStyles = `
   .article-content table {
     width: 100%;
     max-width: 100%;
-    overflow-x: auto;
-    display: block;
+    display: table;
     border-collapse: collapse;
     margin: 2rem 0;
   }
