@@ -13,6 +13,8 @@ const matter = require('gray-matter');
 
 const CONTENT_DIR = path.join(__dirname, '..', 'content', 'posts');
 const OUTPUT_DIR = path.join(__dirname, '..', 'public', 'data');
+const PUBLIC_DIR = path.join(__dirname, '..', 'public');
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
 
 const CATEGORY_SLUG_MAP = {
   '国内旅行': 'domestic',
@@ -52,17 +54,21 @@ function loadAllPosts() {
 
       if (data.draft) continue;
 
+      const slug = data.slug || getSlugFromFilename(file);
       posts.push({
-        slug: data.slug || getSlugFromFilename(file),
+        slug,
         title: data.title || '',
         description: data.description || '',
         date: data.date || '',
+        updatedDate: data.updatedDate || null,
         category: data.category || '',
+        subcategory: data.subcategory || null,
         tags: Array.isArray(data.tags) ? data.tags : [],
         thumb: data.thumb || '',
         readingTime: data.readingTime || 5,
         author: data.author || null,
         featured: data.featured || false,
+        url: `${SITE_URL}/posts/${slug}/`,
       });
     } catch (err) {
       console.warn(`スキップ: ${file} - ${err.message}`);
@@ -113,8 +119,64 @@ function generateSidebarData(posts) {
   console.log(`✅ サイドバーデータ生成完了 → public/data/sidebar.json`);
 }
 
+function escapeXml(str) {
+  if (!str) return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+function generateRssFeed(posts) {
+  const feedPosts = posts.slice(0, 50);
+  const buildDate = new Date().toUTCString();
+  const lastBuildDate = feedPosts.length > 0 ? new Date(feedPosts[0].date).toUTCString() : buildDate;
+
+  const items = feedPosts.map(post => {
+    const pubDate = new Date(post.date).toUTCString();
+    const categories = post.tags.map(tag => `    <category>${escapeXml(tag)}</category>`).join('\n');
+    return `  <item>
+    <title>${escapeXml(post.title)}</title>
+    <link>${escapeXml(post.url)}</link>
+    <guid isPermaLink="true">${escapeXml(post.url)}</guid>
+    <description>${escapeXml(post.description)}</description>
+    <pubDate>${pubDate}</pubDate>
+    <category>${escapeXml(post.category)}</category>
+${categories}
+  </item>`;
+  }).join('\n');
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>トリフレメディア</title>
+    <link>${SITE_URL}/</link>
+    <description>一人旅を楽しむための情報を発信する専門メディア</description>
+    <language>ja</language>
+    <lastBuildDate>${lastBuildDate}</lastBuildDate>
+    <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>${SITE_URL}/images/og-image.jpg</url>
+      <title>トリフレメディア</title>
+      <link>${SITE_URL}/</link>
+    </image>
+${items}
+  </channel>
+</rss>`;
+
+  const outputPath = path.join(PUBLIC_DIR, 'feed.xml');
+  fs.writeFileSync(outputPath, xml, 'utf-8');
+  console.log(`✅ RSS Feed生成完了: ${feedPosts.length}件 → public/feed.xml`);
+}
+
 // メイン処理
 const posts = loadAllPosts();
 generateSearchIndex(posts);
 generateSidebarData(posts);
+generateRssFeed(posts);
 console.log('🎉 静的データ生成完了');

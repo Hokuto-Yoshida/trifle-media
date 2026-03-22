@@ -13,7 +13,15 @@
       "Bash(cd \"C:/Users/81801/OneDrive/trifle-media-clean\" && node -e \"const lr = require\\('lucide-react'\\); console.log\\('Hotel:', typeof lr.Hotel, 'Utensils:', typeof lr.Utensils, 'Lightbulb:', typeof lr.Lightbulb\\);\")",
       "Bash(cd \"C:/Users/81801/OneDrive/trifle-media-clean\" && node -e \"const matter = require\\('gray-matter'\\); const fs = require\\('fs'\\); const path = require\\('path'\\); const dir = 'content/posts'; const files = fs.readdirSync\\(dir\\).filter\\(f=>f.endsWith\\('.mdx'\\)\\); console.log\\('total:', files.length\\);\")",
       "Bash(cd \"C:/Users/81801/OneDrive/trifle-media-clean\" && npx tsc --noEmit 2>&1)",
-      "Bash(find /c/Users/81801/OneDrive/trifle-media-clean -type f \\\\\\( -name \"*.tsx\" -o -name \"*.ts\" -o -name \"*.jsx\" -o -name \"*.js\" \\\\\\) ! -path \"*/node_modules/*\" ! -path \"*/.next/*\" | xargs grep -l \"sidebar\\\\|Sidebar\\\\|side-bar\" 2>/dev/null | head -20)"
+      "Bash(find /c/Users/81801/OneDrive/trifle-media-clean -type f \\\\\\( -name \"*.tsx\" -o -name \"*.ts\" -o -name \"*.jsx\" -o -name \"*.js\" \\\\\\) ! -path \"*/node_modules/*\" ! -path \"*/.next/*\" | xargs grep -l \"sidebar\\\\|Sidebar\\\\|side-bar\" 2>/dev/null | head -20)",
+      "Bash(xargs ls:*)",
+      "Bash(grep -r \"canonical\\\\|og:\\\\|twitter:\" C:Users81801OneDrivetrifle-media-clean/app --include=*.tsx --include=*.ts)",
+      "Bash(find C:Users81801OneDrivetrifle-media-clean -name *.xml -o -name *feed*)",
+      "Bash(grep -r \"application/ld\\\\|schema.org\\\\|breadcrumb\\\\|Article\" C:Users81801OneDrivetrifle-media-clean/app --include=*.tsx --include=*.ts)",
+      "Bash(grep -B 5 application/ld+json C:Users81801OneDrivetrifle-media-clean/app/posts/[slug]/page.tsx)",
+      "Bash(node scripts/generate-data.js)",
+      "Bash(node -e \"const d=require\\(''./public/data/posts.json''\\); const p=d[0]; console.log\\(JSON.stringify\\({slug:p.slug,url:p.url,updatedDate:p.updatedDate,subcategory:p.subcategory},null,2\\)\\)\")",
+      "Bash(node -e \"const d=JSON.parse\\(require\\(''''fs''''\\).readFileSync\\(''''/dev/stdin'''',''''utf-8''''\\)\\); console.log\\(''''件数:'''', d.length\\); console.log\\(''''フィールド:'''', Object.keys\\(d[0]\\)\\)\")"
     ]
   }
 }

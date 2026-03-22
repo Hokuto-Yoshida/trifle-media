@@ -639,6 +639,7 @@ export default async function PostPage({ params }: PostPageProps) {
     '@type': 'Article',
     headline: post.title,
     description: post.description,
+    url: `${siteUrl}/posts/${post.slug}/`,
     image: post.thumb || `${siteUrl}/images/og-image.jpg`,
     datePublished: new Date(post.date).toISOString(),
     dateModified: post.updatedDate ? new Date(post.updatedDate).toISOString() : new Date(post.date).toISOString(),
@@ -659,6 +660,8 @@ export default async function PostPage({ params }: PostPageProps) {
       '@type': 'WebPage',
       '@id': `${siteUrl}/posts/${post.slug}/`,
     },
+    ...(post.tags && post.tags.length > 0 && { keywords: post.tags.join(', ') }),
+    ...(post.category && { articleSection: post.category }),
   };
 
   // 関連記事を取得（同じカテゴリの他の記事）
