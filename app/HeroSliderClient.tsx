@@ -164,17 +164,30 @@ const HeroSliderClient = () => {
         <>
           <h2 className="hero-main-title">今すぐダウンロード</h2>
           <p className="hero-subtitle">一人旅をもっと楽しく、もっと安全に。</p>
-          <a 
-            href="https://apps.apple.com/jp/app/torifure/id6753066712"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="app-store-button"
-          >
-            <div className="app-store-icon">
-              <Download size={32} strokeWidth={2.5} />
-            </div>
-            App Storeでダウンロード
-          </a>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <a
+              href="https://apps.apple.com/jp/app/torifure/id6753066712"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="app-store-button"
+            >
+              <div className="app-store-icon">
+                <Download size={32} strokeWidth={2.5} />
+              </div>
+              App Storeでダウンロード
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.torifure.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="app-store-button"
+            >
+              <div className="app-store-icon">
+                <Download size={32} strokeWidth={2.5} />
+              </div>
+              Google Playでダウンロード
+            </a>
+          </div>
         </>
       )
     }
