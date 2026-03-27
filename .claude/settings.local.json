@@ -21,7 +21,24 @@
       "Bash(grep -B 5 application/ld+json C:Users81801OneDrivetrifle-media-clean/app/posts/[slug]/page.tsx)",
       "Bash(node scripts/generate-data.js)",
       "Bash(node -e \"const d=require\\(''./public/data/posts.json''\\); const p=d[0]; console.log\\(JSON.stringify\\({slug:p.slug,url:p.url,updatedDate:p.updatedDate,subcategory:p.subcategory},null,2\\)\\)\")",
-      "Bash(node -e \"const d=JSON.parse\\(require\\(''''fs''''\\).readFileSync\\(''''/dev/stdin'''',''''utf-8''''\\)\\); console.log\\(''''件数:'''', d.length\\); console.log\\(''''フィールド:'''', Object.keys\\(d[0]\\)\\)\")"
+      "Bash(node -e \"const d=JSON.parse\\(require\\(''''fs''''\\).readFileSync\\(''''/dev/stdin'''',''''utf-8''''\\)\\); console.log\\(''''件数:'''', d.length\\); console.log\\(''''フィールド:'''', Object.keys\\(d[0]\\)\\)\")",
+      "Bash(grep -h ^category: C:/Users/81801/OneDrive/trifle-media-clean/content/posts/*.mdx)",
+      "Bash(grep -h ^subcategory: C:/Users/81801/OneDrive/trifle-media-clean/content/posts/*.mdx)",
+      "Bash(grep:*)",
+      "WebSearch",
+      "WebFetch(domain:travel.rakuten.co.jp)",
+      "WebFetch(domain:faq.ikyu.com)",
+      "WebFetch(domain:www.jalan.net)",
+      "WebFetch(domain:www.agoda-go.com)",
+      "WebFetch(domain:www.tour.ne.jp)",
+      "WebFetch(domain:tabi-mania.com)",
+      "WebFetch(domain:appllio.com)",
+      "WebFetch(domain:fivestar-corporation.co.jp)",
+      "WebFetch(domain:event.rakuten.co.jp)",
+      "WebFetch(domain:ameblo.jp)",
+      "WebFetch(domain:www.expedia.co.jp)",
+      "WebFetch(domain:tanukineko.net)",
+      "WebFetch(domain:urtrip.jp)"
     ]
   }
 }
