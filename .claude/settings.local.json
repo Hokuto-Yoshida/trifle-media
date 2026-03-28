@@ -44,7 +44,11 @@
       "WebFetch(domain:www.airalo.com)",
       "WebFetch(domain:kakaku.com)",
       "WebFetch(domain:esim.holafly.com)",
-      "WebFetch(domain:world-esim.com)"
+      "WebFetch(domain:world-esim.com)",
+      "WebFetch(domain:www.anzen.mofa.go.jp)",
+      "WebFetch(domain:www.arukikata.co.jp)",
+      "WebFetch(domain:kaigaianzen.jp)",
+      "WebFetch(domain:www.mofa.go.jp)"
     ]
   }
 }
