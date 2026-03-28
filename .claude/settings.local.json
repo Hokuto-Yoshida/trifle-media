@@ -38,7 +38,13 @@
       "WebFetch(domain:ameblo.jp)",
       "WebFetch(domain:www.expedia.co.jp)",
       "WebFetch(domain:tanukineko.net)",
-      "WebFetch(domain:urtrip.jp)"
+      "WebFetch(domain:urtrip.jp)",
+      "WebFetch(domain:www.trifa.co)",
+      "WebFetch(domain:japanconnect-esim.store)",
+      "WebFetch(domain:www.airalo.com)",
+      "WebFetch(domain:kakaku.com)",
+      "WebFetch(domain:esim.holafly.com)",
+      "WebFetch(domain:world-esim.com)"
     ]
   }
 }
