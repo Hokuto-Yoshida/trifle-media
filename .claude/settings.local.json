@@ -48,7 +48,16 @@
       "WebFetch(domain:www.anzen.mofa.go.jp)",
       "WebFetch(domain:www.arukikata.co.jp)",
       "WebFetch(domain:kaigaianzen.jp)",
-      "WebFetch(domain:www.mofa.go.jp)"
+      "WebFetch(domain:www.mofa.go.jp)",
+      "WebFetch(domain:www.konest.com)",
+      "WebFetch(domain:madamefigaro.jp)",
+      "WebFetch(domain:tpl-wing.net)",
+      "WebFetch(domain:www.kanto-bus.co.jp)",
+      "WebFetch(domain:my-best.com)",
+      "WebFetch(domain:travel.willer.co.jp)",
+      "WebFetch(domain:www.bushikaku.net)",
+      "Bash(find C:/Users/81801/OneDrive/trifle-media-clean -name *.config.* -o -name mdx.* -o -name *.config.js -o -name *.config.ts)",
+      "Bash(find C:/Users/81801/OneDrive/trifle-media-clean -path */node_modules -prune -o -type f -name *Alert* -o -name *Callout* -o -name *Note*)"
     ]
   }
 }
