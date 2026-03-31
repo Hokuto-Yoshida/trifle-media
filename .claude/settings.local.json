@@ -58,7 +58,9 @@
       "WebFetch(domain:www.bushikaku.net)",
       "Bash(find C:/Users/81801/OneDrive/trifle-media-clean -name *.config.* -o -name mdx.* -o -name *.config.js -o -name *.config.ts)",
       "Bash(find C:/Users/81801/OneDrive/trifle-media-clean -path */node_modules -prune -o -type f -name *Alert* -o -name *Callout* -o -name *Note*)",
-      "Bash(ls C:Users81801OneDrivetrifle-media-cleancontentposts*.mdx)"
+      "Bash(ls C:Users81801OneDrivetrifle-media-cleancontentposts*.mdx)",
+      "Bash(xargs -I{} basename {})",
+      "Bash(ls:*)"
     ]
   }
 }
