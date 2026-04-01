@@ -60,7 +60,12 @@
       "Bash(find C:/Users/81801/OneDrive/trifle-media-clean -path */node_modules -prune -o -type f -name *Alert* -o -name *Callout* -o -name *Note*)",
       "Bash(ls C:Users81801OneDrivetrifle-media-cleancontentposts*.mdx)",
       "Bash(xargs -I{} basename {})",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(for file:*)",
+      "Bash(do if:*)",
+      "Bash(then echo:*)",
+      "Bash(fi)",
+      "Bash(done)"
     ]
   }
 }
