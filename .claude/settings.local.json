@@ -65,7 +65,8 @@
       "Bash(do if:*)",
       "Bash(then echo:*)",
       "Bash(fi)",
-      "Bash(done)"
+      "Bash(done)",
+      "WebFetch(domain:unsplash.com)"
     ]
   }
 }
