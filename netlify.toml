@@ -19,3 +19,9 @@
   to = "/posts/barcelona-winter-solo-travel-2025/"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/posts/golden-week-solo-travel-2026/"
+  to = "/posts/gw-solo-travel-2026/"
+  status = 301
+  force = true
