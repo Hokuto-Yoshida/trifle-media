@@ -67,7 +67,10 @@
       "Bash(fi)",
       "Bash(done)",
       "WebFetch(domain:unsplash.com)",
-      "Bash(find /c/Users/81801/OneDrive/trifle-media-clean -type f \\\\\\(-name *sitemap* -o -name *route* -o -name next.config* \\\\\\))"
+      "Bash(find /c/Users/81801/OneDrive/trifle-media-clean -type f \\\\\\(-name *sitemap* -o -name *route* -o -name next.config* \\\\\\))",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Read(//c/Users/81801/OneDrive/trifle-media-clean/content/posts/**)"
     ]
   }
 }
