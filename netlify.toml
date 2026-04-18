@@ -1,3 +1,21 @@
 [build]
   command = "npm run build"
   publish = "out"
+
+# SEO redirects
+[[redirects]]
+  from = "/posts/laos-luangprabang-solo-travel-2025/"
+  to = "/posts/laos-luangprabang-solo-travel-3nights-4days-2025/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/posts/portugal-lisbon-solo-travel-winter-2025/"
+  to = "/posts/lisbon-solo-travel-guide-2026/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/posts/barcerona-solo-travel-2025/"
+  to = "/posts/barcelona-winter-solo-travel-2025/"
+  status = 301
+  force = true
