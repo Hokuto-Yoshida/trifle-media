@@ -144,7 +144,7 @@ export async function getAllPosts(): Promise<ExtendedPostMetadata[]> {
             title: data.title || '',
             description: data.description || '',
             date: data.date || new Date().toISOString(),
-            updatedDate: data.updatedDate || undefined,
+            updatedDate: data.lastmod || data.updatedDate || undefined,
             category: data.category || '未分類',
             subcategory: data.subcategory || undefined,
             tags: data.tags || [],
