@@ -74,7 +74,12 @@
       "Bash(git push *)",
       "Bash(node *)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(xargs -I{} head -4 {})",
+      "Bash(git commit -m 'fix: ハブという表現を自然な文言に修正 *)",
+      "Bash(git commit -m 'fix: スポットの見出しにリンクを埋め込み、末尾の重複リストを削除 *)",
+      "Bash(git commit -m 'fix: 内部リンクを「→ こちら」形式に変更 *)",
+      "Bash(git commit -m 'fix: ハワイ・バリ島の詳細記事リンクを追加 *)"
     ]
   }
 }
