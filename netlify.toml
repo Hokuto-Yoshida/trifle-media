@@ -25,3 +25,15 @@
   to = "/posts/gw-solo-travel-2026/"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/posts/solo-travel-packing-checklist-2025/"
+  to = "/posts/solo-travel-packing-guide-2025/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/posts/solo-travel-emergency-trouble-guide-2025/"
+  to = "/posts/solo-travel-trouble-guide-2025/"
+  status = 301
+  force = true
