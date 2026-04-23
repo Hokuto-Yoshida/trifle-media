@@ -37,3 +37,9 @@
   to = "/posts/solo-travel-trouble-guide-2025/"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/posts/korea-solo-travel-2025/"
+  to = "/posts/korea-solo-travel-cost-2025/"
+  status = 301
+  force = true
