@@ -83,7 +83,14 @@
       "Bash(sed -n '49,80p' content/posts/malaysia-solo-travel-kualalumpur-2025.mdx)",
       "Bash(sed -n '37,70p' content/posts/dubai-solo-travel-guide-2025.mdx)",
       "Bash(sed -n '45,80p' content/posts/germany-solo-travel-complete-guide-2025.mdx)",
-      "Bash(sed -n '41,75p' content/posts/portugal-solo-travel-guide-2025.mdx)"
+      "Bash(sed -n '41,75p' content/posts/portugal-solo-travel-guide-2025.mdx)",
+      "Bash(git commit *)",
+      "Bash(sed -n '443,460p' content/posts/boston-solo-travel-2nights-3days-budget-250k-2026.mdx)",
+      "Bash(sed -n '478,500p' content/posts/brussels-solo-travel-3nights-4days-budget-220k-2026.mdx)",
+      "Bash(sed -n '130,135p' content/posts/alaska-fairbanks-aurora-solo-3nights-5days-budget-250k-2026.mdx)",
+      "Bash(sed -n '146,152p' content/posts/argentina-buenos-aires-solo-travel-4nights-6days-budget-200k-2026.mdx)",
+      "Bash(sed -n '127,135p' content/posts/baltic-states-solo-november-christmas-2025.mdx)",
+      "Bash(sed -n '133,140p' content/posts/asahikawa-biei-furano-solo-travel-2nights-3days-budget-80k-2026.mdx)"
     ]
   }
 }
