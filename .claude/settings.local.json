@@ -79,7 +79,11 @@
       "Bash(git commit -m 'fix: ハブという表現を自然な文言に修正 *)",
       "Bash(git commit -m 'fix: スポットの見出しにリンクを埋め込み、末尾の重複リストを削除 *)",
       "Bash(git commit -m 'fix: 内部リンクを「→ こちら」形式に変更 *)",
-      "Bash(git commit -m 'fix: ハワイ・バリ島の詳細記事リンクを追加 *)"
+      "Bash(git commit -m 'fix: ハワイ・バリ島の詳細記事リンクを追加 *)",
+      "Bash(sed -n '49,80p' content/posts/malaysia-solo-travel-kualalumpur-2025.mdx)",
+      "Bash(sed -n '37,70p' content/posts/dubai-solo-travel-guide-2025.mdx)",
+      "Bash(sed -n '45,80p' content/posts/germany-solo-travel-complete-guide-2025.mdx)",
+      "Bash(sed -n '41,75p' content/posts/portugal-solo-travel-guide-2025.mdx)"
     ]
   }
 }
