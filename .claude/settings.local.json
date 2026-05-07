@@ -177,7 +177,15 @@
       "Bash(sed -n '125,135p' /c/Users/81801/OneDrive/trifle-media-clean/content/posts/melbourne-solo-travel-guide-2025.mdx)",
       "Bash(sed -n '620,640p' /c/Users/81801/OneDrive/trifle-media-clean/content/posts/macau-solo-travel-guide-2025.mdx)",
       "Bash(sed -n '748,770p' /c/Users/81801/OneDrive/trifle-media-clean/content/posts/madrid-solo-winter-bar-gourmet-2025.mdx)",
-      "Bash(sed -n '598,615p' /c/Users/81801/OneDrive/trifle-media-clean/content/posts/melbourne-solo-travel-guide-2025.mdx)"
+      "Bash(sed -n '598,615p' /c/Users/81801/OneDrive/trifle-media-clean/content/posts/melbourne-solo-travel-guide-2025.mdx)",
+      "Bash(xargs -I{} basename {} .mdx)",
+      "Bash([ -f \"content/posts/$f.mdx\" ])",
+      "Bash(ls content/posts/taipei-solo-travel-2nights-3days-budget-100k-2025.mdx)",
+      "Bash(ls content/posts/female-solo-travel-safe-countries-ranking-top10-2026.mdx)",
+      "Bash(ls content/posts/solo-travel-safety-packing-guide-2025.mdx)",
+      "Bash(ls content/posts/woman-solo-travel-guide-2025.mdx)",
+      "Bash(ls content/posts/cuba-female-solo-travel-complete-guide-2025.mdx)",
+      "Bash(awk '{print $1}')"
     ]
   }
 }
