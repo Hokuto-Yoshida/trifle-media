@@ -135,6 +135,9 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
                   alt="ホテル・旅館の予約"
                   title="ホテル・旅館の予約"
                   className="ad-banner-image"
+                  width="300"
+                  height="250"
+                  loading="lazy"
                 />
               </a>
             </div>
@@ -155,6 +158,9 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
                     alt="スーツケース"
                     title="旅行向けスーツケース"
                     className="ad-image"
+                    width="240"
+                    height="240"
+                    loading="lazy"
                   />
                   <div className="ad-text">
                     <p className="ad-title">軽量スーツケース</p>
@@ -173,7 +179,7 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
               <div className="post-list">
                 {latestPosts.map((post) => (
                   <a key={post.slug} href={`/posts/${post.slug}`} className="sidebar-post-item">
-                    <img src={post.thumb} alt={post.title} className="sidebar-post-thumb" />
+                    <img src={post.thumb} alt={post.title} className="sidebar-post-thumb" width="60" height="60" loading="lazy" />
                     <div className="sidebar-post-text">
                       <span className="sidebar-post-chip secondary">NEW</span>
                       <p className="sidebar-post-title">{post.title}</p>

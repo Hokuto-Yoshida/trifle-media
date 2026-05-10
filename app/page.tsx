@@ -683,10 +683,13 @@ const HeroSlider = () => {
           </div>
           <div className="feature-screenshot">
             <div className="screenshot-container">
-              <img 
-                src="/images/app-screenshots/swipe-screen.png" 
+              <img
+                src="/images/app-screenshots/swipe-screen.png"
                 alt="スワイプ画面"
                 className="screenshot-image"
+                width="390"
+                height="844"
+                loading="lazy"
               />
             </div>
           </div>
@@ -708,10 +711,13 @@ const HeroSlider = () => {
           </div>
           <div className="feature-screenshot">
             <div className="screenshot-container">
-              <img 
-                src="/images/app-screenshots/travel-list.png" 
+              <img
+                src="/images/app-screenshots/travel-list.png"
                 alt="旅の仲間画面"
                 className="screenshot-image"
+                width="390"
+                height="844"
+                loading="lazy"
               />
             </div>
           </div>
@@ -733,10 +739,13 @@ const HeroSlider = () => {
           </div>
           <div className="feature-screenshot">
             <div className="screenshot-container">
-              <img 
-                src="/images/app-screenshots/chat-screen.png" 
+              <img
+                src="/images/app-screenshots/chat-screen.png"
                 alt="チャット画面"
                 className="screenshot-image"
+                width="390"
+                height="844"
+                loading="lazy"
               />
             </div>
           </div>
@@ -758,13 +767,13 @@ const HeroSlider = () => {
               marginTop: '24px'
             }}
           >
-            <img 
+            <img
               src="/images/app-store-badge.svg"
               alt="App Storeからダウンロード"
-              style={{
-                width: '200px',
-                height: 'auto'
-              }}
+              width="200"
+              height="67"
+              loading="lazy"
+              style={{ width: '200px', height: 'auto' }}
             />
           </a>
         </>
@@ -893,10 +902,13 @@ export default async function HomePage() {
                     <div className="large-article-grid">
                       {latestPosts.slice(0, 2).map((post) => (
                         <article key={post.slug} className="article-card">
-                          <img 
-                            src={post.thumb || '/placeholder-image.jpg'} 
+                          <img
+                            src={post.thumb || '/placeholder-image.jpg'}
                             alt={post.title}
                             className="article-image"
+                            width="800"
+                            height="450"
+                            loading="lazy"
                           />
                           <div className="article-content">
                             <span className="article-category">{post.category}</span>
@@ -919,10 +931,13 @@ export default async function HomePage() {
                       <div className="article-grid">
                         {latestPosts.slice(2, 8).map((post) => (
                           <article key={post.slug} className="article-card">
-                            <img 
-                              src={post.thumb || '/placeholder-image.jpg'} 
+                            <img
+                              src={post.thumb || '/placeholder-image.jpg'}
                               alt={post.title}
                               className="article-image"
+                              width="800"
+                              height="450"
+                              loading="lazy"
                             />
                             <div className="article-content">
                               <span className="article-category">{post.category}</span>
@@ -979,10 +994,13 @@ export default async function HomePage() {
                     <div className="large-article-grid">
                       {categoryPosts.slice(0, 2).map((post) => (
                         <article key={post.slug} className="article-card">
-                          <img 
-                            src={post.thumb || '/placeholder-image.jpg'} 
+                          <img
+                            src={post.thumb || '/placeholder-image.jpg'}
                             alt={post.title}
                             className="article-image"
+                            width="800"
+                            height="450"
+                            loading="lazy"
                           />
                           <div className="article-content">
                             <span className="article-category">{post.category}</span>

@@ -152,10 +152,13 @@ export default function SearchPage() {
                     <div className="results-grid">
                       {searchResults.map((post) => (
                         <article key={post.slug} className="article-card">
-                          <img 
-                            src={post.thumb || '/placeholder-image.jpg'} 
+                          <img
+                            src={post.thumb || '/placeholder-image.jpg'}
                             alt={post.title}
                             className="article-image"
+                            width="400"
+                            height="225"
+                            loading="lazy"
                           />
                           <div className="article-content">
                             <span className="article-category">{post.category}</span>

@@ -34,15 +34,18 @@ const HeroSliderClient = () => {
             </div>
             <div className="feature-screenshot">
               <div className="screenshot-container">
-                <img 
-                  src="/images/app-screenshots/swipe-screen.png" 
+                <img
+                  src="/images/app-screenshots/swipe-screen.png"
                   alt="仲間探しのスワイプ画面"
                   className="screenshot-image"
+                  width="390"
+                  height="844"
+                  fetchPriority="high"
                 />
               </div>
             </div>
           </div>
-          
+
           {/* Mobile Layout */}
           <div className="feature-slide-mobile">
             <div className="feature-content-mobile">
@@ -53,10 +56,13 @@ const HeroSliderClient = () => {
             </div>
             <div className="feature-screenshot">
               <div className="screenshot-container">
-                <img 
-                  src="/images/app-screenshots/swipe-screen.png" 
+                <img
+                  src="/images/app-screenshots/swipe-screen.png"
                   alt="仲間探しのスワイプ画面"
                   className="screenshot-image"
+                  width="390"
+                  height="844"
+                  fetchPriority="high"
                 />
               </div>
             </div>
@@ -81,10 +87,12 @@ const HeroSliderClient = () => {
             </div>
             <div className="feature-screenshot">
               <div className="screenshot-container">
-                <img 
-                  src="/images/app-screenshots/travel-list.png" 
+                <img
+                  src="/images/app-screenshots/travel-list.png"
                   alt="旅行作成画面"
                   className="screenshot-image"
+                  width="390"
+                  height="844"
                 />
               </div>
             </div>
@@ -100,10 +108,12 @@ const HeroSliderClient = () => {
             </div>
             <div className="feature-screenshot">
               <div className="screenshot-container">
-                <img 
-                  src="/images/app-screenshots/travel-list.png" 
+                <img
+                  src="/images/app-screenshots/travel-list.png"
                   alt="旅行作成画面"
                   className="screenshot-image"
+                  width="390"
+                  height="844"
                 />
               </div>
             </div>
@@ -128,10 +138,12 @@ const HeroSliderClient = () => {
             </div>
             <div className="feature-screenshot">
               <div className="screenshot-container">
-                <img 
-                  src="/images/app-screenshots/chat-screen.png" 
+                <img
+                  src="/images/app-screenshots/chat-screen.png"
                   alt="チャット画面"
                   className="screenshot-image"
+                  width="390"
+                  height="844"
                 />
               </div>
             </div>
@@ -147,10 +159,12 @@ const HeroSliderClient = () => {
             </div>
             <div className="feature-screenshot">
               <div className="screenshot-container">
-                <img 
-                  src="/images/app-screenshots/chat-screen.png" 
+                <img
+                  src="/images/app-screenshots/chat-screen.png"
                   alt="チャット画面"
                   className="screenshot-image"
+                  width="390"
+                  height="844"
                 />
               </div>
             </div>

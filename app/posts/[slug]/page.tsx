@@ -797,10 +797,13 @@ export default async function PostPage({ params }: PostPageProps) {
           {post.thumb && (
             <section className="article-image-section">
               <div className="container">
-                <img 
-                  src={post.thumb} 
+                <img
+                  src={post.thumb}
                   alt={post.title}
                   className="article-image"
+                  width="1600"
+                  height="900"
+                  fetchPriority="high"
                 />
               </div>
             </section>
@@ -827,6 +830,9 @@ export default async function PostPage({ params }: PostPageProps) {
                     alt="トリフレメディア編集部"
                     className="author-avatar"
                     style={{ objectFit: 'cover' }}
+                    width="60"
+                    height="60"
+                    loading="lazy"
                   />
                   <div className="author-info">
                     <h3>トリフレ編集部</h3>

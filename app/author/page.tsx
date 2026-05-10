@@ -312,6 +312,8 @@ export default async function AuthorPage() {
               <img
                 src="/images/editor-avatar.png"
                 alt="トリフレメディア編集部"
+                width="100"
+                height="100"
                 style={{ width: '100px', height: '100px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
               />
               <div className="author-basic">

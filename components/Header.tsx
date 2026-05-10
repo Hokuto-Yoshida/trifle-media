@@ -166,10 +166,12 @@ export default function SiteHeader() {
           <div className="header-top-container">
             <div className="header-logo">
               <Link href="/">
-                <img 
-                  src="/logo.png" 
-                  alt="トリフレメディア" 
+                <img
+                  src="/logo.png"
+                  alt="トリフレメディア"
                   className="logo-image"
+                  width="120"
+                  height="40"
                 />
               </Link>
             </div>
