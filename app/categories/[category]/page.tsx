@@ -117,7 +117,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
       url: `${siteUrl}/categories/${params.category}/`,
     },
     alternates: {
-      canonical: `/categories/${params.category}/`,
+      canonical: `${siteUrl}/categories/${params.category}/`,
     },
   };
 }

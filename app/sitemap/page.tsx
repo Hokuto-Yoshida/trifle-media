@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Header, Footer } from '@/components';
 import { Home, FileText, Bookmark, Mail, Shield, HelpCircle } from 'lucide-react';
+import { getLatestPosts } from '@/lib/posts';
 
 export const metadata: Metadata = {
   title: 'サイトマップ | トリフレメディア',
@@ -240,7 +241,7 @@ const sitemapStyles = `
   }
 `;
 
-export default function SitemapPage() {
+export default async function SitemapPage() {
   const categories = [
     {
       name: '国内旅行',
@@ -304,7 +305,7 @@ export default function SitemapPage() {
     }
   ];
 
-  const recentPosts = [];
+  const recentPosts = await getLatestPosts(6);
 
   return (
     <>
@@ -404,6 +405,24 @@ export default function SitemapPage() {
               ))}
             </div>
           </div>
+
+          {/* 最新記事 */}
+          {recentPosts.length > 0 && (
+            <div className="recent-posts" style={{marginTop: '40px'}}>
+              <h2 className="section-title" style={{marginBottom: '24px'}}>最新記事</h2>
+              <div className="posts-grid">
+                {recentPosts.map((post) => (
+                  <Link key={post.slug} href={`/posts/${post.slug}`} className="post-card">
+                    <span className="post-category">{post.category}</span>
+                    <div className="post-title">{post.title}</div>
+                    <div style={{fontSize: '12px', color: '#9ca3af', marginTop: '8px'}}>
+                      {new Date(post.date).toLocaleDateString('ja-JP')}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </main>
 
         <Footer />

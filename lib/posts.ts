@@ -213,7 +213,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       description: data.description || '',
       content: htmlContent,
       date: data.date || new Date().toISOString(),
-      updatedDate: data.updatedDate || undefined,
+      updatedDate: data.lastmod || data.updatedDate || undefined,
       category: data.category || '未分類',
       tags: data.tags || [],
       thumb: data.thumb || data.ogImage || '/images/default-thumb.jpg',

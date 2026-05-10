@@ -79,7 +79,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
         images: [ogImage],
       },
       alternates: {
-        canonical: `/posts/${post.slug}/`,
+        canonical: `${siteUrl}/posts/${post.slug}/`,
       },
     };
   } catch (error) {
@@ -621,6 +621,23 @@ const postPageStyles = `
   }
 `;
 
+function extractFaqItems(htmlContent: string): { question: string; answer: string }[] {
+  const items: { question: string; answer: string }[] = [];
+  const headingRegex = /<h[23][^>]*>([\s\S]*?)<\/h[23]>([\s\S]*?)(?=<h[1-6]|$)/gi;
+  let match;
+  while ((match = headingRegex.exec(htmlContent)) !== null) {
+    const question = match[1].replace(/<[^>]+>/g, '').trim();
+    if (!question.includes('？') && !question.includes('?')) continue;
+    const pMatch = /<p>([\s\S]*?)<\/p>/i.exec(match[2]);
+    if (!pMatch) continue;
+    const answer = pMatch[1].replace(/<[^>]+>/g, '').trim();
+    if (answer.length < 15) continue;
+    items.push({ question, answer: answer.slice(0, 300) });
+    if (items.length >= 7) break;
+  }
+  return items;
+}
+
 export default async function PostPage({ params }: PostPageProps) {
   let post: ExtendedPostMetadata;
 
@@ -664,6 +681,20 @@ export default async function PostPage({ params }: PostPageProps) {
     ...(post.category && { articleSection: post.category }),
   };
 
+  const faqItems = post.content ? extractFaqItems(post.content) : [];
+  const faqJsonLd = faqItems.length >= 2 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map(item => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  } : null;
+
   // 関連記事を取得（同じカテゴリの他の記事）
   let relatedPosts: ExtendedPostMetadata[] = [];
   try {
@@ -685,6 +716,12 @@ export default async function PostPage({ params }: PostPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <style dangerouslySetInnerHTML={{ __html: postPageStyles }} />
       
       <div className="post-page">

@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { getAllPosts } from '@/lib/posts';
+import { getAllPosts, getAllTags } from '@/lib/posts';
 import { CATEGORIES } from '@/lib/categories';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -91,5 +91,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error loading posts for sitemap:', error);
   }
 
-  return [...staticPages, ...categoryPages, ...postPages];
+  // タグページ
+  let tagPages: any[] = [];
+  try {
+    const tags = await getAllTags();
+    tagPages = tags.map((tag) => ({
+      url: withTrailingSlash(`/tags/${encodeURIComponent(tag)}`),
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    }));
+  } catch (error) {
+    console.error('Error loading tags for sitemap:', error);
+  }
+
+  return [...staticPages, ...categoryPages, ...postPages, ...tagPages];
 }

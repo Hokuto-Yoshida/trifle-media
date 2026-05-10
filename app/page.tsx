@@ -1,9 +1,27 @@
 import React from 'react';
+import { type Metadata } from 'next';
 import { ArrowRight, Heart, Users, Shield } from 'lucide-react';
 import { Header, Footer } from '@/components';
 import AdBanner from '@/components/AdBanner';
 import { getAllPosts } from '@/lib/posts';
 import HeroSliderClient from './HeroSliderClient';
+
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
+
+export const metadata: Metadata = {
+  title: 'トリフレメディア - 若者のための一人旅特化メディア',
+  description: '一人旅初心者から経験者まで。国内・海外の一人旅モデルコース、旅のコツ、グルメ・宿泊情報を発信する専門メディア。',
+  alternates: {
+    canonical: `${siteUrl}/`,
+  },
+  openGraph: {
+    title: '一人旅に、もう一人の仲間を。トリフレメディア',
+    description: '一人旅の不安を解消。初心者向け完全ガイドから最新スポット情報まで。国内外320記事以上。',
+    url: `${siteUrl}/`,
+    type: 'website',
+    images: [{ url: `${siteUrl}/images/og-image.jpg`, width: 1200, height: 630, alt: 'トリフレメディア' }],
+  },
+};
 
 // PostMetadata型定義
 interface ExtendedPostMetadata {
@@ -815,10 +833,27 @@ export default async function HomePage() {
     return <div>Loading...</div>;
   }
 
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'トリフレメディア',
+    url: siteUrl,
+    description: '若者のための一人旅特化メディア',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: `${siteUrl}/search?q={search_term_string}` },
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
       <style dangerouslySetInnerHTML={{ __html: styles }} />
-      
+
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         {/* Fixed Background Hero */}
         <div className="hero-background">
