@@ -69,6 +69,50 @@ function convertMarkdownToHtml(markdown: string): string {
     .replace(/<p><\/p>/g, '');
 }
 
+function addInternalLinks(
+  html: string,
+  currentSlug: string,
+  candidates: Array<{ slug: string; title: string }>
+): string {
+  const usedSlugs = new Set<string>();
+  let linksAdded = 0;
+  const MAX_LINKS = 5;
+
+  const sorted = [...candidates]
+    .filter(p => p.slug !== currentSlug && p.title.length >= 8)
+    .sort((a, b) => b.title.length - a.title.length);
+
+  return html.replace(/<p>([\s\S]*?)<\/p>/gi, (full, inner) => {
+    if (linksAdded >= MAX_LINKS) return full;
+
+    let modified = inner;
+
+    for (const { slug, title } of sorted) {
+      if (linksAdded >= MAX_LINKS) break;
+      if (usedSlugs.has(slug)) continue;
+
+      const idx = modified.indexOf(title);
+      if (idx === -1) continue;
+
+      // <a> タグの中でないか確認
+      const before = modified.slice(0, idx);
+      const openA = (before.match(/<a\b/g) || []).length;
+      const closeA = (before.match(/<\/a>/g) || []).length;
+      if (openA > closeA) continue;
+
+      modified =
+        modified.slice(0, idx) +
+        `<a href="/posts/${slug}">${title}</a>` +
+        modified.slice(idx + title.length);
+
+      usedSlugs.add(slug);
+      linksAdded++;
+    }
+
+    return `<p>${modified}</p>`;
+  });
+}
+
 // 再帰的にMDXファイルを探す関数
 function getAllMdxFiles(dir: string, baseDir: string = dir, fileList: { path: string; relativePath: string }[] = []): { path: string; relativePath: string }[] {
   if (!fs.existsSync(dir)) {
@@ -205,7 +249,12 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     const { data, content } = targetFile;
 
     // MarkdownをHTMLに変換
-    const htmlContent = convertMarkdownToHtml(content);
+    const rawHtml = convertMarkdownToHtml(content);
+
+    // 内部リンクを挿入
+    const allPostsForLinking = await getAllPosts();
+    const linkCandidates = allPostsForLinking.map(p => ({ slug: p.slug, title: p.title }));
+    const htmlContent = addInternalLinks(rawHtml, slug, linkCandidates);
 
     return {
       slug,

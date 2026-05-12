@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Calendar, Clock, User, Tag, MapPin, RefreshCw } from 'lucide-react';
 import { Header, Footer } from '@/components';
-import AdBanner from '@/components/AdBanner';
+import AdBanner from '@/components/AdBannerServer';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
 import { getCategoryByName } from '@/lib/categories';
 import Link from 'next/link';

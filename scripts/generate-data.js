@@ -60,7 +60,7 @@ function loadAllPosts() {
         title: data.title || '',
         description: data.description || '',
         date: data.date || '',
-        updatedDate: data.updatedDate || null,
+        updatedDate: data.lastmod || data.updatedDate || null,
         category: data.category || '',
         subcategory: data.subcategory || null,
         tags: Array.isArray(data.tags) ? data.tags : [],

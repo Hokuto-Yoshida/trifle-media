@@ -2,7 +2,7 @@ import React from 'react';
 import { type Metadata } from 'next';
 import { ArrowRight, Heart, Users, Shield } from 'lucide-react';
 import { Header, Footer } from '@/components';
-import AdBanner from '@/components/AdBanner';
+import AdBanner from '@/components/AdBannerServer';
 import { getAllPosts } from '@/lib/posts';
 import HeroSliderClient from './HeroSliderClient';
 

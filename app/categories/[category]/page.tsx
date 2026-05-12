@@ -1,7 +1,7 @@
 import { ArrowRight, Home } from 'lucide-react';
 import { Metadata } from 'next';
 import { Header, Footer } from '@/components';
-import AdBanner from '@/components/AdBanner';
+import AdBanner from '@/components/AdBannerServer';
 import CategoryPagination from '@/components/CategoryPagination';
 import { getAllPosts } from '@/lib/posts';
 import type { PostMetadata } from '@/types/post';
