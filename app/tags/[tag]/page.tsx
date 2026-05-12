@@ -11,8 +11,19 @@ interface TagPageProps {
 }
 
 export async function generateStaticParams() {
-  const tags = await getAllTags();
-  return tags.map((tag) => ({ tag: encodeURIComponent(tag) }));
+  const { getAllPosts } = await import('@/lib/posts');
+  const allPosts = await getAllPosts();
+
+  const freq: Record<string, number> = {};
+  allPosts.forEach(p => p.tags.forEach(t => { freq[t] = (freq[t] || 0) + 1; }));
+
+  const topTags = Object.entries(freq)
+    .filter(([, count]) => count >= 3)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 200)
+    .map(([tag]) => tag);
+
+  return topTags.map((tag) => ({ tag: encodeURIComponent(tag) }));
 }
 
 export async function generateMetadata({ params }: TagPageProps): Promise<Metadata> {

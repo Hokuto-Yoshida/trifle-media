@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { getAllPosts, getAllTags } from '@/lib/posts';
+import { getAllPosts } from '@/lib/posts';
 import { CATEGORIES } from '@/lib/categories';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -91,11 +91,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error loading posts for sitemap:', error);
   }
 
-  // タグページ
+  // タグページ（3件以上の記事があるタグのみ、上位200件）
   let tagPages: any[] = [];
   try {
-    const tags = await getAllTags();
-    tagPages = tags.map((tag) => ({
+    const allPostsForTags = await getAllPosts();
+    const freq: Record<string, number> = {};
+    allPostsForTags.forEach(p => p.tags.forEach(t => { freq[t] = (freq[t] || 0) + 1; }));
+    const topTags = Object.entries(freq)
+      .filter(([, count]) => count >= 3)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 200)
+      .map(([tag]) => tag);
+    tagPages = topTags.map((tag) => ({
       url: withTrailingSlash(`/tags/${encodeURIComponent(tag)}`),
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
