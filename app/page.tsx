@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description: '一人旅の不安を解消。初心者向け完全ガイドから最新スポット情報まで。国内外320記事以上。',
     url: `${siteUrl}/`,
     type: 'website',
-    images: [{ url: `${siteUrl}/images/og-image.jpg`, width: 1200, height: 630, alt: 'トリフレメディア' }],
+    images: [{ url: `${siteUrl}/opengraph-image.png`, width: 1200, height: 630, alt: 'トリフレメディア' }],
   },
 };
 

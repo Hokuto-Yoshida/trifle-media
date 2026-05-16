@@ -39,6 +39,14 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
       title: `「${tag}」の記事一覧 | トリフレメディア`,
       description: `「${tag}」に関連する一人旅記事を${posts.length}件掲載しています。`,
       url: `${siteUrl}/tags/${encodeURIComponent(tag)}/`,
+      type: 'website',
+      images: [{ url: `${siteUrl}/opengraph-image.png`, width: 1200, height: 630, alt: 'トリフレメディア' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `「${tag}」の記事一覧 | トリフレメディア`,
+      description: `「${tag}」に関連する一人旅記事を${posts.length}件掲載しています。`,
+      images: [`${siteUrl}/opengraph-image.png`],
     },
   };
 }

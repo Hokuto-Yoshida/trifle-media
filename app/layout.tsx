@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description: '若者のための一人旅特化メディア「トリフレ」。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。',
     images: [
       {
-        url: '/images/og-image.jpg',
+        url: '/opengraph-image.png',
         width: 1200,
         height: 630,
         alt: 'トリフレメディア',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     creator: '@trifle_media',
     title: 'トリフレメディア - 若者のための一人旅特化メディア',
     description: '若者のための一人旅特化メディア「トリフレ」。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。',
-    images: ['/images/og-image.jpg'],
+    images: ['/opengraph-image.png'],
   },
   robots: {
     index: true,
@@ -82,6 +82,20 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'トリフレメディア',
+  url: siteUrl,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${siteUrl}/logo.png`,
+    width: 200,
+    height: 60,
+  },
+  sameAs: ['https://twitter.com/trifle_media'],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -90,6 +104,10 @@ export default function RootLayout({
   return (
     <html lang="ja" suppressHydrationWarning>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />

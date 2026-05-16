@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     title: 'カテゴリ一覧 | トリフレメディア',
     description: '国内旅行、海外旅行、グルメ、宿泊、旅のコツなどカテゴリ別に記事を探せます。',
     url: `${siteUrl}/categories/`,
+    type: 'website',
+    images: [{ url: `${siteUrl}/opengraph-image.png`, width: 1200, height: 630, alt: 'トリフレメディア' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'カテゴリ一覧 | トリフレメディア',
+    description: '国内旅行、海外旅行、グルメ、宿泊、旅のコツなどカテゴリ別に記事を探せます。',
+    images: [`${siteUrl}/opengraph-image.png`],
   },
 };
 

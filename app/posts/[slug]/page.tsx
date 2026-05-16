@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       };
     }
 
-    const ogImage = post.thumb || `${siteUrl}/images/og-image.jpg`;
+    const ogImage = post.thumb || `${siteUrl}/opengraph-image.png`;
     return {
       title: `${post.title} | トリフレメディア`,
       description: post.description,
@@ -627,12 +627,20 @@ function extractFaqItems(htmlContent: string): { question: string; answer: strin
   let match;
   while ((match = headingRegex.exec(htmlContent)) !== null) {
     const question = match[1].replace(/<[^>]+>/g, '').trim();
-    if (!question.includes('？') && !question.includes('?')) continue;
-    const pMatch = /<p>([\s\S]*?)<\/p>/i.exec(match[2]);
-    if (!pMatch) continue;
-    const answer = pMatch[1].replace(/<[^>]+>/g, '').trim();
+    const isQuestion =
+      question.includes('？') ||
+      question.includes('?') ||
+      /^(何|どう|なぜ|なに|いつ|どこ|誰|どんな|どれ|いくら|いくつ)/.test(question);
+    if (!isQuestion) continue;
+    const pMatches = [...match[2].matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)];
+    const answer = pMatches
+      .slice(0, 3)
+      .map(m => m[1].replace(/<[^>]+>/g, '').trim())
+      .filter(t => t.length > 5)
+      .join(' ')
+      .slice(0, 400);
     if (answer.length < 15) continue;
-    items.push({ question, answer: answer.slice(0, 300) });
+    items.push({ question, answer });
     if (items.length >= 7) break;
   }
   return items;
@@ -657,7 +665,7 @@ export default async function PostPage({ params }: PostPageProps) {
     headline: post.title,
     description: post.description,
     url: `${siteUrl}/posts/${post.slug}/`,
-    image: post.thumb || `${siteUrl}/images/og-image.jpg`,
+    image: post.thumb || `${siteUrl}/opengraph-image.png`,
     datePublished: new Date(post.date).toISOString(),
     dateModified: post.updatedDate ? new Date(post.updatedDate).toISOString() : new Date(post.date).toISOString(),
     author: {

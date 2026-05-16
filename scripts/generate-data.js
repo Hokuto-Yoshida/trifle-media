@@ -161,7 +161,7 @@ ${categories}
     <lastBuildDate>${lastBuildDate}</lastBuildDate>
     <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
-      <url>${SITE_URL}/images/og-image.jpg</url>
+      <url>${SITE_URL}/opengraph-image.png</url>
       <title>トリフレメディア</title>
       <link>${SITE_URL}/</link>
     </image>
