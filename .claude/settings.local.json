@@ -187,7 +187,11 @@
       "Bash(ls content/posts/cuba-female-solo-travel-complete-guide-2025.mdx)",
       "Bash(awk '{print $1}')",
       "Bash(npx tsc *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\81801\\\\OneDrive\\\\trifle-media-clean\\\\content\\\\posts\" -Filter \"*.mdx\")",
+      "Bash(Select-Object -ExpandProperty Name)",
+      "Bash(Sort-Object)",
+      "Bash(powershell *)"
     ]
   }
 }
