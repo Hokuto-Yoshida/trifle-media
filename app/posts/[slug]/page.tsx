@@ -632,10 +632,14 @@ function extractFaqItems(htmlContent: string): { question: string; answer: strin
       question.includes('?') ||
       /^(何|どう|なぜ|なに|いつ|どこ|誰|どんな|どれ|いくら|いくつ)/.test(question);
     if (!isQuestion) continue;
-    const pMatches = [...match[2].matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)];
-    const answer = pMatches
-      .slice(0, 3)
-      .map(m => m[1].replace(/<[^>]+>/g, '').trim())
+    const pRegex = /<p[^>]*>([\s\S]*?)<\/p>/gi;
+    const pTexts: string[] = [];
+    let pMatch;
+    while ((pMatch = pRegex.exec(match[2])) !== null && pTexts.length < 3) {
+      pTexts.push(pMatch[1]);
+    }
+    const answer = pTexts
+      .map(m => m.replace(/<[^>]+>/g, '').trim())
       .filter(t => t.length > 5)
       .join(' ')
       .slice(0, 400);
