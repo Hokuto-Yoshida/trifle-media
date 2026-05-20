@@ -11,7 +11,14 @@ export default async function OgImage() {
       'https://fonts.gstatic.com/s/notosansjp/v53/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFBEj75s.woff2',
       { cache: 'force-cache' }
     );
-    fontData = await res.arrayBuffer();
+    if (res.ok) {
+      const buffer = await res.arrayBuffer();
+      // HTMLが返された場合（'<'で始まる）はフォントとして使わない
+      const first = new Uint8Array(buffer.slice(0, 1));
+      if (first[0] !== 0x3c) {
+        fontData = buffer;
+      }
+    }
   } catch {
     // Japanese font unavailable; fall back to system sans-serif
   }
