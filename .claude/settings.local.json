@@ -191,7 +191,9 @@
       "Bash(Get-ChildItem \"C:\\\\Users\\\\81801\\\\OneDrive\\\\trifle-media-clean\\\\content\\\\posts\" -Filter \"*.mdx\")",
       "Bash(Select-Object -ExpandProperty Name)",
       "Bash(Sort-Object)",
-      "Bash(powershell *)"
+      "Bash(powershell *)",
+      "Bash(git -C \"C:/Users/81801/OneDrive/trifle-media-clean\" add app/opengraph-image.tsx content/posts/golden-week-solo-travel-2026.mdx)",
+      "Bash(git -C C:/Users/81801/OneDrive/trifle-media-clean commit -m ' *)"
     ]
   }
 }
