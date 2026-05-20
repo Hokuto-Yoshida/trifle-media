@@ -48,6 +48,8 @@ const subcategoryMapping: Record<string, Record<string, string>> = {
   },
 };
 
+export const dynamic = 'force-static';
+
 // 静的生成のためのパラメータを生成
 export async function generateStaticParams() {
   return Object.keys(categoryMapping).map((category) => ({
@@ -67,9 +69,14 @@ export async function GET(
       return NextResponse.json({ error: 'Category not found' }, { status: 404 });
     }
 
-    // URLからサブカテゴリパラメータを取得
-    const { searchParams } = new URL(request.url);
-    const subcategorySlug = searchParams.get('subcategory');
+    // URLからサブカテゴリパラメータを取得（静的エクスポート時はURLが存在しないためtry-catch）
+    let subcategorySlug: string | null = null;
+    try {
+      const { searchParams } = new URL(request.url);
+      subcategorySlug = searchParams.get('subcategory');
+    } catch {
+      // Static export build — no request URL available
+    }
 
     const allPosts = await getAllPosts();
     

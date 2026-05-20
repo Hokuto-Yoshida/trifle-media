@@ -1,27 +1,19 @@
 import { ImageResponse } from 'next/og';
+import fs from 'fs';
+import path from 'path';
 
 export const alt = 'トリフレメディア - 若者のための一人旅特化メディア';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 export default async function OgImage() {
-  let fontData: ArrayBuffer | null = null;
-  try {
-    const res = await fetch(
-      'https://fonts.gstatic.com/s/notosansjp/v53/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFBEj75s.woff2',
-      { cache: 'force-cache' }
-    );
-    if (res.ok) {
-      const buffer = await res.arrayBuffer();
-      // HTMLが返された場合（'<'で始まる）はフォントとして使わない
-      const first = new Uint8Array(buffer.slice(0, 1));
-      if (first[0] !== 0x3c) {
-        fontData = buffer;
-      }
-    }
-  } catch {
-    // Japanese font unavailable; fall back to system sans-serif
-  }
+  const buf = fs.readFileSync(
+    path.join(process.cwd(), 'public/fonts/NotoSansJP-Bold.ttf')
+  );
+  const fontData: ArrayBuffer = buf.buffer.slice(
+    buf.byteOffset,
+    buf.byteOffset + buf.byteLength
+  ) as ArrayBuffer;
 
   return new ImageResponse(
     (
@@ -34,7 +26,7 @@ export default async function OgImage() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          fontFamily: fontData ? 'NotoSansJP' : 'sans-serif',
+          fontFamily: 'NotoSansJP',
           padding: '60px',
         }}
       >
@@ -91,9 +83,7 @@ export default async function OgImage() {
     {
       width: 1200,
       height: 630,
-      fonts: fontData
-        ? [{ name: 'NotoSansJP', data: fontData, weight: 700, style: 'normal' }]
-        : [],
+      fonts: [{ name: 'NotoSansJP', data: fontData, weight: 700, style: 'normal' }],
     }
   );
 }
