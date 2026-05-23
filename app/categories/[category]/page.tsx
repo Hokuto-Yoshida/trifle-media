@@ -504,8 +504,24 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     .filter(([slug]) => slug !== categorySlug)
     .map(([slug, info]) => ({ slug, name: info.name }));
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `${categoryInfo.name} | トリフレメディア`,
+    description: categoryInfo.description,
+    url: `${siteUrl}/categories/${categorySlug}/`,
+    numberOfItems: categoryPosts.length,
+    itemListElement: categoryPosts.slice(0, 30).map((post, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${siteUrl}/posts/${post.slug}/`,
+      name: post.title,
+    })),
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <style dangerouslySetInnerHTML={{ __html: categoryPageStyles }} />
       
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>

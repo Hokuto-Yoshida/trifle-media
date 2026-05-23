@@ -80,10 +80,17 @@ export default async function TagPage({ params }: TagPageProps) {
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
+    '@type': 'ItemList',
     name: `「${tag}」の記事一覧`,
     description: `「${tag}」に関連する一人旅記事`,
     url: `${siteUrl}/tags/${encodeURIComponent(tag)}/`,
+    numberOfItems: posts.length,
+    itemListElement: posts.slice(0, 30).map((post, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${siteUrl}/posts/${post.slug}/`,
+      name: post.title,
+    })),
   };
 
   return (
