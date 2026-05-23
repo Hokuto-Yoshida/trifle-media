@@ -2,6 +2,36 @@
   command = "npm run build"
   publish = "out"
 
+# Cache headers — improve LCP for repeat visitors
+# Next.js static files are content-hashed → safe to cache permanently
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Font files bundled in /public/fonts
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Favicon / manifest / logo (rarely change)
+[[headers]]
+  for = "/favicon.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# Local images in /public/images
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
 # SEO redirects
 [[redirects]]
   from = "/posts/laos-luangprabang-solo-travel-2025/"

@@ -724,6 +724,10 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <>
+      {/* Preload LCP hero image — hoisted to <head> by Next.js App Router */}
+      {post.thumb && (
+        <link rel="preload" as="image" href={post.thumb} />
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -81,6 +81,7 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
                   className="ad-banner-image"
                   width="300"
                   height="250"
+                  loading="lazy"
                 />
               </a>
               <img
@@ -109,6 +110,7 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
                   className="ad-banner-image"
                   width="300"
                   height="250"
+                  loading="lazy"
                 />
               </a>
               <img
