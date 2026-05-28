@@ -195,7 +195,13 @@
       "Bash(git -C \"C:/Users/81801/OneDrive/trifle-media-clean\" add app/opengraph-image.tsx content/posts/golden-week-solo-travel-2026.mdx)",
       "Bash(git -C C:/Users/81801/OneDrive/trifle-media-clean commit -m ' *)",
       "Bash(curl -s -A 'Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/124.0.0.0 Safari/537.36' 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap')",
-      "WebFetch(domain:fonts.googleapis.com)"
+      "WebFetch(domain:fonts.googleapis.com)",
+      "mcp__ide__getDiagnostics",
+      "Bash(Get-Content \"C:\\\\Users\\\\81801\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-81801-OneDrive-trifle-media-clean\\\\c6c26c39-2516-4d48-9695-47470131850a\\\\tasks\\\\bw6yka3y3.output\" -Wait)",
+      "Bash(Select-String -Pattern \"error|warn|Route|Compiled|Export|✓|✗|Failed|success\" --SimpleMatch)",
+      "Bash(Get-Content \"C:\\\\Users\\\\81801\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-81801-OneDrive-trifle-media-clean\\\\c6c26c39-2516-4d48-9695-47470131850a\\\\tasks\\\\bw6yka3y3.output\")",
+      "Bash(Select-String -Pattern \"error|Error|warn|Warning|✓|✗|Failed|Compiled|Export|Route\")",
+      "Bash(Select-Object -Last 30)"
     ]
   }
 }
