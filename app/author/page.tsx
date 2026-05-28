@@ -283,10 +283,10 @@ export default async function AuthorPage() {
   const recentPosts = allPosts.slice(0, 8);
   const totalPosts = allPosts.length;
 
-  const jsonLd = {
+  const orgJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'トリフレメディア編集部',
+    name: 'トリフレメディア',
     url: siteUrl,
     logo: `${siteUrl}/logo.png`,
     description: '一人旅専門メディア「トリフレ」の編集部。旅行経験豊富なメンバーが、安心・安全な一人旅の情報をお届けします。',
@@ -295,11 +295,31 @@ export default async function AuthorPage() {
     ],
   };
 
+  const personJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'トリフレ編集部',
+    url: `${siteUrl}/author/`,
+    jobTitle: '編集部',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'トリフレメディア',
+      url: siteUrl,
+    },
+    knowsAbout: ['一人旅', '国内旅行', '海外旅行', '格安旅行', '旅行計画', '女性一人旅'],
+    description: '一人旅専門メディア「トリフレ」の編集部。60カ国以上の旅行経験をもとに、安心・安全な一人旅の実践情報をお届けします。',
+    image: `${siteUrl}/images/editor-avatar.png`,
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
       <style dangerouslySetInnerHTML={{ __html: pageStyles }} />
       <div className="author-page">

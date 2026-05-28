@@ -673,9 +673,9 @@ export default async function PostPage({ params }: PostPageProps) {
     datePublished: new Date(post.date).toISOString(),
     dateModified: post.updatedDate ? new Date(post.updatedDate).toISOString() : new Date(post.date).toISOString(),
     author: {
-      '@type': 'Organization',
+      '@type': 'Person',
       name: post.author?.name || 'トリフレ編集部',
-      url: siteUrl,
+      url: `${siteUrl}/author/`,
     },
     publisher: {
       '@type': 'Organization',
