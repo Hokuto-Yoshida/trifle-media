@@ -843,7 +843,7 @@ export default async function PostPage({ params }: PostPageProps) {
                 <div className="author-header">
                   <img
                     src="/images/editor-avatar.png"
-                    alt="トリフレメディア編集部"
+                    alt="トリフレ編集部"
                     className="author-avatar"
                     style={{ objectFit: 'cover' }}
                     width="60"

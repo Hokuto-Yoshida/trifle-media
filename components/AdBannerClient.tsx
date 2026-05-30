@@ -57,8 +57,9 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="search-input"
+                  aria-label="キーワードで検索"
                 />
-                <button type="submit" className="search-button">
+                <button type="submit" className="search-button" aria-label="検索">
                   <Search size={18} />
                 </button>
               </div>
@@ -90,6 +91,7 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
                 width="1"
                 height="1"
                 style={{ display: 'none' }}
+                aria-hidden="true"
               />
             </div>
           </div>
@@ -119,6 +121,7 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
                 width="1"
                 height="1"
                 style={{ display: 'none' }}
+                aria-hidden="true"
               />
             </div>
           </div>

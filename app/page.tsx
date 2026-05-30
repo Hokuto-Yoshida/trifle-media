@@ -218,6 +218,9 @@ const styles = `
     width: 12px;
     height: 12px;
     border-radius: 50%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
     background: rgba(255,255,255,0.4);
     cursor: pointer;
     transition: all 0.3s ease;
@@ -802,10 +805,13 @@ const HeroSlider = () => {
       
       <div className="slide-indicators">
         {slides.map((_, index) => (
-          <div
+          <button
             key={index}
             className={`slide-indicator ${index === currentSlide ? 'active' : ''}`}
             onClick={() => setCurrentSlide(index)}
+            aria-label={`スライド ${index + 1} を表示`}
+            aria-current={index === currentSlide ? 'true' : undefined}
+            type="button"
           />
         ))}
       </div>
@@ -907,7 +913,7 @@ export default async function HomePage() {
                             alt={post.title}
                             className="article-image"
                             width="800"
-                            height="450"
+                            height="180"
                             loading="lazy"
                           />
                           <div className="article-content">
@@ -999,7 +1005,7 @@ export default async function HomePage() {
                             alt={post.title}
                             className="article-image"
                             width="800"
-                            height="450"
+                            height="180"
                             loading="lazy"
                           />
                           <div className="article-content">
