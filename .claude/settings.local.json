@@ -201,7 +201,13 @@
       "Bash(Select-String -Pattern \"error|warn|Route|Compiled|Export|✓|✗|Failed|success\" --SimpleMatch)",
       "Bash(Get-Content \"C:\\\\Users\\\\81801\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-81801-OneDrive-trifle-media-clean\\\\c6c26c39-2516-4d48-9695-47470131850a\\\\tasks\\\\bw6yka3y3.output\")",
       "Bash(Select-String -Pattern \"error|Error|warn|Warning|✓|✗|Failed|Compiled|Export|Route\")",
-      "Bash(Select-Object -Last 30)"
+      "Bash(Select-Object -Last 30)",
+      "Bash(npx lighthouse *)",
+      "WebFetch(domain:www.googleapis.com)",
+      "Bash(curl -s \"https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://torifure.com/&strategy=mobile&category=performance&category=seo&category=accessibility&category=best-practices\")",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s \"https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://torifure.com/&strategy=mobile&category=performance&category=seo&category=accessibility&category=best-practices\" -o C:/Users/81801/AppData/Local/Temp/psi_home.json)",
+      "WebFetch(domain:pagespeed.web.dev)"
     ]
   }
 }
