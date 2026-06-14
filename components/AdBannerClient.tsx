@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Search } from 'lucide-react';
+import Script from 'next/script';
 
 export type SidebarPost = {
   slug: string;
@@ -24,17 +25,6 @@ type Props = {
 export default function AdBannerClient({ latestPosts, categories }: Props) {
   const [searchQuery, setSearchQuery] = useState('');
 
-  // load AdSense once on client
-  useEffect(() => {
-    if (!document.querySelector('script[src*=\"adsbygoogle.js\"]')) {
-      const script = document.createElement('script');
-      script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7569727810444713';
-      script.async = true;
-      script.crossOrigin = 'anonymous';
-      document.head.appendChild(script);
-    }
-  }, []);
-
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
@@ -44,6 +34,11 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
 
   return (
     <>
+      <Script
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7569727810444713"
+        strategy="afterInteractive"
+        crossOrigin="anonymous"
+      />
       <style dangerouslySetInnerHTML={{ __html: adStyles }} />
       <aside className="ad-banner">
         <div className="ad-container">

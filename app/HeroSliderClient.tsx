@@ -40,7 +40,7 @@ const HeroSliderClient = () => {
                   className="screenshot-image"
                   width="390"
                   height="844"
-                  fetchPriority="high"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -62,7 +62,7 @@ const HeroSliderClient = () => {
                   className="screenshot-image"
                   width="390"
                   height="844"
-                  fetchPriority="high"
+                  loading="lazy"
                 />
               </div>
             </div>

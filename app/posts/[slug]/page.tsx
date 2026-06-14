@@ -10,6 +10,17 @@ import TableOfContents from '@/components/TableOfContents';
 import Breadcrumb from '@/components/Breadcrumb';
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
 
+function getUnsplashUrl(url: string, width: number): string {
+  if (!url?.includes('images.unsplash.com')) return url;
+  try {
+    const u = new URL(url);
+    u.searchParams.set('w', String(width));
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
+
 interface PostPageProps {
   params: {
     slug: string;
@@ -621,6 +632,20 @@ const postPageStyles = `
   }
 `;
 
+function extractRankingItems(htmlContent: string): { position: number; name: string }[] {
+  const items: { position: number; name: string }[] = [];
+  const regex = /<h[23][^>]*>[^<]*【第(\d+)位】([^｜<\n【]+)/gi;
+  let match;
+  while ((match = regex.exec(htmlContent)) !== null) {
+    const position = parseInt(match[1], 10);
+    const name = match[2].replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').trim();
+    if (name && !items.find(i => i.position === position)) {
+      items.push({ position, name });
+    }
+  }
+  return items.sort((a, b) => a.position - b.position);
+}
+
 function extractFaqItems(htmlContent: string): { question: string; answer: string }[] {
   const items: { question: string; answer: string }[] = [];
   const headingRegex = /<h[23][^>]*>([\s\S]*?)<\/h[23]>([\s\S]*?)(?=<h[1-6]|$)/gi;
@@ -669,11 +694,17 @@ export default async function PostPage({ params }: PostPageProps) {
     headline: post.title,
     description: post.description,
     url: `${siteUrl}/posts/${post.slug}/`,
-    image: post.thumb || `${siteUrl}/opengraph-image.png`,
+    image: {
+      '@type': 'ImageObject',
+      url: post.thumb || `${siteUrl}/opengraph-image.png`,
+      width: 1200,
+      height: 675,
+    },
     datePublished: new Date(post.date).toISOString(),
     dateModified: post.updatedDate ? new Date(post.updatedDate).toISOString() : new Date(post.date).toISOString(),
     author: {
       '@type': 'Person',
+      '@id': `${siteUrl}/author/#person`,
       name: post.author?.name || 'トリフレ編集部',
       url: `${siteUrl}/author/`,
     },
@@ -683,6 +714,8 @@ export default async function PostPage({ params }: PostPageProps) {
       logo: {
         '@type': 'ImageObject',
         url: `${siteUrl}/logo.png`,
+        width: 200,
+        height: 60,
       },
     },
     mainEntityOfPage: {
@@ -692,6 +725,23 @@ export default async function PostPage({ params }: PostPageProps) {
     ...(post.tags && post.tags.length > 0 && { keywords: post.tags.join(', ') }),
     ...(post.category && { articleSection: post.category }),
   };
+
+  const isRankingPost = /ranking|top\d+/i.test(post.slug);
+  const rankingItems = isRankingPost && post.content ? extractRankingItems(post.content) : [];
+  const itemListJsonLd = rankingItems.length >= 3 ? {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: post.title,
+    description: post.description,
+    url: `${siteUrl}/posts/${post.slug}/`,
+    numberOfItems: rankingItems.length,
+    itemListElement: rankingItems.map(item => ({
+      '@type': 'ListItem',
+      position: item.position,
+      name: item.name,
+      url: `${siteUrl}/posts/${post.slug}/`,
+    })),
+  } : null;
 
   const faqItems = post.content ? extractFaqItems(post.content) : [];
   const faqJsonLd = faqItems.length >= 2 ? {
@@ -726,12 +776,25 @@ export default async function PostPage({ params }: PostPageProps) {
     <>
       {/* Preload LCP hero image — hoisted to <head> by Next.js App Router */}
       {post.thumb && (
-        <link rel="preload" as="image" href={post.thumb} />
+        <link
+          rel="preload"
+          as="image"
+          href={getUnsplashUrl(post.thumb, 1200)}
+          // @ts-expect-error imagesrcset/imagesizes are valid but not in React typedefs
+          imagesrcset={`${getUnsplashUrl(post.thumb, 640)} 640w, ${getUnsplashUrl(post.thumb, 1200)} 1200w`}
+          imagesizes="(max-width: 640px) 640px, 1200px"
+        />
       )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {itemListJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+        />
+      )}
       {faqJsonLd && (
         <script
           type="application/ld+json"
@@ -814,11 +877,13 @@ export default async function PostPage({ params }: PostPageProps) {
             <section className="article-image-section">
               <div className="container">
                 <img
-                  src={post.thumb}
+                  src={getUnsplashUrl(post.thumb, 1200)}
+                  srcSet={`${getUnsplashUrl(post.thumb, 640)} 640w, ${getUnsplashUrl(post.thumb, 1200)} 1200w`}
+                  sizes="(max-width: 640px) 640px, 1200px"
                   alt={post.title}
                   className="article-image"
-                  width="1600"
-                  height="900"
+                  width="1200"
+                  height="675"
                   fetchPriority="high"
                 />
               </div>

@@ -62,6 +62,7 @@ const styles = `
     left: 0;
     width: 100%;
     height: calc(100vh - 120px);
+    height: calc(100svh - 120px);
     background: #3BC78f;
     z-index: 0; /* keep behind header/content wrapper but clickable */
     overflow: hidden;
@@ -71,6 +72,7 @@ const styles = `
   .hero-content {
     position: relative;
     height: calc(100vh - 120px);
+    height: calc(100svh - 120px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -295,6 +297,7 @@ const styles = `
     position: relative;
     z-index: 1;
     margin-top: calc(100vh - 200px);
+    margin-top: calc(100svh - 200px);
     background: white;
     border-radius: 24px 24px 0 0;
     box-shadow: 0 -8px 32px rgba(0,0,0,0.1);

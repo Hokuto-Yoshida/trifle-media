@@ -298,6 +298,7 @@ export default async function AuthorPage() {
   const personJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': `${siteUrl}/author/#person`,
     name: 'トリフレ編集部',
     url: `${siteUrl}/author/`,
     jobTitle: '編集部',
@@ -308,7 +309,13 @@ export default async function AuthorPage() {
     },
     knowsAbout: ['一人旅', '国内旅行', '海外旅行', '格安旅行', '旅行計画', '女性一人旅'],
     description: '一人旅専門メディア「トリフレ」の編集部。60カ国以上の旅行経験をもとに、安心・安全な一人旅の実践情報をお届けします。',
-    image: `${siteUrl}/images/editor-avatar.png`,
+    image: {
+      '@type': 'ImageObject',
+      url: `${siteUrl}/images/editor-avatar.png`,
+      width: 200,
+      height: 200,
+    },
+    sameAs: ['https://twitter.com/trifle_media'],
   };
 
   return (

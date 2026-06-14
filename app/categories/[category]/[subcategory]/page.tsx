@@ -448,8 +448,24 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
     .filter(([slug]) => slug !== subcategorySlug)
     .map(([slug, name]) => ({ slug, name }));
 
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `${categoryInfo.name} - ${subcategoryName} | トリフレメディア`,
+    description: `${categoryInfo.description}（${subcategoryName}）`,
+    url: `${siteUrl}/categories/${categorySlug}/${subcategorySlug}/`,
+    numberOfItems: subcategoryPosts.length,
+    itemListElement: subcategoryPosts.slice(0, 30).map((post, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${siteUrl}/posts/${post.slug}/`,
+      name: post.title,
+    })),
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
       <style dangerouslySetInnerHTML={{ __html: subcategoryPageStyles }} />
       
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>

@@ -6,10 +6,10 @@ import { ThemeProvider, Analytics } from '@/components';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com';
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-  display: 'swap',
+  display: 'optional',
 });
 
 const notoSansJP = Noto_Sans_JP({ 
