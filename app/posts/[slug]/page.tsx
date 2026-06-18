@@ -634,13 +634,20 @@ const postPageStyles = `
 
 function extractRankingItems(htmlContent: string): { position: number; name: string }[] {
   const items: { position: number; name: string }[] = [];
-  const regex = /<h[23][^>]*>[^<]*【第(\d+)位】([^｜<\n【]+)/gi;
-  let match;
-  while ((match = regex.exec(htmlContent)) !== null) {
-    const position = parseInt(match[1], 10);
-    const name = match[2].replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').trim();
-    if (name && !items.find(i => i.position === position)) {
-      items.push({ position, name });
+  const patterns = [
+    /<h[23][^>]*>[^<]*【第(\d+)位】([^｜（<\n【★]{1,25})/gi,
+    /<h[23][^>]*>[^<]*【(\d+)位】([^｜（<\n【★]{1,25})/gi,
+    /<h[23][^>]*>[^<]*第(\d+)位[：:]\s*([^｜（【<\n★]{1,25})/gi,
+  ];
+  for (const regex of patterns) {
+    let match;
+    while ((match = regex.exec(htmlContent)) !== null) {
+      const position = parseInt(match[1], 10);
+      if (position < 1 || position > 50) continue;
+      const name = match[2].replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').trim();
+      if (name && name.length > 0 && !items.find(i => i.position === position)) {
+        items.push({ position, name });
+      }
     }
   }
   return items.sort((a, b) => a.position - b.position);
@@ -726,7 +733,7 @@ export default async function PostPage({ params }: PostPageProps) {
     ...(post.category && { articleSection: post.category }),
   };
 
-  const isRankingPost = /ranking|top\d+/i.test(post.slug);
+  const isRankingPost = /ranking|top\d+|best\d+/i.test(post.slug);
   const rankingItems = isRankingPost && post.content ? extractRankingItems(post.content) : [];
   const itemListJsonLd = rankingItems.length >= 3 ? {
     '@context': 'https://schema.org',
