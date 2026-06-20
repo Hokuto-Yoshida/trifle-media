@@ -519,9 +519,20 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     })),
   };
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'ホーム', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: '記事一覧', item: `${siteUrl}/posts/` },
+      { '@type': 'ListItem', position: 3, name: categoryInfo.name, item: `${siteUrl}/categories/${categorySlug}/` },
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <style dangerouslySetInnerHTML={{ __html: categoryPageStyles }} />
       
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>

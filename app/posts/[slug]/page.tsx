@@ -296,7 +296,8 @@ const postPageStyles = `
   .article-image {
     width: 100%;
     max-width: 100%;
-    height: 400px;
+    height: auto;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 8px;
   }
@@ -572,7 +573,7 @@ const postPageStyles = `
     }
     
     .article-image {
-      height: 250px;
+      max-height: 300px;
     }
     
     .article-content {
@@ -764,6 +765,17 @@ export default async function PostPage({ params }: PostPageProps) {
     })),
   } : null;
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'ホーム', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: '記事一覧', item: `${siteUrl}/posts/` },
+      { '@type': 'ListItem', position: 3, name: post.category, item: `${siteUrl}/categories/${getCategorySlug(post.category)}/` },
+      { '@type': 'ListItem', position: 4, name: post.title, item: `${siteUrl}/posts/${post.slug}/` },
+    ],
+  };
+
   // 関連記事を取得（同じカテゴリの他の記事）
   let relatedPosts: ExtendedPostMetadata[] = [];
   try {
@@ -808,6 +820,10 @@ export default async function PostPage({ params }: PostPageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <style dangerouslySetInnerHTML={{ __html: postPageStyles }} />
       
       <div className="post-page">

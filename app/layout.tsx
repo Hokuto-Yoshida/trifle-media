@@ -12,10 +12,10 @@ const inter = Inter({
   display: 'optional',
 });
 
-const notoSansJP = Noto_Sans_JP({ 
+const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
   variable: '--font-noto-sans-jp',
-  display: 'swap',
+  display: 'fallback',
 });
 
 export const metadata: Metadata = {
