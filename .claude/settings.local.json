@@ -208,7 +208,8 @@
       "Bash(python3 -c ' *)",
       "Bash(curl -s \"https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://torifure.com/&strategy=mobile&category=performance&category=seo&category=accessibility&category=best-practices\" -o C:/Users/81801/AppData/Local/Temp/psi_home.json)",
       "WebFetch(domain:pagespeed.web.dev)",
-      "PowerShell(npm run *)"
+      "PowerShell(npm run *)",
+      "Bash(xargs -I{} grep -m1 \"^title:\" {})"
     ]
   }
 }
