@@ -1,0 +1,40 @@
+# トリフレメディア（Trifle Media）
+
+> 若者のための一人旅特化メディア。国内・海外の一人旅モデルコース、予算シミュレーション、女性一人旅の安全情報、グルメ・宿泊ガイドを330記事以上掲載。全記事に予算・所要時間・アクセスの具体データを含み、情報確認日を明記しています。
+
+- 運営: トリフレメディア編集部（編集部総計60カ国の旅行経験）
+- URL: https://torifure.com/
+- 言語: 日本語
+- 主なコンテンツ形式: 完全ガイド（予算・モデルコース・治安情報付き）、ランキング、ハウツー
+
+## 主要カテゴリ
+
+- [国内旅行](https://torifure.com/categories/domestic/): 北海道・東北 / 関東 / 中部・北陸 / 関西 / 中国・四国 / 九州・沖縄
+- [海外旅行](https://torifure.com/categories/international/): アジア / ヨーロッパ / 北米・南米 / オセアニア / 中東・アフリカ
+- [旅のコツ](https://torifure.com/categories/tips/): 計画・予算 / 安全・準備 / 持ち物・パッキング / トラブル対処
+- [グルメ](https://torifure.com/categories/gourmet/)
+- [宿泊](https://torifure.com/categories/accommodation/)
+
+## 代表的なガイド記事
+
+- [一人旅の基本ガイド](https://torifure.com/posts/solo-travel-guide-2025/): 初めての一人旅の完全ガイド
+- [初めての海外一人旅完全ガイド](https://torifure.com/posts/first-overseas-solo-travel-complete-guide-2026/)
+- [女性の海外一人旅ガイド](https://torifure.com/posts/female-overseas-solo-travel-guide-2025/)
+- [アジア一人旅ランキングTOP10](https://torifure.com/posts/asia-solo-travel-ranking-top10-2026/)
+- [ヨーロッパ一人旅ランキングTOP10](https://torifure.com/posts/europe-solo-travel-ranking-top10-2026/)
+- [世界遺産一人旅ランキングTOP10](https://torifure.com/posts/world-heritage-solo-travel-ranking-top10-2026/)
+
+## 国内主要都市ガイド（2026年版）
+
+- [名古屋一人旅](https://torifure.com/posts/nagoya-solo-travel-guide-2026/)
+- [鹿児島一人旅](https://torifure.com/posts/kagoshima-solo-travel-guide-2026/)
+- [仙台一人旅](https://torifure.com/posts/sendai-solo-travel-guide-2026/)
+- [四国一人旅](https://torifure.com/posts/shikoku-solo-travel-guide-2026/)
+- [静岡一人旅](https://torifure.com/posts/shizuoka-solo-travel-guide-2026/)
+
+## その他のリソース
+
+- [記事一覧](https://torifure.com/posts/)
+- [サイトマップ](https://torifure.com/sitemap.xml)
+- [RSSフィード](https://torifure.com/feed.xml)
+- [編集部について](https://torifure.com/author/)

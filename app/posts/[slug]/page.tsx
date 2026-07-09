@@ -778,15 +778,27 @@ export default async function PostPage({ params }: PostPageProps) {
 
   // 関連記事を取得（同じカテゴリの他の記事）
   let relatedPosts: ExtendedPostMetadata[] = [];
+  // タグページが存在するタグ（3記事以上・上位200）— generateStaticParamsと同じ条件
+  let linkableTags = new Set<string>();
   try {
     const allPosts = await getAllPosts() as ExtendedPostMetadata[];
     relatedPosts = allPosts
-      .filter((p: ExtendedPostMetadata) => 
-        !p.draft && 
-        p.slug !== post.slug && 
+      .filter((p: ExtendedPostMetadata) =>
+        !p.draft &&
+        p.slug !== post.slug &&
         p.category === post.category
       )
       .slice(0, 3);
+
+    const freq: Record<string, number> = {};
+    allPosts.forEach(p => p.tags?.forEach((t: string) => { freq[t] = (freq[t] || 0) + 1; }));
+    linkableTags = new Set(
+      Object.entries(freq)
+        .filter(([, count]) => count >= 3)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 200)
+        .map(([tag]) => tag)
+    );
   } catch (error) {
     console.error('Error loading related posts:', error);
   }
@@ -885,10 +897,17 @@ export default async function PostPage({ params }: PostPageProps) {
               {post.tags && post.tags.length > 0 && (
                 <div className="article-tags">
                   {post.tags.map((tag: string) => (
-                    <span key={tag} className="tag">
-                      <Tag size={12} />
-                      {tag}
-                    </span>
+                    linkableTags.has(tag) ? (
+                      <Link key={tag} href={`/tags/${encodeURIComponent(tag)}/`} className="tag">
+                        <Tag size={12} />
+                        {tag}
+                      </Link>
+                    ) : (
+                      <span key={tag} className="tag">
+                        <Tag size={12} />
+                        {tag}
+                      </span>
+                    )
                   ))}
                 </div>
               )}

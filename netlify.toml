@@ -73,3 +73,9 @@
   to = "/posts/korea-solo-travel-cost-2025/"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/posts/Guatemala-antigua-solo-travel-3nights-4days-complete-guide-2026/"
+  to = "/posts/guatemala-antigua-solo-travel-3nights-4days-complete-guide-2026/"
+  status = 301
+  force = true
