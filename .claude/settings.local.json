@@ -217,7 +217,9 @@
       "Bash(git mv *)",
       "Bash(echo \"EXIT: $?\")",
       "Read(//tmp/**)",
-      "Bash(awk 'FNR<=25 && /[^-]---\\\\r?$/ && !/^---/ {print FILENAME\": \"$0}' *.mdx)"
+      "Bash(awk 'FNR<=25 && /[^-]---\\\\r?$/ && !/^---/ {print FILENAME\": \"$0}' *.mdx)",
+      "PowerShell(if \\(Test-Path out\\) { \"out/ exists: \" + \\(Get-ChildItem out | Measure-Object\\).Count + \" entries\" } else { \"out/ does not exist\" }; if \\(Test-Path .next\\\\server\\\\app\\\\index.html\\) { \".next server index.html exists\" }; node --version)",
+      "PowerShell(git stash *)"
     ]
   }
 }
