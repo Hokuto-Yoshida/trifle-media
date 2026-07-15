@@ -222,7 +222,10 @@
       "PowerShell(git stash *)",
       "PowerShell($html = Get-Content '.next\\\\server\\\\app\\\\posts.html' -Raw -Encoding utf8; $lines = $html -split \"`n\"; foreach \\($l in $lines\\) { if \\($l -match 'images\\\\.unsplash\\\\.com' -and $l -match 'w=1600'\\) { $l.Trim\\(\\).Substring\\(0, [Math]::Min\\(200, $l.Trim\\(\\).Length\\)\\) ; break } })",
       "PowerShell($html = Get-Content '.next\\\\server\\\\app\\\\posts.html' -Raw -Encoding utf8; \"w=1600 hits: \" + \\([regex]::Matches\\($html, 'w=1600'\\) | Where-Object { $html.Substring\\([Math]::Max\\(0,$_.Index-100\\), [Math]::Min\\(200, $html.Length - [Math]::Max\\(0,$_.Index-100\\)\\)\\) -match '<img|<source|src=' }\\).Count)",
-      "PowerShell($html2 = Get-Content '.next\\\\server\\\\app\\\\index.html' -Raw -Encoding utf8; $fp = [regex]::Matches\\($html2, 'fetchpriority'\\); \"fetchpriority hits: \" + $fp.Count; $fp | Select-Object -First 2 | ForEach-Object { $html2.Substring\\([Math]::Max\\(0,$_.Index-50\\), 150\\) })"
+      "PowerShell($html2 = Get-Content '.next\\\\server\\\\app\\\\index.html' -Raw -Encoding utf8; $fp = [regex]::Matches\\($html2, 'fetchpriority'\\); \"fetchpriority hits: \" + $fp.Count; $fp | Select-Object -First 2 | ForEach-Object { $html2.Substring\\([Math]::Max\\(0,$_.Index-50\\), 150\\) })",
+      "PowerShell(Get-Content *)",
+      "PowerShell(\\(Get-Content \"content\\\\posts\\\\turkey-solo-travel-guide-2025.mdx\" -Encoding utf8 | Measure-Object -Line\\).Lines)",
+      "PowerShell(Get-Process *)"
     ]
   }
 }
