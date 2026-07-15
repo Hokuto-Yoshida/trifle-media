@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Clock, User, Tag } from 'lucide-react';
-import { cn, formatDate, formatReadingTime } from '@/lib/utils';
+import { cn, formatDate, formatReadingTime, getUnsplashUrl } from '@/lib/utils';
 
 interface PostCardProps {
   slug: string;
@@ -72,6 +72,8 @@ const postCardStyles = `
   }
   
   .post-image {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -279,12 +281,13 @@ export default function PostCard({
             'post-image-container',
             isSmall ? 'post-image-small' : isLarge ? 'post-image-large' : 'post-image-medium'
           )}>
-            <Image
-              src={thumb}
-              alt={title}
-              fill
-              className="post-image"
+            <img
+              src={getUnsplashUrl(thumb, 800)}
+              srcSet={`${getUnsplashUrl(thumb, 400)} 400w, ${getUnsplashUrl(thumb, 800)} 800w`}
               sizes={isLarge ? '(max-width: 1024px) 100vw, 320px' : '(max-width: 768px) 100vw, 400px'}
+              alt={title}
+              className="post-image"
+              loading="lazy"
             />
             <div className="post-image-overlay" />
             

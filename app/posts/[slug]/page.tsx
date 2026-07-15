@@ -8,18 +8,8 @@ import { getCategoryByName } from '@/lib/categories';
 import Link from 'next/link';
 import TableOfContents from '@/components/TableOfContents';
 import Breadcrumb from '@/components/Breadcrumb';
+import { getUnsplashUrl } from '@/lib/utils';
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
-
-function getUnsplashUrl(url: string, width: number): string {
-  if (!url?.includes('images.unsplash.com')) return url;
-  try {
-    const u = new URL(url);
-    u.searchParams.set('w', String(width));
-    return u.toString();
-  } catch {
-    return url;
-  }
-}
 
 interface PostPageProps {
   params: {

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Search } from 'lucide-react';
 import Script from 'next/script';
+import { getUnsplashUrl } from '@/lib/utils';
 
 export type SidebarPost = {
   slug: string;
@@ -179,7 +180,7 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
               <div className="post-list">
                 {latestPosts.map((post) => (
                   <a key={post.slug} href={`/posts/${post.slug}`} className="sidebar-post-item">
-                    <img src={post.thumb} alt={post.title} className="sidebar-post-thumb" width="60" height="60" loading="lazy" />
+                    <img src={getUnsplashUrl(post.thumb, 160)} alt={post.title} className="sidebar-post-thumb" width="60" height="60" loading="lazy" />
                     <div className="sidebar-post-text">
                       <span className="sidebar-post-chip secondary">NEW</span>
                       <p className="sidebar-post-title">{post.title}</p>

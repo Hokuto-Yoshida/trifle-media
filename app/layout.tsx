@@ -128,6 +128,8 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
+        {/* Preload LCP logo */}
+        <link rel="preload" href="/logo.png" as="image" />
         {/* Resource hints — reduce latency for Unsplash LCP images */}
         <link rel="preconnect" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />

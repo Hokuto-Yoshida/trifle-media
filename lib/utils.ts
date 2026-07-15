@@ -76,6 +76,17 @@ export function generateSEOTitle(title: string, siteName: string = 'トリフレ
   return `${title} | ${siteName}`;
 }
 
+export function getUnsplashUrl(url: string, width: number): string {
+  if (!url?.includes('unsplash.com')) return url;
+  try {
+    const u = new URL(url);
+    u.searchParams.set('w', String(width));
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
+
 export function isExternalUrl(url: string): boolean {
   return url.startsWith('http://') || url.startsWith('https://');
 }

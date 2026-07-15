@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Header, Footer } from '@/components';
 import { getAllTags, getPostsByTag } from '@/lib/posts';
+import { getUnsplashUrl } from '@/lib/utils';
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
 
@@ -117,7 +118,7 @@ export default async function TagPage({ params }: TagPageProps) {
           <div className="posts-grid">
             {posts.map((post) => (
               <Link key={post.slug} href={`/posts/${post.slug}`} className="post-card">
-                <img src={post.thumb || '/images/default-thumb.jpg'} alt={post.title} className="post-thumb" width="800" height="450" loading="lazy" />
+                <img src={getUnsplashUrl(post.thumb, 640) || '/images/default-thumb.jpg'} alt={post.title} className="post-thumb" width="800" height="450" loading="lazy" />
                 <div className="post-body">
                   <span className="post-category">{post.category}</span>
                   <h2 className="post-title">{post.title}</h2>

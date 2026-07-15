@@ -172,6 +172,7 @@ export default function SiteHeader() {
                   className="logo-image"
                   width="120"
                   height="40"
+                  fetchPriority="high"
                 />
               </Link>
             </div>

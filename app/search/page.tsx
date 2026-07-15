@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { ArrowRight, Search as SearchIcon } from 'lucide-react';
 import { Header, Footer } from '@/components';
 import AdBanner from '@/components/AdBanner';
+import { getUnsplashUrl } from '@/lib/utils';
 
 interface PostMetadata {
   slug: string;
@@ -153,7 +154,7 @@ export default function SearchPage() {
                       {searchResults.map((post) => (
                         <article key={post.slug} className="article-card">
                           <img
-                            src={post.thumb || '/placeholder-image.jpg'}
+                            src={getUnsplashUrl(post.thumb, 640) || '/placeholder-image.jpg'}
                             alt={post.title}
                             className="article-image"
                             width="400"

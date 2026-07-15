@@ -4,6 +4,7 @@ import { ArrowRight, Heart, Users, Shield } from 'lucide-react';
 import { Header, Footer } from '@/components';
 import AdBanner from '@/components/AdBannerServer';
 import { getAllPosts } from '@/lib/posts';
+import { getUnsplashUrl } from '@/lib/utils';
 import HeroSliderClient from './HeroSliderClient';
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
@@ -912,7 +913,7 @@ export default async function HomePage() {
                       {latestPosts.slice(0, 2).map((post) => (
                         <article key={post.slug} className="article-card">
                           <img
-                            src={post.thumb || '/placeholder-image.jpg'}
+                            src={getUnsplashUrl(post.thumb, 640) || '/placeholder-image.jpg'}
                             alt={post.title}
                             className="article-image"
                             width="800"
@@ -941,7 +942,7 @@ export default async function HomePage() {
                         {latestPosts.slice(2, 8).map((post) => (
                           <article key={post.slug} className="article-card">
                             <img
-                              src={post.thumb || '/placeholder-image.jpg'}
+                              src={getUnsplashUrl(post.thumb, 640) || '/placeholder-image.jpg'}
                               alt={post.title}
                               className="article-image"
                               width="800"
@@ -1004,7 +1005,7 @@ export default async function HomePage() {
                       {categoryPosts.slice(0, 2).map((post) => (
                         <article key={post.slug} className="article-card">
                           <img
-                            src={post.thumb || '/placeholder-image.jpg'}
+                            src={getUnsplashUrl(post.thumb, 640) || '/placeholder-image.jpg'}
                             alt={post.title}
                             className="article-image"
                             width="800"

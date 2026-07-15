@@ -3,17 +3,7 @@ import Link from 'next/link';
 import { Header, Footer } from '@/components';
 import AdBanner from '@/components/AdBannerServer';
 import { getAllPosts } from '@/lib/posts';
-
-function getUnsplashUrl(url: string, width: number): string {
-  if (!url?.includes('images.unsplash.com')) return url;
-  try {
-    const u = new URL(url);
-    u.searchParams.set('w', String(width));
-    return u.toString();
-  } catch {
-    return url;
-  }
-}
+import { getUnsplashUrl } from '@/lib/utils';
 
 const postsPageStyles = `
   /* Reset and base styles */

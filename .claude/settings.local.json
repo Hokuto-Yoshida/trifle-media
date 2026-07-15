@@ -219,7 +219,9 @@
       "Read(//tmp/**)",
       "Bash(awk 'FNR<=25 && /[^-]---\\\\r?$/ && !/^---/ {print FILENAME\": \"$0}' *.mdx)",
       "PowerShell(if \\(Test-Path out\\) { \"out/ exists: \" + \\(Get-ChildItem out | Measure-Object\\).Count + \" entries\" } else { \"out/ does not exist\" }; if \\(Test-Path .next\\\\server\\\\app\\\\index.html\\) { \".next server index.html exists\" }; node --version)",
-      "PowerShell(git stash *)"
+      "PowerShell(git stash *)",
+      "PowerShell($html = Get-Content '.next\\\\server\\\\app\\\\posts.html' -Raw -Encoding utf8; $lines = $html -split \"`n\"; foreach \\($l in $lines\\) { if \\($l -match 'images\\\\.unsplash\\\\.com' -and $l -match 'w=1600'\\) { $l.Trim\\(\\).Substring\\(0, [Math]::Min\\(200, $l.Trim\\(\\).Length\\)\\) ; break } })",
+      "PowerShell($html = Get-Content '.next\\\\server\\\\app\\\\posts.html' -Raw -Encoding utf8; \"w=1600 hits: \" + \\([regex]::Matches\\($html, 'w=1600'\\) | Where-Object { $html.Substring\\([Math]::Max\\(0,$_.Index-100\\), [Math]::Min\\(200, $html.Length - [Math]::Max\\(0,$_.Index-100\\)\\)\\) -match '<img|<source|src=' }\\).Count)"
     ]
   }
 }
