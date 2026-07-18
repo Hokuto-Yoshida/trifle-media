@@ -35,7 +35,7 @@ const HeroSliderClient = () => {
             <div className="feature-screenshot">
               <div className="screenshot-container">
                 <img
-                  src="/images/app-screenshots/swipe-screen.png"
+                  src="/images/app-screenshots/swipe-screen.webp"
                   alt="仲間探しのスワイプ画面"
                   className="screenshot-image"
                   width="390"
@@ -57,7 +57,7 @@ const HeroSliderClient = () => {
             <div className="feature-screenshot">
               <div className="screenshot-container">
                 <img
-                  src="/images/app-screenshots/swipe-screen.png"
+                  src="/images/app-screenshots/swipe-screen.webp"
                   alt="仲間探しのスワイプ画面"
                   className="screenshot-image"
                   width="390"
@@ -88,11 +88,13 @@ const HeroSliderClient = () => {
             <div className="feature-screenshot">
               <div className="screenshot-container">
                 <img
-                  src="/images/app-screenshots/travel-list.png"
+                  src="/images/app-screenshots/travel-list.webp"
                   alt="旅行作成画面"
                   className="screenshot-image"
                   width="390"
                   height="844"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -109,11 +111,13 @@ const HeroSliderClient = () => {
             <div className="feature-screenshot">
               <div className="screenshot-container">
                 <img
-                  src="/images/app-screenshots/travel-list.png"
+                  src="/images/app-screenshots/travel-list.webp"
                   alt="旅行作成画面"
                   className="screenshot-image"
                   width="390"
                   height="844"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -139,11 +143,13 @@ const HeroSliderClient = () => {
             <div className="feature-screenshot">
               <div className="screenshot-container">
                 <img
-                  src="/images/app-screenshots/chat-screen.png"
+                  src="/images/app-screenshots/chat-screen.webp"
                   alt="チャット画面"
                   className="screenshot-image"
                   width="390"
                   height="844"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -160,11 +166,13 @@ const HeroSliderClient = () => {
             <div className="feature-screenshot">
               <div className="screenshot-container">
                 <img
-                  src="/images/app-screenshots/chat-screen.png"
+                  src="/images/app-screenshots/chat-screen.webp"
                   alt="チャット画面"
                   className="screenshot-image"
                   width="390"
                   height="844"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>

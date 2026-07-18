@@ -225,7 +225,14 @@
       "PowerShell($html2 = Get-Content '.next\\\\server\\\\app\\\\index.html' -Raw -Encoding utf8; $fp = [regex]::Matches\\($html2, 'fetchpriority'\\); \"fetchpriority hits: \" + $fp.Count; $fp | Select-Object -First 2 | ForEach-Object { $html2.Substring\\([Math]::Max\\(0,$_.Index-50\\), 150\\) })",
       "PowerShell(Get-Content *)",
       "PowerShell(\\(Get-Content \"content\\\\posts\\\\turkey-solo-travel-guide-2025.mdx\" -Encoding utf8 | Measure-Object -Line\\).Lines)",
-      "PowerShell(Get-Process *)"
+      "PowerShell(Get-Process *)",
+      "Bash(npx --yes sharp-cli --input editor-avatar.png --output editor-avatar.webp --format webp --quality 82)",
+      "Bash(npx --yes sharp-cli --input chat-screen.png --output chat-screen.webp --format webp --quality 82)",
+      "Bash(npx --yes sharp-cli --input swipe-screen.png --output swipe-screen.webp --format webp --quality 82)",
+      "Bash(npx --yes sharp-cli --input travel-list.png --output travel-list.webp --format webp --quality 82)",
+      "Bash(curl -s \"https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?w=400&q=60&fm=jpg\" -o \"C:/Users/81801/AppData/Local/Temp/claude/C--Users-81801-OneDrive-trifle-media-clean/2fcfba71-3b0c-4167-aa92-21f7ee7402f3/scratchpad/thumb1.jpg\")",
+      "Bash(curl -s \"https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?w=400&q=60&fm=jpg\" -o \"C:/Users/81801/AppData/Local/Temp/claude/C--Users-81801-OneDrive-trifle-media-clean/2fcfba71-3b0c-4167-aa92-21f7ee7402f3/scratchpad/thumb2.jpg\")",
+      "Bash(python *)"
     ]
   }
 }

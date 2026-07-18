@@ -311,7 +311,7 @@ export default async function AuthorPage() {
     description: '一人旅専門メディア「トリフレ」の編集部。60カ国以上の旅行経験をもとに、安心・安全な一人旅の実践情報をお届けします。',
     image: {
       '@type': 'ImageObject',
-      url: `${siteUrl}/images/editor-avatar.png`,
+      url: `${siteUrl}/images/editor-avatar.webp`,
       width: 200,
       height: 200,
     },
@@ -337,7 +337,7 @@ export default async function AuthorPage() {
           <div className="author-card">
             <div className="author-top">
               <img
-                src="/images/editor-avatar.png"
+                src="/images/editor-avatar.webp"
                 alt="トリフレメディア編集部"
                 width="100"
                 height="100"
