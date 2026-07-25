@@ -236,7 +236,23 @@
       "Bash(curl -s 'https://images.unsplash.com/photo-1558370781-d6196949e317?w=400&q=60&fm=jpg' -o C:/Users/81801/AppData/Local/Temp/claude/C--Users-81801-OneDrive-trifle-media-clean/2fcfba71-3b0c-4167-aa92-21f7ee7402f3/scratchpad/miyagi.jpg)",
       "Bash(curl -s 'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=400&q=60&fm=jpg' -o C:/Users/81801/AppData/Local/Temp/claude/C--Users-81801-OneDrive-trifle-media-clean/2fcfba71-3b0c-4167-aa92-21f7ee7402f3/scratchpad/netherlands.jpg)",
       "Bash(curl -s 'https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=400&q=60&fm=jpg' -o C:/Users/81801/AppData/Local/Temp/claude/C--Users-81801-OneDrive-trifle-media-clean/2fcfba71-3b0c-4167-aa92-21f7ee7402f3/scratchpad/amsterdam-existing.jpg)",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(npx --yes lighthouse --version)",
+      "Bash(where chrome.exe)",
+      "Bash(where msedge.exe)",
+      "Read(//c/Program Files/Google/Chrome/Application/**)",
+      "Read(//c/Program Files \\\\\\(x86\\\\\\)/Microsoft/Edge/Application/**)",
+      "Bash(npx --yes serve -l 4173 out)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:4173/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:4173/posts/toyama-solo-travel-guide-2025/)",
+      "Bash(npx --yes lighthouse http://localhost:4173/posts/toyama-solo-travel-guide-2025/ '--chrome-flags=--headless=new --no-sandbox' --output=json --output-path=C:/Users/81801/AppData/Local/Temp/claude/C--Users-81801-OneDrive-trifle-media-clean/2fcfba71-3b0c-4167-aa92-21f7ee7402f3/scratchpad/lh-post.json --only-categories=performance --preset=desktop --quiet)",
+      "Bash(PYTHONIOENCODING=utf-8 python *)",
+      "Bash(npx --yes sharp-cli --input logo.png --output logo.webp --format webp --quality 90 -- resize 240)",
+      "Bash(npx --yes lighthouse http://localhost:4173/categories/domestic/ '--chrome-flags=--headless=new --no-sandbox' --output=json --output-path=C:/Users/81801/AppData/Local/Temp/claude/C--Users-81801-OneDrive-trifle-media-clean/2fcfba71-3b0c-4167-aa92-21f7ee7402f3/scratchpad/lh-category.json --only-categories=performance --preset=desktop --quiet)",
+      "Bash(kill %1)",
+      "Bash(tee /tmp/build2.log)",
+      "Bash(npx *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:4174/)"
     ]
   }
 }

@@ -167,7 +167,7 @@ export default function SiteHeader() {
             <div className="header-logo">
               <Link href="/">
                 <img
-                  src="/logo.png"
+                  src="/logo.webp"
                   alt="トリフレメディア"
                   className="logo-image"
                   width="120"

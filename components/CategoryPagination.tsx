@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { getUnsplashUrl } from '@/lib/utils';
 
 interface PostMetadata {
   slug: string;
@@ -315,15 +316,18 @@ export default function CategoryPagination({ posts, categorySlug, postsPerPage }
 
       {/* 記事グリッド */}
       <div className="posts-grid">
-        {currentPosts.map((post: PostMetadata) => (
+        {currentPosts.map((post: PostMetadata, index: number) => (
           <article key={post.slug} className="article-card">
             <img
-              src={post.thumb || '/placeholder-image.jpg'}
+              src={getUnsplashUrl(post.thumb || '/placeholder-image.jpg', 400)}
+              srcSet={post.thumb ? `${getUnsplashUrl(post.thumb, 400)} 400w, ${getUnsplashUrl(post.thumb, 800)} 800w` : undefined}
+              sizes="(max-width: 768px) 100vw, 400px"
               alt={post.title}
               className="article-image"
               width="400"
               height="225"
-              loading="lazy"
+              loading={index < 4 ? 'eager' : 'lazy'}
+              fetchPriority={index === 0 ? 'high' : undefined}
             />
             <div className="article-content">
               <span className="article-category">{post.category}</span>
