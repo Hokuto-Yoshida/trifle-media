@@ -79,30 +79,3 @@
   to = "/posts/guatemala-antigua-solo-travel-3nights-4days-complete-guide-2026/"
   status = 301
   force = true
-
-# Enforce trailing slash on dynamic routes (site is trailingSlash:true) —
-# internal links inconsistently omit the slash, causing duplicate indexing
-# of the same page under two URLs (e.g. domestic-solo-travel-ranking-top15-2026)
-[[redirects]]
-  from = "/posts/:slug"
-  to = "/posts/:slug/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/categories/:category/:subcategory"
-  to = "/categories/:category/:subcategory/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/categories/:category"
-  to = "/categories/:category/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/tags/:tag"
-  to = "/tags/:tag/"
-  status = 301
-  force = true
