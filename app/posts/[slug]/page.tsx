@@ -800,10 +800,10 @@ export default async function PostPage({ params }: PostPageProps) {
         <link
           rel="preload"
           as="image"
-          href={getUnsplashUrl(post.thumb, 1200)}
+          href={getUnsplashUrl(post.thumb, 900)}
           // @ts-expect-error imagesrcset/imagesizes are valid but not in React typedefs
-          imagesrcset={`${getUnsplashUrl(post.thumb, 640)} 640w, ${getUnsplashUrl(post.thumb, 1200)} 1200w`}
-          imagesizes="(max-width: 640px) 640px, 1200px"
+          imagesrcset={`${getUnsplashUrl(post.thumb, 640)} 640w, ${getUnsplashUrl(post.thumb, 900)} 900w, ${getUnsplashUrl(post.thumb, 1200)} 1200w`}
+          imagesizes="(max-width: 640px) 640px, 900px"
         />
       )}
       <script
@@ -909,9 +909,9 @@ export default async function PostPage({ params }: PostPageProps) {
             <section className="article-image-section">
               <div className="container">
                 <img
-                  src={getUnsplashUrl(post.thumb, 1200)}
-                  srcSet={`${getUnsplashUrl(post.thumb, 640)} 640w, ${getUnsplashUrl(post.thumb, 1200)} 1200w`}
-                  sizes="(max-width: 640px) 640px, 1200px"
+                  src={getUnsplashUrl(post.thumb, 900)}
+                  srcSet={`${getUnsplashUrl(post.thumb, 640)} 640w, ${getUnsplashUrl(post.thumb, 900)} 900w, ${getUnsplashUrl(post.thumb, 1200)} 1200w`}
+                  sizes="(max-width: 640px) 640px, 900px"
                   alt={post.title}
                   className="article-image"
                   width="1200"

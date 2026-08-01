@@ -8,13 +8,32 @@
     <link>https://torifure.com/</link>
     <description>一人旅を楽しむための情報を発信する専門メディア</description>
     <language>ja</language>
-    <lastBuildDate>Sat, 18 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 01 Aug 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://torifure.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://torifure.com/opengraph-image.png</url>
       <title>トリフレメディア</title>
       <link>https://torifure.com/</link>
     </image>
+  <item>
+    <title>【2026年】9月の国内一人旅が実は狙い目な理由｜お盆明けの空いた穴場スポット10選</title>
+    <link>https://torifure.com/posts/september-solo-travel-domestic-2026/</link>
+    <guid isPermaLink="true">https://torifure.com/posts/september-solo-travel-domestic-2026/</guid>
+    <description>9月の国内一人旅は、お盆の混雑と高値がウソのように消える「狙い目シーズン」。まだ暑さは残るのに宿代は下がり、観光地は空く。一人旅に向いた9月のおすすめスポット10選と、残暑対策・費用の目安まで完全ガイド。</description>
+    <pubDate>Sat, 01 Aug 2026 00:00:00 GMT</pubDate>
+    <category>国内旅行</category>
+    <category>9月一人旅</category>
+    <category>9月旅行</category>
+    <category>国内旅行</category>
+    <category>残暑</category>
+    <category>穴場</category>
+    <category>混雑回避</category>
+    <category>お盆明け</category>
+    <category>一人旅</category>
+    <category>ひとり旅</category>
+    <category>2026年</category>
+    <category>秋旅行の入口</category>
+  </item>
   <item>
     <title>【2026年版】京都の紅葉一人旅完全ガイド｜見頃カレンダー・混雑回避・ライトアップ攻略</title>
     <link>https://torifure.com/posts/kyoto-autumn-koyo-solo-travel-2026/</link>
@@ -1079,29 +1098,6 @@
     <category>機内持ち込み</category>
     <category>スーツケース</category>
     <category>バックパック</category>
-  </item>
-  <item>
-    <title>【2026年最新】絶景一人旅ランキングTOP10｜死ぬまでに見たい世界の景色を予算・ベストシーズン付きで徹底解説</title>
-    <link>https://torifure.com/posts/spectacular-scenery-solo-travel-ranking-top10-2026/</link>
-    <guid isPermaLink="true">https://torifure.com/posts/spectacular-scenery-solo-travel-ranking-top10-2026/</guid>
-    <description>一生に一度は見たい世界の絶景を一人旅で巡る完全ガイド。ウユニ塩湖、マチュピチュ、オーロラなど厳選10スポットを予算・ベストシーズン・アクセス方法・安全対策とともに紹介。トリフレで感動をシェアする旅へ。</description>
-    <pubDate>Sat, 21 Feb 2026 00:00:00 GMT</pubDate>
-    <category>海外旅行</category>
-    <category>絶景ランキング</category>
-    <category>一人旅</category>
-    <category>ウユニ塩湖</category>
-    <category>マチュピチュ</category>
-    <category>オーロラ</category>
-    <category>パタゴニア</category>
-    <category>グランドキャニオン</category>
-    <category>ガラパゴス</category>
-    <category>死ぬまでに見たい景色</category>
-    <category>世界遺産</category>
-    <category>自然絶景</category>
-    <category>冒険旅行</category>
-    <category>バケットリスト</category>
-    <category>絶景スポット</category>
-    <category>秘境</category>
   </item>
   </channel>
 </rss>
