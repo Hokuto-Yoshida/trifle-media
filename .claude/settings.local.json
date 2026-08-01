@@ -256,7 +256,8 @@
       "Bash(unzip -o C:/Users/81801/Downloads/torifure.com-Performance-on-Search-2026-07-26.zip -d C:/Users/81801/AppData/Local/Temp/claude/C--Users-81801-OneDrive-trifle-media-clean/2fcfba71-3b0c-4167-aa92-21f7ee7402f3/scratchpad/gsc)",
       "Bash(where 7z)",
       "Bash(where 7z.exe)",
-      "Read(//c/Program Files/7-Zip/**)"
+      "Read(//c/Program Files/7-Zip/**)",
+      "Bash(git fetch *)"
     ]
   }
 }
