@@ -257,7 +257,12 @@
       "Bash(where 7z)",
       "Bash(where 7z.exe)",
       "Read(//c/Program Files/7-Zip/**)",
-      "Bash(git fetch *)"
+      "Bash(git fetch *)",
+      "Bash(git remote *)",
+      "Bash(git config *)",
+      "Bash(curl -s 'https://images.unsplash.com/photo-1673142424031-a96fffc2366c?w=400&q=60&fm=jpg' -o C:/Users/81801/AppData/Local/Temp/claude/C--Users-81801-OneDrive-trifle-media-clean/2fcfba71-3b0c-4167-aa92-21f7ee7402f3/scratchpad/obon_thumb.jpg)",
+      "Bash(curl -s 'https://images.unsplash.com/photo-1468793507812-b819d7553cfa?w=400&q=60&fm=jpg' -o C:/Users/81801/AppData/Local/Temp/claude/C--Users-81801-OneDrive-trifle-media-clean/2fcfba71-3b0c-4167-aa92-21f7ee7402f3/scratchpad/june_thumb.jpg)",
+      "Bash(curl *)"
     ]
   }
 }
