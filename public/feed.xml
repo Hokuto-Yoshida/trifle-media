@@ -8,13 +8,32 @@
     <link>https://torifure.com/</link>
     <description>一人旅を楽しむための情報を発信する専門メディア</description>
     <language>ja</language>
-    <lastBuildDate>Sat, 08 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 10 Aug 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://torifure.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://torifure.com/opengraph-image.png</url>
       <title>トリフレメディア</title>
       <link>https://torifure.com/</link>
     </image>
+  <item>
+    <title>【2026年】シルバーウィークは11年ぶりの5連休！9月19日〜23日の一人旅完全ガイド</title>
+    <link>https://torifure.com/posts/silverweek-solo-travel-2026/</link>
+    <guid isPermaLink="true">https://torifure.com/posts/silverweek-solo-travel-2026/</guid>
+    <description>2026年9月19日(土)〜23日(水)、敬老の日・国民の休日・秋分の日が繋がり11年ぶりのシルバーウィーク（5連休）が成立。混雑・予約の注意点から、有給を足して9連休にする方法、おすすめの過ごし方まで徹底解説。</description>
+    <pubDate>Mon, 10 Aug 2026 00:00:00 GMT</pubDate>
+    <category>国内旅行</category>
+    <category>シルバーウィーク</category>
+    <category>SW2026</category>
+    <category>9月連休</category>
+    <category>敬老の日</category>
+    <category>秋分の日</category>
+    <category>国民の休日</category>
+    <category>国内旅行</category>
+    <category>一人旅</category>
+    <category>ひとり旅</category>
+    <category>2026年</category>
+    <category>5連休</category>
+  </item>
   <item>
     <title>【2026年】10月の3連休（スポーツの日）で行く一人旅｜混雑前の快適シーズンおすすめプラン</title>
     <link>https://torifure.com/posts/october-3renkyu-solo-travel-2026/</link>
@@ -1072,29 +1091,6 @@
     <category>バックパッカー</category>
     <category>女性一人旅</category>
     <category>世界一周</category>
-  </item>
-  <item>
-    <title>【2026年版】国内一人旅おすすめランキングTOP15｜エリア別・予算別完全ガイドで失敗しない旅先選び</title>
-    <link>https://torifure.com/posts/domestic-solo-travel-ranking-top15-2026/</link>
-    <guid isPermaLink="true">https://torifure.com/posts/domestic-solo-travel-ranking-top15-2026/</guid>
-    <description>国内一人旅を計画中の方必見！北は北海道から南は沖縄まで、予算・アクセス・魅力の3つの視点からおすすめエリアをランキング形式で紹介。2泊3日3万円台から週末旅行まで、実体験ベースで徹底解説。トリフレ活用術も網羅した完全ガイド。</description>
-    <pubDate>Mon, 23 Feb 2026 00:00:00 GMT</pubDate>
-    <category>国内旅行</category>
-    <category>国内一人旅</category>
-    <category>おすすめランキング</category>
-    <category>予算別</category>
-    <category>2泊3日</category>
-    <category>週末旅行</category>
-    <category>女性一人旅</category>
-    <category>初心者向け</category>
-    <category>温泉</category>
-    <category>グルメ</category>
-    <category>観光スポット</category>
-    <category>旅行計画</category>
-    <category>北海道</category>
-    <category>京都</category>
-    <category>沖縄</category>
-    <category>トリフレ</category>
   </item>
   </channel>
 </rss>
