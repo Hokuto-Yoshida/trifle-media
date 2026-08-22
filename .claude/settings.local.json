@@ -262,7 +262,13 @@
       "Bash(git config *)",
       "Bash(curl -s 'https://images.unsplash.com/photo-1673142424031-a96fffc2366c?w=400&q=60&fm=jpg' -o C:/Users/81801/AppData/Local/Temp/claude/C--Users-81801-OneDrive-trifle-media-clean/2fcfba71-3b0c-4167-aa92-21f7ee7402f3/scratchpad/obon_thumb.jpg)",
       "Bash(curl -s 'https://images.unsplash.com/photo-1468793507812-b819d7553cfa?w=400&q=60&fm=jpg' -o C:/Users/81801/AppData/Local/Temp/claude/C--Users-81801-OneDrive-trifle-media-clean/2fcfba71-3b0c-4167-aa92-21f7ee7402f3/scratchpad/june_thumb.jpg)",
-      "Bash(curl *)"
+      "Bash(curl *)",
+      "Read(//c/Users/81801/Downloads/**)",
+      "Bash(unzip -o \"torifure.com-Performance-on-Search-2026-08-22.zip\" -d torifure_gsc_20260822)",
+      "Bash(rm -rf torifure_gsc_20260822)",
+      "Bash(unzip -O sjis -o \"torifure.com-Performance-on-Search-2026-08-22.zip\" -d torifure_gsc_20260822)",
+      "Bash(cd *)",
+      "Bash(git show *)"
     ]
   }
 }
