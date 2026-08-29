@@ -268,7 +268,12 @@
       "Bash(rm -rf torifure_gsc_20260822)",
       "Bash(unzip -O sjis -o \"torifure.com-Performance-on-Search-2026-08-22.zip\" -d torifure_gsc_20260822)",
       "Bash(cd *)",
-      "Bash(git show *)"
+      "Bash(git show *)",
+      "Bash(netlify --version)",
+      "Bash(netlify status *)",
+      "Bash(env)",
+      "Bash(gh repo *)",
+      "Bash(echo \"started pid $!\")"
     ]
   }
 }
