@@ -15,6 +15,7 @@ const POST_DIRECTORIES = [
 interface ExtendedPostMetadata extends PostMetadata {
   subcategory?: string;
   filePath?: string;
+  canonical?: string;
 }
 
 // 簡単なMarkdown→HTML変換関数
@@ -191,6 +192,7 @@ export async function getAllPosts(): Promise<ExtendedPostMetadata[]> {
             updatedDate: data.lastmod || data.updatedDate || undefined,
             category: data.category || '未分類',
             subcategory: data.subcategory || undefined,
+            canonical: data.canonical || undefined,
             tags: data.tags || [],
             thumb: data.thumb || data.ogImage || '/images/default-thumb.jpg',
             readingTime: data.readingTime || 5,
@@ -264,6 +266,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       date: data.date || new Date().toISOString(),
       updatedDate: data.lastmod || data.updatedDate || undefined,
       category: data.category || '未分類',
+      canonical: data.canonical || undefined,
       tags: data.tags || [],
       thumb: data.thumb || data.ogImage || '/images/default-thumb.jpg',
       readingTime: data.readingTime || 5,

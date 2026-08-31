@@ -81,6 +81,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const posts = await getAllPosts();
     postPages = posts
       .filter((post: any) => !post.draft)
+      // canonicalが自分以外のURLを指す記事はsitemapから除外(重複URL送信を防ぐ)
+      .filter((post: any) => !post.canonical || post.canonical === `/posts/${post.slug}/` || post.canonical === `/posts/${post.slug}`)
       .map((post: any) => ({
         url: withTrailingSlash(`/posts/${post.slug}`),
         lastModified: post.updatedDate ? new Date(post.updatedDate) : new Date(post.date),

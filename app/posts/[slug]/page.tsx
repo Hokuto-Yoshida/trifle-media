@@ -24,6 +24,7 @@ interface ExtendedPostMetadata {
   date: string;
   updatedDate?: string;
   category: string;
+  canonical?: string;
   subcategory?: string;
   tags: string[];
   thumb: string;
@@ -80,7 +81,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
         images: [ogImage],
       },
       alternates: {
-        canonical: `${siteUrl}/posts/${post.slug}/`,
+        canonical: post.canonical ? `${siteUrl}${post.canonical}` : `${siteUrl}/posts/${post.slug}/`,
       },
     };
   } catch (error) {

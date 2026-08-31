@@ -6,6 +6,7 @@ export interface Post {
   date: string;
   updatedDate?: string;
   category: string;
+  canonical?: string;
   tags: string[];
   thumb: string;
   readingTime: number;

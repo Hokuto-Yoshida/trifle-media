@@ -273,7 +273,8 @@
       "Bash(netlify status *)",
       "Bash(env)",
       "Bash(gh repo *)",
-      "Bash(echo \"started pid $!\")"
+      "Bash(echo \"started pid $!\")",
+      "Bash(echo \"EXIT_CODE:$?\")"
     ]
   }
 }
