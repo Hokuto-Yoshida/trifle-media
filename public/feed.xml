@@ -8,13 +8,32 @@
     <link>https://torifure.com/</link>
     <description>一人旅を楽しむための情報を発信する専門メディア</description>
     <language>ja</language>
-    <lastBuildDate>Mon, 10 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://torifure.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://torifure.com/opengraph-image.png</url>
       <title>トリフレメディア</title>
       <link>https://torifure.com/</link>
     </image>
+  <item>
+    <title>11月3連休、紅葉本番の混雑をどう避ける？一人旅ガイド</title>
+    <link>https://torifure.com/posts/november-3renkyu-solo-travel-2026/</link>
+    <guid isPermaLink="true">https://torifure.com/posts/november-3renkyu-solo-travel-2026/</guid>
+    <description>2026年11月21日(土)〜23日(月・勤労感謝の日)の3連休は紅葉本番のピーク。混雑を避けて楽しむための時間帯・エリア選び、宿の予約タイミング、交通機関の混雑回避術を一人旅目線で解説。日光・京都以外の穴場スポットも紹介。</description>
+    <pubDate>Sun, 13 Sep 2026 00:00:00 GMT</pubDate>
+    <category>国内旅行</category>
+    <category>11月一人旅</category>
+    <category>3連休</category>
+    <category>勤労感謝の日</category>
+    <category>紅葉</category>
+    <category>国内旅行</category>
+    <category>秋旅行</category>
+    <category>混雑回避</category>
+    <category>一人旅</category>
+    <category>ひとり旅</category>
+    <category>2026年</category>
+    <category>穴場スポット</category>
+  </item>
   <item>
     <title>【2026年】シルバーウィークは11年ぶりの5連休！9月19日〜23日の一人旅完全ガイド</title>
     <link>https://torifure.com/posts/silverweek-solo-travel-2026/</link>
@@ -1067,29 +1086,6 @@
     <category>追加料金回避</category>
     <category>お得情報</category>
     <category>予約タイミング</category>
-  </item>
-  <item>
-    <title>【2026年最新】一人旅で行くべき世界遺産ランキングTOP10｜予算・ベストシーズン・アクセス完全ガイド</title>
-    <link>https://torifure.com/posts/world-heritage-solo-travel-ranking-top10-2026/</link>
-    <guid isPermaLink="true">https://torifure.com/posts/world-heritage-solo-travel-ranking-top10-2026/</guid>
-    <description>死ぬまでに一度は見たい世界遺産を一人旅で巡る完全ガイド。マチュピチュ、アンコールワット、サグラダファミリアなど厳選10スポットを予算・ベストシーズン・安全対策とともに徹底解説。トリフレで感動をシェアする旅へ。</description>
-    <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
-    <category>海外旅行</category>
-    <category>世界遺産</category>
-    <category>一人旅</category>
-    <category>ランキング</category>
-    <category>マチュピチュ</category>
-    <category>アンコールワット</category>
-    <category>ウユニ塩湖</category>
-    <category>サグラダファミリア</category>
-    <category>モンサンミッシェル</category>
-    <category>絶景</category>
-    <category>予算</category>
-    <category>ベストシーズン</category>
-    <category>海外旅行</category>
-    <category>バックパッカー</category>
-    <category>女性一人旅</category>
-    <category>世界一周</category>
   </item>
   </channel>
 </rss>
