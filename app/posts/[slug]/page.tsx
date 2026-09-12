@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 
     const ogImage = post.thumb || `${siteUrl}/opengraph-image.png`;
     return {
-      title: `${post.title} | トリフレメディア`,
+      title: `${post.title}｜トリフレ`,
       description: post.description,
       openGraph: {
         title: post.title,

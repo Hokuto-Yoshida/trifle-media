@@ -79,3 +79,9 @@
   to = "/posts/guatemala-antigua-solo-travel-3nights-4days-complete-guide-2026/"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/posts/peru-cusco-machu-picchu-solo-travel-4nights-6days-budget-300k-2025/"
+  to = "/posts/peru-cusco-machu-picchu-solo-travel-4nights-6days-budget-300k-2026/"
+  status = 301
+  force = true
