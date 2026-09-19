@@ -9,7 +9,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return `${baseUrl}${pathname}/`;
   };
 
-  // 髱咏噪繝壹・繧ｸ
+  // 静的ページ
   const staticPages = [
     {
       url: withTrailingSlash(),
