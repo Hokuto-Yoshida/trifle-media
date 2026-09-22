@@ -8,13 +8,33 @@
     <link>https://torifure.com/</link>
     <description>一人旅を楽しむための情報を発信する専門メディア</description>
     <language>ja</language>
-    <lastBuildDate>Sun, 13 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 23 Sep 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://torifure.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://torifure.com/opengraph-image.png</url>
       <title>トリフレメディア</title>
       <link>https://torifure.com/</link>
     </image>
+  <item>
+    <title>ハロウィン一人旅、USJとディズニーどっちが向いてる？</title>
+    <link>https://torifure.com/posts/halloween-solo-travel-usj-disney-2026/</link>
+    <guid isPermaLink="true">https://torifure.com/posts/halloween-solo-travel-usj-disney-2026/</guid>
+    <description>2026年のUSJ「ハロウィーン・ホラー・ナイト」（〜11月8日）と東京ディズニー「ディズニー・ハロウィーン」（〜10月31日）、一人旅で行くならどっちが向いている？チケット料金・仮装ルール・混雑回避のコツを徹底比較。まだ間に合う秋のテーマパーク一人旅ガイド。</description>
+    <pubDate>Wed, 23 Sep 2026 00:00:00 GMT</pubDate>
+    <category>国内旅行</category>
+    <category>ハロウィン一人旅</category>
+    <category>USJ</category>
+    <category>ユニバーサル・スタジオ・ジャパン</category>
+    <category>東京ディズニーランド</category>
+    <category>東京ディズニーシー</category>
+    <category>ハロウィーン・ホラー・ナイト</category>
+    <category>テーマパーク</category>
+    <category>一人旅</category>
+    <category>ひとり旅</category>
+    <category>2026年</category>
+    <category>仮装</category>
+    <category>国内旅行</category>
+  </item>
   <item>
     <title>11月3連休、紅葉本番の混雑をどう避ける？一人旅ガイド</title>
     <link>https://torifure.com/posts/november-3renkyu-solo-travel-2026/</link>
@@ -1064,28 +1084,6 @@
     <category>ビーチリゾート</category>
     <category>オセアニア旅行</category>
     <category>2026年</category>
-  </item>
-  <item>
-    <title>LCCセールはいつ来る？予約のベストタイミング完全ガイド</title>
-    <link>https://torifure.com/posts/lcc-complete-guide-budget-travel-2026/</link>
-    <guid isPermaLink="true">https://torifure.com/posts/lcc-complete-guide-budget-travel-2026/</guid>
-    <description>LCCのセールはいつ来る？狙い方と予約のベストタイミング、座席・受託手荷物の追加料金トラップ回避法、空港での搭乗手続きまで、一人旅でLCCを賢く使い倒すための完全ガイド【2026年最新】。</description>
-    <pubDate>Wed, 25 Feb 2026 00:00:00 GMT</pubDate>
-    <category>旅のコツ</category>
-    <category>LCC</category>
-    <category>格安航空券</category>
-    <category>一人旅</category>
-    <category>予算節約</category>
-    <category>航空券予約</category>
-    <category>セール情報</category>
-    <category>ピーチ</category>
-    <category>ジェットスター</category>
-    <category>初心者向け</category>
-    <category>旅行準備</category>
-    <category>受託手荷物</category>
-    <category>追加料金回避</category>
-    <category>お得情報</category>
-    <category>予約タイミング</category>
   </item>
   </channel>
 </rss>
