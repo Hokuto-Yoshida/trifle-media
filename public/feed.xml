@@ -8,13 +8,35 @@
     <link>https://torifure.com/</link>
     <description>一人旅を楽しむための情報を発信する専門メディア</description>
     <language>ja</language>
-    <lastBuildDate>Sat, 26 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://torifure.com/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://torifure.com/opengraph-image.png</url>
       <title>トリフレメディア</title>
       <link>https://torifure.com/</link>
     </image>
+  <item>
+    <title>クリスマスに国内一人旅、どこ行く？イルミネーション×温泉7選【2026】</title>
+    <link>https://torifure.com/posts/christmas-solo-travel-domestic-illumination-2026/</link>
+    <guid isPermaLink="true">https://torifure.com/posts/christmas-solo-travel-domestic-illumination-2026/</guid>
+    <description>2026年のクリスマスは12月24日(木)・25日(金)。25日に有給1日で3連休にできる今年、一人でも浮かずに楽しめる国内イルミネーション7選を、近くの温泉とのセットで紹介。札幌・函館・横浜は12/25で終了するなど日程の落とし穴も解説。</description>
+    <pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
+    <category>国内旅行</category>
+    <category>クリスマス一人旅</category>
+    <category>クリぼっち</category>
+    <category>イルミネーション</category>
+    <category>国内旅行</category>
+    <category>冬旅行</category>
+    <category>温泉</category>
+    <category>札幌</category>
+    <category>函館</category>
+    <category>横浜</category>
+    <category>クリスマスマーケット</category>
+    <category>一人旅</category>
+    <category>ひとり旅</category>
+    <category>2026年</category>
+    <category>12月</category>
+  </item>
   <item>
     <title>韓国の紅葉一人旅、南怡島と雪岳山どっちに行く？</title>
     <link>https://torifure.com/posts/korea-autumn-foliage-namiseom-seoraksan-2026/</link>
@@ -1059,28 +1081,6 @@
     <category>スマホ</category>
     <category>旅行準備</category>
     <category>初心者向け</category>
-  </item>
-  <item>
-    <title>【2026年最新】ベトナム一人旅完全ガイド｜ハノイ・ホーチミン・ダナン 都市別予算・治安・ルートを徹底解説</title>
-    <link>https://torifure.com/posts/vietnam-solo-travel-complete-guide-cities-routes-2026/</link>
-    <guid isPermaLink="true">https://torifure.com/posts/vietnam-solo-travel-complete-guide-cities-routes-2026/</guid>
-    <description>ベトナム一人旅を計画中の方必見！ハノイ・ホーチミン・ダナンなど主要8都市を予算・治安・魅力で徹底比較。3泊4日〜7泊8日の周遊ルート、2026年最新の為替・物価・安全対策を完全網羅。</description>
-    <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
-    <category>海外旅行</category>
-    <category>ベトナム一人旅</category>
-    <category>ハノイ</category>
-    <category>ホーチミン</category>
-    <category>ダナン</category>
-    <category>ホイアン</category>
-    <category>ハロン湾</category>
-    <category>予算比較</category>
-    <category>周遊ルート</category>
-    <category>女性一人旅</category>
-    <category>安全対策</category>
-    <category>ベストシーズン</category>
-    <category>東南アジア旅行</category>
-    <category>初心者向け</category>
-    <category>2026年</category>
   </item>
   </channel>
 </rss>
