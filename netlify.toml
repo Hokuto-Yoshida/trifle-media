@@ -97,3 +97,27 @@
   to = "/posts/female-overseas-solo-travel-guide-2025/"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/posts/bolivia-uyuni-lapaz-solo-4nights-6days-budget-250k-2026/"
+  to = "/posts/bolivia-uyuni-solo-female-complete-guide-2026/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/posts/rio-de-janeiro-solo-travel-3nights-5days-2026/"
+  to = "/posts/rio-de-janeiro-solo-travel-2025/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/posts/cuba-havana-trinidad-varadero-solo-5nights-7days-2026/"
+  to = "/posts/cuba-female-solo-travel-complete-guide-2025/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/posts/colombia-3cities-bogota-medellin-cartagena-solo-5nights-7days-2026/"
+  to = "/posts/colombia-female-solo-travel-guide-2025/"
+  status = 301
+  force = true
