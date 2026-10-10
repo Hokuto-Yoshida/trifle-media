@@ -91,3 +91,9 @@
   to = "/posts/travel-companions-how-to-find-2026/"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/posts/female-solo-travel-guide-2025/"
+  to = "/posts/female-overseas-solo-travel-guide-2025/"
+  status = 301
+  force = true
