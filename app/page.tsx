@@ -738,11 +738,11 @@ export default async function HomePage() {
 
                 <div className="category-tabs">
                   <a href="/posts" className="category-tab active">新着</a>
-                  <a href="/categories/domestic" className="category-tab">国内旅行</a>
-                  <a href="/categories/international" className="category-tab">海外旅行</a>
-                  <a href="/categories/gourmet" className="category-tab">グルメ</a>
-                  <a href="/categories/accommodation" className="category-tab">宿泊</a>
-                  <a href="/categories/tips" className="category-tab">旅のコツ</a>
+                  <a href="/categories/domestic/" className="category-tab">国内旅行</a>
+                  <a href="/categories/international/" className="category-tab">海外旅行</a>
+                  <a href="/categories/gourmet/" className="category-tab">グルメ</a>
+                  <a href="/categories/accommodation/" className="category-tab">宿泊</a>
+                  <a href="/categories/tips/" className="category-tab">旅のコツ</a>
                 </div>
 
                 {latestPosts.length > 0 ? (
@@ -766,7 +766,7 @@ export default async function HomePage() {
                               <span>{new Date(post.date).toLocaleDateString('ja-JP')}</span>
                               <span>{post.readingTime}分で読める</span>
                             </div>
-                            <a href={`/posts/${post.slug}`} className="read-more-button">
+                            <a href={`/posts/${post.slug}/`} className="read-more-button">
                               この記事を見る
                               <ArrowRight size={14} />
                             </a>
@@ -795,7 +795,7 @@ export default async function HomePage() {
                                 <span>{new Date(post.date).toLocaleDateString('ja-JP')}</span>
                                 <span>{post.readingTime}分</span>
                               </div>
-                              <a href={`/posts/${post.slug}`} className="read-more-button">
+                              <a href={`/posts/${post.slug}/`} className="read-more-button">
                                 この記事を見る
                                 <ArrowRight size={14} />
                               </a>
@@ -833,7 +833,7 @@ export default async function HomePage() {
                   <div className="container">
                     <div className="section-header">
                       <h2 className="section-title">{category.name}</h2>
-                      <a href={`/categories/${category.slug}`} className="section-link">
+                      <a href={`/categories/${category.slug}/`} className="section-link">
                         一覧を見る
                         <ArrowRight size={14} />
                       </a>
@@ -858,7 +858,7 @@ export default async function HomePage() {
                               <span>{new Date(post.date).toLocaleDateString('ja-JP')}</span>
                               <span>{post.readingTime}分</span>
                             </div>
-                            <a href={`/posts/${post.slug}`} className="read-more-button">
+                            <a href={`/posts/${post.slug}/`} className="read-more-button">
                               この記事を見る
                               <ArrowRight size={14} />
                             </a>

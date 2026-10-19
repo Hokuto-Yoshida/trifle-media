@@ -117,7 +117,7 @@ export default async function TagPage({ params }: TagPageProps) {
 
           <div className="posts-grid">
             {posts.map((post) => (
-              <Link key={post.slug} href={`/posts/${post.slug}`} className="post-card">
+              <Link key={post.slug} href={`/posts/${post.slug}/`} className="post-card">
                 <img src={getUnsplashUrl(post.thumb, 640) || '/images/default-thumb.jpg'} alt={post.title} className="post-thumb" width="800" height="450" loading="lazy" />
                 <div className="post-body">
                   <span className="post-category">{post.category}</span>

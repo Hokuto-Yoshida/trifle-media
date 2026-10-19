@@ -276,7 +276,7 @@ export default function PostCard({
         isLarge && 'post-card-large',
         className
       )}>
-        <Link href={`/posts/${slug}`}>
+        <Link href={`/posts/${slug}/`}>
           <div className={cn(
             'post-image-container',
             isSmall ? 'post-image-small' : isLarge ? 'post-image-large' : 'post-image-medium'
@@ -325,7 +325,7 @@ export default function PostCard({
               'post-title',
               isSmall ? 'post-title-small' : isLarge ? 'post-title-large' : 'post-title-medium'
             )}>
-              <Link href={`/posts/${slug}`} className="post-title-link">
+              <Link href={`/posts/${slug}/`} className="post-title-link">
                 {title}
               </Link>
             </h2>

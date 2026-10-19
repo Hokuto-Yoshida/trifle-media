@@ -337,7 +337,7 @@ export default function CategoryPagination({ posts, categorySlug, postsPerPage }
                 <span>{new Date(post.date).toLocaleDateString('ja-JP')}</span>
                 <span>{post.readingTime}分</span>
               </div>
-              <a href={`/posts/${post.slug}`} className="read-more-button">
+              <a href={`/posts/${post.slug}/`} className="read-more-button">
                 この記事を見る
                 <ArrowRight size={14} />
               </a>

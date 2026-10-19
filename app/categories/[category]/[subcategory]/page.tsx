@@ -391,7 +391,7 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
               <div className="empty-state">
                 <h1>サブカテゴリが見つかりません</h1>
                 <p>指定されたサブカテゴリは存在しません。</p>
-                <a href={`/categories/${categorySlug}`} style={{ color: '#00d084', textDecoration: 'underline' }}>
+                <a href={`/categories/${categorySlug}/`} style={{ color: '#00d084', textDecoration: 'underline' }}>
                   {categoryInfo.name}に戻る
                 </a>
               </div>
@@ -494,7 +494,7 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
                       <ArrowRight size={14} />
                     </li>
                     <li className="breadcrumb-item">
-                      <a href={`/categories/${categorySlug}`} className="breadcrumb-link">
+                      <a href={`/categories/${categorySlug}/`} className="breadcrumb-link">
                         {categoryInfo.name}
                       </a>
                     </li>
@@ -519,7 +519,7 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
                 {/* Subcategory tabs */}
                 <div className="subcategory-tabs">
                   <a 
-                    href={`/categories/${categorySlug}`} 
+                    href={`/categories/${categorySlug}/`} 
                     className="subcategory-tab"
                   >
                     すべて
@@ -527,7 +527,7 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
                   {Object.entries(categoryInfo.subcategories).map(([subSlug, subName]) => (
                     <a 
                       key={subSlug}
-                      href={`/categories/${categorySlug}/${subSlug}`} 
+                      href={`/categories/${categorySlug}/${subSlug}/`} 
                       className={`subcategory-tab ${subSlug === subcategorySlug ? 'active' : ''}`}
                     >
                       {subName}
@@ -549,7 +549,7 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
                 ) : (
                   <div className="empty-state">
                     <p>このサブカテゴリの記事はまだありません。</p>
-                    <a href={`/categories/${categorySlug}`} style={{ color: '#00d084', textDecoration: 'underline' }}>
+                    <a href={`/categories/${categorySlug}/`} style={{ color: '#00d084', textDecoration: 'underline' }}>
                       {categoryInfo.name}の他の記事を見る
                     </a>
                   </div>
@@ -566,7 +566,7 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
                     {otherSubcategories.map((sub) => (
                       <a 
                         key={sub.slug} 
-                        href={`/categories/${categorySlug}/${sub.slug}`} 
+                        href={`/categories/${categorySlug}/${sub.slug}/`} 
                         className="category-tag"
                       >
                         {sub.name}

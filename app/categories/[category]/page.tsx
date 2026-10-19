@@ -579,7 +579,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 {categoryInfo.subcategories && (
                   <div className="subcategory-tabs">
                     <a 
-                      href={`/categories/${categorySlug}`} 
+                      href={`/categories/${categorySlug}/`} 
                       className="subcategory-tab active"
                     >
                       すべて
@@ -587,7 +587,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                     {Object.entries(categoryInfo.subcategories).map(([subSlug, subName]) => (
                       <a 
                         key={subSlug}
-                        href={`/categories/${categorySlug}/${subSlug}`} 
+                        href={`/categories/${categorySlug}/${subSlug}/`} 
                         className="subcategory-tab"
                       >
                         {subName}
@@ -624,7 +624,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 <h2 className="related-title">他のカテゴリ</h2>
                 <div className="category-grid">
                   {otherCategories.map((category) => (
-                    <a key={category.slug} href={`/categories/${category.slug}`} className="category-tag">
+                    <a key={category.slug} href={`/categories/${category.slug}/`} className="category-tag">
                       {category.name}
                     </a>
                   ))}

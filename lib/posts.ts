@@ -103,7 +103,7 @@ function addInternalLinks(
 
       modified =
         modified.slice(0, idx) +
-        `<a href="/posts/${slug}">${title}</a>` +
+        `<a href="/posts/${slug}/">${title}</a>` +
         modified.slice(idx + title.length);
 
       usedSlugs.add(slug);

@@ -245,62 +245,62 @@ export default async function SitemapPage() {
   const categories = [
     {
       name: '国内旅行',
-      href: '/categories/domestic',
+      href: '/categories/domestic/',
       description: '日本国内の一人旅情報',
       subcategories: [
-        { name: '北海道・東北', href: '/categories/domestic/hokkaido-tohoku' },
-        { name: '関東', href: '/categories/domestic/kanto' },
-        { name: '中部・北陸', href: '/categories/domestic/chubu-hokuriku' },
-        { name: '関西', href: '/categories/domestic/kansai' },
-        { name: '中国・四国', href: '/categories/domestic/chugoku-shikoku' },
-        { name: '九州・沖縄', href: '/categories/domestic/kyushu-okinawa' },
+        { name: '北海道・東北', href: '/categories/domestic/hokkaido-tohoku/' },
+        { name: '関東', href: '/categories/domestic/kanto/' },
+        { name: '中部・北陸', href: '/categories/domestic/chubu-hokuriku/' },
+        { name: '関西', href: '/categories/domestic/kansai/' },
+        { name: '中国・四国', href: '/categories/domestic/chugoku-shikoku/' },
+        { name: '九州・沖縄', href: '/categories/domestic/kyushu-okinawa/' },
       ]
     },
     {
       name: '海外旅行',
-      href: '/categories/international', 
+      href: '/categories/international/', 
       description: '海外一人旅の情報とガイド',
       subcategories: [
-        { name: 'アジア', href: '/categories/international/asia' },
-        { name: 'ヨーロッパ', href: '/categories/international/europe' },
-        { name: '北米・南米', href: '/categories/international/americas' },
-        { name: 'オセアニア', href: '/categories/international/oceania' },
-        { name: '中東・アフリカ', href: '/categories/international/middle-east-africa' },
+        { name: 'アジア', href: '/categories/international/asia/' },
+        { name: 'ヨーロッパ', href: '/categories/international/europe/' },
+        { name: '北米・南米', href: '/categories/international/americas/' },
+        { name: 'オセアニア', href: '/categories/international/oceania/' },
+        { name: '中東・アフリカ', href: '/categories/international/middle-east-africa/' },
       ]
     },
     {
       name: 'グルメ',
-      href: '/categories/gourmet',
+      href: '/categories/gourmet/',
       description: '一人でも楽しめるグルメ情報',
       subcategories: [
-        { name: '和食', href: '/categories/gourmet/japanese' },
-        { name: '洋食', href: '/categories/gourmet/western' },
-        { name: '中華・アジア料理', href: '/categories/gourmet/asian' },
-        { name: 'カフェ・スイーツ', href: '/categories/gourmet/cafe-sweets' },
+        { name: '和食', href: '/categories/gourmet/japanese/' },
+        { name: '洋食', href: '/categories/gourmet/western/' },
+        { name: '中華・アジア料理', href: '/categories/gourmet/asian/' },
+        { name: 'カフェ・スイーツ', href: '/categories/gourmet/cafe-sweets/' },
       ]
     },
     {
       name: '宿泊',
-      href: '/categories/accommodation',
+      href: '/categories/accommodation/',
       description: '一人旅におすすめの宿泊施設',
       subcategories: [
-        { name: 'ホテル', href: '/categories/accommodation/hotel' },
-        { name: '旅館・民宿', href: '/categories/accommodation/ryokan' },
-        { name: 'ゲストハウス', href: '/categories/accommodation/guesthouse' },
-        { name: 'グランピング・キャンプ', href: '/categories/accommodation/glamping' },
+        { name: 'ホテル', href: '/categories/accommodation/hotel/' },
+        { name: '旅館・民宿', href: '/categories/accommodation/ryokan/' },
+        { name: 'ゲストハウス', href: '/categories/accommodation/guesthouse/' },
+        { name: 'グランピング・キャンプ', href: '/categories/accommodation/glamping/' },
       ]
     },
     {
       name: '旅のコツ',
-      href: '/categories/tips',
+      href: '/categories/tips/',
       description: '一人旅を楽しむためのコツ',
       subcategories: [
-        { name: '安全・準備', href: '/categories/tips/safety' },
-        { name: '計画・予算', href: '/categories/tips/planning' },
-        { name: '持ち物・パッキング', href: '/categories/tips/packing' },
-        { name: '写真・SNS', href: '/categories/tips/photography' },
-        { name: 'トラブル対処', href: '/categories/tips/trouble' },
-        { name: 'お得情報', href: '/categories/tips/deals' },
+        { name: '安全・準備', href: '/categories/tips/safety/' },
+        { name: '計画・予算', href: '/categories/tips/planning/' },
+        { name: '持ち物・パッキング', href: '/categories/tips/packing/' },
+        { name: '写真・SNS', href: '/categories/tips/photography/' },
+        { name: 'トラブル対処', href: '/categories/tips/trouble/' },
+        { name: 'お得情報', href: '/categories/tips/deals/' },
       ]
     }
   ];
@@ -412,7 +412,7 @@ export default async function SitemapPage() {
               <h2 className="section-title" style={{marginBottom: '24px'}}>最新記事</h2>
               <div className="posts-grid">
                 {recentPosts.map((post) => (
-                  <Link key={post.slug} href={`/posts/${post.slug}`} className="post-card">
+                  <Link key={post.slug} href={`/posts/${post.slug}/`} className="post-card">
                     <span className="post-category">{post.category}</span>
                     <div className="post-title">{post.title}</div>
                     <div style={{fontSize: '12px', color: '#9ca3af', marginTop: '8px'}}>

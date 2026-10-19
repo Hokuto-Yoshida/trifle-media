@@ -197,7 +197,7 @@ const postPageStyles = `
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: #00d084;
+    color: #047857;
     text-decoration: none;
     font-size: 14px;
     transition: color 0.2s;
@@ -216,7 +216,7 @@ const postPageStyles = `
 
   .article-category {
     display: inline-block;
-    background: #00d084;
+    background: #047857;
     color: white;
     padding: 6px 12px;
     font-size: 14px;
@@ -376,18 +376,18 @@ const postPageStyles = `
   }
 
   .article-content strong {
-    color: #00d084;
+    color: #065f46;
     font-weight: 600;
   }
 
   .article-content a {
-    color: #00d084;
+    color: #047857;
     text-decoration: underline;
     word-break: break-all;
   }
 
   .article-content a:hover {
-    color: #059669;
+    color: #065f46;
   }
 
   .article-content hr {
@@ -489,7 +489,7 @@ const postPageStyles = `
 
   .stat-number {
     font-weight: 600;
-    color: #00d084;
+    color: #047857;
   }
 
   /* Related articles */
@@ -514,9 +514,13 @@ const postPageStyles = `
   }
 
   .related-card {
+    display: flex;
+    flex-direction: column;
     background: white;
     border: 1px solid #e5e7eb;
-    padding: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 0 0 16px;
     text-decoration: none;
     color: inherit;
     transition: all 0.2s ease;
@@ -525,6 +529,20 @@ const postPageStyles = `
   .related-card:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     transform: translateY(-2px);
+  }
+
+  .related-card-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    margin-bottom: 12px;
+    background: #f3f4f6;
+  }
+
+  .related-card-title,
+  .related-card-meta {
+    padding: 0 16px;
   }
 
   .related-card-title {
@@ -773,16 +791,29 @@ export default async function PostPage({ params }: PostPageProps) {
   let linkableTags = new Set<string>();
   try {
     const allPosts = await getAllPosts() as ExtendedPostMetadata[];
-    relatedPosts = allPosts
-      .filter((p: ExtendedPostMetadata) =>
-        !p.draft &&
-        p.slug !== post.slug &&
-        p.category === post.category
-      )
-      .slice(0, 3);
-
     const freq: Record<string, number> = {};
     allPosts.forEach(p => p.tags?.forEach((t: string) => { freq[t] = (freq[t] || 0) + 1; }));
+
+    // 関連度スコア: 共通タグの希少度(IDF)の合計 + 同じサブカテゴリ×2 + 同じカテゴリ×1（同点は新しい順）
+    // 「女性一人旅」のような多くの記事に付くタグより、地名など珍しいタグの一致を重視する
+    const total = allPosts.length;
+    const idf = (t: string) => Math.log(total / (freq[t] || 1));
+    const toArray = (v: unknown): string[] => (Array.isArray(v) ? v : v ? [String(v)] : []);
+    const myTags = new Set(post.tags || []);
+    const mySubs = new Set(toArray(post.subcategory));
+    relatedPosts = allPosts
+      .filter((p: ExtendedPostMetadata) => !p.draft && p.slug !== post.slug)
+      .map((p: ExtendedPostMetadata) => {
+        const tagScore = (p.tags || []).filter((t: string) => myTags.has(t)).reduce((sum: number, t: string) => sum + idf(t), 0);
+        const sameSub = toArray(p.subcategory).some(s => mySubs.has(s)) ? 1 : 0;
+        const sameCat = p.category === post.category ? 1 : 0;
+        return { p, score: tagScore + sameSub * 2 + sameCat };
+      })
+      .filter(({ score }) => score > 0)
+      .sort((a, b) => b.score - a.score || (b.p.date > a.p.date ? 1 : -1))
+      .slice(0, 6)
+      .map(({ p }) => p);
+
     linkableTags = new Set(
       Object.entries(freq)
         .filter(([, count]) => count >= 3)
@@ -847,7 +878,7 @@ export default async function PostPage({ params }: PostPageProps) {
           {/* Article Header */}
           <section className="article-header">
             <div className="container">
-              <Link href={`/categories/${getCategorySlug(post.category)}`} className="article-category">
+              <Link href={`/categories/${getCategorySlug(post.category)}/`} className="article-category">
                 {post.category}
               </Link>
               
@@ -929,7 +960,7 @@ export default async function PostPage({ params }: PostPageProps) {
           <section className="article-content">
             <div className="container">
               {post.content && (
-                <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                <div dangerouslySetInnerHTML={{ __html: post.content.replace(/<img(?![^>]*loading=)/g, '<img loading="lazy" decoding="async"') }} />
               )}
             </div>
           </section>
@@ -976,10 +1007,21 @@ export default async function PostPage({ params }: PostPageProps) {
           {relatedPosts.length > 0 && (
             <section className="related-articles">
               <div className="container">
-                <h2 className="related-title">関連記事</h2>
+                <h2 className="related-title">あわせて読みたい</h2>
                 <div className="related-grid">
                   {relatedPosts.map((relatedPost: ExtendedPostMetadata) => (
-                    <Link key={relatedPost.slug} href={`/posts/${relatedPost.slug}`} className="related-card">
+                    <Link key={relatedPost.slug} href={`/posts/${relatedPost.slug}/`} className="related-card">
+                      {relatedPost.thumb && (
+                        <img
+                          src={getUnsplashUrl(relatedPost.thumb, 400)}
+                          alt=""
+                          className="related-card-image"
+                          width="400"
+                          height="225"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      )}
                       <h3 className="related-card-title">{relatedPost.title}</h3>
                       <div className="related-card-meta">
                         {relatedPost.category} • {new Date(relatedPost.date).toLocaleDateString('ja-JP')}

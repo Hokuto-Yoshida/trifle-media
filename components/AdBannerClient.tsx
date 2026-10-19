@@ -179,7 +179,7 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
               <div className="section-heading">★ 新着記事</div>
               <div className="post-list">
                 {latestPosts.map((post) => (
-                  <a key={post.slug} href={`/posts/${post.slug}`} className="sidebar-post-item">
+                  <a key={post.slug} href={`/posts/${post.slug}/`} className="sidebar-post-item">
                     <img src={getUnsplashUrl(post.thumb, 160)} alt={post.title} className="sidebar-post-thumb" width="60" height="60" loading="lazy" />
                     <div className="sidebar-post-text">
                       <span className="sidebar-post-chip secondary">NEW</span>
@@ -197,7 +197,7 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
               <div className="section-heading">カテゴリ</div>
               <div className="category-list">
                 {categories.map((category) => (
-                  <a key={category.slug} href={`/categories/${category.slug}`} className="category-item">
+                  <a key={category.slug} href={`/categories/${category.slug}/`} className="category-item">
                     <span>{category.name}</span>
                     <span className="category-count">{category.count}</span>
                   </a>
