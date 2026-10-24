@@ -2,6 +2,19 @@
   command = "npm run build"
   publish = "out"
 
+# Security headers
+# next.config.mjs の headers() は output: 'export' では無視されるため、ここで設定する。
+# CSP はスクリプト元を列挙すると AdSense(読み込み先ドメインが頻繁に変わる)を壊すので、
+# 壊れない指示だけを強制している。
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = "object-src 'none'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+
 # Cache headers — improve LCP for repeat visitors
 # Next.js static files are content-hashed → safe to cache permanently
 [[headers]]

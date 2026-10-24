@@ -1,157 +1,99 @@
 {
-  "name": "トリフレメチE��ア - 若老E�Eための一人旁E��化メチE��ア",
-  "short_name": "トリフレメチE��ア",
-  "description": "若老E�Eための一人旁E��化メチE��ア「トリフレ」。�Eめての一人旁E��ら海外ビギナ�E向けまで、安忁E�E安�Eな旁E�E惁E��をお届けします、E,
+  "name": "トリフレメディア - 若者のための一人旅特化メディア",
+  "short_name": "トリフレ",
+  "description": "若者のための一人旅特化メディア「トリフレ」。初めての一人旅から海外ビギナー向けまで、安心・安全な旅の情報をお届けします。",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#3B82F6",
-  "orientation": "portrait-primary",
-  "scope": "/",
+  "theme_color": "#00d084",
   "lang": "ja",
-  "categories": ["travel", "lifestyle", "entertainment"],
+  "categories": [
+    "travel",
+    "lifestyle"
+  ],
   "icons": [
     {
       "src": "/icons/icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-96x96.png",
       "sizes": "96x96",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-128x128.png",
       "sizes": "128x128",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-152x152.png",
       "sizes": "152x152",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-384x384.png",
       "sizes": "384x384",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "shortcuts": [
     {
       "name": "記事一覧",
-      "short_name": "記亁E,
-      "description": "最新の一人旁E��事をチェチE��",
-      "url": "/posts",
-      "icons": [
-        {
-          "src": "/icons/shortcut-posts.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
+      "short_name": "記事",
+      "url": "/posts/"
     },
     {
-      "name": "旁E��診断",
-      "short_name": "診断",
-      "description": "あなたにぴったりの旁E�Eを診断",
-      "icons": [
-        {
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
+      "name": "カテゴリ",
+      "short_name": "カテゴリ",
+      "url": "/categories/"
     },
     {
-      "name": "カチE��リ",
-      "short_name": "カチE��リ",
-      "description": "カチE��リから記事を探ぁE,
-      "url": "/categories",
-      "icons": [
-        {
-          "src": "/icons/shortcut-category.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "アプリダウンローチE,
-      "short_name": "アプリ",
-      "description": "トリフレアプリをダウンローチE,
-      "url": "/app",
-      "icons": [
-        {
-          "src": "/icons/shortcut-app.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/screenshots/desktop-home.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "トップ�Eージ - チE��クトップ表示"
-    },
-    {
-      "src": "/screenshots/mobile-home.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "トップ�Eージ - モバイル表示"
-    },
-    {
-      "src": "/screenshots/desktop-posts.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "記事一覧ペ�Eジ"
-    },
-    {
-      "src": "/screenshots/mobile-article.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "記事詳細ペ�Eジ"
+      "name": "記事検索",
+      "short_name": "検索",
+      "url": "/search/"
     }
   ],
   "related_applications": [
     {
-      "platform": "play",
-      "url": "https://play.google.com/store/apps/details?id=jp.trifle.app",
-      "id": "jp.trifle.app"
+      "platform": "itunes",
+      "url": "https://apps.apple.com/jp/app/torifure/id6753066712"
     },
     {
-      "platform": "itunes",
-      "url": "https://apps.apple.com/jp/app/trifle/id123456789",
-      "id": "123456789"
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.torifure.app",
+      "id": "com.torifure.app"
     }
   ],
   "prefer_related_applications": false

@@ -37,7 +37,7 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
     <>
       <Script
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7569727810444713"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         crossOrigin="anonymous"
       />
       <style dangerouslySetInnerHTML={{ __html: adStyles }} />
@@ -63,11 +63,11 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
           </div>
 
           <div className="ad-section">
-            <h4 className="ad-section-title">おすすめ</h4>
+            <h4 className="ad-section-title">おすすめ <span className="ad-pr-label">PR</span></h4>
             <div className="ad-item">
               <a
                 href="https://px.a8.net/svt/ejp?a8mat=45E3PX+91O4OI+4XZI+609HT"
-                rel="nofollow"
+                rel="nofollow sponsored noopener"
                 className="ad-link"
                 target="_blank"
               >
@@ -86,18 +86,19 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
                 alt=""
                 width="1"
                 height="1"
-                style={{ display: 'none' }}
+                loading="lazy"
+                style={{ position: 'absolute', width: 1, height: 1, opacity: 0 }}
                 aria-hidden="true"
               />
             </div>
           </div>
 
           <div className="ad-section">
-            <h4 className="ad-section-title">eSIM</h4>
+            <h4 className="ad-section-title">eSIM <span className="ad-pr-label">PR</span></h4>
             <div className="ad-item">
               <a
                 href="https://px.a8.net/svt/ejp?a8mat=45E262+91O4OI+5NG6+5YZ75"
-                rel="nofollow"
+                rel="nofollow sponsored noopener"
                 className="ad-link"
                 target="_blank"
               >
@@ -116,14 +117,15 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
                 alt=""
                 width="1"
                 height="1"
-                style={{ display: 'none' }}
+                loading="lazy"
+                style={{ position: 'absolute', width: 1, height: 1, opacity: 0 }}
                 aria-hidden="true"
               />
             </div>
           </div>
 
           <div className="ad-section">
-            <h4 className="ad-section-title">ホテル・旅館</h4>
+            <h4 className="ad-section-title">ホテル・旅館 <span className="ad-pr-label">PR</span></h4>
             <div className="ad-item">
               <a
                 href="https://hb.afl.rakuten.co.jp/hsc/4c9fef55.71199632.4c798cf5.ac347f21/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiIxMzMiLCJiYW4iOjIxODg2NTcsImFtcCI6ZmFsc2V9"
@@ -145,7 +147,7 @@ export default function AdBannerClient({ latestPosts, categories }: Props) {
           </div>
 
           <div className="ad-section">
-            <h4 className="ad-section-title">旅行グッズ</h4>
+            <h4 className="ad-section-title">旅行グッズ <span className="ad-pr-label">PR</span></h4>
             <div className="ad-item">
               <a
                 href="https://hb.afl.rakuten.co.jp/ichiba/4c844e24.c22610c9.4c844e25.5377dfd4/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkures-store%2F801lgx%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9"
@@ -298,7 +300,19 @@ const adStyles = `
     letter-spacing: 0.5px;
   }
 
-  .ad-item { width: 100%; }
+  .ad-pr-label {
+    display: inline-block;
+    margin-left: 4px;
+    padding: 0 6px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #9ca3af;
+    border: 1px solid #d1d5db;
+    border-radius: 3px;
+    letter-spacing: 0;
+  }
+
+  .ad-item { width: 100%; position: relative; }
 
   .ad-link {
     display: block;

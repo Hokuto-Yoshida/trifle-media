@@ -5,7 +5,7 @@ import { Download, Star, Users, MapPin, Heart, Shield, Smartphone, Tablet, Arrow
 import { Header, Footer } from '@/components';
 
 export const metadata: Metadata = {
-  title: 'トリフレアプリ - 一人旅をもっと楽しく | トリフレメディア',
+  title: 'トリフレアプリ - 一人旅をもっと楽しく',
   description: '若者のための一人旅アプリ「トリフレ」。AIが提案する最適なルート、同じ趣味の仲間との出会い、安全な旅行をサポートします。',
   openGraph: {
     title: 'トリフレアプリ - 一人旅をもっと楽しく',

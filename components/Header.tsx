@@ -171,7 +171,7 @@ export default function SiteHeader() {
                   alt="トリフレメディア"
                   className="logo-image"
                   width="120"
-                  height="40"
+                  height="36"
                   fetchPriority="high"
                 />
               </Link>

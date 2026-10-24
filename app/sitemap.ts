@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
-import { getAllPosts } from '@/lib/posts';
+import { getAllPosts, TAG_INDEX_MIN_POSTS } from '@/lib/posts';
 import { CATEGORIES } from '@/lib/categories';
+import { tagPath } from '@/lib/utils';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
@@ -93,7 +94,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error loading posts for sitemap:', error);
   }
 
-  // タグページ（3件以上の記事があるタグのみ、上位200件）
+  // タグページ（noindexでない = TAG_INDEX_MIN_POSTS件以上の記事があるタグのみ。生成対象の上位200件に限る）
   let tagPages: any[] = [];
   try {
     const allPostsForTags = await getAllPosts();
@@ -103,9 +104,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .filter(([, count]) => count >= 3)
       .sort((a, b) => b[1] - a[1])
       .slice(0, 200)
+      .filter(([, count]) => count >= TAG_INDEX_MIN_POSTS)
       .map(([tag]) => tag);
     tagPages = topTags.map((tag) => ({
-      url: withTrailingSlash(`/tags/${encodeURIComponent(tag)}`),
+      url: `${baseUrl}${tagPath(tag)}`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.5,

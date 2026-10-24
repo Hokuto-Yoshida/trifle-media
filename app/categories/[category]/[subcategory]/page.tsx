@@ -613,7 +613,7 @@ export async function generateMetadata({ params }: SubcategoryPageProps): Promis
   }
   
   return {
-    title: `${subcategoryName} | ${categoryInfo.name} | トリフレメディア`,
+    title: `${subcategoryName} | ${categoryInfo.name}`,
     description: `${categoryInfo.name}の${subcategoryName}に関する記事一覧。一人旅の計画に役立つ情報をお届けします。`,
     openGraph: {
       title: `${subcategoryName} | ${categoryInfo.name} | トリフレメディア`,

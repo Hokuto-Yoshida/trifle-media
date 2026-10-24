@@ -5,7 +5,7 @@ import { Header, Footer } from '@/components';
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
 
 export const metadata: Metadata = {
-  title: 'カテゴリ一覧 | トリフレメディア',
+  title: 'カテゴリ一覧',
   description: '国内旅行、海外旅行、グルメ、宿泊、旅のコツなどカテゴリ別に記事を探せます。',
   alternates: {
     canonical: '/categories/',

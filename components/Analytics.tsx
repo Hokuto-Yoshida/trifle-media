@@ -1,39 +1,29 @@
-'use client';
-
 import Script from 'next/script';
-import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
+// ページ遷移(クライアント側ナビゲーション)は GA4 の拡張計測(ブラウザの履歴イベント)で自動計測される。
+// page_path を固定すると初回表示のパスが全ページビューに使われてしまうため指定しない。
 export function Analytics() {
   const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
-  const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
-  
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-  
-  if (!GA_TRACKING_ID || !mounted) {
+
+  if (!GA_TRACKING_ID) {
     return null;
   }
 
   return (
     <>
       <Script
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
       />
       <Script
         id="gtag-init"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${GA_TRACKING_ID}', {
-              page_path: '${pathname}',
-            });
+            gtag('config', '${GA_TRACKING_ID}');
           `,
         }}
       />

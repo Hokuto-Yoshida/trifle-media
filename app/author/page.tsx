@@ -7,7 +7,7 @@ import Link from 'next/link';
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
 
 export const metadata: Metadata = {
-  title: '著者プロフィール | トリフレメディア',
+  title: '著者プロフィール',
   description: 'トリフレメディア編集部のプロフィール。一人旅専門メディアとして、実際の旅行経験をもとに安心・安全な旅の情報をお届けします。',
   alternates: {
     canonical: '/author/',
@@ -295,38 +295,12 @@ export default async function AuthorPage() {
     ],
   };
 
-  const personJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    '@id': `${siteUrl}/author/#person`,
-    name: 'トリフレ編集部',
-    url: `${siteUrl}/author/`,
-    jobTitle: '編集部',
-    worksFor: {
-      '@type': 'Organization',
-      name: 'トリフレメディア',
-      url: siteUrl,
-    },
-    knowsAbout: ['一人旅', '国内旅行', '海外旅行', '格安旅行', '旅行計画', '女性一人旅'],
-    description: '一人旅専門メディア「トリフレ」の編集部。60カ国以上の旅行経験をもとに、安心・安全な一人旅の実践情報をお届けします。',
-    image: {
-      '@type': 'ImageObject',
-      url: `${siteUrl}/images/editor-avatar.webp`,
-      width: 200,
-      height: 200,
-    },
-    sameAs: ['https://twitter.com/trifle_media'],
-  };
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
       <style dangerouslySetInnerHTML={{ __html: pageStyles }} />
       <div className="author-page">

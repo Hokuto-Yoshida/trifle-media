@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --font-inter: 'Inter', sans-serif;
-  --font-noto-sans-jp: 'Noto Sans JP', sans-serif;
+  /* Webフォントは各ページのインラインCSSで上書きされ実質未使用だったため、システムフォントに統一 */
+  --font-inter: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
+  --font-noto-sans-jp: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', Meiryo;
   
   /* Primary Colors */
   --primary-50: #eff6ff;

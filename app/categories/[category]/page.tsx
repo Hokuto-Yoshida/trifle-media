@@ -99,7 +99,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const categoryInfo = categories[params.category as keyof typeof categories];
   if (!categoryInfo) {
     return {
-      title: 'カテゴリが見つかりません | トリフレメディア',
+      title: 'カテゴリが見つかりません',
       description: '指定されたカテゴリは存在しません。',
       robots: {
         index: false,
@@ -109,7 +109,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   }
 
   return {
-    title: `${categoryInfo.name} | トリフレメディア`,
+    title: `${categoryInfo.name}`,
     description: categoryInfo.description,
     openGraph: {
       title: `${categoryInfo.name} | トリフレメディア`,

@@ -161,3 +161,22 @@ export function throttle<T extends (...args: any[]) => any>(
     }
   };
 }
+
+// 静的書き出しでは generateStaticParams で返したエンコード済みの値がさらにエンコードされて
+// params に渡ることがあるため、%XX が残らなくなるまで(最大3回)デコードする
+export function decodeTagParam(param: string): string {
+  let tag = param;
+  for (let i = 0; i < 3 && /%[0-9A-Fa-f]{2}/.test(tag); i++) {
+    try {
+      tag = decodeURIComponent(tag);
+    } catch {
+      break;
+    }
+  }
+  return tag;
+}
+
+// タグページのパス。Netlifyは %XX を小文字に正規化して301するため、最初から小文字で出力する
+export function tagPath(tag: string): string {
+  return `/tags/${encodeURIComponent(tag).replace(/%[0-9A-F]{2}/g, m => m.toLowerCase())}/`;
+}

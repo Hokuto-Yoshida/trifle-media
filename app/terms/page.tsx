@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { Header, Footer } from '@/components';
 
 export const metadata: Metadata = {
-  title: '利用規約 | トリフレメディア',
+  title: '利用規約',
   description: 'トリフレメディアの利用規約をご確認ください。',
 };
 

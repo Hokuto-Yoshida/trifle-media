@@ -1,22 +1,8 @@
 import type { Metadata } from 'next';
-import { Inter, Noto_Sans_JP } from 'next/font/google';
 import './globals.css';
-import { cn } from '@/lib/utils';
 import { ThemeProvider, Analytics } from '@/components';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com';
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'optional',
-});
-
-const notoSansJP = Noto_Sans_JP({
-  subsets: ['latin'],
-  variable: '--font-noto-sans-jp',
-  display: 'fallback',
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -102,14 +88,6 @@ const websiteJsonLd = {
   name: 'トリフレメディア',
   url: siteUrl,
   description: '若者のための一人旅特化メディア',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: `${siteUrl}/search#q={search_term_string}`,
-    },
-    'query-input': 'required name=search_term_string',
-  },
 };
 
 export default function RootLayout({
@@ -128,8 +106,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
-        {/* Preload LCP logo */}
-        <link rel="preload" href="/logo.webp" as="image" />
         {/* Resource hints — reduce latency for Unsplash LCP images */}
         <link rel="preconnect" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
@@ -141,15 +117,11 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </head>
-      <body className={cn(
-        'min-h-screen bg-background font-sans antialiased',
-        inter.variable,
-        notoSansJP.variable
-      )}>
+      <body className="min-h-screen bg-background font-sans antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
-          enableSystem
+          forcedTheme="light"
           disableTransitionOnChange
         >
           <div className="relative flex min-h-screen flex-col">

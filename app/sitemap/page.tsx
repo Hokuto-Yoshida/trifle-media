@@ -5,7 +5,7 @@ import { Home, FileText, Bookmark, Mail, Shield, HelpCircle } from 'lucide-react
 import { getLatestPosts } from '@/lib/posts';
 
 export const metadata: Metadata = {
-  title: 'サイトマップ | トリフレメディア',
+  title: 'サイトマップ',
   description: 'トリフレメディアの全ページ一覧です。一人旅に関する情報を探している方はこちらからお探しください。',
 };
 

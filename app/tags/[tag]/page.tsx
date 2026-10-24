@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Header, Footer } from '@/components';
-import { getAllTags, getPostsByTag } from '@/lib/posts';
-import { getUnsplashUrl } from '@/lib/utils';
+import { getAllTags, getPostsByTag, TAG_INDEX_MIN_POSTS } from '@/lib/posts';
+import { decodeTagParam, getUnsplashUrl, tagPath } from '@/lib/utils';
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
 
@@ -28,18 +28,19 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: TagPageProps): Promise<Metadata> {
-  const tag = decodeURIComponent(params.tag);
+  const tag = decodeTagParam(params.tag);
   const posts = await getPostsByTag(tag);
-  if (posts.length === 0) return { title: 'タグが見つかりません | トリフレメディア' };
+  if (posts.length === 0) return { title: 'タグが見つかりません' };
 
   return {
-    title: `「${tag}」の記事一覧 | トリフレメディア`,
+    title: `「${tag}」の記事一覧`,
+    ...(posts.length < TAG_INDEX_MIN_POSTS && { robots: { index: false, follow: true } }),
     description: `「${tag}」に関連する一人旅記事を${posts.length}件掲載しています。`,
-    alternates: { canonical: `${siteUrl}/tags/${encodeURIComponent(tag)}/` },
+    alternates: { canonical: `${siteUrl}${tagPath(tag)}` },
     openGraph: {
       title: `「${tag}」の記事一覧 | トリフレメディア`,
       description: `「${tag}」に関連する一人旅記事を${posts.length}件掲載しています。`,
-      url: `${siteUrl}/tags/${encodeURIComponent(tag)}/`,
+      url: `${siteUrl}${tagPath(tag)}`,
       type: 'website',
       images: [{ url: `${siteUrl}/opengraph-image.png`, width: 1200, height: 630, alt: 'トリフレメディア' }],
     },
@@ -74,7 +75,7 @@ const tagPageStyles = `
 `;
 
 export default async function TagPage({ params }: TagPageProps) {
-  const tag = decodeURIComponent(params.tag);
+  const tag = decodeTagParam(params.tag);
   const posts = await getPostsByTag(tag);
 
   if (posts.length === 0) notFound();
@@ -84,7 +85,7 @@ export default async function TagPage({ params }: TagPageProps) {
     '@type': 'ItemList',
     name: `「${tag}」の記事一覧`,
     description: `「${tag}」に関連する一人旅記事`,
-    url: `${siteUrl}/tags/${encodeURIComponent(tag)}/`,
+    url: `${siteUrl}${tagPath(tag)}`,
     numberOfItems: posts.length,
     itemListElement: posts.slice(0, 30).map((post, i) => ({
       '@type': 'ListItem',

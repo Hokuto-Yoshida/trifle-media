@@ -16,6 +16,7 @@ interface ExtendedPostMetadata extends PostMetadata {
   subcategory?: string;
   filePath?: string;
   canonical?: string;
+  seoTitle?: string; // 検索結果向けの短いタイトル(<title>用)。未指定なら title を使う
 }
 
 // 簡単なMarkdown→HTML変換関数
@@ -193,6 +194,7 @@ export async function getAllPosts(): Promise<ExtendedPostMetadata[]> {
             category: data.category || '未分類',
             subcategory: data.subcategory || undefined,
             canonical: data.canonical || undefined,
+            seoTitle: data.seoTitle || undefined,
             tags: data.tags || [],
             thumb: data.thumb || data.ogImage || '/images/default-thumb.jpg',
             readingTime: data.readingTime || 5,
@@ -267,6 +269,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       updatedDate: data.lastmod || data.updatedDate || undefined,
       category: data.category || '未分類',
       canonical: data.canonical || undefined,
+      seoTitle: data.seoTitle || undefined,
       tags: data.tags || [],
       thumb: data.thumb || data.ogImage || '/images/default-thumb.jpg',
       readingTime: data.readingTime || 5,
@@ -292,6 +295,10 @@ export async function getPostsByCategory(category: string, subcategory?: string)
     return post.category === category;
   });
 }
+
+// 記事数がこれ未満のタグページは内容が薄いため noindex にし、サイトマップにも載せない
+// (ページ自体は記事内のタグリンクの受け皿として生成し続ける)
+export const TAG_INDEX_MIN_POSTS = 5;
 
 export async function getPostsByTag(tag: string): Promise<ExtendedPostMetadata[]> {
   const allPosts = await getAllPosts();

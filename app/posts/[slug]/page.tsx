@@ -8,7 +8,7 @@ import { getCategoryByName } from '@/lib/categories';
 import Link from 'next/link';
 import TableOfContents from '@/components/TableOfContents';
 import Breadcrumb from '@/components/Breadcrumb';
-import { getUnsplashUrl } from '@/lib/utils';
+import { getUnsplashUrl, tagPath } from '@/lib/utils';
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
 
 interface PostPageProps {
@@ -25,6 +25,7 @@ interface ExtendedPostMetadata {
   updatedDate?: string;
   category: string;
   canonical?: string;
+  seoTitle?: string;
   subcategory?: string;
   tags: string[];
   thumb: string;
@@ -61,7 +62,9 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 
     const ogImage = post.thumb || `${siteUrl}/opengraph-image.png`;
     return {
-      title: `${post.title}｜トリフレ`,
+      // 長いタイトルは検索結果で切れるため、短い seoTitle があればそちらを使う。
+      // サイト名は WebSite 構造化データから検索結果に表示されるので末尾には付けない
+      title: { absolute: post.seoTitle || post.title },
       description: post.description,
       openGraph: {
         title: post.title,
@@ -250,6 +253,16 @@ const postPageStyles = `
     gap: 24px;
     font-size: 14px;
     color: #6b7280;
+  }
+
+  .pr-notice {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 4px 10px;
+    font-size: 12px;
+    color: #6b7280;
+    background: #f3f4f6;
+    border-radius: 4px;
   }
 
   .meta-item {
@@ -720,8 +733,7 @@ export default async function PostPage({ params }: PostPageProps) {
     datePublished: new Date(post.date).toISOString(),
     dateModified: post.updatedDate ? new Date(post.updatedDate).toISOString() : new Date(post.date).toISOString(),
     author: {
-      '@type': 'Person',
-      '@id': `${siteUrl}/author/#person`,
+      '@type': 'Organization',
       name: post.author?.name || 'トリフレ編集部',
       url: `${siteUrl}/author/`,
     },
@@ -774,16 +786,6 @@ export default async function PostPage({ params }: PostPageProps) {
     })),
   } : null;
 
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'ホーム', item: `${siteUrl}/` },
-      { '@type': 'ListItem', position: 2, name: '記事一覧', item: `${siteUrl}/posts/` },
-      { '@type': 'ListItem', position: 3, name: post.category, item: `${siteUrl}/categories/${getCategorySlug(post.category)}/` },
-      { '@type': 'ListItem', position: 4, name: post.title, item: `${siteUrl}/posts/${post.slug}/` },
-    ],
-  };
 
   // 関連記事を取得（同じカテゴリの他の記事）
   let relatedPosts: ExtendedPostMetadata[] = [];
@@ -827,17 +829,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <>
-      {/* Preload LCP hero image — hoisted to <head> by Next.js App Router */}
-      {post.thumb && (
-        <link
-          rel="preload"
-          as="image"
-          href={getUnsplashUrl(post.thumb, 900)}
-          // @ts-expect-error imagesrcset/imagesizes are valid but not in React typedefs
-          imagesrcset={`${getUnsplashUrl(post.thumb, 640)} 640w, ${getUnsplashUrl(post.thumb, 900)} 900w, ${getUnsplashUrl(post.thumb, 1200)} 1200w`}
-          imagesizes="(max-width: 640px) 640px, 900px"
-        />
-      )}
+      {/* ヒーロー画像は <img fetchPriority="high"> から React が自動で preload を出すため、手動の preload は置かない */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -854,10 +846,6 @@ export default async function PostPage({ params }: PostPageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       )}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
       <style dangerouslySetInnerHTML={{ __html: postPageStyles }} />
       
       <div className="post-page">
@@ -882,6 +870,8 @@ export default async function PostPage({ params }: PostPageProps) {
                 {post.category}
               </Link>
               
+              {/* ステマ規制(景品表示法)対応: 本文・サイドバーに広告リンクがあるため全記事に表示 */}
+              <p className="pr-notice">本記事はプロモーション（広告）を含みます</p>
               <h1 className="article-title">{post.title}</h1>
               <p className="article-description">{post.description}</p>
               
@@ -920,7 +910,7 @@ export default async function PostPage({ params }: PostPageProps) {
                 <div className="article-tags">
                   {post.tags.map((tag: string) => (
                     linkableTags.has(tag) ? (
-                      <Link key={tag} href={`/tags/${encodeURIComponent(tag)}/`} className="tag">
+                      <Link key={tag} href={tagPath(tag)} className="tag">
                         <Tag size={12} />
                         {tag}
                       </Link>

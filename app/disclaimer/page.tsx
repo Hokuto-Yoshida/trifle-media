@@ -3,7 +3,7 @@ import { Header, Footer } from '@/components';
 import { AlertTriangle, ExternalLink, Shield } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '免責事項 | トリフレメディア',
+  title: '免責事項',
   description: 'トリフレメディアの免責事項について説明しています。',
 };
 
