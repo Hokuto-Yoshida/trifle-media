@@ -4,9 +4,9 @@
 
 ## 次回候補
 
-- **ガラパゴス記事の季節の誤り**（galapagos-solo-travel-december-2025。titleは9/19、seoTitleは10/25に変更済みのため、**title・seoTitle・descriptionの変更は12/24以降**）：12月を「乾季の始まり・乾季ベストシーズン」としているが、ガラパゴスは一般に12〜5月が暖かい雨季（ホットシーズン）、6〜11月が涼しい乾季（ガルーア）。ガラパゴス国立公園等の一次情報で確認し、title（H1は小幅に）・seoTitle・本文の季節記述をまとめて直す
-- **「確認できない一人称の体験談」の続き**：公開約250記事に「一人旅歴5年の編集部が実際に検証」「実体験レポート」「〇〇さん（20代女性）の声」などが残る。今回10本を修正。次の候補：losangeles-winter-female-solo-travel-december-2025（冒頭・Q2「実際に検証済み」）、solo-travel-language-barrier-trouble-guide-2025（「実際に遭遇したトラブル事例」）、egypt-solo-travel-guide-2025・egypt-solo-travel-winter-packing-guide-2025（タイトルに「実体験で」。title変更は60日ルールを確認）、solo-travel-accommodation-trouble-guide-2025、taiwan系3本、korea-female-solo-travel-2025、kenya/tanzania/india/morocco ほか。抽出：`grep -c -E "一人旅歴[0-9]+年|実際に検証|実体験|筆者が|体験談" content/posts/*.mdx`。**架空のアンケート（「当編集部の調査」「〇〇人調査」）や年齢付きの架空の声**は優先度高（`grep -n -E "[0-9]{2}歳[・）]|編集部.{0,10}調査"`）
-- **description に「実体験ベース」が残る記事**（60日ルールで今回は本文のみ修正）：tunisia-female-solo-travel-guide-2025（12/24以降）、winter-solo-onsen-travel-2025・student-overseas-solo-travel-2025（11/21以降）、galapagos（上記）
+- **ガラパゴス記事の title・seoTitle・description の季節の誤り**（galapagos-solo-travel-december-2025、**12/24以降**）：本文は11/13にチャールズ・ダーウィン財団の情報（12〜5月=暖かく雨の多いホットシーズン、6〜11月=涼しく乾いたガルーア）で修正済み。title「乾季ベストシーズン」・seoTitle「乾季の8日間プラン」・description「乾季で海も陸も最高の季節」「実体験ベース」が残る。title は「乾季」→「ホットシーズン入り」程度の小幅修正に。本文の「1USD=157円(2026年9月現在)」も実勢と照合する
+- **「確認できない一人称の体験談」の続き**：11/11・11/13で計18本を修正。次の候補（いずれも公開・直近7日の変更なし）：egypt-solo-travel-guide-2025（title「実体験で」）、winter-onsen-solo-packing-2025、thailand-solo-travel-packing-november-2025、solo-travel-bag-selection-guide-2025、portugal、newyork、nagasaki、morocco、male-minimalist-winter-packing-2025、losangeles-solo-travel-2025、kyushu-winter-onsen、kenya、kanazawa、jeju、india、guam ほか。抽出：`grep -l -E "一人旅歴[0-9]+年|実際に検証|実体験|筆者が|[0-9]{2}歳[・）]|編集部.{0,10}調査" content/posts/*.mdx` から draft と直近7日変更分を除く。solo-travel-credit-card-overseas-2026 は「18〜25歳」等の誤検出
+- **description に「実体験ベース」が残る記事**（60日ルールで本文のみ修正）：tunisia-female-solo-travel-guide-2025（12/24以降）、winter-solo-onsen-travel-2025・student-overseas-solo-travel-2025（11/21以降）、galapagos（上記）、losangeles-winter-female-solo-travel-december-2025・solo-travel-language-barrier-trouble-guide-2025（12/24以降。前者は「実体験ベースの安心プラン」、後者は「実体験ベースで紹介」）、solo-travel-accommodation-trouble-guide-2025（title に「実体験から学ぶ」、12/24以降）
 - **サウジアラビア記事の title/description**（saudi-arabia-solo-travel-guide-2025、titleは9/19変更のため**11/18以降**）：主要地域が外務省レベル3（渡航中止勧告）なのに title が「女性も安心の実践プラン」、description が「安全に楽しむ方法」「実体験ベース」のまま。本文は11/12に注意枠を追加済み。title は小幅に（「女性も安心の」を外す程度）、seoTitle・description で危険情報を反映する。危険レベルが引き下げられていたら本文の注意枠も更新
 - **中東の危険情報の定期確認**：UAE（042）・オマーン（047）・カタール（048）・クウェート（049）・バーレーン（053）は6/25からレベル2、サウジ（050）は10/22に主要州レベル3、イスラエル（044）はガザ以外レベル2、エジプト（094）は大カイロ・ルクソール・アスワン等レベル1、モロッコ（124）は全土レベル1、チュニジア（113）は主要部レベル1（いずれも11/12確認）。URLは `https://www.anzen.mofa.go.jp/info/pcinfectionspothazardinfo_<番号>.html`。変更があればドバイ・サウジ・卒業旅行記事の注記を更新する。経由地としてのドーハ/ドバイ（乗継便の記述）は対象外とした
 - **トルコ記事の残り**（11/16以降に着手可）：交通費・食事代などリラ建ての一般物価（ブルサ行き長距離バス200TRY、イズミールのタクシー初乗り15TRY、各記事の「ホテル宿泊費150-500TRY」など）がインフレで実勢より大幅に安い。バス会社・İZBAN（izban.com.tr）・TCDD等の公式運賃で確認できたものから更新。アンタルヤ考古学博物館（約500リラ）とブルサのイェシル・テュルベ（60TRY）は公式料金を確認できず据え置き（turkishmuseums.com に該当ページなし）
@@ -19,6 +19,25 @@
 - 為替チェック用の考え方：`1<通貨>=<数値>円` / `JPY` 表記を全記事から抽出し、open.er-api.com と fawazahmed0/currency-api の2ソースで比較。範囲表記や「〜」区切りは抽出漏れがあるので正規表現を広げる
 - エジプトの遺跡料金は egymonuments.gov.eg の各ページ「Tickets」欄が一次情報（個別ページはcurlで取得可。一覧は POST /umbraco/api/MapsWebAPI/GetAllMapPins）
 - ボリビア・アルゼンチンは変動相場・高インフレのため円換算の全面書き換えはせず注記で対応した。現地料金が一次情報で取れたら本文を更新
+
+## 2026-11-13：ガラパゴス記事の季節の誤り（12月=乾季→ホットシーズン入り）を本文で修正、確認できない体験談を8記事で事実ベースに修正
+
+### やったこと
+- **galapagos-solo-travel-december-2025**（直近7日以内の変更記事だが事実誤りのため修正）：「12月は乾季(12月〜5月)の始まり」「雨が少なく晴天が続く」「湿度も低め」は誤り。チャールズ・ダーウィン財団（darwinfoundation.org の Visit Galapagos / FAQ）と Galapagos Conservancy（galapagos.org の Planning a Trip）で、12〜5月は暖かく雨の多いホットシーズン（にわか雨あり・海が穏やか）、6〜11月は涼しく乾いたガルーア（霧雨）であること、境目は年により1か月ほど前後することを確認。冒頭・「なぜ12月が最適か」の見出しと本文・FAQ Q2・まとめの計6か所を修正し、タグ「乾季」→「ホットシーズン」。title・seoTitle・description は10/25以前60日以内の変更のため据え置き（12/24以降の次回候補へ）
+- **確認できない一人称の体験・架空の声の修正**（8記事）
+  - losangeles-winter-female-solo-travel-december-2025：冒頭「一人旅歴5年の編集部が実際に検証」「リアルな体験談」、FAQ Q2「実際に検証済み」
+  - solo-travel-language-barrier-trouble-guide-2025：冒頭「編集部が実際に遭遇したトラブル事例」
+  - female-solo-travel-safety-packing-2025：冒頭「国内外50都市を訪れた編集部が実際に使って」、出典のない「使用者の92%が回答」、年齢付きの架空の体験者A・Bさんの成功・失敗談を「よくある被害の場面」に、Cさん（26歳）の活用例を場面例に書き換え
+  - korea-female-solo-travel-2025：冒頭とFAQ A2の「実際に検証」「編集部の実体験」、description の「実体験ベースで」を削除（title/description は8/22以来の変更）
+  - solo-travel-accommodation-trouble-guide-2025：冒頭「実際に遭遇した15の宿泊トラブル」「100軒以上の宿泊施設で得た実体験」、「実体験談：編集部スタッフが台湾で」を一般的なポイントに
+  - taiwan-solo-gourmet-2025・taiwan-solo-budget-guide-2025：冒頭「台湾グルメ歴7年/一人旅歴5年の編集部が実際に検証」、FAQ の「編集部の実体験では」、description の「実体験ベースで」を削除
+  - taiwan-solo-travel-packing-guide-2025：冒頭「実際に台湾を訪れて検証」、title・description の「実体験ベースで」を削除（title は語句削除のみの小幅修正）
+- 9記事の lastmod を 2026-11-13 に更新（情報確認日は内容を再確認していないため据え置き）
+- 対象外：solo-travel-emergency-trouble-guide-2025（draft・統合済み）
+
+### 確認結果
+- `npm run build` 成功。out/ でガラパゴス・台湾持ち物・女性防犯・韓国女性の title・本文（ガルーア／ホットシーズンの説明、書き換え箇所）・dateModified=2026-11-13・PR表記を確認
+- netlify.toml は変更なし
 
 ## 2026-11-12：ドバイ・サウジアラビア記事の外務省危険レベルの誤りを修正（UAE「レベル0」→全土レベル2、サウジ「レベル1」→主要州レベル3）
 
