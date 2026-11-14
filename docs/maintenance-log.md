@@ -4,6 +4,9 @@
 
 ## 次回候補
 
+- **他の電子渡航認証の料金確認（今回の続き）**：カナダ eTA（7 CAD：canada-travel-tips-2025・canada-yellowknife・toronto-niagara・vancouver 2本）、NZeTA＋IVL（newzealand-solo-travel-complete-guide-2025）、オーストラリア ETA（solo-travel-itinerary-planning-guide-2026「eTA（AUS$20）」は名称も「ETA」が正しい）、英国 ETA、ケニア eTA（kenya-solo-travel-guide-2025）を各国政府の公式情報で照合する。canada.ca・ESTA公式・EU公式は curl/WebFetch で本文が取れない（JS描画・接続不可）ので、外務省の安全対策基礎データか官報・政府告示を一次情報にする
+- **ETIAS の導入状況**：europe-year-end・germany・itaria・latvia-riga・pari の各記事は「2026年10月時点で未導入」。11/14時点で開始日は未発表（EU公式ページは自動取得できず、報道ベース）。開始日が発表されたら各記事を更新。2026年中の開始と書いている記事がないかも確認
+- **ESTA料金は毎年10月ごろインフレ調整で改定される**（HR-1。FY2027は2026年10月16日から$40.62、連邦官報 2026-20185）。2027年10月ごろに govinfo.gov の官報（`https://www.govinfo.gov/content/pkg/FR-<日付>/html/<文書番号>.htm`、federalregister.gov 本体はアクセス制限あり。文書番号は federalregister.gov の API `/api/v1/documents.json?conditions[term]=...` で検索可）で次の改定額を確認する
 - **ガラパゴス記事の title・seoTitle・description の季節の誤り**（galapagos-solo-travel-december-2025、**12/24以降**）：本文は11/13にチャールズ・ダーウィン財団の情報（12〜5月=暖かく雨の多いホットシーズン、6〜11月=涼しく乾いたガルーア）で修正済み。title「乾季ベストシーズン」・seoTitle「乾季の8日間プラン」・description「乾季で海も陸も最高の季節」「実体験ベース」が残る。title は「乾季」→「ホットシーズン入り」程度の小幅修正に。本文の「1USD=157円(2026年9月現在)」も実勢と照合する
 - **「確認できない一人称の体験談」の続き**：11/11・11/13で計18本を修正。次の候補（いずれも公開・直近7日の変更なし）：egypt-solo-travel-guide-2025（title「実体験で」）、winter-onsen-solo-packing-2025、thailand-solo-travel-packing-november-2025、solo-travel-bag-selection-guide-2025、portugal、newyork、nagasaki、morocco、male-minimalist-winter-packing-2025、losangeles-solo-travel-2025、kyushu-winter-onsen、kenya、kanazawa、jeju、india、guam ほか。抽出：`grep -l -E "一人旅歴[0-9]+年|実際に検証|実体験|筆者が|[0-9]{2}歳[・）]|編集部.{0,10}調査" content/posts/*.mdx` から draft と直近7日変更分を除く。solo-travel-credit-card-overseas-2026 は「18〜25歳」等の誤検出
 - **description に「実体験ベース」が残る記事**（60日ルールで本文のみ修正）：tunisia-female-solo-travel-guide-2025（12/24以降）、winter-solo-onsen-travel-2025・student-overseas-solo-travel-2025（11/21以降）、galapagos（上記）、losangeles-winter-female-solo-travel-december-2025・solo-travel-language-barrier-trouble-guide-2025（12/24以降。前者は「実体験ベースの安心プラン」、後者は「実体験ベースで紹介」）、solo-travel-accommodation-trouble-guide-2025（title に「実体験から学ぶ」、12/24以降）
@@ -19,6 +22,19 @@
 - 為替チェック用の考え方：`1<通貨>=<数値>円` / `JPY` 表記を全記事から抽出し、open.er-api.com と fawazahmed0/currency-api の2ソースで比較。範囲表記や「〜」区切りは抽出漏れがあるので正規表現を広げる
 - エジプトの遺跡料金は egymonuments.gov.eg の各ページ「Tickets」欄が一次情報（個別ページはcurlで取得可。一覧は POST /umbraco/api/MapsWebAPI/GetAllMapPins）
 - ボリビア・アルゼンチンは変動相場・高インフレのため円換算の全面書き換えはせず注記で対応した。現地料金が一次情報で取れたら本文を更新
+
+## 2026-11-14：ESTA申請料金を $40.62（2026年10月16日申請分から）に10記事で更新
+
+### やったこと
+- 米国土安全保障省の連邦官報告示（2026年10月1日、文書番号 2026-20185「Certain DHS Immigration-Related Fees Required by HR-1: Fiscal Year 2027 Adjustments for Inflation」、govinfo.gov で本文確認）で、**ESTA料金が2026年10月16日から$40.27→$40.62**（$17＋$10.62＋$13、拒否時$10.62）に改定されたことを確認。前回改定（$40→$40.27、2026年1月1日）も官報 2025-20304 で確認
+- 金額を明記していた公開記事のESTA料金を更新（計19か所）：america-south-winter-solo-travel-guide-2025、america-travel-cities-guide-2025（「2026年9月現在」→改定日を明記）、america-west-coast-winter-female-solo-travel-2025、boston-solo-travel-2nights-3days-budget-250k-2026、hawaii-solo-travel-guide-2025、las-vegas-grand-canyon-sedona-solo-3nights-5days-budget-280k-2026、losangeles-solo-travel-2025、san-francisco-solo-travel-3nights-4days-budget-200k-2026、seattle-solo-travel-3nights-4days-budget-200k-2026、losangeles-winter-female-solo-travel-december-2025（直近7日以内の変更記事だが、料金が現行と異なる事実誤りのため修正）
+- 円換算は各記事が採用している為替レートのまま再計算（差は数十〜百円程度）。予算表の見出し金額・合計は「約」の範囲内のため据え置き。graduation-trip-university-students-ranking-top12-2026 の「約40ドル≒約6,000円」は概数で誤りではないため据え置き
+- 10記事の lastmod を 2026-11-14 に更新（情報確認日はESTA以外を再確認していないため据え置き）。title・seoTitle・description は変更なし
+- 確認のみ：ETIAS は報道ベースで11/14時点も未稼働・開始日未発表のため、各記事の「2026年10月時点で未導入」は据え置き
+
+### 確認結果
+- `npm run build` 成功。out/ でハワイ・ボストン・LA冬・ラスベガスの title（変更なし）・本文の$40.62・dateModified=2026-11-14・PR表記を確認。公開記事に旧額「40.27」が値上げ経緯の説明以外で残っていないことを確認
+- netlify.toml は変更なし
 
 ## 2026-11-13：ガラパゴス記事の季節の誤り（12月=乾季→ホットシーズン入り）を本文で修正、確認できない体験談を8記事で事実ベースに修正
 
