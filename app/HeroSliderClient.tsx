@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ArrowRight, Heart, Users, Shield, Download } from 'lucide-react';
+import { appStoreUrl, googlePlayUrl } from '@/lib/app-links';
 
 const HeroSliderClient = () => {
   const [currentSlide, setCurrentSlide] = React.useState(0);
@@ -188,7 +189,7 @@ const HeroSliderClient = () => {
           <p className="hero-subtitle">一人旅をもっと楽しく、もっと安全に。</p>
           <div style={{ display: 'flex', flexDirection: 'row', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
             <a
-              href="https://apps.apple.com/jp/app/torifure/id6753066712"
+              href={appStoreUrl('home-hero')}
               target="_blank"
               rel="noopener noreferrer"
               className="app-store-button"
@@ -199,7 +200,7 @@ const HeroSliderClient = () => {
               App Storeでダウンロード
             </a>
             <a
-              href="https://play.google.com/store/apps/details?id=com.torifure.app"
+              href={googlePlayUrl('home-hero')}
               target="_blank"
               rel="noopener noreferrer"
               className="app-store-button"

@@ -9,6 +9,7 @@ import Link from 'next/link';
 import TableOfContents from '@/components/TableOfContents';
 import Breadcrumb from '@/components/Breadcrumb';
 import { getUnsplashUrl, tagPath } from '@/lib/utils';
+import { appStoreUrl, googlePlayUrl } from '@/lib/app-links';
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://torifure.com').replace(/\/$/, '');
 
 interface PostPageProps {
@@ -505,6 +506,95 @@ const postPageStyles = `
     color: #047857;
   }
 
+  /* App CTA */
+  .app-cta {
+    padding: 8px 0 32px;
+    background: white;
+    width: 100%;
+  }
+
+  .app-cta-box {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #a7f3d0;
+    border-radius: 12px;
+    background: #ecfdf5;
+  }
+
+  .app-cta-image {
+    width: 120px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 12px;
+  }
+
+  .app-cta-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #047857;
+    margin-bottom: 4px;
+  }
+
+  .app-cta-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1.5;
+    margin: 0 0 8px;
+  }
+
+  .app-cta-text {
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.7;
+    margin: 0 0 12px;
+  }
+
+  .app-cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .app-cta-button {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: #00d084;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .app-cta-button:hover {
+    background: #047857;
+  }
+
+  .app-cta-note {
+    font-size: 12px;
+    color: #6b7280;
+    margin: 8px 0 0;
+  }
+
+  @media (max-width: 640px) {
+    .app-cta-box {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: center;
+    }
+
+    .app-cta-image {
+      display: none;
+    }
+
+    .app-cta-buttons {
+      justify-content: center;
+    }
+  }
+
   /* Related articles */
   .related-articles {
     padding: 40px 0;
@@ -952,6 +1042,38 @@ export default async function PostPage({ params }: PostPageProps) {
               {post.content && (
                 <div dangerouslySetInnerHTML={{ __html: post.content.replace(/<img(?![^>]*loading=)/g, '<img loading="lazy" decoding="async"') }} />
               )}
+            </div>
+          </section>
+
+          {/* App CTA */}
+          <section className="app-cta">
+            <div className="container">
+              <div className="app-cta-box">
+                <img
+                  src="/images/app-screenshots/travel-list.webp"
+                  alt="トリフレアプリの旅仲間募集一覧画面"
+                  className="app-cta-image"
+                  width="120"
+                  height="260"
+                  loading="lazy"
+                />
+                <div className="app-cta-body">
+                  <div className="app-cta-label">一人旅の旅仲間マッチングアプリ</div>
+                  <h2 className="app-cta-title">旅先で、ご飯や観光を一緒に楽しめる仲間を探そう</h2>
+                  <p className="app-cta-text">
+                    旅程と行き先を登録すると、同じ時期に同じ場所を旅する人とつながれます。「このお店に行く人？」とスポット単位で同行を募集したり、タクシー代や食事代を割り勘したりも。本人確認済みの相手だけを表示することもできます。
+                  </p>
+                  <div className="app-cta-buttons">
+                    <a href={appStoreUrl('article-end')} target="_blank" rel="noopener" className="app-cta-button">
+                      App Storeで見る
+                    </a>
+                    <a href={googlePlayUrl('article-end')} target="_blank" rel="noopener" className="app-cta-button">
+                      Google Playで見る
+                    </a>
+                  </div>
+                  <p className="app-cta-note">基本無料（一部機能は有料プラン）</p>
+                </div>
+              </div>
             </div>
           </section>
 

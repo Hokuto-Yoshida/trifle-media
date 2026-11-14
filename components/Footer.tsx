@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { Plane, ExternalLink } from 'lucide-react';
+import { Plane } from 'lucide-react';
 import { CATEGORIES } from '@/lib/categories';
+import { appStoreUrl, googlePlayUrl } from '@/lib/app-links';
 import type { Category } from '@/types/category';
 
 const footerStyles = `
@@ -363,7 +364,7 @@ export default function Footer() {
   const quickLinks = [
     { name: 'ホーム', href: '/' },
     { name: '記事一覧', href: '/posts' },
-    { name: 'アプリダウンロード', href: 'https://tripfriend-website.netlify.app', external: true },
+    { name: 'アプリダウンロード', href: '/app/' },
   ];
 
   const supportLinks = [
@@ -412,20 +413,9 @@ export default function Footer() {
                 <ul className="footer-links">
                   {quickLinks.map((link) => (
                     <li key={link.name}>
-                      {link.external ? (
-                        <a
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="footer-link"
-                        >
-                          {link.name}
-                        </a>
-                      ) : (
-                        <Link href={link.href} className="footer-link">
-                          {link.name}
-                        </Link>
-                      )}
+                      <Link href={link.href} className="footer-link">
+                        {link.name}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -456,27 +446,30 @@ export default function Footer() {
                 📱 トリフレアプリ
               </h3>
               <p className="app-cta-description">
-                一人旅をもっと楽しく、もっと安全に。トリフレアプリで旅行プランを立てて、同じ趣味の仲間と繋がろう。
+                一人旅の旅仲間マッチングアプリ。旅程を登録して、旅先でご飯や観光を一緒に楽しめる仲間を探そう。
               </p>
               <div className="app-cta-buttons">
                 <a 
-                  href="https://tripfriend-website.netlify.app" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                  href={appStoreUrl('footer')}
+                  target="_blank"
+                  rel="noopener"
                   className="app-download-button"
                 >
                   <span>📱</span>
-                  アプリをダウンロード
+                  App Store
                 </a>
-                <a 
-                  href="https://tripfriend-website.netlify.app" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="app-features-button"
+                <a
+                  href={googlePlayUrl('footer')}
+                  target="_blank"
+                  rel="noopener"
+                  className="app-download-button"
                 >
-                  機能を見る
-                  <ExternalLink style={{ width: '16px', height: '16px' }} />
+                  <span>📱</span>
+                  Google Play
                 </a>
+                <Link href="/app/" className="app-features-button">
+                  機能を見る
+                </Link>
               </div>
             </div>
           </div>

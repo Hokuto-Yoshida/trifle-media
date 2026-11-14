@@ -71,7 +71,7 @@ const styles = `
 
 const TOP_LINKS = [
   { name: '記事', href: '/posts' },
-  { name: 'アプリダウンロード', href: 'https://tripfriend-website.netlify.app' },
+  { name: 'アプリダウンロード', href: '/app/' },
   { name: 'お問い合わせ', href: '/contact' },
 ];
 
