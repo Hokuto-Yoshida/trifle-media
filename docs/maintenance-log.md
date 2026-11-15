@@ -4,7 +4,9 @@
 
 ## 次回候補
 
-- **他の電子渡航認証の料金確認（今回の続き）**：カナダ eTA（7 CAD：canada-travel-tips-2025・canada-yellowknife・toronto-niagara・vancouver 2本）、NZeTA＋IVL（newzealand-solo-travel-complete-guide-2025）、オーストラリア ETA（solo-travel-itinerary-planning-guide-2026「eTA（AUS$20）」は名称も「ETA」が正しい）、英国 ETA、ケニア eTA（kenya-solo-travel-guide-2025）を各国政府の公式情報で照合する。canada.ca・ESTA公式・EU公式は curl/WebFetch で本文が取れない（JS描画・接続不可）ので、外務省の安全対策基礎データか官報・政府告示を一次情報にする
+- **ケニア記事の残り**（kenya-solo-travel-guide-2025、11/22以降）：「マサイマラ国立保護区入場料 80 USD/日」は、業界サイト・報道ではナロク郡が2025年から7〜12月200USD・1〜6月100USDに改定とされるが、一次情報（ナロク郡の告示）が取れず未修正。etakenya.go.ke はJS描画で料金を自動取得できず、eTA料金（本文30 USD／予算内訳3,500 KES）と、報道にある「2026年10月から非アフリカ国籍者に旅行保険の加入が必須」も未確認。一次情報が取れたら更新。title・description の「実体験ベース」も60日ルール確認のうえ修正候補
+- **グアム記事の Guam-CNMI ETA**（guam-solo-travel-2025）：「無料」「パスポート残存45日以上」を CBP 公式で確認する
+- **電子渡航認証の料金の定期確認**：11/15時点の公式料金＝カナダ eTA CAN$7（canada.ca、WebFetchで取得可）、豪州 ETA AUD20・アプリのみ・12か月有効（immi.homeaffairs.gov.au、curlで取得可）、英国 ETA £20（gov.uk、curlで取得可。london-solo-travel-2025 は対応済み）、NZeTA アプリNZ$17／Web NZ$23＋IVL NZ$100（INZの料金表。newzealand記事は対応済み）
 - **ETIAS の導入状況**：europe-year-end・germany・itaria・latvia-riga・pari の各記事は「2026年10月時点で未導入」。11/14時点で開始日は未発表（EU公式ページは自動取得できず、報道ベース）。開始日が発表されたら各記事を更新。2026年中の開始と書いている記事がないかも確認
 - **ESTA料金は毎年10月ごろインフレ調整で改定される**（HR-1。FY2027は2026年10月16日から$40.62、連邦官報 2026-20185）。2027年10月ごろに govinfo.gov の官報（`https://www.govinfo.gov/content/pkg/FR-<日付>/html/<文書番号>.htm`、federalregister.gov 本体はアクセス制限あり。文書番号は federalregister.gov の API `/api/v1/documents.json?conditions[term]=...` で検索可）で次の改定額を確認する
 - **ガラパゴス記事の title・seoTitle・description の季節の誤り**（galapagos-solo-travel-december-2025、**12/24以降**）：本文は11/13にチャールズ・ダーウィン財団の情報（12〜5月=暖かく雨の多いホットシーズン、6〜11月=涼しく乾いたガルーア）で修正済み。title「乾季ベストシーズン」・seoTitle「乾季の8日間プラン」・description「乾季で海も陸も最高の季節」「実体験ベース」が残る。title は「乾季」→「ホットシーズン入り」程度の小幅修正に。本文の「1USD=157円(2026年9月現在)」も実勢と照合する
@@ -22,6 +24,22 @@
 - 為替チェック用の考え方：`1<通貨>=<数値>円` / `JPY` 表記を全記事から抽出し、open.er-api.com と fawazahmed0/currency-api の2ソースで比較。範囲表記や「〜」区切りは抽出漏れがあるので正規表現を広げる
 - エジプトの遺跡料金は egymonuments.gov.eg の各ページ「Tickets」欄が一次情報（個別ページはcurlで取得可。一覧は POST /umbraco/api/MapsWebAPI/GetAllMapPins）
 - ボリビア・アルゼンチンは変動相場・高インフレのため円換算の全面書き換えはせず注記で対応した。現地料金が一次情報で取れたら本文を更新
+
+## 2026-11-15：電子渡航認証（豪州ETA）の誤りを4記事で修正、ケニア記事の円換算を実勢レートで再計算
+
+### やったこと
+- 各国の電子渡航認証の料金を公式情報で照合：カナダ eTA CAN$7（canada.ca）、豪州 ETA AUD20（豪内務省 ETA subclass 601 のページ、外務省 安全対策基礎データ（オーストラリア））、英国 ETA £20（gov.uk）、NZeTA NZ$17/23＋IVL NZ$100。カナダ5記事・ロンドン・NZ記事は現行どおりで変更なし
+- **豪州ETA**（豪内務省：申請は公式アプリ「Australian ETA」のみ、AUD20、12か月（または旅券の有効期限まで）有効・複数回入国可・1回の滞在は3か月まで、制度上は一時ビザ）
+  - australia-solo-travel-complete-guide-2026：冒頭注意枠の「アプリ（AUS$20）またはオンラインで」→アプリのみに、「eTA（電子渡航認証）」→「ETA（電子渡航許可）」、「ビザ不要」→「大使館でのビザ申請は不要」、有効期限「1年間」に旅券期限・複数回入国を補足（計5か所）
+  - solo-travel-itinerary-planning-guide-2026：「eTA（AUS$20）」→「ETA（電子渡航許可。AUD20・公式アプリで事前申請必須）」
+  - melbourne-solo-travel-guide-2025：「事前にオンライン申請」→公式アプリで申請
+  - goldcoast-spring-solo-travel-november-2025：「公式アプリから申請可能」→アプリのみと明記
+- **kenya-solo-travel-guide-2025 の為替**：本文の円換算は1KES≒1.12円で計算されていた（参照欄は1.23円と記載し不一致）。実勢1.229円（open.er-api.com・fawazahmed0、11/14〜15）とのずれ約9.7%のため、KES建ての円換算28か所を1KES≒1.23円で再計算し、食事の×6回の合計3か所も修正。予算表（タイトルの予算30万円）は据え置き、KES建て費用の合計が約20万円で表（航空券除き18万円）より上振れする旨を注記。為替の時点表記・最終更新日を更新
+- 5記事の lastmod を 2026-11-15 に更新（オーストラリア・メルボルン・ゴールドコースト・ケニアは最終更新日も）。情報確認日は記事全体を再確認していないため据え置き。title・seoTitle・description は変更なし
+
+### 確認結果
+- `npm run build` 成功。out/ で5記事の title（変更なし）・本文（ETAの記述、ケニアの注記）・dateModified=2026-11-15・PR表記を確認
+- netlify.toml は変更なし
 
 ## 2026-11-14：ESTA申請料金を $40.62（2026年10月16日申請分から）に10記事で更新
 
