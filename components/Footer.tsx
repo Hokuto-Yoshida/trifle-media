@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Plane } from 'lucide-react';
 import { CATEGORIES } from '@/lib/categories';
-import { appStoreUrl, googlePlayUrl } from '@/lib/app-links';
 import type { Category } from '@/types/category';
 
 const footerStyles = `
@@ -133,89 +132,6 @@ const footerStyles = `
     display: inline-flex;
     align-items: center;
     gap: 4px;
-  }
-  
-  .app-cta-section {
-    padding: 32px 0;
-    border-top: 1px solid #e5e7eb;
-  }
-  
-  .app-cta-container {
-    background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
-    border-radius: 12px;
-    padding: 24px;
-    text-align: center;
-  }
-  
-  @media (min-width: 1024px) {
-    .app-cta-container {
-      padding: 32px;
-    }
-  }
-  
-  .app-cta-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 8px;
-  }
-  
-  .app-cta-description {
-    color: #dbeafe;
-    margin-bottom: 24px;
-    max-width: 512px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .app-cta-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    justify-content: center;
-  }
-  
-  @media (min-width: 640px) {
-    .app-cta-buttons {
-      flex-direction: row;
-    }
-  }
-  
-  .app-download-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background-color: white;
-    color: #10b981;
-    font-weight: 600;
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 0.2s;
-  }
-  
-  .app-download-button:hover {
-    background-color: #f3f4f6;
-  }
-  
-  .app-features-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    border: 2px solid white;
-    color: white;
-    font-weight: 600;
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  
-  .app-features-button:hover {
-    background-color: white;
-    color: #10b981;
   }
   
   .newsletter-section {
@@ -435,41 +351,6 @@ export default function Footer() {
                     </li>
                   ))}
                 </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* アプリダウンロードCTA */}
-          <div className="app-cta-section">
-            <div className="app-cta-container">
-              <h3 className="app-cta-title">
-                📱 トリフレアプリ
-              </h3>
-              <p className="app-cta-description">
-                一人旅の旅仲間マッチングアプリ。旅程を登録して、旅先でご飯や観光を一緒に楽しめる仲間を探そう。
-              </p>
-              <div className="app-cta-buttons">
-                <a 
-                  href={appStoreUrl('footer')}
-                  target="_blank"
-                  rel="noopener"
-                  className="app-download-button"
-                >
-                  <span>📱</span>
-                  App Store
-                </a>
-                <a
-                  href={googlePlayUrl('footer')}
-                  target="_blank"
-                  rel="noopener"
-                  className="app-download-button"
-                >
-                  <span>📱</span>
-                  Google Play
-                </a>
-                <Link href="/app/" className="app-features-button">
-                  機能を見る
-                </Link>
               </div>
             </div>
           </div>
