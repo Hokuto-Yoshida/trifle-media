@@ -518,9 +518,8 @@ const postPageStyles = `
     gap: 20px;
     align-items: center;
     padding: 20px;
-    border: 1px solid #a7f3d0;
     border-radius: 12px;
-    background: #ecfdf5;
+    background: #4fc795;
   }
 
   .app-cta-image {
@@ -533,21 +532,21 @@ const postPageStyles = `
   .app-cta-label {
     font-size: 12px;
     font-weight: 600;
-    color: #047857;
+    color: #064e3b;
     margin-bottom: 4px;
   }
 
   .app-cta-title {
     font-size: 1.15rem;
     font-weight: 700;
-    color: #1f2937;
+    color: #0f172a;
     line-height: 1.5;
     margin: 0 0 8px;
   }
 
   .app-cta-text {
     font-size: 14px;
-    color: #374151;
+    color: #1f2937;
     line-height: 1.7;
     margin: 0 0 12px;
   }
@@ -562,20 +561,20 @@ const postPageStyles = `
     display: inline-block;
     padding: 10px 18px;
     border-radius: 999px;
-    background: #00d084;
-    color: white;
+    background: #ffffff;
+    color: #047857;
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
   }
 
   .app-cta-button:hover {
-    background: #047857;
+    background: #ecfdf5;
   }
 
   .app-cta-note {
     font-size: 12px;
-    color: #6b7280;
+    color: #1f2937;
     margin: 8px 0 0;
   }
 
