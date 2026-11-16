@@ -10,7 +10,8 @@
 - **ETIAS の導入状況**：europe-year-end・germany・itaria・latvia-riga・pari の各記事は「2026年10月時点で未導入」。11/14時点で開始日は未発表（EU公式ページは自動取得できず、報道ベース）。開始日が発表されたら各記事を更新。2026年中の開始と書いている記事がないかも確認
 - **ESTA料金は毎年10月ごろインフレ調整で改定される**（HR-1。FY2027は2026年10月16日から$40.62、連邦官報 2026-20185）。2027年10月ごろに govinfo.gov の官報（`https://www.govinfo.gov/content/pkg/FR-<日付>/html/<文書番号>.htm`、federalregister.gov 本体はアクセス制限あり。文書番号は federalregister.gov の API `/api/v1/documents.json?conditions[term]=...` で検索可）で次の改定額を確認する
 - **ガラパゴス記事の title・seoTitle・description の季節の誤り**（galapagos-solo-travel-december-2025、**12/24以降**）：本文は11/13にチャールズ・ダーウィン財団の情報（12〜5月=暖かく雨の多いホットシーズン、6〜11月=涼しく乾いたガルーア）で修正済み。title「乾季ベストシーズン」・seoTitle「乾季の8日間プラン」・description「乾季で海も陸も最高の季節」「実体験ベース」が残る。title は「乾季」→「ホットシーズン入り」程度の小幅修正に。本文の「1USD=157円(2026年9月現在)」も実勢と照合する
-- **「確認できない一人称の体験談」の続き**：11/11・11/13で計18本を修正。次の候補（いずれも公開・直近7日の変更なし）：egypt-solo-travel-guide-2025（title「実体験で」）、winter-onsen-solo-packing-2025、thailand-solo-travel-packing-november-2025、solo-travel-bag-selection-guide-2025、portugal、newyork、nagasaki、morocco、male-minimalist-winter-packing-2025、losangeles-solo-travel-2025、kyushu-winter-onsen、kenya、kanazawa、jeju、india、guam ほか。抽出：`grep -l -E "一人旅歴[0-9]+年|実際に検証|実体験|筆者が|[0-9]{2}歳[・）]|編集部.{0,10}調査" content/posts/*.mdx` から draft と直近7日変更分を除く。solo-travel-credit-card-overseas-2026 は「18〜25歳」等の誤検出
+- **「確認できない一人称の体験談」の続き**：11/11・11/13・11/16で計28本を修正。同じ定型文（冒頭「一人旅歴5年のトリフレ編集部が実際に検証した〜プラン」「リアルな体験談とともに」、FAQ「編集部の実体験では〜予算内に収まりました」）が多数の記事に残る。次の候補（公開・直近7日の変更なし）：winter-onsen-solo-packing-2025、thailand-solo-travel-packing-november-2025、kanazawa-solo-travel-guide-2025、jeju-solo-travel-guide-2025、cebu-solo-travel-guide-2025、czech-solo-travel-guide-2025、germany-solo-travel-complete-guide-2025、greece-solo-travel-2025、florence-winter-solo-travel-guide-2025、copenhagen-solo-travel-3nights-4days-budget-300k-2026、cambodia-solo-travel-guide-2025、argentina-solo-travel-guide-2025、bali-solo-travel-guide-2025 ほか約200本。抽出：`grep -l -E "一人旅歴[0-9]+年|実際に検証|実体験|筆者が|[0-9]{2}歳[・）]|編集部.{0,10}調査" content/posts/*.mdx` から draft と直近7日変更分を除く。solo-travel-credit-card-overseas-2026 は「18〜25歳」等の誤検出
+- **description に「実体験ベース」が残る記事（11/16の修正分）**：newyork-solo-travel-2025・morocco-solo-travel-2025・india-solo-travel-guide-2025（9/19変更のため**11/18以降**に description の「実体験ベースで」を削除）、kyushu-winter-onsen-solo-travel-2025・solo-travel-bag-selection-guide-2025（「一人旅歴5年の編集部が実体験ベースで」）・male-minimalist-winter-packing-2025（「実証」）（10/25変更のため**12/24以降**）
 - **description に「実体験ベース」が残る記事**（60日ルールで本文のみ修正）：tunisia-female-solo-travel-guide-2025（12/24以降）、winter-solo-onsen-travel-2025・student-overseas-solo-travel-2025（11/21以降）、galapagos（上記）、losangeles-winter-female-solo-travel-december-2025・solo-travel-language-barrier-trouble-guide-2025（12/24以降。前者は「実体験ベースの安心プラン」、後者は「実体験ベースで紹介」）、solo-travel-accommodation-trouble-guide-2025（title に「実体験から学ぶ」、12/24以降）
 - **サウジアラビア記事の title/description**（saudi-arabia-solo-travel-guide-2025、titleは9/19変更のため**11/18以降**）：主要地域が外務省レベル3（渡航中止勧告）なのに title が「女性も安心の実践プラン」、description が「安全に楽しむ方法」「実体験ベース」のまま。本文は11/12に注意枠を追加済み。title は小幅に（「女性も安心の」を外す程度）、seoTitle・description で危険情報を反映する。危険レベルが引き下げられていたら本文の注意枠も更新
 - **中東の危険情報の定期確認**：UAE（042）・オマーン（047）・カタール（048）・クウェート（049）・バーレーン（053）は6/25からレベル2、サウジ（050）は10/22に主要州レベル3、イスラエル（044）はガザ以外レベル2、エジプト（094）は大カイロ・ルクソール・アスワン等レベル1、モロッコ（124）は全土レベル1、チュニジア（113）は主要部レベル1（いずれも11/12確認）。URLは `https://www.anzen.mofa.go.jp/info/pcinfectionspothazardinfo_<番号>.html`。変更があればドバイ・サウジ・卒業旅行記事の注記を更新する。経由地としてのドーハ/ドバイ（乗継便の記述）は対象外とした
@@ -24,6 +25,20 @@
 - 為替チェック用の考え方：`1<通貨>=<数値>円` / `JPY` 表記を全記事から抽出し、open.er-api.com と fawazahmed0/currency-api の2ソースで比較。範囲表記や「〜」区切りは抽出漏れがあるので正規表現を広げる
 - エジプトの遺跡料金は egymonuments.gov.eg の各ページ「Tickets」欄が一次情報（個別ページはcurlで取得可。一覧は POST /umbraco/api/MapsWebAPI/GetAllMapPins）
 - ボリビア・アルゼンチンは変動相場・高インフレのため円換算の全面書き換えはせず注記で対応した。現地料金が一次情報で取れたら本文を更新
+
+## 2026-11-16：確認できない一人称の体験談・架空の検証データを10記事で事実ベースに修正
+
+### やったこと
+- 冒頭の「一人旅歴5年のトリフレ編集部が実際に検証した予算○円の○日間プラン」「リアルな体験談とともに」と、FAQの「編集部の実体験では〜予算内に収まりました」を、「本記事のモデルプランでは〜予算内に収まる計算です」等の事実ベースの表現に修正：egypt-solo-travel-guide-2025、portugal-solo-travel-guide-2025、newyork-solo-travel-2025、nagasaki-solo-travel-2025、morocco-solo-travel-2025、india-solo-travel-guide-2025、guam-solo-travel-2025（各3か所）
+- kyushu-winter-onsen-solo-travel-2025：冒頭の「実際に検証した」、FAQ A6「実際に検証済みです」→モデルコースの前提（湯治宿・ゲストハウス・ビジネスホテル泊、高速バス移動。本文の予算内訳と一致を確認）を示す表現に
+- solo-travel-bag-selection-guide-2025：冒頭「実際に20種類以上のバッグを検証」を削除。「【実体験】編集部の失敗談＆成功談」（年代・性別・イニシャル付きの架空の編集部員の発言4件）を「よくある失敗とうまくいくパターン」として一般的な場面例に書き換え（教訓・ポイントは維持）
+- male-minimalist-winter-packing-2025：「実際に検証した結果、荷物を40%削減することに成功」「編集部メンバーが実体験ベースで」、FAQ A1「12月の東北・北陸で検証済み」、まとめの「証明されました」「という声も多数」を修正。末尾の確認できない「検証条件」（期間・目的地・装備重量）を削除（参考資料の項は既存のまま残す）
+- description の「実体験ベースで」を削除：egypt・portugal・nagasaki・guam（いずれも前回の title/description 変更が9/13で60日超）。title・seoTitle は変更なし。newyork・morocco・india・kyushu・bag・male-minimalist は60日以内の変更があるため description は据え置き（次回候補へ）
+- 10記事の lastmod を 2026-11-16 に更新（情報確認日は内容を再確認していないため据え置き）
+
+### 確認結果
+- `npm run build` 成功。out/ でエジプト・バッグ・男性ミニマリスト・九州の title（変更なし）・本文の書き換え箇所・dateModified=2026-11-16・PR表記を確認。10記事の本文から「一人旅歴5年」「実際に検証」「編集部の実体験」「リアルな体験談」「検証済み」が消えたことを確認（バッグ記事は据え置いた description にのみ残る）
+- netlify.toml は変更なし
 
 ## 2026-11-15：電子渡航認証（豪州ETA）の誤りを4記事で修正、ケニア記事の円換算を実勢レートで再計算
 
