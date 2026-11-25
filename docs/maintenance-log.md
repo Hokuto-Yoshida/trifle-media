@@ -10,9 +10,10 @@
 - **ETIAS の導入状況**：europe-year-end・germany・itaria・latvia-riga・pari の各記事は「2026年10月時点で未導入」。11/14時点で開始日は未発表（EU公式ページは自動取得できず、報道ベース）。開始日が発表されたら各記事を更新。2026年中の開始と書いている記事がないかも確認
 - **ESTA料金は毎年10月ごろインフレ調整で改定される**（HR-1。FY2027は2026年10月16日から$40.62、連邦官報 2026-20185）。2027年10月ごろに govinfo.gov の官報（`https://www.govinfo.gov/content/pkg/FR-<日付>/html/<文書番号>.htm`、federalregister.gov 本体はアクセス制限あり。文書番号は federalregister.gov の API `/api/v1/documents.json?conditions[term]=...` で検索可）で次の改定額を確認する
 - **ガラパゴス記事の title・seoTitle・description の季節の誤り**（galapagos-solo-travel-december-2025、**12/24以降**）：本文は11/13にチャールズ・ダーウィン財団の情報（12〜5月=暖かく雨の多いホットシーズン、6〜11月=涼しく乾いたガルーア）で修正済み。title「乾季ベストシーズン」・seoTitle「乾季の8日間プラン」・description「乾季で海も陸も最高の季節」「実体験ベース」が残る。title は「乾季」→「ホットシーズン入り」程度の小幅修正に。本文の「1USD=157円(2026年9月現在)」も実勢と照合する
-- **「確認できない一人称の体験談」の続き**：11/11・11/13・11/16・11/17・11/18・11/19・11/20・11/21・11/23・11/24で計86本を修正。同じ定型文（冒頭「一人旅歴5年のトリフレ編集部が実際に検証した〜プラン」「リアルな体験談とともに」、FAQ「編集部の実体験では〜予算内に収まりました」「実際に検証済み」）が多数の記事に残る。次の候補（公開・直近7日の変更なし）：solo-hotel-booking-checkin-guide-2025・solo-gourmet-travel-guide-2025・solo-daytrip-recommendations-2025・slovenia-croatia-winter-solo-2025・singapore-solo-travel-2025・singapore-solo-gourmet-2025・shinkansen-solo-travel-distance-routes-2026・shanghai-solo-travel-guide-2025・seattle-solo-travel-3nights-4days-budget-200k-2026・sanfrancisco-winter-solo-travel-guide-2025・san-sebastian-solo-travel-guide-2025 ほか約130本（11/23に w〜so 始まりの10本、11/24に solo-travel-* の7本を修正済み）。抽出：`grep -l -E "一人旅歴[0-9]+年|実際に検証|実体験|筆者が|[0-9]{2}歳[・）]|編集部.{0,10}調査" content/posts/*.mdx` から draft と直近7日変更分を除く。solo-travel-credit-card-overseas-2026 は「18〜25歳」等の誤検出。egypt-solo-travel-winter-packing-guide-2025 は title に「実体験で徹底解説」があり、florence 記事の関連リンク文言にも転記されている（title 修正時はリンク文言も合わせる）
+- **「確認できない一人称の体験談」の続き**：11/11・11/13・11/16・11/17・11/18・11/19・11/20・11/21・11/23・11/24・11/25で計89本を修正。同じ定型文（冒頭「一人旅歴5年のトリフレ編集部が実際に検証した〜プラン」「リアルな体験談とともに」、FAQ「編集部の実体験では〜予算内に収まりました」「実際に検証済み」）が多数の記事に残る。次の候補（公開・直近7日の変更なし）：slovenia-croatia-winter-solo-2025・singapore-solo-gourmet-2025・shinkansen-solo-travel-distance-routes-2026・shanghai-solo-travel-guide-2025・seattle-solo-travel-3nights-4days-budget-200k-2026・sanfrancisco-winter-solo-travel-guide-2025・san-sebastian-solo-travel-guide-2025 ほか約130本（11/23に w〜so 始まりの10本、11/24に solo-travel-* の7本を修正済み）。抽出：`grep -l -E "一人旅歴[0-9]+年|実際に検証|実体験|筆者が|[0-9]{2}歳[・）]|編集部.{0,10}調査" content/posts/*.mdx` から draft と直近7日変更分を除く。solo-travel-credit-card-overseas-2026 は「18〜25歳」等の誤検出。egypt-solo-travel-winter-packing-guide-2025 は title に「実体験で徹底解説」があり、florence 記事の関連リンク文言にも転記されている（title 修正時はリンク文言も合わせる）
+- **description に「実体験ベース」が残る記事（11/25の修正分）**：solo-hotel-booking-checkin-guide-2025（10/25変更のため**12/24以降**。本文は11/25修正済み）
+- **solo-daytrip-recommendations-2025 の出典付き統計**：冒頭の「エクスペディア調査：世界の旅行者の63%が第2の旅行先に関心、日本48%」（Unpack'25）と「OZmall調査：61%がリフレッシュ」は出典名があるため据え置き。原典で数字を確認できたら残し、違えば修正
 - **description に「実体験ベース」が残る記事（11/18の修正分）**：greece-solo-travel-2025・florence-winter-solo-travel-guide-2025（florence は description に「プロが伝授」。いずれも10/25変更のため**12/24以降**）
-- **description に「実体験ベース」が残る記事（11/17の修正分）**：winter-onsen-solo-packing-2025・thailand-solo-travel-packing-november-2025・kanazawa-solo-travel-guide-2025・jeju-solo-travel-guide-2025・cebu-solo-travel-guide-2025（9/19変更で60日は経過したが、11/17に本文を変更したため7日ルールで**11/25以降**に description の「実体験ベースで」を削除）
 - **description に「実体験ベース」が残る記事（11/16の修正分）**：newyork・morocco・india は11/24に削除済み。kyushu-winter-onsen-solo-travel-2025・solo-travel-bag-selection-guide-2025（「一人旅歴5年の編集部が実体験ベースで」）・male-minimalist-winter-packing-2025（「実証」）（10/25変更のため**12/24以降**）
 - **description に「実体験ベース」が残る記事**（60日ルールで本文のみ修正）：srilanka-december-solo-travel-complete-guide-2025（「実践プランと安全対策を実体験ベースで紹介」、12/24以降）、tunisia-female-solo-travel-guide-2025（12/24以降）、galapagos（上記）、losangeles-winter-female-solo-travel-december-2025・solo-travel-language-barrier-trouble-guide-2025（12/24以降。前者は「実体験ベースの安心プラン」、後者は「実体験ベースで紹介」）、solo-travel-accommodation-trouble-guide-2025（title に「実体験から学ぶ」、12/24以降）
 - **description に「実体験ベース」が残る記事（11/20の修正分）**：tokai-solo-travel-recommendations-2025・tohoku-solo-travel-guide-2025・thailand-solo-gourmet-2025・taipei-solo-travel-2nights-3days-budget-100k-2025・sweden-solo-travel-guide-2025（9/22変更・11/20本文変更のため**11/27以降**）、toronto-niagara-solo-3nights-4days-budget-200k-2026・tanzania-solo-travel-2025・takayama-winter-solo-travel-2nights-3days-2025・switzerland-zurich-solo-travel-4nights-6days-budget-350k-2026（10/25変更のため**12/24以降**）。taiwan-november-solo-packing-guide-2025 は description に該当表現なし
@@ -23,7 +24,7 @@
 - **turkey-solo-travel-guide-2025 ほかトルコ記事の博物館料金**：turkishmuseums.com の各施設ページ「Biletler」欄が一次情報（外国人はユーロ建て）。`/museums?s=<名前>&l=4` で検索でき、詳細ページは curl で取得可
 - **エジプト記事の残り**（egypt-solo-travel-guide-2025、11/11以降に着手可）：アスワン・ハイダム（160 EGP）、ツアー・クルーズ・航空料金は旧値のまま。冒頭の「2025年9月現在、外務省は主要観光地を危険レベル1」も外務省の現行の危険情報と照合する。GEMの外国人料金は公式（visit-gem.com）が自動取得を拒否したため未掲載
 - **韓国ビューティー記事の空港リムジンバス料金**（korea-beauty-solo-travel-2025、11/11以降）：片道8,000 KRW表記は実勢より安い可能性。公式（KAL Limousine等）で確認
-- **solo-travel-trouble-guide-2025 の description**（**11/25以降**、9/19変更・11/17本文変更）：本文は11/17に修正済み。description の「実証済み対処法」「一人旅歴5年の専門家が実体験で解説」を削除する（title・seoTitle は変更不要）。末尾の「この記事の情報は2025年9月28日時点」は記事全体を再確認したら更新
+- **solo-travel-trouble-guide-2025 の末尾**：「この記事の情報は2025年9月28日時点」は記事全体を再確認したら更新（description は11/25に修正済み）
 - **旅券手数料の改定（2026年7月1日申請分から）**：国内10年旅券は窓口9,300円・オンライン8,900円、18歳以上の5年旅券は廃止（神奈川県パスポートセンター `https://www.pref.kanagawa.jp/docs/h6d/passport/fee.html` で確認、curl可。外務省・在外公館サイトは curl/WebFetch とも403）。国際観光旅客税も同日から3,000円。新記事が旧額（16,300円・1,000円等）を書いていないか時々確認
 - **他のまとめ記事のビザ一覧表**：今回は外務省の安全対策基礎データ（タイ007・台湾008・韓国003・ベトナム015・シンガポール005・マレーシア017・フィリピン013・カンボジア004・インドネシア002、URLは `https://www.anzen.mofa.go.jp/info/pcsafetymeasure_<番号>.html`）でアジア9か国を確認した。欧米・中東・南米を含む一覧表（first-overseas-solo-travel-complete-guide-2026、budget-200k-overseas-solo-travel-best15-2026 など）も同様に照合する
 - **為替の次回チェックは12月下旬ごろ**（11/22実施）。11/22時点で閾値未満だが近いもの：korea-female / korea-male 1KRW=0.11円（実勢0.118〜0.119円、ずれ約-7%）、boracay 1PHP=2.6円（+4.5%）。リオ記事の本文換算（1BRL≒26円）と予算表は据え置き。
@@ -31,6 +32,19 @@
 - 為替チェック用の考え方：`1<通貨>=<数値>円` / `JPY` 表記を全記事から抽出し、open.er-api.com と fawazahmed0/currency-api の2ソースで比較。範囲表記や「〜」区切りは抽出漏れがあるので正規表現を広げる
 - エジプトの遺跡料金は egymonuments.gov.eg の各ページ「Tickets」欄が一次情報（個別ページはcurlで取得可。一覧は POST /umbraco/api/MapsWebAPI/GetAllMapPins）
 - ボリビア・アルゼンチンは変動相場・高インフレのため円換算の全面書き換えはせず注記で対応した。現地料金が一次情報で取れたら本文を更新
+
+## 2026-11-25：確認できない体験談・出典のない数字を3記事で修正、description の「実体験ベース」等を8記事で削除
+
+### やったこと
+- solo-gourmet-travel-guide-2025：冒頭の出典のない「一人旅好き4万人への調査で83%が〜」「ソロ活市場は前年比142%成長」と、「グルメ一人旅歴5年の編集部が実際に200店舗以上を一人で利用した経験をもとに」を削除し、事実ベースの表現に。description の「一人旅のプロが解説」→「詳しく解説」
+- solo-daytrip-recommendations-2025：「一人旅歴5年のトリフレ編集部が実際に検証した〜20選」→「〜20選」、FAQ A1 の出典のない「近年の調査では一人旅経験者は全体の50%を超えて」を削除。description の「実体験ベースで」を削除
+- solo-hotel-booking-checkin-guide-2025：「一人旅歴5年・国内外50軒以上のホテル宿泊経験を持つ編集部が、失敗談から学んだ〜」→「よくある失敗パターンから逆算した〜」、「2025年最新情報として」→「2026-2027シーズンの」、末尾の「2025年の年末年始」→「この年末年始」（過去の年を案内していた）。description は10/25変更のため据え置き
+- description から「実体験ベースで」「実証済み」「一人旅歴5年の専門家が実体験で」を削除（9/26設定から60日経過、本文変更から7日経過）：winter-onsen-solo-packing-2025・thailand-solo-travel-packing-november-2025・kanazawa-solo-travel-guide-2025・jeju-solo-travel-guide-2025・cebu-solo-travel-guide-2025・singapore-solo-travel-2025・solo-travel-trouble-guide-2025（本文は変更なしのため lastmod 据え置き）
+- 計10記事・16か所。title・seoTitle は変更なし。本文を直した3記事の lastmod を 2026-11-25 に更新。情報確認日は内容を再確認していないため据え置き
+
+### 確認結果
+- `npm run build` 成功。out/ で title（変更なし）・description・dateModified・PR表記を確認。3記事の HTML から「一人旅歴」「実際に検証」「4万人」「142%」「200店舗」が消えたことを確認（hotel 記事の「実体験」は自記事の description と関連記事カード〔solo-travel-accommodation-trouble-guide-2025 の title〕のみ）
+- netlify.toml は変更なし
 
 ## 2026-11-24：確認できない一人称の体験談・架空の調査データを7記事で修正、description の「実体験ベース」を10記事で削除
 
