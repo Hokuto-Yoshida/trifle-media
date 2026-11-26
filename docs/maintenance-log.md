@@ -5,7 +5,7 @@
 ## 次回候補
 
 - **ケニア記事の残り**（kenya-solo-travel-guide-2025、11/22以降）：「マサイマラ国立保護区入場料 80 USD/日」は、業界サイト・報道ではナロク郡が2025年から7〜12月200USD・1〜6月100USDに改定とされるが、一次情報（ナロク郡の告示）が取れず未修正。etakenya.go.ke はJS描画で料金を自動取得できず、eTA料金（本文30 USD／予算内訳3,500 KES）と、報道にある「2026年10月から非アフリカ国籍者に旅行保険の加入が必須」も未確認。一次情報が取れたら更新。title・description の「実体験ベース」も60日ルール確認のうえ修正候補
-- **グアム記事の Guam-CNMI ETA**（guam-solo-travel-2025）：「無料」「パスポート残存45日以上」を CBP 公式で確認する
+- **【優先】K-ETA免除の2027年末までの延長（報道のみ・一次情報未確認）**：11/23に韓国法務部が日本など22か国・地域のK-ETA一時免除を2027年12月31日まで1年延長と発表した、と複数の報道（TRAICY・8and・sisaworld等）が伝えている。11/26時点で k-eta.go.kr（お知らせはJS描画）・在日韓国大使館（overseas.mofa.go.kr はcurl接続不可・WebFetchはリダイレクトループ）から一次情報を取れず未修正。一次情報が取れたら「2026年末まで」と書いている記事を更新：busan-solo-travel-winter-2027（Q1・「2027年1月以降は未発表」等多数）、korea-christmas-solo-travel-2025、korea-female-solo-travel-2025、korea-solo-travel-packing-guide-2025、korea-solo-travel-cost-2025、first-overseas-solo-travel-complete-guide-2026、golden-week-overseas-solo-travel-2026、golden-week-solo-travel-2026、solo-travel-itinerary-planning-guide-2026、solo-travel-budget-planning-guide-2025（1回10本の上限に注意）
 - **電子渡航認証の料金の定期確認**：11/15時点の公式料金＝カナダ eTA CAN$7（canada.ca、WebFetchで取得可）、豪州 ETA AUD20・アプリのみ・12か月有効（immi.homeaffairs.gov.au、curlで取得可）、英国 ETA £20（gov.uk、curlで取得可。london-solo-travel-2025 は対応済み）、NZeTA アプリNZ$17／Web NZ$23＋IVL NZ$100（INZの料金表。newzealand記事は対応済み）
 - **ETIAS の導入状況**：europe-year-end・germany・itaria・latvia-riga・pari の各記事は「2026年10月時点で未導入」。11/14時点で開始日は未発表（EU公式ページは自動取得できず、報道ベース）。開始日が発表されたら各記事を更新。2026年中の開始と書いている記事がないかも確認
 - **ESTA料金は毎年10月ごろインフレ調整で改定される**（HR-1。FY2027は2026年10月16日から$40.62、連邦官報 2026-20185）。2027年10月ごろに govinfo.gov の官報（`https://www.govinfo.gov/content/pkg/FR-<日付>/html/<文書番号>.htm`、federalregister.gov 本体はアクセス制限あり。文書番号は federalregister.gov の API `/api/v1/documents.json?conditions[term]=...` で検索可）で次の改定額を確認する
@@ -22,7 +22,7 @@
 - **中東の危険情報の定期確認**：UAE（042）・オマーン（047）・カタール（048）・クウェート（049）・バーレーン（053）は6/25からレベル2、サウジ（050）は10/22に主要州レベル3、イスラエル（044）はガザ以外レベル2、エジプト（094）は大カイロ・ルクソール・アスワン等レベル1、モロッコ（124）は全土レベル1、チュニジア（113）は主要部レベル1（いずれも11/12確認、11/19に全9か国とサウジの更新日が変わっていないことを再確認）。URLは `https://www.anzen.mofa.go.jp/info/pcinfectionspothazardinfo_<番号>.html`。変更があればドバイ・サウジ・卒業旅行記事の注記を更新する。経由地としてのドーハ/ドバイ（乗継便の記述）は対象外とした
 - **トルコ記事の残り**（turkey-solo-travel-guide-2025 は11/22に入場料を更新済みのため**11/29以降**）：turkey-solo-travel-guide-2025 の行程内のホテル（Museum Hotel 1泊500TRY等）・気球ツアー（400TRY）・国内線（300TRY）・ハマム・Havaist（15TRY）は大幅に古い（注記で対応）。アヤソフィア（外国人有料）・地下宮殿の公式料金が取れたら記入。ほか、交通費・食事代などリラ建ての一般物価（ブルサ行き長距離バス200TRY、イズミールのタクシー初乗り15TRY、各記事の「ホテル宿泊費150-500TRY」など）がインフレで実勢より大幅に安い。バス会社・İZBAN（izban.com.tr）・TCDD等の公式運賃で確認できたものから更新。アンタルヤ考古学博物館（約500リラ）とブルサのイェシル・テュルベ（60TRY）は公式料金を確認できず据え置き（turkishmuseums.com に該当ページなし）
 - **turkey-solo-travel-guide-2025 ほかトルコ記事の博物館料金**：turkishmuseums.com の各施設ページ「Biletler」欄が一次情報（外国人はユーロ建て）。`/museums?s=<名前>&l=4` で検索でき、詳細ページは curl で取得可
-- **エジプト記事の残り**（egypt-solo-travel-guide-2025、11/11以降に着手可）：アスワン・ハイダム（160 EGP）、ツアー・クルーズ・航空料金は旧値のまま。冒頭の「2025年9月現在、外務省は主要観光地を危険レベル1」も外務省の現行の危険情報と照合する。GEMの外国人料金は公式（visit-gem.com）が自動取得を拒否したため未掲載
+- **エジプト記事の残り**（egypt-solo-travel-guide-2025、**12/3以降**）：アスワン・ハイダム（160 EGP）、ツアー・クルーズ・航空料金は旧値のまま（egymonuments の API は今回の環境では取得不可）。冒頭の危険情報は11/26に更新済み。GEMの外国人料金は公式（visit-gem.com）が自動取得を拒否したため未掲載
 - **韓国ビューティー記事の空港リムジンバス料金**（korea-beauty-solo-travel-2025、11/11以降）：片道8,000 KRW表記は実勢より安い可能性。公式（KAL Limousine等）で確認
 - **solo-travel-trouble-guide-2025 の末尾**：「この記事の情報は2025年9月28日時点」は記事全体を再確認したら更新（description は11/25に修正済み）
 - **旅券手数料の改定（2026年7月1日申請分から）**：国内10年旅券は窓口9,300円・オンライン8,900円、18歳以上の5年旅券は廃止（神奈川県パスポートセンター `https://www.pref.kanagawa.jp/docs/h6d/passport/fee.html` で確認、curl可。外務省・在外公館サイトは curl/WebFetch とも403）。国際観光旅客税も同日から3,000円。新記事が旧額（16,300円・1,000円等）を書いていないか時々確認
@@ -32,6 +32,19 @@
 - 為替チェック用の考え方：`1<通貨>=<数値>円` / `JPY` 表記を全記事から抽出し、open.er-api.com と fawazahmed0/currency-api の2ソースで比較。範囲表記や「〜」区切りは抽出漏れがあるので正規表現を広げる
 - エジプトの遺跡料金は egymonuments.gov.eg の各ページ「Tickets」欄が一次情報（個別ページはcurlで取得可。一覧は POST /umbraco/api/MapsWebAPI/GetAllMapPins）
 - ボリビア・アルゼンチンは変動相場・高インフレのため円換算の全面書き換えはせず注記で対応した。現地料金が一次情報で取れたら本文を更新
+
+## 2026-11-26：グアム記事のETA条件の誤りを修正、エジプト記事の危険情報を現行版に更新
+
+### やったこと
+- guam-solo-travel-2025：FAQ A5 の「パスポートの有効期間が入国時点で45日以上あることが条件」は、ビザなし滞在の上限（最長45日）との混同だったため「ビザなしで滞在できるのは最長45日で、パスポートは滞在期間中有効であることが必要（2026年11月確認）」に修正。「無料」は連邦官報の規則（2024-00645「At this time, payment of a fee will not be required」）と2026年8月の I-736 情報収集告示（2026-15773、料金の記載なし）で確認し据え置き。パスポート条件はグアム政府観光局（visitguam.com「The passport must be valid for the duration of your stay」）と同規則（6か月ルール免除協定国は滞在期間分の有効期間でよい）で確認。「2024年11月30日から導入」は一次情報が取れず据え置き
+- egypt-solo-travel-guide-2025：冒頭の「2025年9月現在、外務省は主要観光地を危険レベル1」を、外務省の現行の危険情報（2026年9月11日更新：大カイロ都市圏を含む主要地域レベル1、北シナイ県・リビア国境地帯レベル3、南シナイ県の大部分〔アカバ湾沿岸を除く〕レベル2に引き下げ、西部・南部の砂漠地帯〔一部を除く〕レベル2）に合わせて書き換え
+- K-ETA免除の2027年末までの延長報道を確認したが、一次情報が取れなかったため記事は未変更（次回候補へ）
+- 内部リンクを全公開記事で点検：存在しない・draft 記事へのリンク0件、末尾スラッシュなし0件、孤立記事0件
+- 計2記事・2か所。title・seoTitle・description は変更なし。2記事の lastmod を 2026-11-26 に更新
+
+### 確認結果
+- `npm run build` 成功。out/ で2記事の title（変更なし）・dateModified（2026-11-26）・PR表記・修正後の本文を確認。グアム記事の HTML から「45日以上」が消えたことを確認
+- netlify.toml は変更なし
 
 ## 2026-11-25：確認できない体験談・出典のない数字を3記事で修正、description の「実体験ベース」等を8記事で削除
 
