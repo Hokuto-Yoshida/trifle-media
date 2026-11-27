@@ -5,7 +5,7 @@
 ## 次回候補
 
 - **ケニア記事の残り**（kenya-solo-travel-guide-2025、11/22以降）：「マサイマラ国立保護区入場料 80 USD/日」は、業界サイト・報道ではナロク郡が2025年から7〜12月200USD・1〜6月100USDに改定とされるが、一次情報（ナロク郡の告示）が取れず未修正。etakenya.go.ke はJS描画で料金を自動取得できず、eTA料金（本文30 USD／予算内訳3,500 KES）と、報道にある「2026年10月から非アフリカ国籍者に旅行保険の加入が必須」も未確認。一次情報が取れたら更新。title・description の「実体験ベース」も60日ルール確認のうえ修正候補
-- **【優先】K-ETA免除の2027年末までの延長（報道のみ・一次情報未確認）**：11/23に韓国法務部が日本など22か国・地域のK-ETA一時免除を2027年12月31日まで1年延長と発表した、と複数の報道（TRAICY・8and・sisaworld等）が伝えている。11/26時点で k-eta.go.kr（お知らせはJS描画）・在日韓国大使館（overseas.mofa.go.kr はcurl接続不可・WebFetchはリダイレクトループ）から一次情報を取れず未修正。一次情報が取れたら「2026年末まで」と書いている記事を更新：busan-solo-travel-winter-2027（Q1・「2027年1月以降は未発表」等多数）、korea-christmas-solo-travel-2025、korea-female-solo-travel-2025、korea-solo-travel-packing-guide-2025、korea-solo-travel-cost-2025、first-overseas-solo-travel-complete-guide-2026、golden-week-overseas-solo-travel-2026、golden-week-solo-travel-2026、solo-travel-itinerary-planning-guide-2026、solo-travel-budget-planning-guide-2025（1回10本の上限に注意）
+- **K-ETA延長の残り**：busan-solo-travel-winter-2027 の description「K-ETA免除の期限（2026年12月31日）」は11/2設定のため**2027/1/1以降**に「2027年12月31日まで延長」へ直す（本文は11/27修正済み）。solo-travel-budget-planning-guide-2025 の「K-ETA免除で手続き不要(2026年末まで)」は11/24変更のため**12/1以降**に「2027年末まで」へ。一次情報は韓国観光公社 `https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=1596082`（WebFetchで取得可。k-eta.go.kr の掲示板の直接取得は不可）
 - **電子渡航認証の料金の定期確認**：11/15時点の公式料金＝カナダ eTA CAN$7（canada.ca、WebFetchで取得可）、豪州 ETA AUD20・アプリのみ・12か月有効（immi.homeaffairs.gov.au、curlで取得可）、英国 ETA £20（gov.uk、curlで取得可。london-solo-travel-2025 は対応済み）、NZeTA アプリNZ$17／Web NZ$23＋IVL NZ$100（INZの料金表。newzealand記事は対応済み）
 - **ETIAS の導入状況**：europe-year-end・germany・itaria・latvia-riga・pari の各記事は「2026年10月時点で未導入」。11/14時点で開始日は未発表（EU公式ページは自動取得できず、報道ベース）。開始日が発表されたら各記事を更新。2026年中の開始と書いている記事がないかも確認
 - **ESTA料金は毎年10月ごろインフレ調整で改定される**（HR-1。FY2027は2026年10月16日から$40.62、連邦官報 2026-20185）。2027年10月ごろに govinfo.gov の官報（`https://www.govinfo.gov/content/pkg/FR-<日付>/html/<文書番号>.htm`、federalregister.gov 本体はアクセス制限あり。文書番号は federalregister.gov の API `/api/v1/documents.json?conditions[term]=...` で検索可）で次の改定額を確認する
@@ -32,6 +32,19 @@
 - 為替チェック用の考え方：`1<通貨>=<数値>円` / `JPY` 表記を全記事から抽出し、open.er-api.com と fawazahmed0/currency-api の2ソースで比較。範囲表記や「〜」区切りは抽出漏れがあるので正規表現を広げる
 - エジプトの遺跡料金は egymonuments.gov.eg の各ページ「Tickets」欄が一次情報（個別ページはcurlで取得可。一覧は POST /umbraco/api/MapsWebAPI/GetAllMapPins）
 - ボリビア・アルゼンチンは変動相場・高インフレのため円換算の全面書き換えはせず注記で対応した。現地料金が一次情報で取れたら本文を更新
+
+## 2026-11-27：K-ETA一時免除の2027年12月31日までの延長を8記事に反映
+
+### やったこと
+- 韓国観光公社（VISITKOREA、2026年11月24日付「K-ETA Waiver Period Extended to December 31, 2027」）で、日本を含む22か国・地域のK-ETA一時免除が2027年12月31日まで延長されたことを確認（既存のK-ETAは有効期限まで使用可）。在外公館（mofa.go.kr）の検索結果は2026年1月の前回延長の告知のみ、k-eta.go.kr の掲示板は自動取得できず
+- busan-solo-travel-winter-2027：導入・「K-ETAの免除は〜」節（見出し・本文・2027年1月以降の分岐を削除）・ポイント欄・FAQ Q1・まとめの計6か所を延長後の内容に書き換え。情報確認日に「K-ETAは11/27再確認」を追記。description は60日ルールで据え置き（次回候補）
+- 「2026年末まで」→「2027年末まで（2026年11月発表）」：first-overseas-solo-travel-complete-guide-2026・golden-week-overseas-solo-travel-2026・korea-christmas-solo-travel-2025・korea-female-solo-travel-2025（FAQ A3）・korea-solo-travel-cost-2025（表・情報確認日の注記）・korea-solo-travel-packing-guide-2025（導入・末尾・最終更新日）・solo-travel-itinerary-planning-guide-2026
+- 対象外：solo-travel-budget-planning-guide-2025（11/24変更で7日ルール。現時点で誤りではない）、golden-week-solo-travel-2026（draft）、korea-male-solo-travel-2025（「免除継続中」で期限の記載なし）
+- 計8記事・約17か所。title・seoTitle・description は変更なし。8記事の lastmod を 2026-11-27 に更新
+
+### 確認結果
+- `npm run build` 成功。out/ で8記事の title（変更なし）・dateModified（2026-11-27）・PR表記・「2027年12月31日／2027年末」の表示を確認。本文に K-ETA と結びついた「2026年12月31日／2026年末」は残っていない（釜山記事の description 由来のメタタグのみ）
+- netlify.toml は変更なし
 
 ## 2026-11-26：グアム記事のETA条件の誤りを修正、エジプト記事の危険情報を現行版に更新
 
