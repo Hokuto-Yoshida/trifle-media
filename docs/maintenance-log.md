@@ -10,7 +10,8 @@
 - **ETIAS の導入状況**：europe-year-end・germany・itaria・latvia-riga・pari の各記事は「2026年10月時点で未導入」。11/14時点で開始日は未発表（EU公式ページは自動取得できず、報道ベース）。開始日が発表されたら各記事を更新。2026年中の開始と書いている記事がないかも確認
 - **ESTA料金は毎年10月ごろインフレ調整で改定される**（HR-1。FY2027は2026年10月16日から$40.62、連邦官報 2026-20185）。2027年10月ごろに govinfo.gov の官報（`https://www.govinfo.gov/content/pkg/FR-<日付>/html/<文書番号>.htm`、federalregister.gov 本体はアクセス制限あり。文書番号は federalregister.gov の API `/api/v1/documents.json?conditions[term]=...` で検索可）で次の改定額を確認する
 - **ガラパゴス記事の title・seoTitle・description の季節の誤り**（galapagos-solo-travel-december-2025、**12/24以降**）：本文は11/13にチャールズ・ダーウィン財団の情報（12〜5月=暖かく雨の多いホットシーズン、6〜11月=涼しく乾いたガルーア）で修正済み。title「乾季ベストシーズン」・seoTitle「乾季の8日間プラン」・description「乾季で海も陸も最高の季節」「実体験ベース」が残る。title は「乾季」→「ホットシーズン入り」程度の小幅修正に。本文の「1USD=157円(2026年9月現在)」も実勢と照合する
-- **「確認できない一人称の体験談」の続き**：11/11・11/13・11/16・11/17・11/18・11/19・11/20・11/21・11/23・11/24・11/25で計89本を修正。同じ定型文（冒頭「一人旅歴5年のトリフレ編集部が実際に検証した〜プラン」「リアルな体験談とともに」、FAQ「編集部の実体験では〜予算内に収まりました」「実際に検証済み」）が多数の記事に残る。次の候補（公開・直近7日の変更なし）：slovenia-croatia-winter-solo-2025・singapore-solo-gourmet-2025・shinkansen-solo-travel-distance-routes-2026・shanghai-solo-travel-guide-2025・seattle-solo-travel-3nights-4days-budget-200k-2026・sanfrancisco-winter-solo-travel-guide-2025・san-sebastian-solo-travel-guide-2025 ほか約130本（11/23に w〜so 始まりの10本、11/24に solo-travel-* の7本を修正済み）。抽出：`grep -l -E "一人旅歴[0-9]+年|実際に検証|実体験|筆者が|[0-9]{2}歳[・）]|編集部.{0,10}調査" content/posts/*.mdx` から draft と直近7日変更分を除く。solo-travel-credit-card-overseas-2026 は「18〜25歳」等の誤検出。egypt-solo-travel-winter-packing-guide-2025 は title に「実体験で徹底解説」があり、florence 記事の関連リンク文言にも転記されている（title 修正時はリンク文言も合わせる）
+- **「確認できない一人称の体験談」の続き**：11/11・11/13・11/16・11/17・11/18・11/19・11/20・11/21・11/23・11/24・11/25・11/28で計99本を修正。同じ定型文（冒頭「一人旅歴5年のトリフレ編集部が実際に検証した〜プラン」「リアルな体験談とともに」、FAQ「編集部の実体験では〜予算内に収まりました」「実際に検証済み」）が多数の記事に残る。次の候補（公開・直近7日の変更なし）：sanfrancisco-winter-solo-travel-guide-2025・san-sebastian-solo-travel-guide-2025・saudi-arabia-solo-travel-guide-2025（FAQ A2「編集部の調査では」）・pari-solo-travel-2025・phuquoc・phuket・peru・penang・patagonia・palau・overseas-*・oosaka ほか約120本（11/23に w〜so、11/24に solo-travel-*、11/28に sl〜po の10本を修正済み）。抽出：`grep -l -E "一人旅歴[0-9]+年|実際に検証|実体験|筆者が|[0-9]{2}歳[・）]|編集部.{0,10}調査" content/posts/*.mdx` から draft と直近7日変更分を除く。solo-travel-credit-card-overseas-2026 は「18〜25歳」等の誤検出。egypt-solo-travel-winter-packing-guide-2025 は title に「実体験で徹底解説」があり、florence 記事の関連リンク文言にも転記されている（title 修正時はリンク文言も合わせる）
+- **description に「実体験ベース」が残る記事（11/28の修正分）**：shinkansen-solo-travel-distance-routes-2026・shanghai-solo-travel-guide-2025・seattle-solo-travel-3nights-4days-budget-200k-2026・san-francisco-solo-travel-3nights-4days-budget-200k-2026・rwanda-solo-travel-guide-2025・roma-solo-travel-2025・poland-solo-travel-guide-2025（10/1変更のため**11/30以降**。本文は11/28修正済みで7日ルールにより**12/5以降**）、singapore-solo-gourmet-2025・rotterdam-solo-travel-2026（10/25変更のため**12/24以降**）。slovenia-croatia は description に該当表現なし
 - **description に「実体験ベース」が残る記事（11/25の修正分）**：solo-hotel-booking-checkin-guide-2025（10/25変更のため**12/24以降**。本文は11/25修正済み）
 - **solo-daytrip-recommendations-2025 の出典付き統計**：冒頭の「エクスペディア調査：世界の旅行者の63%が第2の旅行先に関心、日本48%」（Unpack'25）と「OZmall調査：61%がリフレッシュ」は出典名があるため据え置き。原典で数字を確認できたら残し、違えば修正
 - **description に「実体験ベース」が残る記事（11/18の修正分）**：greece-solo-travel-2025・florence-winter-solo-travel-guide-2025（florence は description に「プロが伝授」。いずれも10/25変更のため**12/24以降**）
@@ -32,6 +33,18 @@
 - 為替チェック用の考え方：`1<通貨>=<数値>円` / `JPY` 表記を全記事から抽出し、open.er-api.com と fawazahmed0/currency-api の2ソースで比較。範囲表記や「〜」区切りは抽出漏れがあるので正規表現を広げる
 - エジプトの遺跡料金は egymonuments.gov.eg の各ページ「Tickets」欄が一次情報（個別ページはcurlで取得可。一覧は POST /umbraco/api/MapsWebAPI/GetAllMapPins）
 - ボリビア・アルゼンチンは変動相場・高インフレのため円換算の全面書き換えはせず注記で対応した。現地料金が一次情報で取れたら本文を更新
+
+## 2026-11-28：確認できない一人称の体験談を10記事で修正、シンガポールのGST還付の誤りを修正
+
+### やったこと
+- 冒頭の「一人旅歴5年（シンガポールグルメ歴10年）のトリフレ編集部が実際に検証した〜プラン」「リアルな体験談とともに」「実体験に基づいた情報」を「〜モデルプラン」「具体的に」に修正：slovenia-croatia-winter-solo-2025・singapore-solo-gourmet-2025・shinkansen-solo-travel-distance-routes-2026・shanghai-solo-travel-guide-2025・seattle-solo-travel-3nights-4days-budget-200k-2026・san-francisco-solo-travel-3nights-4days-budget-200k-2026・rwanda-solo-travel-guide-2025・rotterdam-solo-travel-2026・roma-solo-travel-2025・poland-solo-travel-guide-2025
+- FAQ の「実際に編集部で検証済みです」を削除し「〜実現可能な計算です」「本記事のモデルプランは〜予算に収まる計算です」に（slovenia-croatia A3・roma A2）
+- singapore-solo-gourmet-2025：節約術「Government Fair Price控除／GST還付対象商品で7%の節約。年間S$100以上」は誤り（GSTは2024年から9%、条件は年間ではなく同一店舗で同日S$100以上）。IRAS の Current GST Rates と Tourist Refund Scheme のページで確認し「GST（消費税）の旅行者還付」として書き換え
+- 計10記事・23か所。title・seoTitle・description は変更なし（10/1・10/25変更のため60日ルール）。10記事の lastmod を 2026-11-28 に更新（rotterdam は lastmod がなかったため追加）。情報確認日は内容全体を再確認していないため据え置き
+
+### 確認結果
+- `npm run build` 成功。out/ で10記事の title（変更なし）・dateModified=2026-11-28・PR表記を確認。10記事の HTML から「一人旅歴」「実際に検証」「リアルな体験談」「検証済み」「グルメ歴」が消えたことを確認（「実体験」は description 由来のメタ情報のみ）
+- netlify.toml は変更なし
 
 ## 2026-11-27：K-ETA一時免除の2027年12月31日までの延長を8記事に反映
 
